@@ -5,8 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-
+# PS1 with Git Indicator
 # get current branch in git repo
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
@@ -65,6 +64,7 @@ function _myps1() {
 }
 _myps1
 
+#Fetch, just for eyecandy
 pfetch
 
 #function _update_ps1() {
@@ -74,6 +74,29 @@ pfetch
 #if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 #    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
+
+#extract script from DistroTube's dotfiles repo
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 #Aliases
 export EDITOR="nvim"
@@ -93,7 +116,9 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 alias vim='nvim'
 alias weather='curl wttr.in'
 alias pac='sudo pacman'
+alias pacS='sudo pacman -S'
 alias aur='yay'
+alias aurS='yay -S'
 alias spotifyrip='spotify-ripper -u palembani@gmail.com'
 alias xreload='xrdb ~/.Xresources'
 alias ytv='youtube-viewer'
@@ -109,16 +134,20 @@ alias cls='clear'
 alias classprop='xprop WM_CLASS'
 alias storagelist='lsblk -f'
 alias ..='cd ..'
-alias ls='exa --color=auto'
+alias ls='exa --color=always'
 alias ll='ls -alF'
 alias l='ls -CF'
-alias la='ls -A'
+alias la='ls -a'
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
 alias cfbash='vim $HOME/.bashrc'
 alias cfbsp='vim $XDG_CONFIG_HOME/bspwm/bspwmrc'
 alias cfpoly='vim $XDG_CONFIG_HOME/polybar/config'
 alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
 alias htop='htop -t'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 #Git Aliases
 alias gs='git status'
