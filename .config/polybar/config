@@ -1,0 +1,583 @@
+[global/wm]
+;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+enable-ipc = true
+
+; Define fallback values used by all module formats
+format-foreground = #FF0000
+format-background = #00FF00
+format-underline =
+format-overline =
+format-spacing =
+format-padding =
+format-margin =
+format-offset =
+
+[colors]
+; My Scheme theme ============
+; D = Darker Color
+; L = Lighter Color
+background = #2f3640
+foreground = #f5f6fa
+foregroundD = #2f3640
+primary = #37b0ff
+primaryL1 = #60C0FF
+primaryL2 = #8DD2FE
+primaryD1 = #0EA0FF
+primaryD2 = #0299FB
+secondary1 = #4466ff
+secondary1L1 = #6B85FF
+secondary1L2 = #95A8FE
+secondary1D1 = #1D45FF
+secondary2 = #2affb9 
+secondary2D1 = #00FFAB
+secondary2D3 = #00C282
+alert = #e84118
+volume-min = #a3be8c
+volume-med = #ebcb8b
+volume-max = #bf616a
+; =======================
+
+[bar/bspwm]
+;monitor = ${env:MONITOR}
+;monitor-fallback = HDMI1
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = false 
+separator = 
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+wm-restack = bspwm
+override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+border-size = 0
+;border-left-size = 0
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+;padding-left = 
+;padding-right = 
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "UbuntuMono Nerd Font:size=10;2"
+font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-2 = "Sarasa Term J:bold:size=9;2"
+font-3 = "Nimbus Sans:bold:size=9;2"
+font-4 = "Iosevka Nerd Font:bold:size=9;2"
+font-5 = "FontAwesome5Free:bold:style=solid:size=9;2"
+
+; ----------------------------------------------------------------------------------------
+modules-left = previous player-mpris player-mpris-tail mpd volume  
+modules-center = bspwm   
+modules-right = wirednetwork temp battery updates date prompt 
+; ----------------------------------------------------------------------------------------
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-position = left 
+tray-padding = 2
+tray-maxsize = 13
+tray-scale = 1.0
+tray-background = ${colors.secondary1D1}
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+# ----- Module -----
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+pin-workspaces = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;喇
+ws-icon-3 = 4;ﱘ
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = " "
+
+format-font = 5
+format = <label-state>
+format-background = #434758
+format-padding = 2
+
+label-focused = %icon%
+;label-focused-background = #434758
+;label-focused-underline= 
+label-focused-padding = 1
+label-focused-foreground = ${colors.primary}
+
+label-occupied = %icon%
+;label-occupied-underline = #00a8ff
+label-occupied-padding = 1
+;label-occupied-background = #434758
+
+label-urgent = %icon%
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = #7f8fa6
+label-empty-padding = 1
+;label-empty-underline = #7f8fa6
+;label-empty-background = #434758 
+
+label-monocle = "ﬕ"
+label-monocle-padding = 2
+;label-monocle-background = #0097e6
+label-monocle-foreground = ${colors.foreground}
+label-tiled = "﩯"
+label-tiled-padding = 2
+;label-tiled-background = #0097e6
+label-tiled-foreground = ${colors.foreground}
+label-fullscreen = ""
+label-fullscreen-padding = 2
+;label-fullscreen-background = #0097e6
+label-fullscreen-foreground = ${colors.foreground}
+label-floating = ""
+label-floating-padding = 2
+;label-floating-background = #0097e6
+label-floating-foreground = ${colors.foreground}
+label-pseudotiled = ""
+label-pseudotiled-padding = 2
+;label-pseudotiled-background = #0097e6
+label-pseudotiled-foreground = ${colors.foreground}
+label-locked = "  "
+label-locked-foreground = ${colors.foreground}
+label-sticky = "  "
+label-sticky-foreground = ${colors.foreground}
+label-private =  "     "
+label-private-foreground = ${colors.foreground}
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 10
+;label-separator-foreground = #ffb52a
+
+format-foreground = ${colors.foreground}
+;format-background = ${colors.background}
+
+# ----- XWindow -----
+[module/xwindow]
+;https://github.com/jaagr/polybar/wiki/Module:-xwindow
+type = internal/xwindow
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label-font = 3
+label = %title%
+label-maxlen = 50
+
+format-prefix = "  "
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+# ----- Spotify -----
+[module/spotify]
+;https://github.com/NicholasFeldman/dotfiles/blob/master/polybar/.config/polybar/spotify.sh
+type = custom/script
+#exec = ~/.config/polybar/scripts/spotify.sh
+interval = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+;format = <label>
+format-foreground = ${colors.foreground} 
+format-background = #44bd32
+format-padding = 2
+;format-underline = transparent 
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground} 
+label-font = 3 
+label = %output:0:22%
+
+[module/previous]
+type = custom/script
+interval = 1
+format = "%{T3}<label>"
+format-padding = 2
+format-background = #4cd137
+format-foreground = ${colors.foreground}
+; Previous song icon
+#exec = $HOME/.config/polybar/scripts/spotprev.sh
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+[module/next]
+type = custom/script
+interval = 1 
+format = "%{T3}<label>"
+format-padding = 2 
+format-background = #4cd137
+format-foreground = ${colors.foreground}
+; Next song icon
+#exec = ~/.config/polybar/scripts/spotnext.sh
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+[module/playpause]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+; Paused
+hook-2 = echo ""
+initial = 1
+format-underline = #1db954
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+
+# ----- Network -----
+[module/wirednetwork]
+type = internal/network
+interface = enp2s0
+
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.secondary2D3}
+format-connected-padding = 2
+format-connected-font = 1 
+format-connected = <label-connected>
+
+format-disconnected-foreground = ${colors.foreground}
+format-disconnected-background = ${colors.alert}
+format-disconnected-padding = 2
+format-disconnected = <label-disconnected>
+
+format-padding = 2
+label-font = 1 
+label-connected = 
+label-disconnected = 
+
+# ----- Date / Time -----
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+; Default: 1.0
+interval = 1.0
+
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %d/%m/%y
+
+; Optional time format
+time = %H:%M
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A, %d %b
+time-alt = %H:%M
+
+format-prefix = " "
+format = <label>
+format-background = ${colors.primary}
+format-foreground = ${colors.foreground}
+format-padding = 2
+label = %date% • %time%
+label-font = 3
+;label-foreground = #9A32DB
+
+# ----- cmus -----
+[module/cmus]
+type = custom/script
+#exec-if = "pgrep -x cmus"
+#exec = ~/.config/polybar/scripts/player-cmus.sh
+interval = 1
+format-prefix = " "
+format = <label>
+format-foreground = ${colors.foreground} 
+format-background = ${colors.secondary1L1}
+format-padding = 2
+label-font = 3 
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.cmus /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+; cmus-remote -n &
+click-right = cmus-remote -r &
+click-middle = cmus-remote -u &
+label = %output:0:22%
+
+[module/cplaypause]
+type = custom/script
+#exec-if = "pgrep -x cmus"
+#exec = ~/.config/polybar/scripts/cmus.sh
+interval = 1
+format = <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.secondary1}
+format-padding = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.cmus /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+
+[module/cnext]
+type = custom/script
+#exec-if = "pgrep -x cmus"
+#exec = ~/.config/polybar/scripts/cnext.sh
+interval = 1
+format = <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.secondary1}
+format-padding = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.cmus /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+[module/cprev]
+type = custom/script
+#exec-if = "pgrep cmus"
+#exec = ~/.config/polybar/scripts/cprev.sh
+interval = 1
+format = <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.secondary1}
+format-padding = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.cmus /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+# ----- Music [MPris] -----
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{:artist:t10:{artist}:}{:artist: - :}{:t10:{title}:}' 
+tail = true
+label-font = 3
+format-prefix = " "
+format-foreground = ${colors.foreground} 
+format-background = ${colors.secondary1L1}
+format-padding = 2
+click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
+scroll-up = ~/.config/polybar/scripts/player-mpris-tail.py next &
+scroll-down = ~/.config/polybar/scripts/player-mpris-tail.py previous &
+
+[module/player-mpris]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '%{A1:~/.config/polybar/scripts/player-mpris-tail.py previous:} 玲 %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py next:} 怜 %{A}' --icon-paused  --icon-playing 契
+tail = true
+label-font = 1
+format-foreground = ${colors.foreground} 
+format-background = ${colors.secondary1}
+format-padding = 1
+
+
+
+# ----- Music [MPD] -----
+
+[module/mpd]
+type = internal/mpd
+
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = localhost
+port = 6600
+
+format-online-padding = 2
+format-online-prefix = " "
+format-online = <label-song>
+format-online-foreground = ${colors.foreground}
+format-online-background = ${colors.secondary1L1}
+label-song-font = 3
+label-song = %artist% - %title:0:10%
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+[module/mpdplaypause]
+type = internal/mpd
+
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = localhost
+port = 6600
+
+format-online-padding = 2
+format-online-prefix = " "
+format-online = <label-song>
+format-online-foreground = ${colors.foreground}
+format-online-background = ${colors.secondary1L1}
+label-song-font = 3
+label-song = %artist% - %title:0:10%
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+# ----- Volume Tail -----
+[module/vol-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/pulseaudio-tail.sh
+tail = true
+click-right = exec pavucontrol &
+click-left = ~/polybar-scripts/pulseaudio-tail.sh --mute &
+scroll-up = ~/polybar-scripts/pulseaudio-tail.sh --up &
+scroll-down = ~/polybar-scripts/pulseaudio-tail.sh --down &
+
+# ----- Volume -----
+[module/volume]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = false 
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+format-muted-foreground = ${colors.foreground}
+format-muted-background = #434758
+format-muted = ﱝ <label-muted>
+format-muted-padding = 2
+format-volume-foreground = ${colors.foreground}
+format-volume-background = #434758
+format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 2
+
+label-volume-font = 3
+
+label-muted-font = 3
+label-muted = M
+label-muted-foreground = ${colors.alert}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+# ----- Updates -----
+
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates.sh
+label-font = 3
+format-prefix = "ﮮ "
+format-padding = 2
+format-background = ${colors.primaryD1}
+format-foreground = ${colors.foreground}
+interval = 600
+
+# ----- Prompt -----
+[module/prompt]
+type = custom/script
+interval = 1 
+format = "<label>"
+format-padding = 2 
+format-background = ${colors.primaryL1}
+format-foreground = ${colors.foreground}
+exec = echo ""
+click-left = sh ~/.scripts/prompt
+
+# ----- Battery -----
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+
+format-charging = <animation-charging> ""
+format-discharging =  <ramp-capacity>
+format = <label>
+format-background = ${colors.primary}
+format-foreground = ${colors.foreground}
+
+label = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/temp]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon0/temp3_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 0
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 100
+
+format = <ramp> <label>
+format-background = ${colors.primaryD2}
+;format-warn = <ramp> <label-warn>
+;format-warn-padding = 2
+;format-warn-background = ${colors.primaryD2}
+format-padding = 2
+
+label-font = 5
+label = %temperature-c%
+;label-warn-font = 5
+;label-warn = %temperature-c%
+;label-warn-foreground = ${colors.urgent}
+
+ramp-font = 7
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground}
+
