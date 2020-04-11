@@ -1,0 +1,81 @@
+" - Cleaning Up
+set undodir=$XDG_DATA_HOME/vim/undo
+set directory=$XDG_DATA_HOME/vim/swap
+set backupdir=$XDG_DATA_HOME/vim/backup
+set viewdir=$XDG_DATA_HOME/vim/view
+set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+
+" - Mapping + Settings
+noremap <C-y> "*y
+noremap <C-p> "*p
+noremap <C-Y> "+y
+noremap <C-P> "+p
+noremap <C-/> NERDCommenterToggle
+:set mouse=a
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
+set number
+autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
+autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
+set ignorecase
+set smartcase
+
+" Sw (sudo w) to save as root
+command! -nargs=0 W w !sudo tee % > /dev/null
+
+" - Auto refresh vimrc
+augroup myvimrc
+    au!
+    au BufWritePost vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+syntax on
+filetype indent plugin on
+
+" - PlugIns
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.local/share/vim/bundle')
+
+Plug 'kovetskiy/sxhkd-vim'
+Plug 'lervag/vimtex'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'preservim/nerdcommenter'
+
+call plug#end()
+
+" - deoplete
+let g:deoplete#enable_at_startup = 1
+
+" - Powerline Integraton
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
+let g:airline_theme='onedark'
+
+" - Snippet
+
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsEditSplit="vertical"
