@@ -1,7 +1,6 @@
 from libqtile.config import key, screen, group, drag, click, match
 from libqtile.command import lazy
 
-mod = 'mod4' 
 mod = "mod4"                                     # Sets mod key to SUPER/WINDOWS
 myTerm = "urxvt"                                    # My terminal of choice
 myConfig = "/home/ziro/.config/qtile/config.py"    # Qtile config file location
