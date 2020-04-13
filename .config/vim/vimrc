@@ -7,23 +7,29 @@ set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
+"
+set encoding=UTF-8
+"
+
 " - Mapping + Settings
 noremap <C-y> "*y
 noremap <C-p> "*p
 noremap <C-Y> "+y
 noremap <C-P> "+p
-noremap <C-/> NERDCommenterToggle
+noremap <C-/> :NERDCommenterToggle
 :set mouse=a
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python3 %<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3 %'<CR>
 set number
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
 set ignorecase
 set smartcase
+map <C-n> :NERDTreeToggle<CR>
 
 " Sw (sudo w) to save as root
 command! -nargs=0 W w !sudo tee % > /dev/null
+cmap w!! w !sudo tee > /dev/null %
 
 " - Auto refresh vimrc
 augroup myvimrc
@@ -53,19 +59,22 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
 Plug 'preservim/nerdcommenter'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-" - deoplete
-let g:deoplete#enable_at_startup = 1
+" - YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " - Powerline Integraton
 let g:airline_powerline_fonts = 1
@@ -75,7 +84,7 @@ let g:airline_theme='onedark'
 
 " - Snippet
 
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsExpandTrigger="<C-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 let g:UltiSnipsEditSplit="vertical"

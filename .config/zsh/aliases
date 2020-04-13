@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#sudo
+alias sudo='sudo '
+
 #vim
 alias nano='nvim'
 alias vim='nvim'
@@ -39,6 +42,7 @@ alias classprop='xprop WM_CLASS'
 alias storagelist='lsblk -f'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias q='exit'
 alias ls='exa --color=always'
 alias ll='ls -alF'
 alias l='ls -CF'
@@ -56,6 +60,9 @@ alias htop='htop -t'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias mntfd='sudo mount -o gid=users,fmask=113,dmask=002'
+alias umntfd='sudo umount'
+alias cmatrix='unimatrix -n -s 96 -l 'o''
 
 #Git Aliases
 alias gs='git status'

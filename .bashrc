@@ -60,7 +60,7 @@ function _myps1() {
 	local __git_status='`parse_git_dirty`'
 	local __ps1end="\[\033[00m\]$> $__space"
 	local __dir="\[\033[38;5;7m\]\w"
-	PS1="$__name_hostname $__space$__dir$__git_branch $__ps1end"
+	PS1=" $__dir$__git_branch $__ps1end"
 }
 _myps1
 
@@ -78,33 +78,35 @@ pfetch
 #extract script from DistroTube's dotfiles repo
 ex ()
 {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+	if [ -f $1 ] ; then
+			case $1 in
+	      		*.tar.bz2)   tar xjf $1   ;;
+	      		*.tar.gz)    tar xzf $1   ;;
+	      		*.bz2)       bunzip2 $1   ;;
+	      		*.rar)       unrar x $1     ;;
+	      		*.gz)        gunzip $1    ;;
+	      		*.tar)       tar xf $1    ;;
+      			*.tbz2)      tar xjf $1   ;;
+      			*.tgz)       tar xzf $1   ;;
+      			*.zip)       unzip $1     ;;
+      			*.Z)         uncompress $1;;
+      			*.7z)        7z x $1      ;;
+     			*)           echo "'$1' cannot be extracted via ex()" ;;
+    			esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
-#Aliases
+#Default
 export EDITOR="nvim"
 export BROWSER='firefox'
 export TERMINAL='urxvt'
 
 #Askpass
 export SUDO_ASKPASS=/usr/bin/rofi-askpass
+
+#XDG
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -113,12 +115,20 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 #Aliases
+alias nano='nvim'
 alias vim='nvim'
+alias vi='nvim'
 alias weather='curl wttr.in'
 alias pac='sudo pacman'
 alias pacS='sudo pacman -S'
+alias pacSy='sudo pacman -Sy'
+alias pacSyu='sudo pacman -Syu'
+alias pacR='sudo pacman -R'
 alias aur='yay'
 alias aurS='yay -S'
+alias aurSy='yay -Sy'
+alias aurSyu='yay -Syu'
+alias aurR='yay -R'
 alias spotifyrip='spotify-ripper -u palembani@gmail.com'
 alias xreload='xrdb ~/.Xresources'
 alias ytv='youtube-viewer'
@@ -134,12 +144,14 @@ alias cls='clear'
 alias classprop='xprop WM_CLASS'
 alias storagelist='lsblk -f'
 alias ..='cd ..'
+alias ...='cd ../..'
 alias ls='exa --color=always'
 alias ll='ls -alF'
 alias l='ls -CF'
 alias la='ls -a'
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
 alias cfbash='vim $HOME/.bashrc'
+alias cfzsh='vim $HOME/.zshrc'
 alias cfbsp='vim $XDG_CONFIG_HOME/bspwm/bspwmrc'
 alias cfpoly='vim $XDG_CONFIG_HOME/polybar/config'
 alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
