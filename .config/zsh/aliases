@@ -43,10 +43,11 @@ alias storagelist='lsblk -f'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias q='exit'
-alias ls='exa --color=always'
-alias ll='ls -alF'
-alias l='ls -CF'
-alias la='ls -a'
+alias ls='exa --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lla='exa -al --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
 #config shortcuts
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
 alias cfbash='vim $HOME/.bashrc'
@@ -63,8 +64,10 @@ alias cp='cp -i'
 alias mntfd='sudo mount -o gid=users,fmask=113,dmask=002'
 alias umntfd='sudo umount'
 alias cmatrix='unimatrix -n -s 96 -l 'o''
+alias cdclg='cd "$HOME/my Files/Kuliah/"'
 
 #Git Aliases
+alias gcl='git clone'
 alias gs='git status'
 alias gaa='git add --all'
 alias gcm='git commit -m'
