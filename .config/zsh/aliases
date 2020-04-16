@@ -4,9 +4,9 @@
 alias sudo='sudo '
 
 #vim
-alias nano='nvim'
-alias vim='nvim'
-alias vi='nvim'
+alias nano=nvim
+alias vim=nvim
+alias vi=nvim
 
 #curl
 alias weather='curl wttr.in'
@@ -56,6 +56,9 @@ alias cfbsp='vim $XDG_CONFIG_HOME/bspwm/bspwmrc'
 alias cfpoly='vim $XDG_CONFIG_HOME/polybar/config'
 alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
 alias cfalias='vim $XDG_CONFIG_HOME/zsh/aliases'
+alias cfbind='vim $XDG_CONFIG_HOME/zsh/keybinds'
+alias cfprofile='vim $XDG_CONFIG_HOME/zsh/profile'
+
 #more shortcuts
 alias htop='htop -t'
 alias rm='rm -i'

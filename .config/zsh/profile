@@ -1,0 +1,15 @@
+#!/bin/zsh
+# Path to your oh-my-zsh installation.
+export ZSH="$XDG_DATA_HOME/oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
+export PLUGINS="$XDG_DATA_HOME/zsh/plugins"
+
+# SUDO
+export SUDO_ASKPASS=/bin/rofi-askpass
+
+# XDG
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+
