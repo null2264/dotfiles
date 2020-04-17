@@ -3,6 +3,9 @@
 #sudo
 alias sudo='sudo '
 
+#sudo + vim, yea imagine having that powe- nvm
+alias sudovim='sudoedit'
+
 #vim
 alias nano=nvim
 alias vim=nvim
