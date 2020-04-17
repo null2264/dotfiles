@@ -1,2 +1,2 @@
 #!/bin/env zsh
-#bindkey '^ ' autosuggest-accept
+bindkey '^ ' autosuggest-accept

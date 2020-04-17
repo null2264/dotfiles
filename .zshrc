@@ -3,10 +3,8 @@
 # colors
 #autoload -U colors && colors
 
-# Alias/Binds/Profiles
-[ -f ~/.config/zsh/profile/ ] && source ~/.config/zsh/profile
-[ -f ~/.config/zsh/aliases ] && source ~/.config/zsh/aliases
-[ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
+# Profiles
+source ~/.config/zsh/profile
 
 # MOTDs
 pfetch
@@ -54,10 +52,8 @@ else
 fi
 export BROWSER='firefox'
 export TERMINAL='urxvt'
-
 # vim as manpager
 export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
-
 # vimrc
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
@@ -72,7 +68,12 @@ fast-syntax-highlighting
 #zsh-syntax-highlighting
 zsh-autosuggestions
 )
+
 source $ZSH/oh-my-zsh.sh
+# Binds/Alias (Preventing from reverted to the original one)
+[ -f ~/.config/zsh/aliases ] && source ~/.config/zsh/aliases
+[ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
+#emulate -R zsh -c 'source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 #source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 #source $ZSH_CUSTOM/plugins/fsh/fast-syntax-highlighting.plugin.zsh
 

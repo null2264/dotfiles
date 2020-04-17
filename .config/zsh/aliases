@@ -52,6 +52,7 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
 alias cfbash='vim $HOME/.bashrc'
 alias cfzsh='vim $HOME/.zshrc'
+alias cfxres='vim $HOME/.Xresources'
 alias cfbsp='vim $XDG_CONFIG_HOME/bspwm/bspwmrc'
 alias cfpoly='vim $XDG_CONFIG_HOME/polybar/config'
 alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
