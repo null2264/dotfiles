@@ -62,6 +62,7 @@ alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
 alias cfalias='vim $XDG_CONFIG_HOME/zsh/aliases'
 alias cfbind='vim $XDG_CONFIG_HOME/zsh/keybinds'
 alias cfprofile='vim $XDG_CONFIG_HOME/zsh/profile'
+alias cfcompt='vim $XDG_CONFIG_HOME/compton/compton.conf'
 
 #more shortcuts
 alias htop='htop -t'

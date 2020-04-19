@@ -31,13 +31,15 @@ format-offset =
 ; D = Darker Color
 ; L = Lighter Color
 background = #2f3640
+blackD = #434758
+backgroundD = ${colors.blackD}
 foreground = #f5f6fa
 foregroundD = #2f3640
 primary = #37b0ff
 primaryL1 = #60C0FF
 primaryL2 = #8DD2FE
 primaryD1 = #0EA0FF
-primaryD2 = #0299FB
+primaryD2 = #0282d8
 secondary1 = #4466ff
 secondary1L1 = #6B85FF
 secondary1L2 = #95A8FE
@@ -63,7 +65,8 @@ fixed-center = true
 bottom = false 
 separator = 
 
-background = ${colors.background}
+background = 
+;background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 2
@@ -96,11 +99,12 @@ font-2 = "Sarasa Term J:bold:size=9;2"
 font-3 = "Nimbus Sans:bold:size=9;2"
 font-4 = "Iosevka Nerd Font:bold:size=9;2"
 font-5 = "FontAwesome5Free:bold:style=solid:size=9;2"
+font-6 = "Nimbus Sans:bold:size=16;2"
 
 ; ----------------------------------------------------------------------------------------
-modules-left = previous player-mpris player-mpris-tail mpd volume  
-modules-center = bspwm   
-modules-right = wirednetwork temp battery updates date prompt 
+modules-left = dividerS bspwm dividerS wirednetwork temp dividerS
+modules-center = 
+modules-right = dividerS player-mpris-tail player-mpris mpd volume battery dividerS date prompt 
 ; ----------------------------------------------------------------------------------------
 
 tray-detached = false
@@ -110,7 +114,7 @@ tray-position = left
 tray-padding = 2
 tray-maxsize = 13
 tray-scale = 1.0
-tray-background = ${colors.secondary1D1}
+tray-background = ${colors.background}
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -195,6 +199,22 @@ label-private-foreground = ${colors.foreground}
 
 format-foreground = ${colors.foreground}
 ;format-background = ${colors.background}
+
+[module/dividerS]
+type = custom/text
+content = "."
+content-font = 3
+content-background = ${colors.background}
+content-foreground = ${colors.background}
+content-padding = 0
+
+[module/dividerL]
+type = custom/text
+content = ".."
+content-font = 3
+content-background = ${colors.background}
+content-foreground = ${colors.background}
+content-padding = 0
 
 # ----- XWindow -----
 [module/xwindow]
@@ -311,7 +331,7 @@ time-alt = %H:%M
 
 format-prefix = " "
 format = <label>
-format-background = ${colors.primary}
+format-background = ${colors.blackD}
 format-foreground = ${colors.foreground}
 format-padding = 2
 label = %date% • %time%
@@ -378,8 +398,9 @@ exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{:artist:t10:{artist}:
 tail = true
 label-font = 3
 format-prefix = " "
+format-prefix-font = "5"
 format-foreground = ${colors.foreground} 
-format-background = ${colors.secondary1L1}
+format-background = ${colors.primaryD1}
 format-padding = 2
 click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 scroll-up = ~/.config/polybar/scripts/player-mpris-tail.py next &
@@ -391,7 +412,7 @@ exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '%{A1:~/.config/polybar
 tail = true
 label-font = 1
 format-foreground = ${colors.foreground} 
-format-background = ${colors.secondary1}
+format-background = ${colors.primary}
 format-padding = 1
 
 
@@ -458,11 +479,11 @@ use-ui-max = false
 interval = 5
 
 format-muted-foreground = ${colors.foreground}
-format-muted-background = #434758
+format-muted-background = ${colors.primaryL1}
 format-muted = ﱝ <label-muted>
 format-muted-padding = 2
 format-volume-foreground = ${colors.foreground}
-format-volume-background = #434758
+format-volume-background = ${colors.primaryL1}
 format-volume = <ramp-volume> <label-volume>
 format-volume-padding = 2
 
@@ -495,7 +516,7 @@ type = custom/script
 interval = 1 
 format = "<label>"
 format-padding = 2 
-format-background = ${colors.primaryL1}
+format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 exec = echo ""
 click-left = sh ~/.scripts/prompt
@@ -563,7 +584,7 @@ base-temperature = 0
 warn-temperature = 100
 
 format = <ramp> <label>
-format-background = ${colors.primaryD2}
+format-background = ${colors.secondary1}
 ;format-warn = <ramp> <label-warn>
 ;format-warn-padding = 2
 ;format-warn-background = ${colors.primaryD2}
@@ -575,7 +596,7 @@ label = %temperature-c%
 ;label-warn = %temperature-c%
 ;label-warn-foreground = ${colors.urgent}
 
-ramp-font = 7
+ramp-font = 5
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 

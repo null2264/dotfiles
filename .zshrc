@@ -8,6 +8,7 @@ source ~/.config/zsh/profile
 
 # MOTDs
 pfetch
+#python ~/Currency/USD2IDR/rate.py #PYTHON IS JUST TOO SLOW FOR TERMINAL
 #sh ~/.scripts/motd.sh
 
 # Path
