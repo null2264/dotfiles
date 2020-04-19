@@ -39,14 +39,6 @@ SPACESHIP_PYENV_SYMBOL=""
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#60C0FF,bold,underline"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="ls *,cd *"
 
-# Completion (from Luke Smith)
-# Basic auto/tab complete:
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)		# Include hidden files.
-
 # Default
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
