@@ -1,0 +1,3 @@
+#!/bin/bash
+[[ $(echo -e "No\nYes" | dmenu -i -p "Are you sure") == [Yes]* ]] && systemctl suspend
+

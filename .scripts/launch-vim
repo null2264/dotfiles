@@ -1,0 +1,2 @@
+#!/bin/sh
+urxvt -name vim -e vim
