@@ -1,3 +1,12 @@
+#!/bin/sh
+
+# Slow app startup fix (for flatpaks)
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+# Autostarts
+unclutter &
+
+# Custom Resolutions
 xrandr --newmode "768x432_60.00"   25.75  768 792 864 960  432 435 440 450 -hsync +vsync
 xrandr --newmode "960x540_60.00"   40.75  960 992 1088 1216  540 543 548 562 -hsync +vsync
 xrandr --addmode VGA1 768x432_60.00

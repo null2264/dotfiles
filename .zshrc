@@ -4,7 +4,6 @@
 #autoload -U colors && colors
 
 # Profiles
-source ~/.config/zsh/profile
 source $XDG_CONFIG_HOME/zsh/icons
 # MOTDs
 pfetch
