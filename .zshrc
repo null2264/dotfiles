@@ -3,17 +3,12 @@
 # colors
 #autoload -U colors && colors
 
-# Profiles
-source $XDG_CONFIG_HOME/zsh/icons
 # MOTDs
 pfetch
 echo "--------------------------------------"
 sh ~/.scripts/rateUSD.sh
 #python ~/Currency/USD2IDR/rate.py #PYTHON IS JUST TOO SLOW FOR TERMINAL
 #sh ~/.scripts/motd.sh
-
-# Path
-PATH="$HOME/.local/bin${PATH:+:${PATH}}"
 
 # History in cache directory
 HISTFILE=~/.cache/zsh/zsh_history
