@@ -26,6 +26,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #cleaning up
 export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh"

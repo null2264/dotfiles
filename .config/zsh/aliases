@@ -34,6 +34,9 @@ alias yt='youtube-dl'
 alias ytaudio='youtube-dl -x --audio-format'
 alias xreload='xrdb $HOME/.config/Xresources'
 
+#clean up
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
 #shortcuts
 alias ytv='youtube-viewer'
 alias gravit='~/my\ Files/Gravit/GravitDesigner.AppImage'
