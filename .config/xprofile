@@ -4,6 +4,7 @@
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # Autostarts
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources & #X resources inside .config
 unclutter &
 
 # Custom Resolutions
