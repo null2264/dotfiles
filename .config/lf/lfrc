@@ -1,0 +1,64 @@
+# Config
+set preview true
+set previewer ~/.config/lf/scripts/previewer
+#set previewer ~/.config/lf/scripts/scope
+set icons true
+set color256
+set hidden true
+set ignorecase true
+set smartcase true
+
+# Custom Functions
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        video/*|image/*/application/pdf) xdg-open "$f" & disown;;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+
+cmd touch $touch "$(echo $* | tr ' ' '\ ')"
+
+cmd q :quit
+
+cmd chmod $chmod "$*" "$f"
+
+#  printf "Mode Bits: "
+#  read ans
+#
+#  for file in "$fx"
+#  do
+#    chmod $ans $file
+#  done
+
+# Remove built-in functions
+map d
+
+# Basic Functions
+map <bs2> set hidden!
+map dD delete
+map dd cut
+map p paste
+map y copy
+map <enter> open
+#map mf mkfile
+#map mr sudomkfile
+map md mkdir
+#map ms $mkscript
+map ch chmod
+map bg setwallpaper
+map o open_config
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+map [[ top
+map ]] bottom
+# Other Function
+map V push :!nvim<space>
+# Preview
+#map - $ $XDG_CONFIG_HOME/lf/draw_img.sh $f

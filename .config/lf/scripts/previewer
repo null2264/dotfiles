@@ -1,0 +1,6 @@
+#!/bin/sh
+case "$1" in
+	*.png|*.jpg|*.jpeg|*.mp4|*.mkv) mediainfo "$1";;
+	*) bat "$1";;
+	*.md) glow -p -s dark "$1";;
+esac
