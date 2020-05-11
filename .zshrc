@@ -5,7 +5,7 @@
 
 # Profiles
 source ~/.config/zsh/profile
-
+source $XDG_CONFIG_HOME/zsh/icons
 # MOTDs
 pfetch
 echo "--------------------------------------"
@@ -39,16 +39,6 @@ SPACESHIP_PYENV_SYMBOL=""
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#60C0FF,bold,underline"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="ls *,cd *"
 
-# Default
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-export BROWSER='firefox'
-export TERMINAL='urxvt'
-# vim as manpager
-export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 # vimrc
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 

@@ -22,11 +22,13 @@ noremap <C-Y> "+y
 noremap <C-P> "+p
 noremap <C-/> :NERDCommenterToggle
 :set mouse=a
+" specific type maps --
 autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python3 %<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3 %'<CR>
-set number
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
+" -------------
+set number
 set ignorecase
 set smartcase
 map <C-n> :NERDTreeToggle<CR>

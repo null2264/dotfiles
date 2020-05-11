@@ -4,10 +4,10 @@
 
 # terminal emulator
 super + Return
-	urxvt
+	st
 
 super + alt + t
-	urxvt
+	st
 
 # program launcher
 super + space

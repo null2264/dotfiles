@@ -51,13 +51,14 @@ alert = #e84118
 volume-min = #a3be8c
 volume-med = #ebcb8b
 volume-max = #bf616a
+spotgreen = #44bd32
 ; =======================
 
 [bar/bspwm]
 ;monitor = ${env:MONITOR}
 ;monitor-fallback = HDMI1
 width = 100%
-height = 30
+height = 28
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -65,8 +66,8 @@ fixed-center = true
 bottom = false 
 separator = 
 
-background = 
-;background = ${colors.background}
+;background = 
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 2
@@ -100,11 +101,12 @@ font-3 = "Nimbus Sans:bold:size=9;2"
 font-4 = "Iosevka Nerd Font:bold:size=9;2"
 font-5 = "FontAwesome5Free:bold:style=solid:size=9;2"
 font-6 = "Nimbus Sans:bold:size=16;2"
-
+font-7 = "Iosevka Nerd Font:bold:style=solid:size=6;2"
+font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
-modules-left = dividerS bspwm dividerS wirednetwork temp dividerS
-modules-center = 
-modules-right = dividerS player-mpris-tail player-mpris mpd volume battery dividerS date prompt 
+modules-left = bspwm dividerS wirednetwork temp dividerS
+modules-center = date 
+modules-right = dividerS player-mpris-tail player-mpris mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
 
 tray-detached = false
@@ -128,19 +130,19 @@ enable-scroll = true
 reverse-scroll = true
 pin-workspaces = true
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;喇
-ws-icon-3 = 4;ﱘ
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-ws-icon-default = " "
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;喇
+;ws-icon-3 = 4;ﱘ
+;ws-icon-4 = 5;
+;ws-icon-5 = 6;
+;ws-icon-6 = 7;
+;ws-icon-7 = 8;
+;ws-icon-8 = 9;
+;ws-icon-9 = 10;
+ws-icon-default = "ﱣ"
 
-format-font = 5
+format-font = 8
 format = <label-state>
 format-background = #434758
 format-padding = 2
@@ -148,20 +150,21 @@ format-padding = 2
 label-focused = %icon%
 ;label-focused-background = #434758
 ;label-focused-underline= 
-label-focused-padding = 1
+label-focused-padding = 2
 label-focused-foreground = ${colors.primary}
 
 label-occupied = %icon%
 ;label-occupied-underline = #00a8ff
-label-occupied-padding = 1
+label-occupied-padding = 2
 ;label-occupied-background = #434758
 
 label-urgent = %icon%
-label-urgent-padding = 1
+label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty = "ﱤ"
+;label-empty = %icon%
 label-empty-foreground = #7f8fa6
-label-empty-padding = 1
+label-empty-padding = 2
 ;label-empty-underline = #7f8fa6
 ;label-empty-background = #434758 
 
@@ -293,14 +296,14 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 type = internal/network
 interface = enp2s0
 
-format-connected-foreground = ${colors.foreground}
-format-connected-background = ${colors.secondary2D3}
+format-connected-foreground = ${colors.secondary2D3}
+format-connected-background = ${colors.background}
 format-connected-padding = 2
 format-connected-font = 1 
 format-connected = <label-connected>
 
-format-disconnected-foreground = ${colors.foreground}
-format-disconnected-background = ${colors.alert}
+format-disconnected-foreground = ${colors.alert}
+format-disconnected-background = ${colors.background}
 format-disconnected-padding = 2
 format-disconnected = <label-disconnected>
 
@@ -319,24 +322,24 @@ interval = 1.0
 
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = %d/%m/%y
+date = %A, %d %b %Y
 
 ; Optional time format
 time = %H:%M
 
 ; if `date-alt` or `time-alt` is defined, clicking
 ; the module will toggle between formats
-date-alt = %A, %d %b
+date-alt = %A, %d/%m/%y
 time-alt = %H:%M
 
 format-prefix = " "
 format = <label>
-format-background = ${colors.blackD}
-format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-foreground = ${colors.primary}
 format-padding = 2
 label = %date% • %time%
 label-font = 3
-;label-foreground = #9A32DB
+label-foreground = ${colors.foreground}
 
 # ----- cmus -----
 [module/cmus]
@@ -397,10 +400,11 @@ type = custom/script
 exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{:artist:t10:{artist}:}{:artist: - :}{:t10:{title}:}' 
 tail = true
 label-font = 3
+label-foreground = ${colors.foreground}
 format-prefix = " "
 format-prefix-font = "5"
-format-foreground = ${colors.foreground} 
-format-background = ${colors.primaryD1}
+format-foreground = ${colors.spotgreen} 
+format-background = ${colors.background}
 format-padding = 2
 click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 scroll-up = ~/.config/polybar/scripts/player-mpris-tail.py next &
@@ -411,8 +415,8 @@ type = custom/script
 exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '%{A1:~/.config/polybar/scripts/player-mpris-tail.py previous:} 玲 %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/.config/polybar/scripts/player-mpris-tail.py next:} 怜 %{A}' --icon-paused  --icon-playing 契
 tail = true
 label-font = 1
-format-foreground = ${colors.foreground} 
-format-background = ${colors.primary}
+format-foreground = ${colors.spotgreen} 
+format-background = ${colors.background}
 format-padding = 1
 
 
@@ -478,17 +482,18 @@ use-ui-max = false
 ; Default: 5
 interval = 5
 
-format-muted-foreground = ${colors.foreground}
-format-muted-background = ${colors.primaryL1}
+format-muted-foreground = ${colors.primaryL1}
+format-muted-background = ${colors.background}
 format-muted = ﱝ <label-muted>
 format-muted-padding = 2
 format-volume-foreground = ${colors.foreground}
-format-volume-background = ${colors.primaryL1}
+format-volume-background = ${colors.background}
 format-volume = <ramp-volume> <label-volume>
 format-volume-padding = 2
 
 label-volume-font = 3
-
+label-volume = %percentage%%
+lavel-volume-foreground = ${colors.foreground}
 label-muted-font = 3
 label-muted = M
 label-muted-foreground = ${colors.alert}
@@ -497,6 +502,7 @@ label-muted-foreground = ${colors.alert}
 ramp-volume-0 = 奄
 ramp-volume-1 = 奔
 ramp-volume-2 = 墳
+ramp-volume-foreground = ${colors.primaryL1}
 
 # ----- Updates -----
 
@@ -517,7 +523,8 @@ interval = 1
 format = "<label>"
 format-padding = 2 
 format-background = ${colors.background}
-format-foreground = ${colors.foreground}
+format-foreground = ${colors.alert}
+label-font = 9
 exec = echo ""
 click-left = sh ~/.scripts/prompt
 
@@ -584,7 +591,7 @@ base-temperature = 0
 warn-temperature = 100
 
 format = <ramp> <label>
-format-background = ${colors.secondary1}
+format-background = ${colors.background}
 ;format-warn = <ramp> <label-warn>
 ;format-warn-padding = 2
 ;format-warn-background = ${colors.primaryD2}
@@ -600,5 +607,5 @@ ramp-font = 5
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground}
+ramp-foreground = ${colors.secondary1L2}
 

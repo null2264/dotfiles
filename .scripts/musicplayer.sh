@@ -10,7 +10,7 @@ chosen=$(echo -e "$choices" | rofi -dmenu -i -theme ~/.config/rofi/theme/sidebar
 
 
 case "$chosen" in
-	cmus) notify-send "Launching..." "cmus" && urxvt -name cmus -e cmus ;;
+	cmus) notify-send "Launching..." "cmus" && st -n cmus -e cmus ;;
 	Spotify)  notify-send "Launching..." "Spotify" && env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify ;;
 	VLC) notify-send "Launching..." "VLC" && vlc ;;
 esac
