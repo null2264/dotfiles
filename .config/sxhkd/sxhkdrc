@@ -5,7 +5,6 @@
 # terminal emulator
 super + Return
 	st
-
 super + alt + t
 	st
 
@@ -24,7 +23,6 @@ super + Escape
 # prompt (restart/suspend/shutdown/logout)
 super + control + q
 	sh $HOME/.scripts/prompt
-
 super + control + r
 	sh $HOME/.scripts/resolution.sh
 
