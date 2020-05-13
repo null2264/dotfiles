@@ -1,4 +1,5 @@
 #!/bin/sh
-nitrogen --restore &
+
 picom &
+nitrogen --restore &
 $HOME/.scripts/launch-conky_dwm.sh &

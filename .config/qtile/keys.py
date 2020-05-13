@@ -1,4 +1,4 @@
-from libqtile.config import key, screen, group, drag, click, match
+from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
 
 mod = "mod4"                                     # Sets mod key to SUPER/WINDOWS
