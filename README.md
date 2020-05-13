@@ -9,5 +9,5 @@ Add this to /etc/zsh/zshenv
 ```Shell
 #!/bin/zsh
 
-export ZDOTDIR=$HOME/.config/zsh
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
