@@ -6,8 +6,8 @@ This repository contains config files that i used, some are coded/modified/scrip
 ### Tips
 Add this to /etc/zsh/zshenv
 
-`#!/bin/zsh
+```Shell
+#!/bin/zsh
 
-export ZDOTDIR=$HOME/.config/zsh`
-
-
+export ZDOTDIR=$HOME/.config/zsh
+```
