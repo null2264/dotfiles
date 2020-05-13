@@ -4,9 +4,9 @@
 
 # terminal emulator
 super + Return
-	st
+	$TERMINAL
 super + alt + t
-	st
+	$TERMINAL
 
 # program launcher
 super + space
