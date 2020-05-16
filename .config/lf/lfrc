@@ -12,7 +12,9 @@ set smartcase true
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        video/*|image/*/application/pdf) xdg-open "$f" & disown;;
+	image/*) feh -g 1280x720 --scale-down "$f" &;;
+	video/*) mpv "$f" --quiet > /dev/null & ;;
+	application/pdf) zathura "$f" & ;;
         *) xdg-open "$f" ;;
     esac
 }}
@@ -24,6 +26,8 @@ cmd touch $touch "$(echo $* | tr ' ' '\ ')"
 cmd q :quit
 
 cmd chmod $chmod "$*" "$f"
+
+cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 
 #  printf "Mode Bits: "
 #  read ans
