@@ -26,6 +26,7 @@ def window_to_next_group(qtile):
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
+# ----- Keys
 keys = [
             Key(
                 [mod, 'control'], 'q',
@@ -44,11 +45,11 @@ keys = [
                 lazy.window.kill()                      # Kill active window
                 ),
             Key(
-                [mod, "shift"], "r",
+                [mod, "mod1"], "r",
                 lazy.restart()                          # Restart Qtile
                 ),
             Key(
-                [mod, "shift"], "q",
+                [mod, "mod1"], "q",
                 lazy.shutdown()                         # Shutdown Qtile
                 ),
             Key([mod], "w",

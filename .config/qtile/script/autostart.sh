@@ -9,7 +9,7 @@ function run {
 
 #feh --bg-scale ~/my Files/wallpaper.jpg &
 nitrogen --restore &
-compton &
+picom &
 conky &
 #pidgin &
 #dropbox start &

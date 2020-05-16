@@ -25,7 +25,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 #cleaning up
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
+export SCRIPTS="$HOME/.scripts"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
@@ -33,6 +35,7 @@ export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"

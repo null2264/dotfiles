@@ -168,31 +168,31 @@ label-empty-padding = 2
 ;label-empty-underline = #7f8fa6
 ;label-empty-background = #434758 
 
-label-monocle = "ﬕ"
+label-monocle = ""
 label-monocle-padding = 2
 ;label-monocle-background = #0097e6
 label-monocle-foreground = ${colors.foreground}
-label-tiled = "﩯"
+label-tiled = ""
 label-tiled-padding = 2
 ;label-tiled-background = #0097e6
 label-tiled-foreground = ${colors.foreground}
-label-fullscreen = ""
+label-fullscreen = ""
 label-fullscreen-padding = 2
 ;label-fullscreen-background = #0097e6
 label-fullscreen-foreground = ${colors.foreground}
-label-floating = ""
+label-floating = ""
 label-floating-padding = 2
 ;label-floating-background = #0097e6
 label-floating-foreground = ${colors.foreground}
-label-pseudotiled = ""
+label-pseudotiled = ""
 label-pseudotiled-padding = 2
 ;label-pseudotiled-background = #0097e6
 label-pseudotiled-foreground = ${colors.foreground}
-label-locked = "  "
+label-locked = ""
 label-locked-foreground = ${colors.foreground}
-label-sticky = "  "
+label-sticky = ""
 label-sticky-foreground = ${colors.foreground}
-label-private =  "     "
+label-private =  ""
 label-private-foreground = ${colors.foreground}
 
 ; Separator in between workspaces
@@ -231,7 +231,7 @@ label-font = 3
 label = %title%
 label-maxlen = 50
 
-format-prefix = "  "
+format-prefix = ""
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
@@ -401,7 +401,7 @@ exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{:artist:t10:{artist}:
 tail = true
 label-font = 3
 label-foreground = ${colors.foreground}
-format-prefix = " "
+format-prefix = "  "
 format-prefix-font = "5"
 format-foreground = ${colors.spotgreen} 
 format-background = ${colors.background}

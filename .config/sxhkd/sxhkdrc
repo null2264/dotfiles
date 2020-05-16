@@ -22,7 +22,7 @@ super + Escape
 
 # prompt (restart/suspend/shutdown/logout)
 super + control + q
-	sh $HOME/.scripts/prompt
+	sh $SCRIPTS/prompt
 super + control + r
 	sh $HOME/.scripts/resolution.sh
 
@@ -138,9 +138,9 @@ super + alt + v
 # games
 super + alt + p
 	sh $HOME/.scripts/play.sh
-# firefox
+# browser
 super + alt + b
-	firefox
+	$BROWSER
 # passmenu
 alt + y
 	passmenu
