@@ -59,15 +59,14 @@ alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
 alias upElearn='sh $HOME/.scripts/elearning-isitup.sh'
 alias ranger='lf'
 #alias mpv='mpv --geometry=1280x720'
+
 #config shortcuts
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
 alias cfbash='vim $HOME/.bashrc'
 alias cfzsh='vim $XDG_CONFIG_HOME/zsh/.zshrc'
 alias cfxres='vim $XDG_CONFIG_HOME/Xresources'
-
 alias cfbsp='vim $XDG_CONFIG_HOME/bspwm/bspwmrc'
 alias cfqtile='vim $XDG_CONFIG_HOME/qtile/config.py'
-
 alias cfpoly='vim $XDG_CONFIG_HOME/polybar/config'
 alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
 alias cfalias='vim $XDG_CONFIG_HOME/zsh/aliases'
@@ -94,4 +93,5 @@ alias gcm='git commit -m'
 alias gca='git commit -a'
 alias gcam='git commit -a -m'
 alias gp='git push'
+alias gR='git restore'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'

@@ -10,7 +10,8 @@ super + alt + t
 
 # program launcher
 super + space
-	rofi -show drun -theme ~/.config/rofi/theme/Android/grid.rasi
+	dmenu_run
+	#rofi -show drun -theme ~/.config/rofi/theme/Android/grid.rasi
 
 # make sxhkd reload its configuration files:
 super + Escape
