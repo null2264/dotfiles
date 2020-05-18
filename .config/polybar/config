@@ -104,7 +104,7 @@ font-6 = "Nimbus Sans:bold:size=16;2"
 font-7 = "Iosevka Nerd Font:bold:style=solid:size=6;2"
 font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
-modules-left = bspwm dividerS wirednetwork temp dividerS
+modules-left = bspwm dividerS wirednetwork temp covPos covSem dividerS
 modules-center = date 
 modules-right = dividerS disk player-mpris-tail player-mpris mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ interval = 1.0
 
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = %A, %d %b %Y
+date = %a, %d %b %Y
 
 ; Optional time format
 time = %H:%M
@@ -613,10 +613,37 @@ ramp-foreground = ${colors.secondary1L2}
 [module/disk]
 type = custom/script
 exec = ~/.config/polybar/scripts/disk.sh
+interval = 30
 tail = true
 label-font = 3
 label-foreground = ${colors.foreground}
-format-prefix = " "
+format-prefix = "  "
+format-prefix-font = "5"
+format-foreground = ${colors.secondary1} 
+format-background = ${colors.background}
+format-padding = 1
+
+[module/covPos]
+type = custom/script
+exec = ~/.config/polybar/scripts/covPos
+interval = 16000
+tail = true
+label-font = 3
+label-foreground = ${colors.foreground}
+format-prefix = " "
+format-prefix-font = "5"
+format-foreground = ${colors.alert} 
+format-background = ${colors.background}
+format-padding = 1
+
+[module/covSem]
+type = custom/script
+exec = ~/.config/polybar/scripts/covSem
+interval = 16000
+tail = true
+label-font = 3
+label-foreground = ${colors.foreground}
+format-prefix = " "
 format-prefix-font = "5"
 format-foreground = ${colors.spotgreen} 
 format-background = ${colors.background}
