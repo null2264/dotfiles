@@ -7,6 +7,8 @@ This repository contains config files that i used, some are coded/modified/scrip
 - ZSH
 - Console-TDM
 - X11
+- Nerd Fonts (Iosevka, UbuntuMono, and Fira)
+- Feather (Font)
 - st (st-zi build)
 - Tiling WM (Qtile, BSPWM, or DWM)
 
