@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ x$(pidof dwmblocks) = "x" ] 
+then
+	dwmblocks &
+else
+	echo 'dwmblocks is running, skipped.'
+fi

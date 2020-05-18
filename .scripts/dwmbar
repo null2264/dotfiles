@@ -1,0 +1,29 @@
+#!/bin/sh
+getdate() { \
+	date +" %A, %d %b %Y • %H:%M %Z"
+}
+
+gettemp() { \
+	sensors | grep -A0 "Package" | cut -d"+" -f2 | cut -d"." -f1 | sed "s/$/°C/"
+}
+
+getfree_HDD() { \
+	df -h --output=source,avail /home | grep -A1 '/dev' | sed "s/^.* //;s/$/ free/"
+}
+
+getupdate() { \
+	aur=$(yay -Qu | wc -l)
+	pac=$(pacman -Qu | wc -l)
+	(( update=$pac+$aur ))
+	printf " $update"
+}
+
+bar() { \
+	printf " %s | %s " "$(getupdate)" "$(getdate)"
+}
+
+while true
+do
+	xsetroot -name " $(bar)"
+	sleep 1m
+done
