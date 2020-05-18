@@ -1,12 +1,4 @@
-if [ ! -f /tmp/rate.html ]; then
-	curl -s "https://www.cnbcindonesia.com/market-data/currencies/IDR=/USD-IDR" > /tmp/rate.html
-fi
-if [ ! -f /tmp/rateUSD.txt ]; then
-	cat /tmp/rate.html | grep -A1 'class="mark_val"' | cut -d'"' -f2 | cut -d'<' -f2 | cut -d'>' -f2 > /tmp/rateUSD.txt
-	sed -i "s/mark_val/Kurs USD -> IDR:/g" /tmp/rateUSD.txt
-	cat /tmp/rateUSD.txt
-	echo "Sumber: CNBC Indonesia"
-else
-	cat /tmp/rateUSD.txt
-	echo "Sumber: CNBC Indonesia"
-fi
+# get rate value from cnbcindonesia.com
+curl -s "https://www.cnbcindonesia.com/market-data/currencies/IDR=/USD-IDR" | grep -A1 'class="mark_val"' | cut -d'"' -f2 | cut -d'<' -f2 | cut -d'>' -f2 > /tmp/rateUSD.txt
+# if rateUSD.txt exist then display it while replace mark_val with Kurs USD -> IDR:
+[ -f /tmp/rateUSD.txt ] && sed 's/mark_val/Kurs USD -> IDR:/' /tmp/rateUSD.txt; echo "Sumber: CNBC Indonesia"

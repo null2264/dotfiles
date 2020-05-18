@@ -1,5 +1,7 @@
+set previewer ~/.config/lf/preview
 # Config
 set preview true
+#set previewer ~/.config/lf/preview
 set previewer ~/.config/lf/scripts/previewer
 #set previewer ~/.config/lf/scripts/scope
 set icons true

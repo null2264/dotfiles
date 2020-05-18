@@ -31,7 +31,7 @@ autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
 set number
 set ignorecase
 set smartcase
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 
 " Sw (sudo w) to save as root
 command! -nargs=0 W w !sudo tee % > /dev/null
@@ -76,8 +76,18 @@ Plug 'preservim/nerdcommenter'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+if !has('nvim')
+	Plug 'ptzz/lf.vim'
+else
+	Plug 'ptzz/lf.vim'
+	Plug 'rbgrouleff/bclose.vim'
+endif
 
 call plug#end()
+
+" - Lf
+let g:lf_map_keys = 0
+map <C-n> :Lf<CR>
 
 " - YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1

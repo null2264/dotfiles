@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Path
-PATH="$HOME/.local/bin${PATH:+:${PATH}}"
+PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 
 # DEFAULT
 if [[ -n $SSH_CONNECTION ]]; then
