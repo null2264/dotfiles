@@ -1,0 +1,6 @@
+# get rate value from cnbcindonesia.com
+[ ! "$(stat -c %y ~/.cache/rateUSD.txt 2> /dev/null | cut -d' ' -f1)" = "$(date "+Y-%m-%d")" ] && 
+	curl -s "https://www.cnbcindonesia.com/market-data/currencies/IDR=/USD-IDR" | grep -A1 'class="mark_val"' | cut -d'"' -f2 | cut -d'<' -f2 | cut -d'>' -f2 > ~/.cache/rateUSD.txt
+
+# display rateUSD.txt while replace mark_val with Kurs USD -> IDR:
+sed 's/mark_val/Kurs USD -> IDR:/' ~/.cache/rateUSD.txt; echo "Sumber: CNBC Indonesia"

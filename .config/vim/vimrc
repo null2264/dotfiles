@@ -82,6 +82,7 @@ else
 	Plug 'ptzz/lf.vim'
 	Plug 'rbgrouleff/bclose.vim'
 endif
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 

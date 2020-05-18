@@ -86,12 +86,5 @@ alias cmatrix='unimatrix -n -s 96 -l 'o''
 alias cdclg='cd "$HOME/my Files/Kuliah/"'
 
 #Git Aliases
-alias gcl='git clone'
-alias gs='git status'
-alias gaa='git add --all'
-alias gcm='git commit -m'
-alias gca='git commit -a'
-alias gcam='git commit -a -m'
-alias gp='git push'
 alias gR='git restore'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
