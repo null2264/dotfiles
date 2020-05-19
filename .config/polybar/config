@@ -106,7 +106,7 @@ font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
 modules-left = bspwm dividerS wirednetwork temp covPos covSem dividerS
 modules-center = date 
-modules-right = dividerS disk player-mpris-tail player-mpris mpd volume battery dividerS prompt 
+modules-right = dividerS currency disk player-mpris-tail player-mpris mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
 
 tray-detached = false
@@ -646,5 +646,19 @@ label-foreground = ${colors.foreground}
 format-prefix = " "
 format-prefix-font = "5"
 format-foreground = ${colors.spotgreen} 
+format-background = ${colors.background}
+format-padding = 1
+
+[module/currency]
+type = custom/script
+exec = "rateUSD -"
+interval = 16000
+tail = true
+label = "$1 = Rp.%output%"
+label-font = 3 
+label-foreground = ${colors.foreground} 
+format-prefix = "  "
+format-prefix-font = "5"
+format-foreground = ${colors.spotgreen}
 format-background = ${colors.background}
 format-padding = 1

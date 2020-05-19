@@ -21,7 +21,7 @@ cmd open ${{
     esac
 }}
 
-cmd open_with ${{ [ -z "$1" ] && echo "$f" || $1 "$f" }}
+cmd open_with $[ -z "$1" ] && echo "$f" || $1 "$f"
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
