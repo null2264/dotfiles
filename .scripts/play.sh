@@ -27,13 +27,13 @@ chosen=$(echo -e "$choices" | rofi -p Games -dmenu -i -theme ~/.config/rofi/them
 #Choice Execution -------
 case "$chosen" in
 	RetroArch) notify-send "Launching..." "$chosen" && retroarch ;;
-	$pc) sh $gamedir/pc.sh ;;
+	$pc) games -t PC ;;
 	PS2) sh $HOME/.scripts/games/ps2.sh ;;
 	NDS) sh $HOME/.scripts/games/nds.sh ;;
-	$trids) sh $HOME/.scripts/games/3ds.sh ;;
+	$trids) games -t 3DS ;;
 	Steam) notify-send "Launching..." "$chosen" && steam ;;
 	$mcbe) sh $gamedir/mcpe.sh ;;
-	"NES") sh $HOME/.scripts/games/nes.sh ;;
+	"NES") games -t NES ;;
 	$mcje) notify-send "Launching..." "$chosen" && gamemoderun java -jar "$HOME/my Games/PC/TLauncher.jar";;
 esac
 

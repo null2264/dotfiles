@@ -154,4 +154,6 @@ super + alt + g
 # volume
 super + alt + control + v
 	sh $HOME/.scripts/volume.sh
-
+# mount
+super + {_,shift} Insert
+	{dmenumount,dmenuumount}

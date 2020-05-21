@@ -17,8 +17,20 @@ cmd open ${{
 	image/*) feh -g 1280x720 --scale-down "$f" &;;
 	video/*) mpv "$f" --quiet > /dev/null & ;;
 	application/pdf) zathura "$f" & ;;
-        *) xdg-open "$f" ;;
+        *) xdg-open "$f" &;;
     esac
+}}
+
+cmd extract ${{
+	case $f in
+		*.bz2) tar -xjvf $f ;;
+		*.gz) tar -xvf $f ;;
+		*.xz) tar -xf $f ;;
+		*.tar) tar -xvf $f ;;
+		*.7z|*.zip) 7z x $f ;;
+		*.rar) unrar x $f ;;
+		*) echo "File type not supported" ;;
+	esac
 }}
 
 cmd open_with $[ -z "$1" ] && echo "$f" || $1 "$f"
