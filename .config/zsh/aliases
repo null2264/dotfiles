@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #sudo
-alias sudo='sudo '
+[ "x$(pgrep startx)" = "x" ] && alias sudo='sudo ' || alias sudo='sudo --askpass '
 
 #sudo + vim, yea imagine having that powe- nvm
 alias sudovim='sudoedit'
@@ -83,7 +83,10 @@ alias cp='cp -i'
 alias mntfd='sudo mount -o gid=users,fmask=113,dmask=002'
 alias umntfd='sudo umount'
 alias cmatrix='unimatrix -n -s 96 -l 'o''
+
+#folder shortcut
 alias cdclg='cd "$HOME/my Files/Kuliah/"'
+alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
 alias gR='git restore'

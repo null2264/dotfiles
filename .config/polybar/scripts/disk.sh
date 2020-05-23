@@ -5,5 +5,5 @@ warn=""
 
 [ $capacity -lt 21 ] && warn='!'
 
-printf "%s%s" "$warn " "$(echo $capacity | sed "s/$/G free/")"
+printf "%s%s\n" "$warn " "$(echo $capacity | sed "s/$/G free/")"
 

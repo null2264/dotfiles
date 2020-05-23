@@ -28,7 +28,7 @@ chosen=$(echo -e "$choices" | rofi -p Games -dmenu -i -theme ~/.config/rofi/them
 case "$chosen" in
 	RetroArch) notify-send "Launching..." "$chosen" && retroarch ;;
 	$pc) games -t PC ;;
-	PS2) sh $HOME/.scripts/games/ps2.sh ;;
+	PS2) games -t PS2 ;;
 	NDS) sh $HOME/.scripts/games/nds.sh ;;
 	$trids) games -t 3DS ;;
 	Steam) notify-send "Launching..." "$chosen" && steam ;;

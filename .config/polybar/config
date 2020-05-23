@@ -651,7 +651,7 @@ format-padding = 1
 
 [module/currency]
 type = custom/script
-exec = "rateUSD -"
+exec = "rateUSD -s"
 interval = 16000
 tail = true
 label = "$1 = Rp.%output%"

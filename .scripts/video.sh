@@ -4,7 +4,8 @@ Electron Player\0icon\x1fzE
 KODI\0icon\x1fzkodi
 Twitch\0icon\x1fztwitch
 VLC\0icon\x1fzvlc
-YouTube\0icon\x1fzyt"
+YouTube\0icon\x1fzyt
+Play link on MPV"
 
 message="What video player do you want to launch?"
 
@@ -16,6 +17,7 @@ case "$chosen" in
 	VLC) notify-send "Launching..." "VLC" && vlc ;;
 	YouTube) notify-send "Launching..." "$chosen" && urxvt -e youtube-viewer ;;
 	Twitch) notify-send "Launching..." "$chosen" && urxvt -e twitch-curses ;;
+	"Play link on MPV") mpv-link ;;
 esac
 
 

@@ -1,4 +1,3 @@
-set previewer ~/.config/lf/preview
 # Config
 set preview true
 #set previewer ~/.config/lf/preview
@@ -9,6 +8,8 @@ set color256
 set hidden true
 set ignorecase true
 set smartcase true
+set shellopts '-eu'
+set ifs "\n"
 
 # Custom Functions
 cmd open ${{
@@ -41,7 +42,9 @@ cmd touch $touch "$(echo $* | tr ' ' '\ ')"
 
 cmd q :quit
 
-cmd chmod $chmod "$*" "$f"
+cmd chmod ${{
+	chmod $1 $fx
+}}
 
 cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 

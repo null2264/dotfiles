@@ -17,7 +17,8 @@ export READER='zathura'
 export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
 # SUDO
-export SUDO_ASKPASS=/bin/rofi-askpass
+#export SUDO_ASKPASS=/bin/rofi-askpass
+export SUDO_ASKPASS="/bin/dmenu-askpass"
 
 # XDG
 export XDG_CACHE_HOME="$HOME/.cache"

@@ -75,3 +75,4 @@ bspc rule -a qTox:qtox desktop='^9'
 bspc rule -a pr:pr desktop='^10'
 bspc rule -a firefox:Toolkit desktop='^3' state=floating
 bspc rule -a mpv:gl state=floating
+bspc rule -a mpv state=floating

@@ -2,8 +2,20 @@
 # get rate value from cnbcindonesia.com
 [ ! "$(stat -c %y ~/.cache/rateUSD.txt 2> /dev/null | cut -d' ' -f1)" = "$(date +"%Y-%m-%d")" ] && curl -s "https://www.cnbcindonesia.com/market-data/currencies/IDR=/USD-IDR" | grep -A1 'class="mark_val"' | cut -d'"' -f2 | cut -d'<' -f2 | cut -d'>' -f2 > ~/.cache/rateUSD.txt
 
+# short="FALSE"
+# usage() { echo "Usage: dmenugames [-t GAMETYPE]" 1>&2; exit 1; }
+# while getopts s option
+# do
+# 	case $option in
+# 		s) short="TRUE";;
+# 		?) usage;;
+# 	esac
+# done
+# shift "$((OPTIND-1))"
+# [ "short" = "FALSE" ] && usage
+
 enUS='Rate'
 idID='Kurs'
 lang=$idID
 # display rateUSD.txt while replace mark_val with Kurs USD -> IDR:
-[ -z $1 ] && sed "s/mark_val/$lang USD -> IDR:/;2 s/^/Rp./" ~/.cache/rateUSD.txt && echo "Sumber: CNBC Indonesia" || grep -A1 "mark" ~/.cache/rateUSD.txt | grep -v "mark"
+[ ! "$1" = "-s" ] && sed "s/mark_val/$lang USD -> IDR:/;2 s/^/Rp./" ~/.cache/rateUSD.txt && echo "Sumber: CNBC Indonesia" || grep -A1 "mark" ~/.cache/rateUSD.txt | grep -v "mark"
