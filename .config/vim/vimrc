@@ -16,6 +16,7 @@ set encoding=UTF-8
 "
 
 " - Mapping + Settings
+noremap U <C-r>
 noremap <C-y> "*y
 noremap <C-p> "*p
 noremap <C-Y> "+y

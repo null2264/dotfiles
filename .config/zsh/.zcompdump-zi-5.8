@@ -1,4 +1,4 @@
-#files: 790	version: 5.8
+#files: 795	version: 5.8
 
 _comps=(
 '-' '_precommand'
@@ -25,6 +25,7 @@ _comps=(
 'add-zle-hook-widget' '_add-zle-hook-widget'
 'add-zsh-hook' '_add-zsh-hook'
 'admin' '_sccs'
+'alacritty' '_alacritty'
 'ali' '_mh'
 'alias' '_alias'
 'amaya' '_webbrowser'
@@ -636,6 +637,7 @@ _comps=(
 'killall' '_killall'
 'killall5' '_killall'
 'kioclient' '_kfmclient'
+'kitty' '_kitty'
 'knock' '_knock'
 'konqueror' '_webbrowser'
 'kpartx' '_kpartx'
@@ -840,6 +842,7 @@ _comps=(
 'nocorrect' '_precommand'
 'noglob' '_precommand'
 'nohup' '_precommand'
+'notmuch' '_notmuch'
 'nova' '_openstack'
 'npm' '_npm'
 'ns' '_hosts'
@@ -1216,6 +1219,7 @@ _comps=(
 'tda' '_devtodo'
 'tdd' '_devtodo'
 'tde' '_devtodo'
+'tdmctl' '_tdmctl'
 'tdr' '_devtodo'
 'tee' '_tee'
 'telnet' '_telnet'
@@ -1572,6 +1576,7 @@ _services=(
 
 _patcomps=(
 '*/(init|rc[0-9S]#).d/*' '_init_d'
+'notmuch-*' '_notmuch'
 )
 
 _postpatcomps=(
@@ -1634,15 +1639,16 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _fast-theme _bootctl _bspc _busctl _cmus \
-            _coredumpctl _curl _exa _flatpak _hostnamectl \
-            _journalctl _kernel-install _libinput _localectl _loginctl \
-            _machinectl _meson _mkinitcpio _mpv _networkctl \
-            _ninja _pacman _pass _pkgfile _polybar \
-            _polybar_msg _pulseaudio _qpdf _rclone _resolvectl \
-            _rg _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files \
-            _systemctl _systemd _systemd-analyze _systemd-delta _systemd-inhibit \
-            _systemd-nspawn _systemd-run _systemd-tmpfiles _timedatectl _udevadm \
+autoload -Uz _fast-theme _alacritty _bootctl _bspc _busctl \
+            _cmus _coredumpctl _curl _email-notmuch _exa \
+            _flatpak _hostnamectl _journalctl _kernel-install _kitty \
+            _libinput _localectl _loginctl _machinectl _meson \
+            _mkinitcpio _mpv _networkctl _ninja _notmuch \
+            _pacman _pass _pkgfile _polybar _polybar_msg \
+            _pulseaudio _qpdf _rclone _resolvectl _rg \
+            _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files _systemctl \
+            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
+            _systemd-run _systemd-tmpfiles _tdmctl _timedatectl _udevadm \
             _vifm _yay _youtube-dl _zathura _cdr \
             _all_labels _all_matches _alternative _approximate _arg_compile \
             _arguments _bash_completions _cache_invalid _call_function _combination \
@@ -1797,5 +1803,5 @@ autoload -Uz +X _call_program
 typeset -gUa _comp_assocs
 _comp_assocs=( '' )
 
-#omz revision: 08cc808d717c3cf61118dd47ba451e22c984d3cf
+#omz revision: aada4d62bff3fc2e1720da1da4c54d47b5f86fa3
 #omz fpath: /home/ziro/.local/share/oh-my-zsh/custom/plugins/zsh-autosuggestions /home/ziro/.local/share/oh-my-zsh/custom/plugins/fast-syntax-highlighting /home/ziro/.local/share/oh-my-zsh/plugins/git /home/ziro/.local/share/oh-my-zsh/functions /home/ziro/.local/share/oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/functions/Calendar /usr/share/zsh/functions/Chpwd /usr/share/zsh/functions/Completion /usr/share/zsh/functions/Completion/Base /usr/share/zsh/functions/Completion/Linux /usr/share/zsh/functions/Completion/Unix /usr/share/zsh/functions/Completion/X /usr/share/zsh/functions/Completion/Zsh /usr/share/zsh/functions/Exceptions /usr/share/zsh/functions/Math /usr/share/zsh/functions/MIME /usr/share/zsh/functions/Misc /usr/share/zsh/functions/Newuser /usr/share/zsh/functions/Prompts /usr/share/zsh/functions/TCP /usr/share/zsh/functions/VCS_Info /usr/share/zsh/functions/VCS_Info/Backends /usr/share/zsh/functions/Zftp /usr/share/zsh/functions/Zle

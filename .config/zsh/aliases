@@ -2,6 +2,7 @@
 
 #sudo
 [ "x$(pgrep startx)" = "x" ] && alias sudo='sudo ' || alias sudo='sudo --askpass '
+alias doas='doas -- '
 
 #sudo + vim, yea imagine having that powe- nvm
 alias sudovim='sudoedit'
@@ -90,4 +91,5 @@ alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
 alias gR='git restore'
+alias gs='git status'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'

@@ -171,7 +171,7 @@ SourceTree::item {
 
 SourceTree::item:hover,
 QListWidget::item:hover {
-	background-color: #282828;
+	background-color: #2f3640;
 }
 
 SourceTree::item:selected,

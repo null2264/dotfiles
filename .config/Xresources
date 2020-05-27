@@ -71,7 +71,7 @@ st*color6:			#487eb0
 st*color14:			#40739e
 st*color7:			#f5f6fa
 st*color15:			#c5c8c6
-st*alpha:			0.8
+st*alpha:			0.9
 
 !! Rofi
 !config

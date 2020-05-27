@@ -4,7 +4,7 @@ launch-dwmblocks &
 picom &
 nitrogen --restore &
 $HOME/.scripts/launch-conky_dwm.sh &
-
+sxhkd -c $HOME/.config/sxhkd/dwm &
 #if [ x$(pidof dwmblocks) = "x" ] 
 #then
 #	dwmblocks &

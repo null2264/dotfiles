@@ -138,7 +138,7 @@ super + alt + v
 	sh $HOME/.scripts/video.sh
 # games
 super + alt + p
-	sh $HOME/.scripts/play.sh
+	play
 # browser
 super + alt + b
 	$BROWSER
