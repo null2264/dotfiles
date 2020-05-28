@@ -121,7 +121,113 @@ tray-background = ${colors.background}
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
+; ----------------------------------------------------------------------------------------
+
+[bar/dwm]
+;monitor = ${env:MONITOR}
+;monitor-fallback = HDMI1
+width = 100%
+height = 20
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = false 
+separator = 
+
+;background = 
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+wm-restack = bspwm
+override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+border-size = 0
+;border-left-size = 0
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+;padding-left = 
+;padding-right = 
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "UbuntuMono Nerd Font:size=10;2"
+font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-2 = "Sarasa Term J:bold:size=9;2"
+font-3 = "Nimbus Sans:bold:size=9;2"
+font-4 = "Iosevka Nerd Font:bold:size=9;2"
+font-5 = "FontAwesome5Free:bold:style=solid:size=9;2"
+font-6 = "Nimbus Sans:bold:size=16;2"
+font-7 = "Iosevka Nerd Font:bold:style=solid:size=6;2"
+font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
+; ----------------------------------------------------------------------------------------
+modules-left = ewmh dividerS wirednetwork temp covPos covSem dividerS
+modules-center = date 
+modules-right = dividerS disk player-mpris-tail player-mpris mpd volume battery dividerS prompt 
+; ----------------------------------------------------------------------------------------
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-position = left 
+tray-padding = 2
+tray-maxsize = 13
+tray-scale = 1.0
+tray-background = ${colors.background}
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
 # ----- Module -----
+[module/ewmh]
+type = internal/xworkspaces
+
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+pin-workspaces = true
+
+icon-default = "ﱣ"
+
+format-font = 8
+format = <label-state>
+format-background = #434758
+format-padding = 2
+
+label-active = %icon%
+;label-focused-background = #434758
+;label-focused-underline= 
+label-active-padding = 2
+label-active-foreground = ${colors.primary}
+
+label-occupied = %icon%
+;label-occupied-underline = #00a8ff
+label-occupied-padding = 2
+label-occupied-foreground = #ffffff
+;label-occupied-background = #434758
+
+label-urgent = %icon%
+label-urgent-padding = 2
+
+label-empty = "ﱤ"
+;label-empty = %icon%
+label-empty-foreground = #7f8fa6
+label-empty-padding = 2
+;label-empty-underline = #7f8fa6
+;label-empty-background = #434758 
+
 [module/bspwm]
 type = internal/bspwm
 

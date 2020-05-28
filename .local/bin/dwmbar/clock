@@ -1,2 +1,2 @@
 #!/bin/sh
-printf "%s\n" "$(date +" %a, %d %b %Y • %H:%M %Z")"
+printf " %s\n" "$(date +" %a, %d %b %Y • %H:%M %Z")"

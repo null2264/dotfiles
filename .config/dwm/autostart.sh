@@ -1,6 +1,6 @@
 #!/bin/sh
 
-launch-dwmblocks &
+$XDG_CONFIG_HOME/polybar/launch-dwm.sh &
 picom &
 nitrogen --restore &
 $HOME/.scripts/launch-conky_dwm.sh &
