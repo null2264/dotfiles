@@ -31,8 +31,8 @@ alias aurR='yay -R'
 
 #ripper
 alias spotifyrip='spotify-ripper -u palembani@gmail.com'
-alias yt-dl='youtube-dl'
-alias ytaudio='youtube-dl -x --audio-format'
+alias yt='youtube-dl'
+alias yta='youtube-dl -x --audio-format'
 alias xreload='xrdb $HOME/.config/Xresources'
 
 #clean up
