@@ -106,7 +106,7 @@ font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
 modules-left = bspwm dividerS wirednetwork temp covPos covSem dividerS
 modules-center = date 
-modules-right = dividerS disk player-mpris-tail player-mpris mpd volume battery dividerS prompt 
+modules-right = dividerS disk playerctl-tail playerctl mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
 
 tray-detached = false
@@ -766,5 +766,31 @@ label-foreground = ${colors.foreground}
 format-prefix = "  "
 format-prefix-font = "5"
 format-foreground = ${colors.spotgreen}
+format-background = ${colors.background}
+format-padding = 1
+
+# ----- Music [MPris] -----
+
+[module/playerctl-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{:artist:t10:{artist}:}{:artist: - :}{:t10:{title}:}' 
+tail = true
+label-font = 3
+label-foreground = ${colors.foreground}
+format-prefix = "   "
+format-prefix-font = "5"
+format-foreground = ${colors.spotgreen} 
+format-background = ${colors.background}
+format-padding = 1
+click-left = playerctl play-pause &
+scroll-up = playerctl next &
+scroll-down = playerctl previous &
+
+[module/playerctl]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '%{A1:playerctl previous:} 玲 %{A} %{A1:playerctl play-pause:} {icon-reversed} %{A} %{A1:playerctl next:} 怜 %{A}' --icon-paused  --icon-playing 契
+tail = true
+label-font = 1
+format-foreground = ${colors.spotgreen} 
 format-background = ${colors.background}
 format-padding = 1
