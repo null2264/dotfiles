@@ -52,6 +52,7 @@ volume-min = #a3be8c
 volume-med = #ebcb8b
 volume-max = #bf616a
 spotgreen = #44bd32
+torpurple = #CF63A6
 ; =======================
 
 [bar/bspwm]
@@ -95,7 +96,7 @@ module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 font-0 = "UbuntuMono Nerd Font:size=10;2"
-font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-1 = "UbuntuMono Nerd Font:size=12;2"
 font-2 = "Sarasa Term J:bold:size=9;2"
 font-3 = "Nimbus Sans:bold:size=9;2"
 font-4 = "Iosevka Nerd Font:bold:size=9;2"
@@ -104,7 +105,7 @@ font-6 = "Nimbus Sans:bold:size=16;2"
 font-7 = "Iosevka Nerd Font:bold:style=solid:size=6;2"
 font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
-modules-left = bspwm dividerS wirednetwork temp covPos covSem dividerS
+modules-left = bspwm dividerS wirednetwork checktor temp covPos covSem dividerS
 modules-center = date 
 modules-right = dividerS disk playerctl-tail playerctl mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
@@ -794,3 +795,19 @@ label-font = 1
 format-foreground = ${colors.spotgreen} 
 format-background = ${colors.background}
 format-padding = 1
+
+[module/checktor]
+type = custom/script
+exec = checktor 
+tail = true
+label-font = 3
+label-foreground = ${colors.foreground}
+format-prefix = " 﨩 "
+format-prefix-font = "2"
+format-foreground = ${colors.torpurple} 
+format-background = ${colors.background}
+format-padding = 1
+click-left = sudo checktor -r && notify-send "Restarting Tor" &
+click-right = sudo checktor -t && checktor -n &
+scroll-up = checktor -n &
+scroll-down = checktor -c &
