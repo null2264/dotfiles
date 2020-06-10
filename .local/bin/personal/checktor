@@ -21,10 +21,16 @@ restartTor() {
 	sudo systemctl restart tor && notify-send "Tor restarting" || notify-send "Tor failed to restart"
 }
 
+checkIP() {
+	curl --socks5-hostname localhost:9050 -s https://check.torproject.org | grep "IP" | cut -d'>' -f3 | cut -d'<' -f1
+}
+
 case "$1" in
 	-t ) $(toggle) ;;
 	-c ) checkWeb ;;
 	-r ) restartTor ;;
 	-n ) checkNotif ;;
+	-l ) echo "$(pidof tor | wc -l)" ;;
+	--check-ip ) checkIP ;;
 	* ) check ;;
 esac

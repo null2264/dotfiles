@@ -165,7 +165,7 @@ module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 font-0 = "UbuntuMono Nerd Font:size=10;2"
-font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-1 = "UbuntuMono Nerd Font:size=12;2"
 font-2 = "Sarasa Term J:bold:size=9;2"
 font-3 = "Nimbus Sans:bold:size=9;2"
 font-4 = "Iosevka Nerd Font:bold:size=9;2"
@@ -174,9 +174,9 @@ font-6 = "Nimbus Sans:bold:size=16;2"
 font-7 = "Iosevka Nerd Font:bold:style=solid:size=6;2"
 font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
-modules-left = ewmh dividerS wirednetwork temp covPos covSem dividerS
+modules-left = ewmh dividerS wirednetwork checktor temp covPos covSem dividerS
 modules-center = date 
-modules-right = dividerS disk player-mpris-tail player-mpris mpd volume battery dividerS prompt 
+modules-right = dividerS disk playerctl-tail playerctl mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
 
 tray-detached = false
@@ -222,7 +222,7 @@ label-occupied-foreground = #ffffff
 label-urgent = %icon%
 label-urgent-padding = 2
 
-label-empty = "ﱤ"
+label-empty = "ﱣ"
 ;label-empty = %icon%
 label-empty-foreground = #7f8fa6
 label-empty-padding = 2

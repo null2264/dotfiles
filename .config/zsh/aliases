@@ -10,6 +10,7 @@ alias sudovim='sudoedit'
 #vim
 alias nano=nvim
 alias vim=nvim
+alias vimsudo='sudoedit /etc/sudoers'
 alias vi=nvim
 alias v=nvim
 
@@ -73,6 +74,7 @@ alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
 alias cfalias='vim $XDG_CONFIG_HOME/zsh/aliases'
 alias cfbind='vim $XDG_CONFIG_HOME/zsh/keybinds'
 alias cfprofile='vim $XDG_CONFIG_HOME/zsh/.zprofile'
+alias cfxprofile='vim $XDG_CONFIG_HOME/xprofile'
 alias cfcompt='vim $XDG_CONFIG_HOME/picom/compton.conf'
 alias cfenv='vim $XDG_CONFIG_HOME/zsh/.zshenv'
 
