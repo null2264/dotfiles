@@ -3,6 +3,9 @@
 # Disable auto-dim/autolock/screen saver
 xset s off -dpms
 
+# Set cpu-governor to performance (Sometime it still set to powersave)
+cpupower frequency-set -g performance
+
 # Slow app startup fix (for flatpaks)
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
