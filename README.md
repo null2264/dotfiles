@@ -1,9 +1,9 @@
-## dotfiles
+# dotfiles
 
-### About
+## About
 This repository contains config files that i used, some are coded/modified/scripted by me, some other are from other people's config from github/reddit/youtube.
 
-### Dependences & Featured Software
+## Dependences & Featured Software
 - ZSH
 - Console-TDM
 - X11
@@ -12,7 +12,13 @@ This repository contains config files that i used, some are coded/modified/scrip
 - st (st-zi build)
 - Tiling WM (Qtile, BSPWM, or DWM)
 
-### Tips
+## Tips
+
+Small guide for my hotkeys
+- MODKey (Super/Win Key): Window Manager
+- Alt: Terminal
+- Ctrl: Most program inside terminal
+
 Add this to /etc/zsh/zshenv
 
 ```Shell
