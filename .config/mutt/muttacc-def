@@ -1,0 +1,5 @@
+#account
+set imap_user = ''
+set imap_pass = ''
+set smtp_url = ''
+set smtp_pass = ''

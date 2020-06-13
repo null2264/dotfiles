@@ -78,6 +78,7 @@ alias cfprofile='vim $XDG_CONFIG_HOME/zsh/.zprofile'
 alias cfxprofile='vim $XDG_CONFIG_HOME/xprofile'
 alias cfcompt='vim $XDG_CONFIG_HOME/picom/compton.conf'
 alias cfenv='vim $XDG_CONFIG_HOME/zsh/.zshenv'
+alias cfmutt='vim $XDG_CONFIG_HOME/mutt/muttrc'
 
 #more shortcuts
 alias htop='htop -t'

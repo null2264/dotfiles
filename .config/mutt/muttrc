@@ -1,0 +1,13 @@
+#source ~/.config/mutt/muttacc-def
+source ~/.config/mutt/muttacc
+
+set folder = imaps://imap.gmail.com/
+set spoolfile = +INBOX
+mailboxes       = +INBOX
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = "~/.cache/mutt"
+
+set mail_check = 120
