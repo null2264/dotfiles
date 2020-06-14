@@ -1,21 +1,21 @@
 #!/bin/sh
 #--- Option ------------------
-cancel=""
+lock=""
 suspend=""
 log_out=""
 restart=""
 shutdown=""
 #--- Choices -----------------
-choice="$cancel
-$shutdown
+choice="$shutdown
 $restart
+$lock
 $suspend
 $log_out"
 
-chosen=$(echo -en "$choice" | rofi -selected-row 0 -dmenu -i -theme ~/.config/rofi/theme/Android/five.rasi)
+chosen=$(echo -en "$choice" | rofi -selected-row 2 -dmenu -i -theme ~/.config/rofi/theme/Android/five.rasi)
 
 case "$chosen" in
-	$cancel) ;;
+	$lock) slock;;
 	$log_out) bspc quit ;;
 	$suspend) systemctl suspend ;;
 	$restart) systemctl reboot ;;

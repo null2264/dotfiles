@@ -742,6 +742,7 @@ format-prefix-font = "5"
 format-foreground = ${colors.alert} 
 format-background = ${colors.background}
 format-padding = 1
+click-left = notify-send "$(cov -H)" &
 
 [module/covSem]
 type = custom/script
@@ -755,6 +756,7 @@ format-prefix-font = "5"
 format-foreground = ${colors.spotgreen} 
 format-background = ${colors.background}
 format-padding = 1
+click-left = notify-send "$(cov -H)" &
 
 [module/currency]
 type = custom/script
