@@ -7,3 +7,4 @@
 bash /usr/bin/tdm
 
 [[ -f ~/.zshrc ]] && . ~/.zshrc
+[ ! -s ~/.config/mpd/pid ] && mpd

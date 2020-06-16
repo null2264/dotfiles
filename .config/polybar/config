@@ -107,7 +107,7 @@ font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
 modules-left = bspwm dividerS wirednetwork checktor covPos covSem dividerS
 modules-center = date 
-modules-right = dividerS disk playerctl-tail playerctl mpd volume battery dividerS prompt 
+modules-right = dividerS disk playerctl-tail playerctl volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
 
 tray-detached = false
@@ -536,7 +536,7 @@ type = internal/mpd
 ; Host where mpd is running (either ip or domain name)
 ; Can also be the full path to a unix socket where mpd is running.
 host = localhost
-port = 6600
+port = 6669
 
 format-online-padding = 2
 format-online-prefix = " "
@@ -552,7 +552,7 @@ type = internal/mpd
 ; Host where mpd is running (either ip or domain name)
 ; Can also be the full path to a unix socket where mpd is running.
 host = localhost
-port = 6600
+port = 6669
 
 format-online-padding = 2
 format-online-prefix = " "
