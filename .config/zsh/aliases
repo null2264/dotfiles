@@ -22,21 +22,14 @@ alias weather='curl wttr.in'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 #install
-alias pac='sudo pacman'
-alias pacS='sudo pacman -S'
-alias pacSy='sudo pacman -Sy'
-alias pacSyu='sudo pacman -Syu'
-alias pacR='sudo pacman -R'
-alias aur='yay'
-alias aurS='yay -S'
-alias aurSy='yay -Sy'
-alias aurSyu='yay -Syu'
-alias aurR='yay -R'
+alias p='sudo pacman'
+alias a='yay'
 
 #ripper
 alias spotifyrip='spotify-ripper -u palembani@gmail.com'
-alias yt='youtube-dl'
-alias yta='youtube-dl -x --audio-format'
+alias yt='youtube-dl --add-metadata'
+alias yta='youtube-dl --add-metadata -x --audio-format'
+alias crunchyroll-dl='youtube-dl --write-sub --sub-lang enUS --cookies="/home/ziro/Downloads/cookies.txt"'
 alias xreload='xrdb $HOME/.config/Xresources'
 
 #clean up
@@ -55,6 +48,7 @@ alias storagelist='lsblk -f'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias q='exit'
+alias l='exa --color=always --group-directories-first' # my preferred listing
 alias ls='exa --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
@@ -98,6 +92,7 @@ alias cdclg='cd "$HOME/my Files/Kuliah/"'
 alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
+alias gca='git commit --all'
 alias gR='git restore'
 alias gs='git status'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
