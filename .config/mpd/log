@@ -432,3 +432,5 @@ Jun 20 09:30 : player: played "Japan/RADWIMPS - スパークル - movie ver.mp3"
 Jun 20 09:33 : player: played "English or EDM/Calvin Harris - How Deep Is Your Love.mp3"
 Jun 20 09:37 : player: played "English or EDM/Rynx - Want You.mp3"
 Jun 20 09:40 : player: played "Japan/Harutya ft. Kobasolo -  Fiction.mp3"
+Jun 20 11:46 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Jun 20 14:20 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
