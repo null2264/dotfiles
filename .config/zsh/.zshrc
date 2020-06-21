@@ -24,6 +24,7 @@ SAVEHIST=1000
 # vimrc
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 # vi mode
+set -o vi
 bindkey -v
 export KEYTIMEOUT=1
 [ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
