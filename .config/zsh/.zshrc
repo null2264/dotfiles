@@ -10,6 +10,15 @@ rateUSD
 #python ~/Currency/USD2IDR/rate.py #PYTHON IS JUST TOO SLOW FOR TERMINAL
 #sh ~/.scripts/motd.sh
 
+setopt auto_cd # auto cd if directory
+# highlight on tab (completion)
+[ -f ~/.config/zsh/completion ] && source ~/.config/zsh/completion
+# zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
+# fpath=(/usr/local/share/zsh-completions $fpath)
+# autoload -U compinit && compinit
+# zmodload -i zsh/complist
+# zstyle ':completion:*' menu select
+
 # Alias 
 [ -f ~/.config/zsh/aliases ] && source ~/.config/zsh/aliases
 
