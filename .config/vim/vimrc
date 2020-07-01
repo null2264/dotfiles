@@ -20,6 +20,7 @@ set hls
 set number
 set ignorecase
 set smartcase
+set mouse=a
 " map <C-n> :NERDTreeToggle<CR>
 "
 
@@ -36,13 +37,16 @@ noremap <C-p> "+p
 noremap <C-Y> "+y
 noremap <C-P> "+P
 " NERDComment thing
-noremap <C-/> :NERDCommenterToggle
-:set mouse=a
+map <C-l> gcc
+imap <C-l> <esc>gc i
+" ----
 " specific type maps --
 if !has("nvim")
-	autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python "%"<CR>
+	autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python3 "%"<CR>
+	autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear; python3 "%"<CR>
 else
-	autocmd FileType python map <buffer> <F9> :w<CR>:!python "%"<CR>
+	autocmd FileType python map <buffer> <F9> :w<CR>:!echo -e "executing '%'...\n";python3 "%"<CR>
+	autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!echo -e "executing '%'...\n";python3 "%"<CR>
 endif
 " autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python "%"'<CR>
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
