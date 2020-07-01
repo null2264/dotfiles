@@ -71,8 +71,10 @@ bspc rule -a Wine:photoshop.exe desktop='^8'
 bspc rule -a File-roller:file-roller state=floating
 bspc rule -a PacketTracer7:PacketTracer7 desktop='^7' state=floating
 bspc rule -a discord:discord desktop='^9'
+bspc rule -a Ripcord:ripcord desktop='^9'
 bspc rule -a qTox:qtox desktop='^9'
 bspc rule -a pr:pr desktop='^10'
 bspc rule -a firefox:Toolkit desktop='^3' state=floating
+bspc rule -a org-fenix-llanfair-Llanfair:org-fenix-llanfair-Llanfair state=floating
 bspc rule -a mpv:gl state=floating
 bspc rule -a mpv state=floating

@@ -97,6 +97,7 @@ alias cdclg='cd "$HOME/my Files/Kuliah/"'
 alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
+alias gaa='git add -A'
 alias gca='git commit --all'
 alias gr='git rm'
 alias gR='git restore'
@@ -105,3 +106,5 @@ alias gp='git push'
 alias gP='git pull'
 alias gcl='git clone'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+alias qn='vim $HOME/Documents/QuickNote'

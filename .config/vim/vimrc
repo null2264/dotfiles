@@ -39,8 +39,12 @@ noremap <C-P> "+P
 noremap <C-/> :NERDCommenterToggle
 :set mouse=a
 " specific type maps --
-autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python3 %<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python3 %'<CR>
+if !has("nvim")
+	autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python "%"<CR>
+else
+	autocmd FileType python map <buffer> <F9> :w<CR>:!python "%"<CR>
+endif
+" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!clear; python "%"'<CR>
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
 " -------------
