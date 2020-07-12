@@ -26,7 +26,12 @@ My Setup:
 
 *info*: *\** = *config included*; *\*\*= source included*
 
-## Dependences & Featured Software
+## Setup
+Currently there's no automatic installer for my dotfiles.
+
+I'm working on Luke Smith's LARBS fork to be able to install my dotfiles
+
+## Depedencies / Programs
 - ZSH
 - Console-TDM
 - X11
