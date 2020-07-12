@@ -25,6 +25,9 @@ setopt auto_cd # auto cd if directory
 # Theme
 [ -f ~/.config/zsh/theme ] && source ~/.config/zsh/theme
 
+# opam
+test -r /home/ziro/.opam/opam-init/init.zsh && . /home/ziro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 # History in cache directory
 HISTFILE=~/.cache/zsh/zsh_history
 HISTSIZE=1000

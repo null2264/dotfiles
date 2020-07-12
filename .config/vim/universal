@@ -1,0 +1,48 @@
+" vim: filetype=vim
+" =================
+" Universal (Works on any OS... probably) Configuration
+" =================
+
+" ----- Vim Initial Config
+set encoding=UTF-8
+set hls
+set number
+set ignorecase
+set smartcase
+set mouse=a
+syntax on
+filetype indent plugin on
+" map <C-n> :NERDTreeToggle<CR>
+
+" ----- Mapping
+" Norm but in shortcut
+vnoremap . :normal .<CR>
+
+" Map ctrl + u as U
+noremap <C-u> U
+
+" Map U as redo (ctrl + r)
+noremap U <C-r>
+
+" Yank and Put to/from clipboard/primary
+noremap <C-y> "+y
+noremap <C-p> "+p
+noremap <C-Y> "+y
+noremap <C-P> "+P
+
+" NERDComment thing
+map <C-l> gcc
+vmap <C-l> gc
+imap <C-l> <esc>gc
+
+" ----- 'vim -b' = edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END

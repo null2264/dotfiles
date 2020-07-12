@@ -127,7 +127,7 @@ scroll-down = bspwm-deskprev
 [bar/dwm]
 ;monitor = ${env:MONITOR}
 ;monitor-fallback = HDMI1
-width = 100%
+width = 40%
 height = 28
 ;offset-x = 1%
 ;offset-y = 1%
@@ -174,8 +174,8 @@ font-6 = "Nimbus Sans:bold:size=16;2"
 font-7 = "Iosevka Nerd Font:bold:style=solid:size=6;2"
 font-8 = "Iosevka Nerd Font:bold:style=solid:size=8;2"
 ; ----------------------------------------------------------------------------------------
-modules-left = ewmh dividerS wirednetwork checktor temp covPos covSem dividerS
-modules-center = date 
+modules-left = 
+modules-center =
 modules-right = dividerS disk playerctl-tail playerctl mpd volume battery dividerS prompt 
 ; ----------------------------------------------------------------------------------------
 

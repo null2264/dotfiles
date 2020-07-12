@@ -1,0 +1,65 @@
+" vim: filetype=vim
+" =================
+" PlugIns
+" =================
+
+" ----- List of used plugins
+call plug#begin('~/.local/share/vim/bundle')
+
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'kovetskiy/sxhkd-vim'
+Plug 'lervag/vimtex'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+if has('nvim')
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+   Plug 'Shougo/deoplete.nvim'
+   Plug 'roxma/nvim-yarp'
+   Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'preservim/nerdcommenter'
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+if !has('nvim')
+	Plug 'ptzz/lf.vim'
+else
+	Plug 'ptzz/lf.vim'
+	Plug 'rbgrouleff/bclose.vim'
+endif
+Plug 'tpope/vim-commentary'
+
+call plug#end()
+
+" ----- PlugIns Configuration
+" - deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" - Lf
+let g:lf_map_keys = 0
+map <C-n> :Lf<CR>
+
+" - YouCompleteMe
+" let g:ycm_autoclose_preview_window_after_completion = 1
+
+" - Powerline Integraton
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
+let g:airline_theme='onedark'
+
+" - Snippet
+
+let g:UltiSnipsExpandTrigger="<C-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsEditSplit="vertical"
+
