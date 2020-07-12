@@ -1,7 +1,7 @@
 " vim: filetype=vim
-" =================
+" ==============================
 " Windows Specific Configuration
-" =================
+" ==============================
 
 " ----- Install plug (Plugin Manager)
 md ~\AppData\Local\nvim-data\site\autoload

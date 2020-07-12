@@ -1,5 +1,5 @@
 " vim: filetype=vim
-" =================
+" ==============================
 "     ________ ++     ________
 "    /VVVVVVVV\++++  /VVVVVVVV\
 "    \VVVVVVVV/++++++\VVVVVVVV/
@@ -15,7 +15,7 @@
 "     |VVV/'+++++++++
 "     'V/'   ++++++
 "              ++
-" =================
+" ==============================
 
 " ----- Mapping/Config
 " Universal
@@ -27,7 +27,6 @@ so ~/.config/vim/nix
 
 " Windows
 " so C:\_config\vim\windows
-" -------------
 
 " - PlugIns
 source ~/.config/vim/plugins

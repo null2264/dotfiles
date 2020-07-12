@@ -1,7 +1,7 @@
 " vim: filetype=vim
-" =================
+" ==============================
 " Linux Specific Configuration
-" =================
+" ==============================
 
 " ----- Cleaning up
 set undodir=$XDG_DATA_HOME/vim/undo

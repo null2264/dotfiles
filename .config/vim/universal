@@ -1,7 +1,7 @@
 " vim: filetype=vim
-" =================
+" ==============================
 " Universal (Works on any OS... probably) Configuration
-" =================
+" ==============================
 
 " ----- Vim Initial Config
 set encoding=UTF-8
