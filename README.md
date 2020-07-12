@@ -1,5 +1,3 @@
-# dotfiles
-
 <p align="center">
   <img width="25%" src="https://github.com/null2264.png"></a>
 </p>
