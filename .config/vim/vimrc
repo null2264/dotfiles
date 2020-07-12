@@ -22,11 +22,14 @@
 so ~/.config/vim/universal
 " so C:\_config\vim\universal
 
-" *nix (Linux/Mac)
-so ~/.config/vim/nix
+" Automatically source config for the correct OS
+if has('win64') || has('win32') || has('win16')
+	" Windows
+	" so C:\_config\vim\windows
+else
+	" *nix (Linux/Mac)
+	so ~/.config/vim/nix
+endif
 
-" Windows
-" so C:\_config\vim\windows
-
-" - PlugIns
+" ----- PlugIns
 source ~/.config/vim/plugins
