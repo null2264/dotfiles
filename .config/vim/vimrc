@@ -25,15 +25,15 @@
 " NOTE: By default the directory of Windows config will be located on
 " "C:\_config\vim"
 if has('win64') || has('win32') || has('win16')
-	" Universal
-	so C:\_config\vim\vim_uni
 	" Windows
 	so C:\_config\vim\vim_win
-else
 	" Universal
-	so ~/.config/vim/vim_uni
+	so C:\_config\vim\vim_uni
+else
 	" *nix (Linux/Mac)
 	so ~/.config/vim/vim_nix
+	" Universal
+	so ~/.config/vim/vim_uni
 endif
 
 " ----- PlugIns

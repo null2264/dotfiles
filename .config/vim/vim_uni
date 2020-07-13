@@ -46,3 +46,13 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
+
+" ----- Auto refresh vimrc
+augroup myvimrc
+    au!
+    au BufWritePost vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost vim_nix so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost vim_plug so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost vim_uni so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost vim_win so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END

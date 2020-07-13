@@ -32,16 +32,6 @@ endif
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
 
-" ----- Auto refresh vimrc
-augroup myvimrc
-    au!
-    au BufWritePost vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-    au BufWritePost vim_nix so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-    au BufWritePost vim_plug so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-    au BufWritePost vim_uni so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-    au BufWritePost vim_win so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
-
 " ----- Install plug (Plugin Manager)
 if empty(glob('~/.config/vim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
