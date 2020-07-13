@@ -16,20 +16,25 @@
 "     'V/'   ++++++
 "              ++
 " ==============================
+" null2264's VIMRC
+" ==============================
 
-" ----- Mapping/Config
-" Universal
-so ~/.config/vim/universal
-" so C:\_config\vim\universal
+" ----- Sourcing Mapping/Config
 
 " Automatically source config for the correct OS
+" NOTE: By default the directory of Windows config will be located on
+" "C:\_config\vim"
 if has('win64') || has('win32') || has('win16')
+	" Universal
+	so C:\_config\vim\vim_uni
 	" Windows
-	" so C:\_config\vim\windows
+	so C:\_config\vim\vim_win
 else
+	" Universal
+	so ~/.config/vim/vim_uni
 	" *nix (Linux/Mac)
-	so ~/.config/vim/nix
+	so ~/.config/vim/vim_nix
 endif
 
 " ----- PlugIns
-source ~/.config/vim/plugins
+source ~/.config/vim/vim_plug
