@@ -1,0 +1,12 @@
+#!/bin/sh
+
+un_mountables=$(lsblk -nrpo "name,size,type,mountpoint" | awk '$1!~/sda/ && $3!~/disk/ && !/part $/ {print $1" ("$2") on "$4}')
+[ -z "$un_mountables" ] && notify-send "There's no mounted drive." && exit 1
+chosen=$(echo "$un_mountables" | dmenu -i -p "Devices" | awk '{print $1}')
+[ -z "$chosen" ] && exit 1
+
+prompt=$(echo -en "Yes\nNo" | dmenu -i -p "Are you sure?")
+case $prompt in
+	"Yes") sudo umount $chosen && notify-send "Unmounting..." "$chosen";;
+	"No") exit 1 ;;
+esac

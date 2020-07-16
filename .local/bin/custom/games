@@ -1,0 +1,41 @@
+#!/bin/sh
+gamedir="$HOME/my Games/"
+gametype=
+gm="gamemoderun"
+notify=1
+usage() { echo "Usage: dmenugames [-t GAMETYPE]" 1>&2; exit 1; }
+while getopts t: name
+do
+    case $name in
+    t)   gametype="$2";;
+    ?)   usage;;
+    esac
+done
+shift "$((OPTIND-1))"
+
+[ -z $gametype ] && usage;
+games=$(find "$gamedir$gametype" -maxdepth 2 | sort | grep "$gametype/" | awk '!/.binary|.cue|.txt/' | sed 's/^.*s\///')
+chosen="$gamedir$(echo -en "$games" | dmenu -i -l 10 -p "$gametype Games")"
+ [ "$chosen" = "$gamedir" ] && exit 1
+
+ [ "$chosen" = "$HOME/my Games/PC/Minecraft - Pocket Edition" ] && notify=0
+
+[ $notify -eq 1 ] && notify-send "Launching..." "$chosen"
+
+if [ "$gametype" = "3DS" ]; then
+	$gm citra-qt "$chosen" &
+elif [ "$gametype" = "NES" ]; then
+	$gm nestopia -f "$chosen" &
+elif [ "$gametype" = "PS2" ]; then
+	$gm PCSX2 --nogui --fullscreen "$chosen" &
+elif [ "$gametype" = "PC" ]; then
+	"$chosen" &
+elif [ "$gametype" = "PS1" ]; then
+ 	$gm pcsxr -cdfile "$chosen" &
+# elif [ "$gametype" = "PC" ]; then
+# 	$gm "$chosen" &
+else
+	notify-send "Failed" "$gametype is not supported yet."
+ 	exit 1
+fi
+

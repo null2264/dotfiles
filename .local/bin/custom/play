@@ -1,0 +1,4 @@
+#!/bin/sh
+gametype=$(echo "$(find "$HOME/my Games" -maxdepth 1 | sort | awk '!/s$/'  | sed "s/^.*s\///")" | dmenu -i -p "Games")
+[ -z $gametype ] && exit 1
+games -t "$gametype"

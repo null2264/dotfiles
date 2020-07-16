@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#mountables=$(lsblk -nrpo "name,type,size,mountpoint" | awk '$1!~/sda/ && $2!~/disk/ {print $1" ("$3") "}')
+
+mountables=$(lsblk -nrpo "name,size,type,mountpoint" | awk '/part $/ {print $1" ("$2") "}')
+[ -z "$mountables" ] && notify-send "There's no mountable drive." && exit 1
+chosen=$(echo "$mountables" | dmenu -i -p "Devices"| awk '{print $1}')
+[ -z "$chosen" ] && exit 1
+sudo mount -o rw "$chosen" 2> /dev/null && exit 0
+
+dir=$(find /mnt/ -maxdepth 1 -type d | awk '!/t\/$/ && !/mnt\/4/')
+[ -z "$dir" ] && exit 1
+chosenDir=$(echo "$dir" | dmenu -i -p "Mountpoint")
+[ -z "$chosenDir" ] && exit 1
+if [ ! -d "$chosenDir" ]; then
+	choice=$(echo -en "Yes\nNo" | dmenu -i -p "Create new dir?")
+	case $choice in
+		"Yes") mkdir $chosenDir ;;
+		"No") exit 1 ;;
+	esac
+	[ -z $choice ] && notify-send "Mounting Failed" "$chosenDir is not exist." && exit 1
+else
+	sudo mount -o rw "$chosen" "$chosenDir"
+	notify-send "Mounting..." "$chosen to $chosenDir"
+fi

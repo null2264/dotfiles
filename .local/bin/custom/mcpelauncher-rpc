@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+import sys, getopt, pypresence, time, psutil
+
+# ----- RPC Client ID
+RPC = pypresence.Presence("731745989039489036")
+
+# ----- Functions
+def connect_rpc():
+    while True:
+        try:
+            RPC.connect()
+            break
+        except ConnectionRefusedError as e:
+            print("Failed to connect to RPC! Trying again in 10 seconds...")
+            time.sleep(10)
+        except (FileNotFoundError, AttributeError) as e:
+            print("RPC failed to connect due to Discord not being opened yet.")
+            time.sleep(10)
+
+def check_mcbe():
+    return 'MINECRAFT MAIN ' in (p.name() for p in psutil.process_iter())
+
+# ----- Command-Line Arguments
+mcbe_game=str(sys.argv[1])
+
+# ----- Connect to RPC
+connect_rpc()
+
+# ----- Config
+local_time=time.localtime()
+start_time=time.mktime(local_time)
+
+# ----- Loops
+while True:
+    try:
+        if check_mcbe() == True:
+            RPC.update(details=mcbe_game, large_image='minecraft', start=start_time)
+            print('RPC has been updated.')
+            time.sleep(5)
+        else:
+            print('Minecraft is not running')
+            break
+    except KeyboardInterrupt as kb:
+        print('RPC interrupted')
+        break

@@ -1,0 +1,64 @@
+#!/bin/bash
+
+file="cov.txt"
+fileold="cov.txt.old"
+
+update() {
+	mv ~/.cache/cov.txt ~/.cache/cov.txt.old
+	curl -s https://covid19.go.id/ | grep -A1 "div>Positif" | cut -d">" -f4 | cut -d"<" -f1 | sed "1 s/^/Pos /;2 s/^/Sem /" > ~/.cache/cov.txt
+}
+
+helpFunction()
+{
+   echo ""
+   echo "Usage: $0 [Option]"
+   echo -e "\t-u Force update covid report"
+   echo -e "\t-p Print postive cases of covid-19 (Indonesia)"
+   echo -e "\t-s Print cured cases of covid-19 (Indonesia)"
+   echo -e "\t-H Print covid report in human format"
+   echo -e "\t-h Show this message"
+   exit 1 # Exit script after printing help
+}
+
+print_Pos() {
+	printf "%s\n" $(grep "Pos" ~/.cache/$file | sed "s/Pos //")
+}
+
+print_Sem() {
+	printf "%s\n" $(grep "Sem" ~/.cache/$file | sed "s/Sem //")
+}
+
+print_Hum() {
+	print_Pos | sed '1 s/^/Positive: /g' && print_Sem | sed '1 s/^/Cured: /g' && echo -e "\nSource: https://covid19.go.id/"
+}
+
+rate_Pos() {
+	newPos=$(cov -p | sed 's/[.]//g')
+	oldPos=$(cov -op | sed 's/[.]//g')
+	((ratePos=$newPos-$oldPos))
+	printf "%s\n" $ratePos
+}
+
+rate_Sem() {
+	newPos=$(cov -s | sed 's/[.]//g')
+	oldPos=$(cov -os | sed 's/[.]//g')
+	((ratePos=$newPos-$oldPos))
+	printf "%s\n" $ratePos
+}
+
+[ ! "$(stat -c %y ~/.cache/cov.txt 2> /dev/null | cut -d' ' -f1)" = "$(date +"%Y-%m-%d")" ] && update 
+
+while getopts "oupshHrR" opt
+do
+	case "$opt" in
+		R ) rate_Sem ;;
+		r ) rate_Pos ;;
+		o ) file="$fileold";;
+		u ) update && echo "Covid report has been updated";;
+		p ) print_Pos ;;
+		s ) print_Sem ;;
+		H ) print_Hum ;;
+		h ) helpFunction ;;
+		? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
+	esac
+done
