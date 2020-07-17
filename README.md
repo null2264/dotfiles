@@ -53,4 +53,4 @@ Add this to /etc/zsh/zshenv
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
 
-*README.md is still under construction*
+***README.md** is still under construction*
