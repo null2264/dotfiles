@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 import sys, getopt, pypresence, time, psutil
+from subprocess import check_output
 
 # ----- RPC Client ID
 RPC = pypresence.Presence("731745989039489036")
 
 # ----- Functions
+def get_pid(name):
+    return map(int,check_output(["pidof","-s",name]).split())
+
 def connect_rpc():
     while True:
         try:
@@ -18,28 +22,49 @@ def connect_rpc():
             time.sleep(10)
 
 def check_mcbe():
+    # get_pid("mcpelauncher-client")
     return 'MINECRAFT MAIN ' in (p.name() for p in psutil.process_iter())
 
-# ----- Command-Line Arguments
-mcbe_game=str(sys.argv[1])
+def update_rpc():
+    RPC.update(details=mcbe_game, large_image='minecraft', large_text=mcbe_ltext, small_image='world', small_text=mcbe_stext, start=start_time)
+    if debug is True:
+        print(color.BOLD + '[ ' + color.END + color.GREEN + 'OK' + color.END + color.BOLD + ' ] ' + color.END + 'RPC has been updated.')
+    time.sleep(5)
+
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
+# ----- Command-Line Arguments + Config
+debug=False
+mcbe_version=str(sys.argv[1])
+mcbe_game=str("v" + mcbe_version)
+mcbe_ltext=str("Using Linux MCPE Launcher")
+mcbe_ign="Zerogame1432"
+mcbe_stext="IGN: " + mcbe_ign
+start_time=int(time.time())
 
 # ----- Connect to RPC
 connect_rpc()
 
-# ----- Config
-local_time=time.localtime()
-start_time=time.mktime(local_time)
-
 # ----- Loops
 while True:
     try:
-        if check_mcbe() == True:
-            RPC.update(details=mcbe_game, large_image='minecraft', start=start_time)
-            print('RPC has been updated.')
-            time.sleep(5)
+        if check_mcbe() == True or debug == True:
+            update_rpc()
         else:
-            print('Minecraft is not running')
+            print(color.BOLD + '[ ' + color.END + color.RED + 'ERROR' + color.END + color.BOLD + ' ] ' + color.END + 'Minecraft is not running')
+            RPC.close
             break
     except KeyboardInterrupt as kb:
-        print('RPC interrupted')
+        print('\n' + color.BOLD + '[ ' + color.END + color.RED + 'ERROR' + color.END + color.BOLD + ' ] ' + color.END + 'RPC interrupted, closing...')
+        RPC.close
         break

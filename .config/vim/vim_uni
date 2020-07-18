@@ -12,7 +12,7 @@ set smartcase
 set mouse=a
 syntax on
 filetype indent plugin on
-" map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " ----- Mapping
 " Norm but in shortcut
@@ -56,3 +56,13 @@ augroup myvimrc
     au BufWritePost vim_uni so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
     au BufWritePost vim_win so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+" ----- Discord Rich Presences API
+let g:vimsence_client_id = '733622032901603388'
+let g:vimsence_small_text = 'Neovim'
+let g:vimsence_small_image = 'nvim'
+" let g:vimsence_large_image = 'ts'
+let g:vimsence_editing_details = 'Editing {}'
+let g:vimsence_editing_state = 'Workspace: {}'
+let g:vimsence_file_explorer_text = 'In NERDTree'
+let g:vimsence_file_explorer_details = 'Looking for files'

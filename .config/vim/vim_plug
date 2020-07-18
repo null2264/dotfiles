@@ -3,8 +3,12 @@
 " VIM-Plug - Plugin Manager
 " ==============================
 
+" ----- Vim Plugin Directory (Change required)
+let $vimplug_bundle='~/.local/share/vim/bundle'
+" let $vimplug_bundle='c:\_local\share\vim\bundle'
+
 " ----- List of used plugins
-call plug#begin('~/.local/share/vim/bundle')
+call plug#begin($vimplug_bundle)
 
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kovetskiy/sxhkd-vim'
@@ -35,6 +39,10 @@ else
 	Plug 'rbgrouleff/bclose.vim'
 endif
 Plug 'tpope/vim-commentary'
+" Plug '~/vim-rpc', {'dir': '~/.local/share/vim/bundle/vim-rpc'}
+Plug 'hugolgst/vimsence'
+" Plug 'vbe0201/vimdiscord'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -43,9 +51,31 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" - coc.nvim
+
+" " TextEdit might fail if hidden is not set.
+" set hidden
+
+" " Some servers have issues with backup files, see #649.
+" set nobackup
+" set nowritebackup
+
+" " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" " delays and poor user experience.
+" set updatetime=300
+
+" " Don't pass messages to |ins-completion-menu|.
+" set shortmess+=c
+
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " - Lf
-let g:lf_map_keys = 0
-map <C-n> :Lf<CR>
+" let g:lf_map_keys = 0
+" map <C-n> :Lf<CR>
 
 " - YouCompleteMe
 " let g:ycm_autoclose_preview_window_after_completion = 1
@@ -62,4 +92,3 @@ let g:UltiSnipsExpandTrigger="<C-Tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 let g:UltiSnipsEditSplit="vertical"
-
