@@ -3,7 +3,7 @@
 # colors
 #autoload -U colors && colors
 
-# MOTDs
+# ----- MOTDs
 pfetch
 echo "--------------------------------------"
 rateUSD
@@ -39,6 +39,8 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 set -o vi
 bindkey -v
 export KEYTIMEOUT=1
+
+# Keybindings
 [ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
 
 # Plugins

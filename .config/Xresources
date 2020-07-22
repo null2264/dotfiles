@@ -42,7 +42,7 @@ URxvt.underlineURLs: true
 URxvt.urlButton: 1
 
 st*font:			Iosevka Nerd Font:size=10:antialias=true:autohint=true
-st*font2:			UbuntuMono Nerd Font:size=10:antialias=true:autohint=true
+st*font2:			Twemoji:size=8:antialias=true:autohint=true
 st*depth:			32
 st*bold_font:			0
 st*background:			#1d1f21

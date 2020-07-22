@@ -73,10 +73,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "       \ coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" - Lf
-" let g:lf_map_keys = 0
-" map <C-n> :Lf<CR>
-
 " - YouCompleteMe
 " let g:ycm_autoclose_preview_window_after_completion = 1
 
