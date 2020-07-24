@@ -12,7 +12,8 @@ fi
 export BROWSER='firefox'
 export TERMINAL='st'
 export READER='zathura'
-
+export HTTPS='localhost:9050'
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json"
 # vim/nvim as manpager
 export MANPAGER="nvimpager"
 # export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""

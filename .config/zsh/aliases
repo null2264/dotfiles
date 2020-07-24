@@ -66,6 +66,10 @@ alias ranger='lf'
 
 #config shortcuts
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
+alias cfvimplug='vim $XDG_CONFIG_HOME/vim/vim_plug'
+alias cfvimnix='vim $XDG_CONFIG_HOME/vim/vim_nix'
+alias cfvimwin='vim $XDG_CONFIG_HOME/vim/vim_win'
+alias cfvimuni='vim $XDG_CONFIG_HOME/vim/vim_uni'
 alias cfbash='vim $HOME/.bashrc'
 alias cfzsh='vim $XDG_CONFIG_HOME/zsh/.zshrc'
 alias cfxres='vim $XDG_CONFIG_HOME/Xresources'
