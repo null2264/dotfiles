@@ -52,5 +52,6 @@ Add this to /etc/zsh/zshenv
 
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
+*Set $PROFILE environment variable to your powershell config file path (ex: $PROFILE='$HOME/.config/powershell/profile.ps1')*
 
 ***README.md** is still under construction*
