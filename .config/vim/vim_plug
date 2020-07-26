@@ -62,7 +62,7 @@ let g:UltiSnipsEditSplit="vertical"
 " - lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'zi',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'fugitive', 'readonly', 'filename', 'modified' ] ],
@@ -106,3 +106,4 @@ fu s:disable_lightline_on_nerdtree() abort
     let nerdtree_winnr = index(map(range(1, winnr('$')), {_,v -> getbufvar(winbufnr(v), '&ft')}), 'nerdtree') + 1
     call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
 endfu
+
