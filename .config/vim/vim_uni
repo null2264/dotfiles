@@ -10,6 +10,7 @@ set number
 set ignorecase
 set smartcase
 set mouse=a
+hi VertSplit cterm=NONE ctermbg=Black ctermfg=Black
 syntax on
 filetype indent plugin on
 map <C-n> :NERDTreeToggle<CR>
