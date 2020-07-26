@@ -56,7 +56,8 @@ st*chscale:			1.0
 st*cwscale:			1.0
 
 st*color0:			#353b48
-st*color8:			#2f3640
+st*color8:			#2A3039
+!!/* #2f3640 */
 st*color1:			#e84118
 st*color9:			#c23616
 st*color2:			#4cd137
