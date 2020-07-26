@@ -13,8 +13,8 @@ call plug#begin($vimplug_bundle)
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'lervag/vimtex'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/goyo.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -29,7 +29,6 @@ else
    Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'preservim/nerdcommenter'
-" Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 if !has('nvim')
@@ -39,10 +38,7 @@ else
 	Plug 'rbgrouleff/bclose.vim'
 endif
 Plug 'tpope/vim-commentary'
-" Plug '~/vim-rpc', {'dir': '~/.local/share/vim/bundle/vim-rpc'}
 Plug 'hugolgst/vimsence'
-" Plug 'vbe0201/vimdiscord'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 call plug#end()
@@ -52,36 +48,9 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" - coc.nvim
-
-" " TextEdit might fail if hidden is not set.
-" set hidden
-
-" " Some servers have issues with backup files, see #649.
-" set nobackup
-" set nowritebackup
-
-" " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" " delays and poor user experience.
-" set updatetime=300
-
-" " Don't pass messages to |ins-completion-menu|.
-" set shortmess+=c
-
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" - YouCompleteMe
-" let g:ycm_autoclose_preview_window_after_completion = 1
-
-" - Powerline Integraton
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep=' '
-let g:airline_right_sep=' '
-let g:airline_theme='onedark'
+" - NERDTree
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI = 1
 
 " - Snippet
 
@@ -89,3 +58,51 @@ let g:UltiSnipsExpandTrigger="<C-Tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 let g:UltiSnipsEditSplit="vertical"
+
+" - lightline
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'fugitive', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', ] ]
+      \ },
+  \ 'component': {
+  \   'lineinfo': ' %2l:%-2v%<',
+  \   'percent': '☰ %2p%%',
+  \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',	
+      \   'fugitive': 'LightlineFugitive',
+      \   'filename': 'LightlineFilename'
+	\ },
+      \}
+set noshowmode
+" function for lightline
+function! LightlineFugitive()
+	if &ft !~? 'vimfiler' && exists('*FugitiveHead')
+		return FugitiveHead()
+	endif
+	return ''
+endfunction
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
+" no lightline on nerdtree
+augroup filetype_nerdtree
+    au!
+    au FileType nerdtree call s:disable_lightline_on_nerdtree()
+    au WinEnter,BufWinEnter,TabEnter * call s:disable_lightline_on_nerdtree()
+augroup END
+fu s:disable_lightline_on_nerdtree() abort
+    let nerdtree_winnr = index(map(range(1, winnr('$')), {_,v -> getbufvar(winbufnr(v), '&ft')}), 'nerdtree') + 1
+    call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
+endfu

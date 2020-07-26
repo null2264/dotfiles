@@ -42,3 +42,6 @@ endif
 " - Lf Shortcut
 " let g:lf_map_keys = 0
 " map <C-n> :Lf<CR>
+
+" - exit if only nerdtree left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
