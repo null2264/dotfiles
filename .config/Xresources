@@ -45,7 +45,7 @@ st*font:			Iosevka Nerd Font:size=10:antialias=true:autohint=true
 st*font2:			Twemoji:size=8:antialias=true:autohint=true
 st*depth:			32
 st*bold_font:			0
-st*background:			#1d1f21
+st*background:			#2A3039
 st*foreground:			#f5f6fa
 st*cursorColor:			#8d9b53
 st*termname:			st-256color
@@ -71,7 +71,7 @@ st*color6:			#487eb0
 st*color14:			#40739e
 st*color7:			#f5f6fa
 st*color15:			#c5c8c6
-st*alpha:			0.9
+st*alpha:			1
 
 !! Rofi
 !config

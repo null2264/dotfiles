@@ -43,6 +43,7 @@ Plug 'tpope/vim-commentary'
 Plug 'hugolgst/vimsence'
 " Plug 'vbe0201/vimdiscord'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 call plug#end()
 
