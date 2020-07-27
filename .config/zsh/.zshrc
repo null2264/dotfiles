@@ -49,7 +49,7 @@ ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
 # source $ZSH/oh-my-zsh.sh
 # emulate -R zsh -c 'source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-source $ZSH_PLUGINS/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
+source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 #source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 #source $ZSH_CUSTOM/plugins/fsh/fast-syntax-highlighting.plugin.zsh
 

@@ -14,7 +14,5 @@ case "$chosen" in
 	cmus) notify-send "Launching..." "cmus" && st -n cmus -e cmus ;;
 	Spotify)  notify-send "Launching..." "Spotify" && env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify ;;
 	VLC) notify-send "Launching..." "VLC" && vlc ;;
-	ncmpcpp) notify-send "Launching..." "$chosen" && st -n ncmpcpp -e ncmpcpp ;;
+	ncmpcpp) notify-send "Launching..." "$chosen" && st -e ncmpcpp ;;
 esac
-
-
