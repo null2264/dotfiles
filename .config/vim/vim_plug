@@ -10,6 +10,7 @@ let $vimplug_bundle='~/.local/share/vim/bundle'
 " ----- List of used plugins
 call plug#begin($vimplug_bundle)
 
+Plug 'PProvost/vim-ps1'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'lervag/vimtex'
