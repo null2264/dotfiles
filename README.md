@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="25%" src="https://github.com/null2264.png"></a>
+  <a href="https://github.com/null2264/dotfiles"><img width="25%" src="https://github.com/null2264.png"></img></a>
 </p>
 <h1 align="center">null2264's dotfiles</h1>
 <h3 align="center">
@@ -11,6 +11,7 @@ This is my personal collection of configuration files.
 
 I'm still in progress on cleaning up some mess.
 
+<img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/07-26-20.17%3A19%3A32.1366x768.Zi.png'></img>
 My Setup:
 
 - **WM**: bspwm / DWM*
@@ -22,7 +23,7 @@ My Setup:
 - **Launcher**: rofi* / dmenu*
 - **Browser**: Firefox
 
-*info*: *\** = *config included*; *\*\*= source included*
+*info*: *\** = *config included*; *\*\* = source included*
 
 ## Setup
 Currently there's no automatic installer for my dotfiles.
