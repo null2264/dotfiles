@@ -39,3 +39,6 @@ $([char]27)[34;1m" + $env:COMPUTERNAME + "" + (getdir) + (Git-Branch) + " " + ("
 $([char]27)[34;1m" + $env:COMPUTERNAME + "" + (getdir) + (end_of_prompt)
 	}
 }
+
+# ----- Aliases
+New-Alias vim nvim
