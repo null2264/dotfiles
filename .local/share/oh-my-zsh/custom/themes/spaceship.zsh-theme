@@ -1,1 +1,0 @@
-/home/ziro/.local/share/oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme
