@@ -7,6 +7,6 @@ chosen=$(echo "$un_mountables" | dmenu -i -p "Devices" | awk '{print $1}')
 
 prompt=$(echo -en "Yes\nNo" | dmenu -i -p "Are you sure?")
 case $prompt in
-	"Yes") sudo umount $chosen && notify-send "Unmounting..." "$chosen";;
+	"Yes") sudo umount $chosen && notify-send "Unmounting..." "$chosen" || notify-send "Unmounting failed" "FDD is still writing or being used";;
 	"No") exit 1 ;;
 esac

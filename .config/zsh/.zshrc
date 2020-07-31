@@ -7,8 +7,6 @@
 pfetch
 echo "--------------------------------------"
 rateUSD | sed 's/^/ /g'
-#python ~/Currency/USD2IDR/rate.py #PYTHON IS JUST TOO SLOW FOR TERMINAL
-#sh ~/.scripts/motd.sh
 
 setopt auto_cd # auto cd if directory
 # highlight on tab (completion)
