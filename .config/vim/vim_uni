@@ -50,6 +50,9 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+" ----- python for vim
+autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
+
 " ----- Auto refresh vimrc
 augroup myvimrc
     au!

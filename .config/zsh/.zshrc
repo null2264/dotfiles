@@ -41,11 +41,12 @@ export KEYTIMEOUT=1
 # Keybindings
 [ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
 
-# Plugins
+# ----- Plugins
 ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
 
 # source $ZSH/oh-my-zsh.sh
 # emulate -R zsh -c 'source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+eval $(thefuck --alias) # thefuck - fix your stupid typo :)
 source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 #source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
