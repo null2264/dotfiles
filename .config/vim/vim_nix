@@ -28,6 +28,9 @@ else
 	autocmd FileType python imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter python3 "%"<CR>
 endif
 
+autocmd FileType sh map <buffer> <F9> :w<CR>:vs<CR>:ter sh "%"<CR>
+autocmd FileType sh imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter sh "%"<CR>
+
 " ----- Automatically Render PDF
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
