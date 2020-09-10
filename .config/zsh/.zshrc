@@ -5,8 +5,8 @@
 
 # ----- MOTDs
 pfetch
-echo "--------------------------------------"
-rateUSD | sed 's/^/ /g'
+# echo "--------------------------------------"
+# rateUSD | sed 's/^/ /g'
 
 setopt auto_cd # auto cd if directory
 # highlight on tab (completion)
