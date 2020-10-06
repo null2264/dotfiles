@@ -19,7 +19,8 @@ let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 " ----- Mutt
 au BufRead /tmp/mutt-* set tw=72
 
-" ----- Execute Python
+" ----- Execute corresponding language
+" python
 if !has("nvim")
  	autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python3 "%"<CR>
  	autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear; python3 "%"<CR>
@@ -28,8 +29,13 @@ else
 	autocmd FileType python imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter python3 "%"<CR>
 endif
 
+" sh (either bash or zsh)
 autocmd FileType sh map <buffer> <F9> :w<CR>:vs<CR>:ter sh "%"<CR>
 autocmd FileType sh imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter sh "%"<CR>
+
+" c (untested)
+autocmd FileType c map <buffer> <F9> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./"%" && read<CR>
+autocmd FileType c imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./"%" && read<CR>
 
 " ----- Automatically Render PDF
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null

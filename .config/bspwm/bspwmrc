@@ -1,9 +1,9 @@
 #! /bin/dash
 
-picom &
 sxhkd &
 xsetroot -cursor_name left_ptr &
 nitrogen --restore &
+picom &
 $HOME/.scripts/launch-conky.sh &
 $HOME/.config/polybar/launch.sh &
 
