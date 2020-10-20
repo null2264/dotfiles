@@ -7,6 +7,9 @@ alias doas='doas -- '
 #sudo + vim, yea imagine having that powe- nvm
 alias sudovim='sudoedit'
 
+#switch to pgsql user
+alias pg='sudo -iu postgres'
+
 #vim
 alias nano=nvim
 alias vim=nvim

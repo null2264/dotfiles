@@ -38,6 +38,19 @@ map <C-l> gcc
 vmap <C-l> gc
 imap <C-l> <esc>gc
 
+" TwiddleCase
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+
 " ----- 'vim -b' = edit binary using xxd-format!
 augroup Binary
   au!
@@ -52,6 +65,7 @@ augroup END
 
 " ----- python for vim
 autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
+autocmd BufEnter *.c set ai sw=4 ts=4 sta et fo=croql
 
 " ----- Auto refresh vimrc
 augroup myvimrc
