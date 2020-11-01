@@ -63,9 +63,10 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
-" ----- python for vim
+" ----- indent for corresponding extension
 autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
 autocmd BufEnter *.c set ai sw=4 ts=4 sta et fo=croql
+autocmd BufEnter *.md set ai sw=4 ts=4 sta et fo=croql
 
 " ----- Auto refresh vimrc
 augroup myvimrc
