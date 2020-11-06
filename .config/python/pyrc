@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+import sys
+import os
+sys.ps1='\x1b[1;49;34m\n{}\n\x1b[1;49;32m!>\x1b[0m '.format(os.getlogin())  # bright yellow
+sys.ps2='\x1b[1;49;34m?>\x1b[0m '  # bright red

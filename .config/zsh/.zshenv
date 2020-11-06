@@ -42,6 +42,7 @@ export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pyrc"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh"
