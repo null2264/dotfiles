@@ -4,6 +4,7 @@
 " ==============================
 
 " ----- Vim Initial Config
+let mapleader=" "
 set encoding=UTF-8
 set hls
 set number
@@ -34,9 +35,13 @@ noremap <C-Y> "+y
 noremap <C-P> "+P
 
 " NERDComment thing
-map <C-l> gcc
-vmap <C-l> gc
-imap <C-l> <esc>gc
+" <C-_> means ctrl+/ for vim, for some reason...
+map <C-_> gcc
+vmap <C-_> gc
+imap <C-_> <esc>gc
+
+" Clear last search result
+map <leader>c :noh<CR>
 
 " TwiddleCase
 function! TwiddleCase(str)
@@ -87,3 +92,12 @@ let g:vimsence_editing_details = 'Editing {}'
 let g:vimsence_editing_state = 'Workspace: {}'
 let g:vimsence_file_explorer_text = 'In NERDTree'
 let g:vimsence_file_explorer_details = 'Looking for files'
+
+" Split opens at the bottom and right
+set splitbelow splitright
+
+" Split navigation shortcuts
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
