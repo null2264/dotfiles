@@ -106,16 +106,16 @@ map <C-l> <C-w>l
 
 " Complete menu mappings
 " Up and Down act like ctrl+p and ctrl+n
-inoremap <expr><Up> pumvisible() ? "<C-n>" : "<Up>"
+inoremap <expr><Up> pumvisible() ? "<C-p>" : "<Up>"
 inoremap <expr><Down> pumvisible() ? "<C-n>" : "<Down>"
 
 " Enter to complete
 inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 
 " Left or Right to cancel
-inoremap <expr><Right> pumvisible() ? "<C-e><Right>" : "<Right>"
-inoremap <expr><Left> pumvisible() ? "<C-e><Left>" : "<Left>"
+" inoremap <expr><Right> pumvisible() ? "<C-e><Right>" : "<Right>"
+" inoremap <expr><Left> pumvisible() ? "<C-e><Left>" : "<Left>"
 
 " Tab act like ctrl+p and ctrl+n
-inoremap <expr><Tab> pumvisible() ? "<C-n><C-n>" : "<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "<C-p><C-p>" : "<S-Tab>"
+inoremap <expr><Tab> pumvisible() ? "<C-n>" : "<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"
