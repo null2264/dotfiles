@@ -10,44 +10,46 @@ let $vimplug_bundle='~/.local/share/vim/bundle'
 " ----- List of used plugins
 call plug#begin($vimplug_bundle)
 
+" - Highlightings
+" Syntax highlighting for ps1 (PowerShell)
 Plug 'PProvost/vim-ps1'
-Plug 'deoplete-plugins/deoplete-jedi'
+" For sxhkd config file
 Plug 'kovetskiy/sxhkd-vim'
+" For LaTeX
 Plug 'lervag/vimtex'
+
+" Goyo, simplified view for vim useful when writing long documents
 Plug 'junegunn/goyo.vim'
+
+" Line at the bottom of vim, just to make it look nice
 Plug 'itchyny/lightline.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-if has('nvim')
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-   Plug 'Shougo/deoplete.nvim'
-   Plug 'roxma/nvim-yarp'
-   Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-if !has('nvim')
-	Plug 'ptzz/lf.vim'
-else
-	Plug 'ptzz/lf.vim'
-	Plug 'rbgrouleff/bclose.vim'
-endif
+
+" Comment a line in one press of a button (or 2 button)
 Plug 'tpope/vim-commentary'
+
+" - NERDTree
+" Navigate through files/folder while in vim
+Plug 'preservim/nerdtree'
+" Icon for nerdtree
+Plug 'ryanoasis/vim-devicons'
+
+" Tell everyone on discord that you use vim!
 Plug 'hugolgst/vimsence'
+
+" Markdown preview, not really useful since it's only support github's md format.
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
+" Automatically show vim's built-in auto complete menu
+Plug 'vim-scripts/AutoComplPop'
+" Use tab to auto complete
+" Plug 'ervandew/supertab'
 
 call plug#end()
 
 " ----- PlugIns Configuration
 " - deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " - NERDTree
 let NERDTreeShowHidden=1
@@ -55,10 +57,10 @@ let NERDTreeMinimalUI = 1
 
 " - Snippet
 
-let g:UltiSnipsExpandTrigger="<C-Tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsExpandTrigger="<C-Tab>"
+" let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" let g:UltiSnipsEditSplit="vertical"
 
 " - lightline
 set laststatus=2
@@ -108,3 +110,5 @@ fu s:disable_lightline_on_nerdtree() abort
     call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
 endfu
 
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"

@@ -12,6 +12,8 @@ set ignorecase
 set smartcase
 set mouse=a
 set background=dark
+set complete+=kspell
+set completeopt=menuone,longest
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=0
 hi! EndOfBuffer ctermbg=8 ctermfg=8
 syntax on
@@ -34,7 +36,7 @@ noremap <C-p> "+p
 noremap <C-Y> "+y
 noremap <C-P> "+P
 
-" NERDComment thing
+" Shortcut to comment a line
 " <C-_> means ctrl+/ for vim, for some reason...
 map <C-_> gcc
 vmap <C-_> gc
@@ -101,3 +103,19 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Complete menu mappings
+" Up and Down act like ctrl+p and ctrl+n
+inoremap <expr><Up> pumvisible() ? "<C-n>" : "<Up>"
+inoremap <expr><Down> pumvisible() ? "<C-n>" : "<Down>"
+
+" Enter to complete
+inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
+
+" Left or Right to cancel
+inoremap <expr><Right> pumvisible() ? "<C-e><Right>" : "<Right>"
+inoremap <expr><Left> pumvisible() ? "<C-e><Left>" : "<Left>"
+
+" Tab act like ctrl+p and ctrl+n
+inoremap <expr><Tab> pumvisible() ? "<C-n><C-n>" : "<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "<C-p><C-p>" : "<S-Tab>"
