@@ -55,23 +55,32 @@ st*tabspaces:			8
 st*chscale:			1.0
 st*cwscale:			1.0
 
+! black
 st*color0:			#353b48
 st*color8:			#2A3039
 !!/* #2f3640 */
+! red
 st*color1:			#e84118
 st*color9:			#c23616
+! green
 st*color2:			#4cd137
 st*color10:			#44bd32
+! yellow
 st*color3:			#fbc531
 st*color11:			#e1b12c
+! blue
 st*color4:			#60C0FF
 st*color12:			#0EA0FF
-st*color5:			#6B85FF
-st*color13:			#4466ff
-st*color6:			#487eb0
+! magenta
+st*color5:			#7e8afc
+st*color13:			#4c6dff
+! cyan
+st*color6:			#5992c6
 st*color14:			#40739e
+! white
 st*color7:			#f5f6fa
 st*color15:			#c5c8c6
+! transparency
 st*alpha:			1
 
 !! Rofi

@@ -112,3 +112,6 @@ endfu
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Custom comments
+autocmd FileType xdefaults setlocal commentstring=!\ %s
