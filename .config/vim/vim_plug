@@ -48,7 +48,11 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " deoplete source
-Plug 'deoplete-plugins/deoplete-jedi'
+if has('win32') || has('win64')
+  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+else
+  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+endif
 
 call plug#end()
 

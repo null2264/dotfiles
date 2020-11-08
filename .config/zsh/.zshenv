@@ -9,7 +9,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-export BROWSER='firefox'
+export BROWSER='qutebrowser'
 export TERMINAL='alacritty'
 export READER='zathura'
 export HTTPS='localhost:9050'
