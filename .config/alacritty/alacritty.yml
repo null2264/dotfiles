@@ -1,0 +1,72 @@
+font:
+  normal:
+    family: Iosevka
+    style: Regular
+
+  bold:
+    family: Iosevka
+    style: Bold
+
+  italic:
+    family: Iosevka
+    style: Italic
+
+  bold_italic:
+    family: Iosevka
+    style: Bold Italic
+
+  size: 10
+
+background_opacity: 1
+
+window:
+  padding:
+    x: 40
+    y: 40
+
+colors:
+  # Default colors
+  primary:
+    background: '#2A3039'
+    foreground: '#f5f6fa'
+
+    dim_foreground:    '#dbdbdb'
+    bright_foreground: '#d9d9d9'
+    dim_background:    '#202020' # not sure
+    bright_background: '#3a3a3a' # not sure
+
+  # Cursor colors
+  cursor:
+    text:   '#353b48'
+    cursor: '#f5f6fa'
+
+  # Normal colors
+  normal:
+    black:   '#353b48'
+    red:     '#e84118'
+    green:   '#4cd137'
+    yellow:  '#fbc531'
+    blue:    '#60C0FF'
+    magenta: '#7e8afc'
+    cyan:    '#5992c6'
+    white:   '#f5f6fa'
+
+  # Bright colors
+  bright:
+    black:   '#2f3640'
+    red:     '#c23616'
+    green:   '#44bd32'
+    yellow:  '#e1b12c'
+    blue:    '#0EA0FF'
+    magenta: '#4c6dff'
+    cyan:    '#40739e'
+    white:   '#c5c8c6'
+
+key_bindings:
+  - { key: C,   mods: Alt, action: Copy }
+  - { key: V,   mods: Alt, action: Paste }
+  - { key: Y,   mods: Control|Shift, action: Copy }
+  - { key: P,   mods: Control|Shift, action: Paste }
+  - { key: Minus,   mods: Alt, action: DecreaseFontSize }
+  - { key: Equals,   mods: Alt, action: IncreaseFontSize }
+  - { key: Key0,   mods: Alt, action: ResetFontSize }
