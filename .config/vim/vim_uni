@@ -4,21 +4,21 @@
 " ==============================
 
 " ----- Vim Initial Config
-let mapleader=" "
-set encoding=UTF-8
+set encoding=utf-8
 set hls
 set number
 set ignorecase
 set smartcase
 set mouse=a
 set background=dark
-set complete+=kspell
-set completeopt=menuone,longest
+" set complete+=kspell
+" set completeopt=menuone,longest
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=0
 hi! EndOfBuffer ctermbg=8 ctermfg=8
 syntax on
 filetype indent plugin on
 map <C-n> :NERDTreeToggle<CR>
+let mapleader=" "
 
 " ----- Mapping
 " Norm but in shortcut

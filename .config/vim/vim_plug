@@ -39,17 +39,23 @@ Plug 'hugolgst/vimsence'
 " Markdown preview, not really useful since it's only support github's md format.
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
-" Automatically show vim's built-in auto complete menu
-Plug 'vim-scripts/AutoComplPop'
-" Use tab to auto complete
-" Plug 'ervandew/supertab'
+" Auto complete with deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" deoplete source
+Plug 'deoplete-plugins/deoplete-jedi'
 
 call plug#end()
 
 " ----- PlugIns Configuration
 " - deoplete
-" let g:deoplete#enable_at_startup = 1
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " - NERDTree
 let NERDTreeShowHidden=1
