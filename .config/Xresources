@@ -1,3 +1,6 @@
+!! You need to change "ziro" with your username
+#include "/home/ziro/.config/xcolors/zidark"
+
 !! Font and General
 URxvt*imLocale: en_US.UTF-8
 URxvt*termName: rxvt-unicode-256color
@@ -45,8 +48,8 @@ st*font:			Iosevka Nerd Font:size=10:antialias=true:autohint=true
 st*font2:			Twemoji:size=8:antialias=true:autohint=true
 st*depth:			32
 st*bold_font:			0
-st*background:			#2A3039
-st*foreground:			#f5f6fa
+st*foreground:			FOREGROUND
+st*background:			BACKGROUND
 st*cursorColor:			#8d9b53
 st*termname:			st-256color
 st*shell:			/bin/zsh
@@ -56,30 +59,30 @@ st*chscale:			1.0
 st*cwscale:			1.0
 
 ! black
-st*color0:			#353b48
-st*color8:			#2A3039
-!!/* #2f3640 */
-! red
-st*color1:			#e84118
-st*color9:			#c23616
-! green
-st*color2:			#4cd137
-st*color10:			#44bd32
-! yellow
-st*color3:			#fbc531
-st*color11:			#e1b12c
-! blue
-st*color4:			#60C0FF
-st*color12:			#0EA0FF
-! magenta
-st*color5:			#7e8afc
-st*color13:			#4c6dff
-! cyan
-st*color6:			#5992c6
-st*color14:			#40739e
-! white
-st*color7:			#f5f6fa
-st*color15:			#c5c8c6
+st*color0:			COLOR0 
+st*color8:			COLOR8
+!!/* #2f3640 */                 
+! red                           
+st*color1:			COLOR1 
+st*color9:			COLOR9 
+! green                         
+st*color2:			COLOR2 
+st*color10:			COLOR10
+! yellow                        
+st*color3:			COLOR3 
+st*color11:			COLOR11
+! blue                          
+st*color4:			COLOR4 
+st*color12:			COLOR12
+! magenta                       
+st*color5:			COLOR5 
+st*color13:			COLOR13
+! cyan                          
+st*color6:			COLOR6 
+st*color14:			COLOR14
+! white                         
+st*color7:			COLOR7 
+st*color15:			COLOR15
 ! transparency
 st*alpha:			1
 
@@ -89,38 +92,38 @@ rofi.show-icons: true
 
 !!colorscheme
 ! special
-*.foreground:   #f5f6fa
-*.background:   #1d1f21
+*.foreground:   FOREGROUND
+*.background:   BACKGROUND
 *.cursorColor:  #c5c8c6
 
 ! black
-*.color0:       #353b48
-*.color8:       #2f3640
+*.color0:       COLOR0 
+*.color8:       COLOR8
 
-! red
-*.color1:       #e84118
-*.color9:       #c23616
+! red           
+*.color1:       COLOR1 
+*.color9:       COLOR9 
 
-! green
-*.color2:       #4cd137
-*.color10:      #44bd32
+! green         
+*.color2:       COLOR2 
+*.color10:      COLOR10
 
-! yellow
-*.color3:       #fbc531
-*.color11:      #e1b12c
+! yellow        
+*.color3:       COLOR3 
+*.color11:      COLOR11
 
-! blue
-*.color4:       #60C0FF
-*.color12:      #0EA0FF
+! blue          
+*.color4:       COLOR4 
+*.color12:      COLOR12
 
-! magenta
-*.color5:       #6B85FF
-*.color13:      #4466ff
+! magenta       
+*.color5:       COLOR5 
+*.color13:      COLOR13
 
-! cyan
-*.color6:       #487eb0
-*.color14:      #40739e
+! cyan          
+*.color6:       COLOR6 
+*.color14:      COLOR14
 
-! white
-*.color7:       #f5f6fa
-*.color15:      #c5c8c6
+! white         
+*.color7:       COLOR7 
+*.color15:      COLOR15

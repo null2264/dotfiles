@@ -54,6 +54,8 @@ else
   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 endif
 
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
 
 " ----- PlugIns Configuration
@@ -125,3 +127,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Custom comments
 autocmd FileType xdefaults setlocal commentstring=!\ %s
+
+let g:indentLine_setColors = 0
+hi Conceal ctermfg=0 ctermbg=NONE
