@@ -14,7 +14,8 @@ set background=dark
 " set complete+=kspell
 " set completeopt=menuone,longest
 highlight VertSplit cterm=NONE ctermbg=0 ctermfg=0
-hi! EndOfBuffer ctermbg=8 ctermfg=8
+" hi! EndOfBuffer ctermbg=NONE ctermfg=8
+set fillchars=eob:\ 
 syntax on
 filetype indent plugin on
 map <C-n> :NERDTreeToggle<CR>
