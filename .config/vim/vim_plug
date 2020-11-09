@@ -48,12 +48,18 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " deoplete source
-if has('win32') || has('win64')
-  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-else
-  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-endif
+" if has('win32') || has('win64')
+"   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+" else
+"   Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" endif
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'garbas/vim-snipmate'
+" Plug 'honza/vim-snippets'
+Plug 'deoplete-plugins/deoplete-jedi'
 
+" Indent visualization
 Plug 'Yggdroot/indentLine'
 
 call plug#end()
@@ -62,6 +68,18 @@ call plug#end()
 " - deoplete
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer']})
+" imap <tab> <Plug>snipMateNextOrTrigger
+
+" omnifuncs
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
 
 " - NERDTree
 let NERDTreeShowHidden=1
@@ -122,11 +140,11 @@ fu s:disable_lightline_on_nerdtree() abort
     call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
 endfu
 
-" Supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
 " Custom comments
 autocmd FileType xdefaults setlocal commentstring=!\ %s
 
+" Indent visualization
 let g:indentLine_setColors = 0
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·'
 hi Conceal ctermfg=0 ctermbg=NONE
