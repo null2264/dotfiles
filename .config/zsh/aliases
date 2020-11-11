@@ -20,6 +20,9 @@ alias vimsudo='sudoedit /etc/sudoers'
 alias vi=nvim
 alias v=nvim
 
+#emacs
+alias emacs="emacs -nw"
+
 #mutt
 alias mutt="neomutt"
 

@@ -70,3 +70,5 @@ key_bindings:
   - { key: Minus,   mods: Alt, action: DecreaseFontSize }
   - { key: Equals,   mods: Alt, action: IncreaseFontSize }
   - { key: Key0,   mods: Alt, action: ResetFontSize }
+  - { key: PageUp,   mods: Alt, action: ScrollPageUp }
+  - { key: PageDown,   mods: Alt, action: ScrollPageDown }
