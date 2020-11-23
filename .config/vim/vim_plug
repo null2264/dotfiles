@@ -60,7 +60,7 @@ endif
 Plug 'deoplete-plugins/deoplete-jedi'
 
 " Indent visualization
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
