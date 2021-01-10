@@ -34,7 +34,7 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
 " Tell everyone on discord that you use vim!
-Plug 'hugolgst/vimsence'
+" Plug 'hugolgst/vimsence'
 
 " Markdown preview, not really useful since it's only support github's md format.
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }

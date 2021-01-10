@@ -121,3 +121,5 @@ alias gcl='git clone'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 alias qn='vim $HOME/Documents/QuickNote'
+
+alias docx2pdf='lowriter --convert-to pdf'
