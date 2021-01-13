@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #sudo
-[ "x$(pgrep startx)" = "x" ] && alias sudo='sudo ' || alias sudo='sudo --askpass '
+[ -z $DISPLAY ] && alias sudo='sudo ' || alias sudo='sudo --askpass '
 alias doas='doas -- '
 
 #sudo + vim, yea imagine having that powe- nvm

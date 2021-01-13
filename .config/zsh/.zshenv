@@ -20,7 +20,9 @@ export MANPAGER="nvimpager"
 
 # SUDO
 #export SUDO_ASKPASS=/bin/rofi-askpass
-export SUDO_ASKPASS="/bin/dmenu-askpass"
+if [[ ! -z $DISPLAY ]]; then
+  export SUDO_ASKPASS="/bin/dmenu-askpass"
+fi
 
 # XDG
 export XDG_CACHE_HOME="$HOME/.cache"
