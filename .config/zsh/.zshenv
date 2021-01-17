@@ -10,7 +10,7 @@ else
   export EDITOR='nvim'
 fi
 export BROWSER='brave'
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 export READER='zathura'
 export HTTPS='localhost:9050'
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json"
