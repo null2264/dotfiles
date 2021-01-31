@@ -32,7 +32,7 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 
 #install
 alias p='sudo pacman'
-alias a='yay'
+alias a='paru'
 
 #ripper
 alias spotifyrip='spotify-ripper -u palembani@gmail.com'
