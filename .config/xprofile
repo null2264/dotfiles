@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Disable auto-dim/autolock/screen saver
 xset s off -dpms
 
