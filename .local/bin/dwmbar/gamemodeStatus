@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf " %s\n" "$(gamemoded -s | sed 's/.*is //')"
