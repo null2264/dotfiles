@@ -4,6 +4,7 @@
 PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 
 # DEFAULT
+export QT_QPA_PLATFORMTHEME='qt5ct'
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else

@@ -16,6 +16,7 @@ xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
 unclutter &
 dunst &
 numlockx &
+lxpolkit &
 
 # Custom Resolutions
 xrandr --newmode "768x432"   25.75  768 792 864 960  432 435 440 450 -hsync +vsync

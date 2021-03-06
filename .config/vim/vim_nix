@@ -33,7 +33,7 @@ endif
 autocmd FileType sh map <buffer> <F9> :w<CR>:vs<CR>:ter sh "%"<CR>
 autocmd FileType sh imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter sh "%"<CR>
 
-" c (untested)
+" c
 autocmd FileType c map <buffer> <F9> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./%< && read<CR>
 autocmd FileType c imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./%< && read<CR>
 
@@ -42,6 +42,10 @@ autocmd FileType markdown map <buffer> <F9> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Doc
 autocmd FileType markdown imap <buffer> <F9> <esc> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex "%" --from markdown+grid_tables+smart --pdf-engine=xelatex<CR>
 " Open pdf via zathura if exist
 autocmd FileType markdown map <leader>o :!setsid pdfview "%:r.pdf"<CR><CR>
+
+" m (matlab/octave)
+autocmd FileType sh map <buffer> <F9> :w<CR>:vs<CR>:ter octave "%"<CR>
+autocmd FileType sh imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter octave "%"<CR>
 
 " ----- Automatically Render PDF
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
