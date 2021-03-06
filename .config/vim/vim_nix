@@ -47,6 +47,10 @@ autocmd FileType markdown map <leader>o :!setsid pdfview "%:r.pdf"<CR><CR>
 autocmd FileType matlab map <buffer> <F9> :w<CR>:vs<CR>:ter octave "%"<CR>
 autocmd FileType matlab imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter octave "%"<CR>
 
+" ruby
+autocmd FileType ruby map <buffer> <F9> :w<CR>:vs<CR>:ter ruby "%"<CR>
+autocmd FileType ruby imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter ruby "%"<CR>
+
 " ----- Automatically Render PDF
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
