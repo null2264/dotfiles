@@ -4,7 +4,7 @@
 #autoload -U colors && colors
 
 # ----- MOTDs
-pfetch
+# pfetch
 # echo "--------------------------------------"
 # rateUSD | sed 's/^/ /g'
 
