@@ -104,6 +104,7 @@ alias mntfd='sudo mount -o gid=users,fmask=113,dmask=002'
 alias umntfd='sudo umount'
 alias cmatrix='unimatrix -n -s 96 -l 'o''
 alias make-xanmod='env use_tracers=n use_numa=n use_pds=y use_ns=y makepkg -s'
+alias s='cd .local/bin/scripts;ls'
 
 #folder shortcut
 alias cdclg='cd "$HOME/my Files/Kuliah/"'
