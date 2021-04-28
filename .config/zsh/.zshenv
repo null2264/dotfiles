@@ -19,6 +19,12 @@ export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json
 export MANPAGER="nvimpager"
 # export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
+# Wine problem workaround
+# export MESA_GL_VERSION_OVERRIDE=4.4
+# alternative workaround
+export MESA_GL_VERSION_OVERRIDE=4.6
+export MESA_GLSL_VERSION_OVERRIDE=460
+
 # SUDO
 #export SUDO_ASKPASS=/bin/rofi-askpass
 if [[ ! -z $DISPLAY ]]; then
