@@ -62,6 +62,12 @@ Plug 'deoplete-plugins/deoplete-jedi'
 " Indent visualization
 " Plug 'Yggdroot/indentLine'
 
+" sqlite
+" Plug 'lbrayner/dbext.vim'
+
+" Julia support
+Plug 'JuliaEditorSupport/julia-vim'
+
 call plug#end()
 
 " ----- PlugIns Configuration
