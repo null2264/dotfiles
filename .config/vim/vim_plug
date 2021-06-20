@@ -68,6 +68,9 @@ Plug 'deoplete-plugins/deoplete-jedi'
 " Julia support
 Plug 'JuliaEditorSupport/julia-vim'
 
+" enhanced python highlighting
+Plug 'vim-python/python-syntax'
+
 call plug#end()
 
 " ----- PlugIns Configuration
@@ -154,3 +157,6 @@ let g:indentLine_setColors = 0
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 hi Conceal ctermfg=0 ctermbg=NONE
+
+" Python highlighting
+let g:python_highlight_all = 1

@@ -16,12 +16,23 @@ set background=dark
 " set list lcs=trail:·,tab:··\|,nbsp:·
 hi VertSplit cterm=NONE ctermbg=0 ctermfg=0
 hi NonText ctermfg=0
+hi Folded ctermfg=White
+hi Folded ctermbg=Black
 " hi! EndOfBuffer ctermbg=NONE ctermfg=8
 set fillchars=eob:\ 
 syntax on
 filetype indent plugin on
 map <C-n> :NERDTreeToggle<CR>
 let mapleader=" "
+
+" ----- Folding stuff
+set foldnestmax=10
+" don't fold by default
+set nofoldenable
+set foldlevel=1
+
+" python
+autocmd FileType python setlocal foldmethod=indent
 
 " ----- Mapping
 " Norm but in shortcut
