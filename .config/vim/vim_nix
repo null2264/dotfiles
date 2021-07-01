@@ -51,6 +51,10 @@ autocmd FileType matlab imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter octave "%"<CR
 autocmd FileType ruby map <buffer> <F9> :w<CR>:vs<CR>:ter ruby "%"<CR>
 autocmd FileType ruby imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter ruby "%"<CR>
 
+" golang
+autocmd FileType go map <buffer> <F9> :w<CR>:vs<CR>:ter go run "%"<CR>
+autocmd FileType go imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter go run "%"<CR>
+
 " ----- Automatically Render PDF
 autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
 autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
