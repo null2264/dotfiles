@@ -112,6 +112,7 @@ alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
 alias gaa='git add -A'
+alias gci='git commit'
 alias gca='git commit --all'
 alias gr='git rm'
 alias gR='git restore'

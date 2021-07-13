@@ -71,6 +71,9 @@ Plug 'JuliaEditorSupport/julia-vim'
 " enhanced python highlighting
 Plug 'vim-python/python-syntax'
 
+" For golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
 " ----- PlugIns Configuration
