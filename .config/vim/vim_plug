@@ -3,50 +3,52 @@
 " VIM-Plug - Plugin Manager
 " ==============================
 
-" ----- Vim Plugin Directory (Change required)
+" ===== Vim Plugin Directory (Changes required for Windows user)
 let $vimplug_bundle='~/.local/share/vim/bundle'
 " let $vimplug_bundle='c:\_local\share\vim\bundle'
 
-" ----- List of used plugins
+" ===== List of used plugins
 call plug#begin($vimplug_bundle)
 
-" - Highlightings
-" Syntax highlighting for ps1 (PowerShell)
+" === Highlightings
+" --- Syntax highlighting for ps1 (PowerShell)
 Plug 'PProvost/vim-ps1'
-" For sxhkd config file
+" --- For sxhkd config file
 Plug 'kovetskiy/sxhkd-vim'
-" For LaTeX
+" --- For LaTeX
 Plug 'lervag/vimtex'
+" ======
 
-" Goyo, simplified view for vim useful when writing long documents
+" --- Goyo, simplified view for vim useful when writing long documents
 Plug 'junegunn/goyo.vim'
 
-" Line at the bottom of vim, just to make it look nice
+" --- Line at the bottom of vim, just to make it look nice
 Plug 'itchyny/lightline.vim'
 
-" Comment a line in one press of a button (or 2 button)
+" --- Comment a line in one press of a button (or 2 button)
 Plug 'tpope/vim-commentary'
 
-" - NERDTree
-" Navigate through files/folder while in vim
+" === NERDTree
+" --- Navigate through files/folder while in vim
 Plug 'preservim/nerdtree'
-" Icon for nerdtree
+" --- Icon for nerdtree
 Plug 'ryanoasis/vim-devicons'
 
-" Tell everyone on discord that you use vim!
+" --- Tell everyone on discord that you use vim!
 " Plug 'hugolgst/vimsence'
+" ======
 
-" Markdown preview, not really useful since it's only support github's md format.
+" -- Markdown preview, not really useful since it's only support github's md format.
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
-" Auto complete with deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" --- Auto complete with deoplete
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 " deoplete source
 " if has('win32') || has('win64')
 "   Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
@@ -57,74 +59,127 @@ endif
 " Plug 'tomtom/tlib_vim'
 " Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
-Plug 'deoplete-plugins/deoplete-jedi'
+" Plug 'deoplete-plugins/deoplete-jedi'
 
-" Indent visualization
+" --- Auto complete with NCM2 (nvim-completion-manager)
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+" - NCM2 sources
+Plug 'ncm2/ncm2-jedi'
+
+
+" --- Indent visualization
 " Plug 'Yggdroot/indentLine'
 
-" sqlite
+" --- sqlite
 " Plug 'lbrayner/dbext.vim'
 
-" Julia support
+" --- Julia support
 Plug 'JuliaEditorSupport/julia-vim'
 
-" enhanced python highlighting
+" --- enhanced python highlighting
 Plug 'vim-python/python-syntax'
 
-" For golang
+" --- For golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" --- linting support
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
-" ----- PlugIns Configuration
-" - deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer']})
-" imap <tab> <Plug>snipMateNextOrTrigger
+" ======================
+" PlugIns Configuration
+" ======================
+" --- deoplete
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" call deoplete#custom#option('ignore_sources', {'_': ['around', 'buffer']})
+" " imap <tab> <Plug>snipMateNextOrTrigger
 
-" omnifuncs
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
+" " omnifuncs
+" augroup omnifuncs
+"   autocmd!
+"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" augroup end
 
-" - NERDTree
+" --- NCM2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" wrap existing omnifunc
+" Note that omnifunc does not run in background and may probably block the
+" editor. If you don't want to be blocked by omnifunc too often, you could
+" add 180ms delay before the omni wrapper:
+"  'on_complete': ['ncm2#on_complete#delay', 180,
+"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+au User Ncm2Plugin call ncm2#register_source({
+	\ 'name' : 'css',
+	\ 'priority': 9,
+	\ 'subscope_enable': 1,
+	\ 'scope': ['css','scss'],
+	\ 'mark': 'css',
+	\ 'word_pattern': '[\w\-]+',
+	\ 'complete_pattern': ':\s*',
+	\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+\ })
+
+" --- NERDTree
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 
-" - Snippet
+" --- Snippet
 
 " let g:UltiSnipsExpandTrigger="<C-Tab>"
 " let g:UltiSnipsJumpForwardTrigger="<C-Tab>"
 " let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 " let g:UltiSnipsEditSplit="vertical"
 
-" - lightline
+" --- lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'zi',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'fugitive', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype', ] ]
-      \ },
-  \ 'component': {
-  \   'lineinfo': ' %2l:%-2v%<',
-  \   'percent': '☰ %2p%%',
-  \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',	
-      \   'fugitive': 'LightlineFugitive',
-      \   'filename': 'LightlineFilename'
-	\ },
-      \}
+	\'colorscheme': 'zi',
+	\'active': {
+	\	'left': [
+	\		[ 'mode', 'paste' ],
+	\		[ 'gitbranch', 'fugitive', 'readonly', 'filename', 'modified' ]
+	\	],
+	\	'right': [
+	\		[ 'lineinfo' ],
+	\		[ 'percent' ],
+	\		[ 'fileformat', 'fileencoding', 'filetype', ]
+	\	]
+	\},
+	\'component': {
+	\	'lineinfo': ' %2l:%-2v%<',
+	\	'percent': '☰ %2p%%',
+    	\},
+        \'component_function': {
+        \	'gitbranch': 'FugitiveHead',	
+        \	'fugitive': 'LightlineFugitive',
+        \	'filename': 'LightlineFilename'
+        \},
+\ }
 set noshowmode
 " function for lightline
 function! LightlineFugitive()
@@ -134,32 +189,32 @@ function! LightlineFugitive()
 	return ''
 endfunction
 function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
+	let root = fnamemodify(get(b:, 'git_dir'), ':h')
+	let path = expand('%:p')
+	if path[:len(root)-1] ==# root
+		return path[len(root)+1:]
+	endif
+	return expand('%')
 endfunction
 " no lightline on nerdtree
 augroup filetype_nerdtree
-    au!
-    au FileType nerdtree call s:disable_lightline_on_nerdtree()
-    au WinEnter,BufWinEnter,TabEnter * call s:disable_lightline_on_nerdtree()
+	au!
+	au FileType nerdtree call s:disable_lightline_on_nerdtree()
+	au WinEnter,BufWinEnter,TabEnter * call s:disable_lightline_on_nerdtree()
 augroup END
 fu s:disable_lightline_on_nerdtree() abort
-    let nerdtree_winnr = index(map(range(1, winnr('$')), {_,v -> getbufvar(winbufnr(v), '&ft')}), 'nerdtree') + 1
-    call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
+	let nerdtree_winnr = index(map(range(1, winnr('$')), {_,v -> getbufvar(winbufnr(v), '&ft')}), 'nerdtree') + 1
+	call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
 endfu
 
-" Custom comments
+" --- Custom comments
 autocmd FileType xdefaults setlocal commentstring=!\ %s
 
-" Indent visualization
+" --- Indent visualization
 let g:indentLine_setColors = 0
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 hi Conceal ctermfg=0 ctermbg=NONE
 
-" Python highlighting
+" --- Python highlighting
 let g:python_highlight_all = 1
