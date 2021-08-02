@@ -3,6 +3,12 @@
 # Path
 PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 
+# IBus stuff
+export GTK_IM_MODULE='ibus'
+export QT_IM_MODULE='ibus'
+export XMODIFIERS=@im='ibus'
+export GLFW_IM_MODULE='ibus'
+
 # DEFAULT
 export QT_QPA_PLATFORMTHEME='qt5ct'
 if [[ -n $SSH_CONNECTION ]]; then

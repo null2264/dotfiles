@@ -12,6 +12,7 @@ cpupower frequency-set -g performance
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 # Universal Autostarts
+fcitx5 -d &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
 unclutter &
 dunst &
