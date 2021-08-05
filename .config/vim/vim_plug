@@ -78,7 +78,7 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'JuliaEditorSupport/julia-vim'
 
 " --- enhanced python highlighting
-Plug 'vim-python/python-syntax'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " --- For golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
