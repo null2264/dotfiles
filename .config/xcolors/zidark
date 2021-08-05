@@ -1,5 +1,5 @@
-#define FOREGROUND #f5f6fa
-#define BACKGROUND #2A3039
+#define FOREGROUND #E1F3FF
+#define BACKGROUND #0E1418
 
 #define COLOR0  #404757
 #define COLOR8  #353b48
