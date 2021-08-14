@@ -2,7 +2,7 @@
 
 #sudo
 [ -z $DISPLAY ] && alias sudo='sudo ' || alias sudo='sudo --askpass '
-alias doas='doas -- '
+# alias doas='doas -- '
 
 #sudo + vim, yea imagine having that powe- nvm
 alias sudovim='sudoedit'
@@ -31,7 +31,7 @@ alias weather='curl wttr.in'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 #install
-alias p='sudo pacman'
+alias p='doas pacman'
 alias a='paru'
 
 #ripper
@@ -48,9 +48,9 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias ytv='youtube-viewer'
 alias gravit='~/my\ Files/Gravit/GravitDesigner.AppImage'
 alias redoom='~/doom refresh'
-alias rvim='sudo vim'
+alias rvim='doas vim'
 alias py='python'
-alias ps2c='sudo sh $HOME/.scripts/ps2c'
+alias ps2c='doas sh $HOME/.scripts/ps2c'
 alias cls='clear'
 alias classprop='xprop WM_CLASS'
 alias storagelist='lsblk -f'
@@ -100,8 +100,8 @@ alias htop='htop -t'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-alias mntfd='sudo mount -o gid=users,fmask=113,dmask=002'
-alias umntfd='sudo umount'
+alias mntfd='doas mount -o gid=users,fmask=113,dmask=002'
+alias umntfd='doas umount'
 alias cmatrix='unimatrix -n -s 96 -l 'o''
 alias make-xanmod='env use_tracers=n use_numa=n use_pds=y use_ns=y makepkg -s'
 alias s='cd $HOME/.local/bin/scripts;ls'

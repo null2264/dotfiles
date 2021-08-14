@@ -1,15 +1,15 @@
 #!/bin/zsh
 
-# Path
+# -- Path
 PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 
-# IBus stuff
+# -- IBus stuff (IME)
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
 export GLFW_IM_MODULE='ibus'
 
-# DEFAULT
+# -- DEFAULT
 export QT_QPA_PLATFORMTHEME='qt5ct'
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -26,24 +26,24 @@ export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json
 export MANPAGER="nvimpager"
 # export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
-# Wine problem workaround
+# -- Wine problem workaround
 # export MESA_GL_VERSION_OVERRIDE=4.4
 # alternative workaround
 export MESA_GL_VERSION_OVERRIDE=4.6
 export MESA_GLSL_VERSION_OVERRIDE=460
 
-# SUDO
-#export SUDO_ASKPASS=/bin/rofi-askpass
-if [[ ! -z $DISPLAY ]]; then
-  export SUDO_ASKPASS="/bin/dmenu-askpass"
-fi
+# -- SUDO - Deactivated by default (using DOAS now)
+# export SUDO_ASKPASS=/bin/rofi-askpass
+# if [[ ! -z $DISPLAY ]]; then
+#   export SUDO_ASKPASS="/bin/dmenu-askpass"
+# fi
 
-# XDG
+# -- XDG
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
-#cleaning up
+# cleaning up
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export SCRIPTS="$HOME/.scripts"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
@@ -60,11 +60,15 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pyrc"
 
-# Path to your oh-my-zsh installation.
+# vimrc (this will init/source ~/.config/vim/vimrc instead of ~/.vimrc)
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
+# Path to oh-my-zsh installation
 export ZSH="${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 export ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
 
+# -- LF
 # icon for lf
 export LF_ICONS="\
 tw=:\
