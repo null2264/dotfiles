@@ -86,7 +86,7 @@ augroup END
 
 " ----- indent for corresponding extension
 autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
-autocmd BufEnter *.c set ai sw=4 ts=4 sta et fo=croql
+autocmd BufEnter *.c set ai sw=4 ts=4 sta noet fo=croql
 autocmd BufEnter *.md set ai sw=3 ts=3 sta et fo=croql
 autocmd Filetype html set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype css set ai sw=4 ts=4 sta et fo=croql
