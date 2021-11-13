@@ -65,8 +65,19 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 " - NCM2 sources
-Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-jedi' " python
+Plug 'ncm2/ncm2-racer' " rust
 
+" --- Auto complete with DDC 
+" Plug 'Shougo/ddc.vim'
+" Plug 'vim-denops/denops.vim'
+" Plug 'neovim/nvim-lspconfig'
+" " - DDC sources
+" Plug 'Shougo/ddc-around'
+" Plug 'Shougo/ddc-nvim-lsp'
+" " - DDC filters
+" Plug 'Shougo/ddc-matcher_head'
+" Plug 'Shougo/ddc-sorter_rank'
 
 " --- Indent visualization
 " Plug 'Yggdroot/indentLine'
@@ -85,6 +96,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " --- linting support
 Plug 'dense-analysis/ale'
+
+" --- For rust
+Plug 'rust-lang/rust.vim'
+
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
@@ -218,3 +234,75 @@ hi Conceal ctermfg=0 ctermbg=NONE
 
 " --- Python highlighting
 let g:python_highlight_all = 1
+
+" --- DDC
+" " Customize global settings
+" " Use around source.
+" " https://github.com/Shougo/ddc-around
+" call ddc#custom#patch_global('sources', ['around', 'nvimlsp'])
+
+" " Use matcher_head and sorter_rank.
+" " https://github.com/Shougo/ddc-matcher_head
+" " https://github.com/Shougo/ddc-sorter_rank
+" call ddc#custom#patch_global('sourceOptions', {
+"       \ '_': {
+"       \   'matchers': ['matcher_head'],
+"       \   'sorters': ['sorter_rank']},
+"       \ })
+
+" " Change source options
+" call ddc#custom#patch_global('sourceOptions', {
+"       \ 'around': {'mark': 'A'},
+"       \ 'nvimlsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.|:|->' },
+"       \ })
+" call ddc#custom#patch_global('sourceParams', {
+"       \ 'around': {'maxSize': 500},
+"       \ 'nvimlsp': { 'kindLabels': { 'Class': 'c' } },
+"       \ })
+
+" " Customize settings on a filetype
+" call ddc#custom#patch_filetype(['rust'], 'sources', ['around', 'nvimlsp'])
+" call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+" call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+"       \ 'clangd': {'mark': 'C'},
+"       \ })
+" call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+"       \ 'around': {'maxSize': 100},
+"       \ })
+
+" " Mappings
+
+" " <TAB>: completion.
+" inoremap <silent><expr> <TAB>
+" \ pumvisible() ? '<C-n>' :
+" \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+" \ '<TAB>' : ddc#manual_complete()
+
+" " <S-TAB>: completion back.
+" inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+" " Use ddc.
+" call ddc#enable()
+
+" --- nvim-lsp
+" lua << EOF
+" require'lspconfig'.pyright.setup{}
+" local nvim_lsp = require'lspconfig'
+
+" nvim_lsp.rust_analyzer.setup({
+"     settings = {
+"         ["rust-analyzer"] = {
+"             assist = {
+"                 importGranularity = "module",
+"                 importPrefix = "by_self",
+"             },
+"             cargo = {
+"                 loadOutDirsFromCheck = true
+"             },
+"             procMacro = {
+"                 enable = true
+"             },
+"         }
+"     }
+" })
+" EOF

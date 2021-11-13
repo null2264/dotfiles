@@ -1,13 +1,17 @@
 #!/bin/zsh
 
+export ANDROID_HOME="/opt/android-sdk"
+
 # -- Path
-PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
+# PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
+PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'
-export XMODIFIERS=@im='ibus'
 export GLFW_IM_MODULE='ibus'
+export XMODIFIERS=@im='ibus'
 
 # -- DEFAULT
 export QT_QPA_PLATFORMTHEME='qt5ct'
@@ -16,8 +20,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-# export BROWSER='brave'
-export BROWSER='waterfox-g3'
+export BROWSER='brave'
+# export BROWSER='waterfox-g3'
 export TERMINAL='kitty'
 export READER='zathura'
 export HTTPS='localhost:9050'

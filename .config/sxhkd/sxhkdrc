@@ -147,7 +147,8 @@ alt + y
 	passmenu
 # screenshot
 super + Print
-	sh $HOME/.scripts/ss.sh
+	flameshot gui
+#	sh $HOME/.scripts/ss.sh
 # gravit-designer
 super + alt + g
 	"$HOME/my Files/Gravit/GravitDesigner.AppImage"

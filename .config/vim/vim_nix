@@ -38,8 +38,8 @@ autocmd FileType c map <buffer> <F9> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./%< && 
 autocmd FileType c imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./%< && read<CR>
 
 " pandoc (markdown to pdf)
-autocmd FileType markdown map <buffer> <F9> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex -c ~/Documents/College/pandoc_themes/buttondown.css "%" --from markdown+grid_tables+smart --pdf-engine=xelatex<CR>
-autocmd FileType markdown imap <buffer> <F9> <esc> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex -c ~/Documents/College/pandoc_themes/buttondown.css "%" --from markdown+grid_tables+smart --pdf-engine=xelatex<CR>
+autocmd FileType markdown map <buffer> <F9> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex -c ~/Documents/College/pandoc_themes/buttondown.css "%" --from markdown+grid_tables+smart-implicit_figures --pdf-engine=xelatex<CR>
+autocmd FileType markdown imap <buffer> <F9> <esc> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex -c ~/Documents/College/pandoc_themes/buttondown.css "%" --from markdown+grid_tables+smart-implicit_figures --pdf-engine=xelatex<CR>
 " Open pdf via zathura if exist
 autocmd FileType markdown map <leader>o :!setsid pdfview "%:r.pdf"<CR><CR>
 
