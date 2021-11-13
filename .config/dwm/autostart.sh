@@ -5,5 +5,11 @@ picom &
 nitrogen --restore &
 $HOME/.scripts/launch-conky_dwm.sh &
 sxhkd -c $HOME/.config/sxhkd/dwm &
-[ x$(pidof dwmblocks) = "x" ] && $(dwmblocks &; pkill -RTMIN+1 dwmblocks) || echo "dwmblocks is running, skipped."
+if [ x$(pidof dwmblocks) = "x" ] 
+then
+	dwmblocks &
+	pkill -RTMIN+1 dwmblocks
+else
+	echo 'dwmblocks is running, skipped.'
+fi
 fcitx5 -d &
