@@ -24,6 +24,7 @@ syntax on
 filetype indent plugin on
 map <C-n> :NERDTreeToggle<CR>
 let mapleader=" "
+set guifont=Iosevka:h15
 
 " ----- Folding stuff
 set foldnestmax=10
@@ -72,6 +73,9 @@ function! TwiddleCase(str)
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
+" Format with by pressing Q useful for markdown / other markup languages
+map Q gq
+
 " ----- 'vim -b' = edit binary using xxd-format!
 augroup Binary
   au!
@@ -93,6 +97,7 @@ autocmd Filetype html set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype css set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype javascript set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype vue set ai sw=4 ts=4 sta et fo=croql
+autocmd Filetype php set ai sw=4 ts=4 sta et fo=croql
 
 " ----- Auto refresh vimrc
 augroup myvimrc

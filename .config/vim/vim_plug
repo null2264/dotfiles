@@ -100,7 +100,7 @@ Plug 'dense-analysis/ale'
 " --- For rust
 Plug 'rust-lang/rust.vim'
 
-Plug 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
