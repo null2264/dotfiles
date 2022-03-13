@@ -6,3 +6,4 @@
 " augroup END
 
 map <leader>r <Action>(RenameElement)
+unmap <C-n>

@@ -1,10 +1,8 @@
 # Config
 set preview true
-#set previewer ~/.config/lf/preview
 set previewer ~/.config/lf/scripts/previewer
-#set previewer ~/.config/lf/scripts/scope
+set cleaner ~/.config/lf/scripts/cleaner
 set icons true
-set color256
 set hidden true
 set ignorecase true
 set smartcase true
@@ -60,12 +58,13 @@ cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 map d
 
 # Basic Functions
-map <bs2> set hidden!
+map <backspace2> set hidden!
 map dD delete
 map dd cut
 map p paste
 map y copy
 map <enter> open
+map <esc> quit
 #map mf mkfile
 #map mr sudomkfile
 map md mkdir

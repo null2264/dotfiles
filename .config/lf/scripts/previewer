@@ -1,6 +1,36 @@
 #!/bin/sh
-case "$1" in
-	*.png|*.jpg|*.jpeg|*.mp4|*.mkv) mediainfo "$1";;
-	*) bat "$1";;
-	*.md) glow -p -s dark "$1";;
+
+draw() {
+  ~/.config/lf/scripts/image "$@"
+  exit 1
+}
+
+
+cache() {
+  if [ -f "$1" ]; then
+    draw "$@"
+  fi
+}
+
+case "$(file --dereference --brief --mime-type -- "$1")" in
+	text/*) bat --terminal-width "$4" -f "$1" ;;
+	image/*|video/*) mediainfo "$1" ;;
+	# image/*)
+	# 	[ -n "$FIFO_UEBERZUG" ] &&
+	# 		orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$file")"
+	# 		if [ -n "$orientation" ] && [ "$orientation" != 1 ]; then
+	# 			cache="$(hash "$file").jpg"
+	# 			cache "$cache" "$@"
+	# 			convert -- "$file" -auto-orient "$cache"
+	# 			draw "$cache" "$@"
+	# 		else
+	# 			draw "$file" "$@"
+	# 		fi
+	# 	;;
 esac
+
+# case "$1" in
+# 	*.png|*.jpg|*.jpeg|*.mp4|*.mkv) mediainfo "$1";;
+# 	*) bat "$1";;
+# 	*.md) glow -p -s dark "$1";;
+# esac
