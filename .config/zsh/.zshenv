@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 export ANDROID_SDK_ROOT="/opt/android-sdk"
 
 # -- Path
