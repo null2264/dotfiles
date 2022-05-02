@@ -93,7 +93,7 @@ autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
 " in C files, tabs looks like 4 spaces, but it's actually tabs
 autocmd BufEnter *.c set ai sw=4 ts=4 sta noet fo=croql
 autocmd BufEnter *.md set ai sw=3 ts=3 sta et fo=croql
-autocmd Filetype html set ai sw=4 ts=4 sta et fo=croql
+autocmd Filetype html* set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype css set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype javascript set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype vue set ai sw=4 ts=4 sta et fo=croql

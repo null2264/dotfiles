@@ -8,7 +8,7 @@
 alias sudovim='sudoedit'
 
 #switch to pgsql user
-alias pg='sudo -iu postgres'
+alias pg='doas -u postgres'
 
 #mysql with color
 # alias mysql=$(echo -e 'mysql --prompt="\x1B[34m\\d\x1B[32m \n>\x1B[0m "')

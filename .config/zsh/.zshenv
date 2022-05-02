@@ -32,6 +32,7 @@ export MANPAGER="nvimpager"
 # export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
 # -- Wine problem workaround
+# - NOTE to self: this will prevent some games from launching
 # export MESA_GL_VERSION_OVERRIDE=4.4
 # alternative workaround
 export MESA_GL_VERSION_OVERRIDE=4.6
