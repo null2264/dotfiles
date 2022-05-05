@@ -9,23 +9,23 @@ PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$HOME/.lo
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
-export GTK_IM_MODULE='ibus'
-export QT_IM_MODULE='ibus'
-export GLFW_IM_MODULE='ibus'
-export XMODIFIERS=@im='ibus'
+export GTK_IM_MODULE="ibus"
+export QT_IM_MODULE="ibus"
+export GLFW_IM_MODULE="ibus"
+export XMODIFIERS=@im="ibus"
 
 # -- DEFAULT
-export QT_QPA_PLATFORMTHEME='qt5ct'
+export QT_QPA_PLATFORMTHEME="qt5ct"
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="vim"
 else
-  export EDITOR='nvim'
+  export EDITOR="nvim"
 fi
-export BROWSER='brave'
-# export BROWSER='waterfox-g3'
-export TERMINAL='kitty'
-export READER='zathura'
-export HTTPS='localhost:9050'
+export BROWSER="librewolf"
+# export BROWSER="waterfox-g3"
+export TERMINAL="kitty"
+export READER="zathura"
+export HTTPS="localhost:9050"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json"
 # vim/nvim as manpager
 export MANPAGER="nvimpager"
@@ -35,8 +35,8 @@ export MANPAGER="nvimpager"
 # - NOTE to self: this will prevent some games from launching
 # export MESA_GL_VERSION_OVERRIDE=4.4
 # alternative workaround
-export MESA_GL_VERSION_OVERRIDE=4.6
-export MESA_GLSL_VERSION_OVERRIDE=460
+export MESA_GL_VERSION_OVERRIDE=4.2
+export MESA_GLSL_VERSION_OVERRIDE=420
 
 # -- SUDO - Deactivated by default (using DOAS now)
 # export SUDO_ASKPASS=/bin/rofi-askpass
