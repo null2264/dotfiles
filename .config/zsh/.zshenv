@@ -2,7 +2,8 @@
 
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
 export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 
 # -- Path
