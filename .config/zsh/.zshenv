@@ -1,11 +1,14 @@
 #!/bin/zsh
 
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-export ANDROID_SDK_ROOT="/opt/android-sdk"
+export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+export ANDROID_SDK_HOME="$ANDROID_SDK_ROOT"
+export ANDROID_HOME="$ANDROID_SDK_HOME"
+export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 
 # -- Path
 # PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
-PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
+PATH="$HOME/.local/share/go/bin:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
@@ -59,7 +62,6 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
-export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
