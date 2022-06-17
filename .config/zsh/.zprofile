@@ -4,9 +4,11 @@
 #	exec startx
 #fi
 
-bash /usr/bin/tdm
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	bash /usr/bin/tdm
 
-[[ -f ~/.zshrc ]] && . ~/.zshrc
-[ ! -s ~/.config/mpd/pid ] && mpd
+	[[ -f ~/.zshrc ]] && . ~/.zshrc
+	[ ! -s ~/.config/mpd/pid ] && mpd
 
-export PATH="$HOME/.poetry/bin:$PATH"
+	export PATH="$HOME/.poetry/bin:$PATH"
+fi

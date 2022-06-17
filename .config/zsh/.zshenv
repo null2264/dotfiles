@@ -8,8 +8,12 @@ export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 
 # -- Path
 # PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
-PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:${PATH:+:${PATH}}"
+else
+	PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
+fi
+# export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
 export GTK_IM_MODULE="ibus"

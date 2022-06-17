@@ -1,26 +1,32 @@
 #!/bin/sh
 
-export _JAVA_AWT_WM_NONREPARENTING=1
+if [[ "$OSTYPE" == "darwin"* ]]; then
 
-# Disable auto-dim/autolock/screen saver
-xset s off -dpms
+	export _JAVA_AWT_WM_NONREPARENTING=1
 
-# Set cpu-governor to performance (Sometime it still set to powersave)
-cpupower frequency-set -g performance
+	# Disable auto-dim/autolock/screen saver
+	xset s off -dpms
 
-# Slow app startup fix (for flatpaks)
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+	# Set cpu-governor to performance (Sometime it still set to powersave)
+	cpupower frequency-set -g performance
 
-# Universal Autostarts
-# fcitx5 -d &
-xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
-unclutter &
-dunst &
-numlockx &
-lxpolkit &
+	# Slow app startup fix (for flatpaks)
+	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-# Custom Resolutions
-xrandr --newmode "768x432"   25.75  768 792 864 960  432 435 440 450 -hsync +vsync
-xrandr --newmode "960x540"   40.75  960 992 1088 1216  540 543 548 562 -hsync +vsync
-xrandr --addmode VGA1 768x432
-xrandr --addmode VGA1 960x540
+	# Universal Autostarts
+	# fcitx5 -d &
+	xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
+	unclutter &
+	dunst &
+	numlockx &
+	lxpolkit &
+
+	# Custom Resolutions
+	xrandr --newmode "768x432"   25.75  768 792 864 960  432 435 440 450 -hsync +vsync
+	xrandr --newmode "960x540"   40.75  960 992 1088 1216  540 543 548 562 -hsync +vsync
+	xrandr --addmode VGA1 768x432
+	xrandr --addmode VGA1 960x540
+
+else
+
+fi
