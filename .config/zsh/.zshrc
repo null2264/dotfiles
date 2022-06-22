@@ -49,3 +49,12 @@ source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 #source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 #source $ZSH_CUSTOM/plugins/fsh/fast-syntax-highlighting.plugin.zsh
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
+
+
+	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+	export SDKMAN_DIR="$HOME/.sdkman"
+	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi

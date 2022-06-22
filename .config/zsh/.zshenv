@@ -1,18 +1,22 @@
 #!/bin/zsh
 
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
+else
+	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+fi
 export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
 export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
 export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
 export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 
 # -- Path
-# PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:${PATH:+:${PATH}}"
-else
-	PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
+	LOCAL_PATH=$(du "$HOME/.local/bin/" | cut -f2 > /tmp/path && paste -sd ':' /tmp/path)
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+	LOCAL_PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 fi
+PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
