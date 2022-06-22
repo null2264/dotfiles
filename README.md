@@ -9,26 +9,26 @@ Repository that contains my personal config files.
 ### Hi, welcome to my dotfiles repo!
 This is my personal collection of configuration files.
 
-I'm still in progress on cleaning up some mess.
+I'm still working on cleaning up some mess.
 
 <img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/07-26-20.17%3A19%3A32.1366x768.Zi.png'></img>
 My Setup:
 
-- **WM**: bspwm / DWM*
-- **OS**: Arch Linux
+- **WM**: bspwm / DWM\*
+- **OS**: Arch Linux / macOS 10.15 (Catalina)\*\*\*
 - **Shell**: zsh
-- **Terminal**: st\** / urxvt*
-- **Editor**: Neovim / vim*
-- **File Manager**: Thunar / lf\* / ranger*
-- **Launcher**: rofi* / dmenu*
-- **Browser**: Firefox
+- **Terminal**: st\*\* / urxvt\*
+- **Editor**: Neovim / vim\*
+- **File Manager**: Thunar / lf\*
+- **Launcher**: rofi\* / dmenu\*
+- **Browser**: Firefox / Librewolf
 
-*info*: *\** = *config included*; *\*\* = source included*
+*info*: *\** = *config included*; *\*\** = *in separate repo*; *\*\*\** = *partially work*
 
 ## Setup
 Currently there's no automatic installer for my dotfiles.
 
-I'm working on Luke Smith's LARBS fork to be able to install my dotfiles
+~~I'm working on Luke Smith's LARBS fork to be able to install my dotfiles~~ (Too lazy lol)
 
 ## Depedencies / Programs
 - ZSH
@@ -41,12 +41,12 @@ I'm working on Luke Smith's LARBS fork to be able to install my dotfiles
 
 ## Tips
 
-Small guide for my hotkeys
+Small guide for my dwm hotkeys
 - MODKey (Super/Win Key): Window Manager
-- Alt: Terminal
-- Ctrl: Most program inside terminal
+- Alt/Option: Terminal
+- Ctrl/: Most program inside terminal
 
-Add this to /etc/zsh/zshenv
+Add this to `/etc/zsh/zshenv` (**macOS**: `/etc/zshenv`)
 
 ```Shell
 #!/bin/zsh
