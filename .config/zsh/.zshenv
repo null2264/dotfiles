@@ -1,10 +1,16 @@
 #!/bin/zsh
+# -- XDG
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 else
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 fi
+
+# Android stuff
 export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
 export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
 export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
@@ -43,22 +49,18 @@ export MANPAGER="nvimpager"
 # export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
 # -- Wine problem workaround
-# - NOTE to self: this will prevent some games from launching
+# - NOTE to self: this will prevent some (probably wine issue) games from launching
+#   known workaround: install DXVK
 # export MESA_GL_VERSION_OVERRIDE=4.4
 # alternative workaround
-export MESA_GL_VERSION_OVERRIDE=4.2
-export MESA_GLSL_VERSION_OVERRIDE=420
+export MESA_GL_VERSION_OVERRIDE=4.6
+export MESA_GLSL_VERSION_OVERRIDE=460
 
 # -- SUDO - Deactivated by default (using DOAS now)
 # export SUDO_ASKPASS=/bin/rofi-askpass
 # if [[ ! -z $DISPLAY ]]; then
 #   export SUDO_ASKPASS="/bin/dmenu-askpass"
 # fi
-
-# -- XDG
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
 
 # cleaning up
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"

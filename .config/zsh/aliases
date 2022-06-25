@@ -5,7 +5,8 @@
 # alias doas='doas -- '
 
 #sudo + vim, yea imagine having that powe- nvm
-alias sudovim='sudoedit'
+# alias sudovim='sudoedit'
+alias sudovim='doasedit'
 
 #switch to pgsql user
 alias pg='doas -u postgres'
@@ -16,7 +17,8 @@ alias pg='doas -u postgres'
 #vim
 alias nano=nvim
 alias vim=nvim
-alias vimsudo='sudoedit /etc/sudoers'
+# alias vimsudo='sudoedit /etc/sudoers'
+alias vimsudo='doasedit /etc/sudoers'
 alias vi=nvim
 alias v=nvim
 

@@ -25,7 +25,7 @@ TDMUI=tdm_text
 #linux_logo -L classic
 
 # Args passed along when calling startx
-#STARTXARGS=
+STARTXARGS="-- -keeptty"
 
 # Uncomment to start X without selecting a session
 #exec startx
