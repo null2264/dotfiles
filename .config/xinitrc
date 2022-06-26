@@ -1,7 +1,6 @@
 #!/bin/sh
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile"
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-else
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	exec tdm --xstart
 fi

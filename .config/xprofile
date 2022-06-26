@@ -1,7 +1,6 @@
 #!/bin/sh
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-else
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	export _JAVA_AWT_WM_NONREPARENTING=1
 
 	# Disable auto-dim/autolock/screen saver
