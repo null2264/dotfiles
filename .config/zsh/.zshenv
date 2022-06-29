@@ -34,9 +34,9 @@ export XMODIFIERS=@im="ibus"
 # -- DEFAULT
 export QT_QPA_PLATFORMTHEME="qt5ct"
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="vim"
+  export VISUAL="vim"
 else
-  export EDITOR="nvim"
+  export VISUAL="nvim"
 fi
 export BROWSER="librewolf"
 # export BROWSER="waterfox-g3"
