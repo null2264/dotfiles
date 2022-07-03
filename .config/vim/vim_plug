@@ -62,22 +62,22 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'deoplete-plugins/deoplete-jedi'
 
 " --- Auto complete with NCM2 (nvim-completion-manager)
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
 " - NCM2 sources
-Plug 'ncm2/ncm2-jedi' " python
-Plug 'ncm2/ncm2-racer' " rust
+" Plug 'ncm2/ncm2-jedi' " python
+" Plug 'ncm2/ncm2-racer' " rust
 
 " --- Auto complete with DDC 
-" Plug 'Shougo/ddc.vim'
-" Plug 'vim-denops/denops.vim'
-" Plug 'neovim/nvim-lspconfig'
-" " - DDC sources
-" Plug 'Shougo/ddc-around'
-" Plug 'Shougo/ddc-nvim-lsp'
-" " - DDC filters
-" Plug 'Shougo/ddc-matcher_head'
-" Plug 'Shougo/ddc-sorter_rank'
+Plug 'Shougo/ddc.vim', { 'branch': 'main' }
+Plug 'vim-denops/denops.vim', { 'branch': 'main' }
+Plug 'neovim/nvim-lspconfig'
+" - DDC sources
+Plug 'Shougo/ddc-around', { 'branch': 'main' }
+Plug 'Shougo/ddc-nvim-lsp', { 'branch': 'main' }
+" - DDC filters
+Plug 'Shougo/ddc-matcher_head', { 'branch': 'main' }
+Plug 'Shougo/ddc-sorter_rank', { 'branch': 'main' }
 
 " --- Indent visualization
 " Plug 'Yggdroot/indentLine'
@@ -126,41 +126,41 @@ call plug#end()
 " augroup end
 
 " --- NCM2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
 
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
+" " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" " found' messages
+" set shortmess+=c
 
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
+" " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+" inoremap <c-c> <ESC>
 
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" " When the <Enter> key is pressed while the popup menu is visible, it only
+" " hides the menu. Use this mapping to close the menu and also start a new
+" " line.
+" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" " Use <TAB> to select the popup menu:
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" wrap existing omnifunc
-" Note that omnifunc does not run in background and may probably block the
-" editor. If you don't want to be blocked by omnifunc too often, you could
-" add 180ms delay before the omni wrapper:
-"  'on_complete': ['ncm2#on_complete#delay', 180,
-"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-au User Ncm2Plugin call ncm2#register_source({
-	\ 'name' : 'css',
-	\ 'priority': 9,
-	\ 'subscope_enable': 1,
-	\ 'scope': ['css','scss'],
-	\ 'mark': 'css',
-	\ 'word_pattern': '[\w\-]+',
-	\ 'complete_pattern': ':\s*',
-	\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-\ })
+" " wrap existing omnifunc
+" " Note that omnifunc does not run in background and may probably block the
+" " editor. If you don't want to be blocked by omnifunc too often, you could
+" " add 180ms delay before the omni wrapper:
+" "  'on_complete': ['ncm2#on_complete#delay', 180,
+" "               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+" au User Ncm2Plugin call ncm2#register_source({
+" 	\ 'name' : 'css',
+" 	\ 'priority': 9,
+" 	\ 'subscope_enable': 1,
+" 	\ 'scope': ['css','scss'],
+" 	\ 'mark': 'css',
+" 	\ 'word_pattern': '[\w\-]+',
+" 	\ 'complete_pattern': ':\s*',
+" 	\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+" \ })
 
 " --- NERDTree
 let NERDTreeShowHidden=1
@@ -238,76 +238,76 @@ hi Conceal ctermfg=0 ctermbg=NONE
 let g:python_highlight_all = 1
 
 " --- DDC
-" " Customize global settings
-" " Use around source.
-" " https://github.com/Shougo/ddc-around
-" call ddc#custom#patch_global('sources', ['around', 'nvimlsp'])
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
 
-" " Use matcher_head and sorter_rank.
-" " https://github.com/Shougo/ddc-matcher_head
-" " https://github.com/Shougo/ddc-sorter_rank
-" call ddc#custom#patch_global('sourceOptions', {
-"       \ '_': {
-"       \   'matchers': ['matcher_head'],
-"       \   'sorters': ['sorter_rank']},
-"       \ })
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
 
-" " Change source options
-" call ddc#custom#patch_global('sourceOptions', {
-"       \ 'around': {'mark': 'A'},
-"       \ 'nvimlsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.|:|->' },
-"       \ })
-" call ddc#custom#patch_global('sourceParams', {
-"       \ 'around': {'maxSize': 500},
-"       \ 'nvimlsp': { 'kindLabels': { 'Class': 'c' } },
-"       \ })
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
+      \ 'nvim-lsp': { 'mark': 'lsp', 'forceCompletionPattern': '\.|:|->' },
+      \ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' } },
+      \ })
 
-" " Customize settings on a filetype
-" call ddc#custom#patch_filetype(['rust'], 'sources', ['around', 'nvimlsp'])
-" call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-" call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-"       \ 'clangd': {'mark': 'C'},
-"       \ })
-" call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-"       \ 'around': {'maxSize': 100},
-"       \ })
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(['rust'], 'sources', ['around', 'nvim-lsp'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+      \ 'clangd': {'mark': 'C'},
+      \ })
+call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+      \ 'around': {'maxSize': 100},
+      \ })
 
-" " Mappings
+" Mappings
 
-" " <TAB>: completion.
-" inoremap <silent><expr> <TAB>
-" \ pumvisible() ? '<C-n>' :
-" \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-" \ '<TAB>' : ddc#manual_complete()
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#manual_complete()
 
-" " <S-TAB>: completion back.
-" inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 
-" " Use ddc.
-" call ddc#enable()
+" Use ddc.
+call ddc#enable()
 
 " --- nvim-lsp
-" lua << EOF
-" require'lspconfig'.pyright.setup{}
-" local nvim_lsp = require'lspconfig'
+lua << EOF
+local nvim_lsp = require'lspconfig'
 
-" nvim_lsp.rust_analyzer.setup({
-"     settings = {
-"         ["rust-analyzer"] = {
-"             assist = {
-"                 importGranularity = "module",
-"                 importPrefix = "by_self",
-"             },
-"             cargo = {
-"                 loadOutDirsFromCheck = true
-"             },
-"             procMacro = {
-"                 enable = true
-"             },
-"         }
-"     }
-" })
-" EOF
+nvim_lsp.pyright.setup{}
+nvim_lsp.rust_analyzer.setup({
+    settings = {
+        ["rust-analyzer"] = {
+            assist = {
+                importGranularity = "module",
+                importPrefix = "by_self",
+            },
+            cargo = {
+                loadOutDirsFromCheck = true
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
+EOF
 
 " --- ale
 let g:ale_fixers = {

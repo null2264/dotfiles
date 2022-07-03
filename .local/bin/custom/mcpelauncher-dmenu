@@ -1,7 +1,0 @@
-#!/bin/sh
-
-version=$(find ~/.local/share/mcpelauncher/versions -maxdepth 1 | sort -r | awk '!/ns$/ && !/.ini/' | sed "s/^.*s\///" | dmenu -l 10 -i -p "MCPE Versions")
-[ -z $version ] && exit 1
-
-gamemoderun mcpelauncher-client -ww 1366 -wh 740 -dg ~/.local/share/mcpelauncher/versions/$version &
-sleep 5s && mcpelauncher-rpc "$version"
