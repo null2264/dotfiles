@@ -1,4 +1,0 @@
-#!/bin/sh
-
-link=$(echo "$(xclip -selection clipboard -o)" | dmenu -i -p "Link: ")
-[ -z $link ] && exit 1 || mpv $link

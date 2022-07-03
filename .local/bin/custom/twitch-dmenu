@@ -1,6 +1,0 @@
-#!/bin/sh
-
-link="https://twitch.tv/$(echo "" | dmenu -p "Channel/Video: ")"
-[ -z $link ] && exit 1
-
-mpv $link && echo "Successfully load" || notify-send "Channel/video name is invalid or offline"
