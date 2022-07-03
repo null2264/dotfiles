@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-#sudo
-[ -z $DISPLAY ] && alias sudo='sudo ' || alias sudo='sudo --askpass '
-# alias doas='doas -- '
-
-#sudo + vim, yea imagine having that powe- nvm
-# alias sudovim='sudoedit'
-alias sudovim='doasedit'
+#sudo + vim without sacrificing config
+alias sudovim='sudoedit'
+alias doasvim='doasedit'
 
 #switch to pgsql user
 alias pg='doas -u postgres'
@@ -17,8 +13,8 @@ alias pg='doas -u postgres'
 #vim
 alias nano=nvim
 alias vim=nvim
-# alias vimsudo='sudoedit /etc/sudoers'
-alias vimsudo='doasedit /etc/sudoers'
+alias vimsudo='sudoedit /etc/sudoers'
+alias vimdoas='doasedit /etc/sudoers'
 alias vi=nvim
 alias v=nvim
 
@@ -30,17 +26,14 @@ alias mutt="neomutt"
 
 #curl
 alias weather='curl wttr.in'
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 #install
 alias p='doas pacman'
 alias a='paru'
 
 #ripper
-alias spotifyrip='spotify-ripper -u palembani@gmail.com'
 alias yt='youtube-dl --add-metadata'
 alias yta='youtube-dl --add-metadata -x --audio-format'
-alias crunchyroll-dl='youtube-dl --write-sub --sub-lang enUS --cookies="/home/ziro/Downloads/cookies.txt"'
 alias xreload='xrdb $HOME/.config/Xresources'
 
 #clean up
@@ -48,31 +41,31 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 #shortcuts
 alias ytv='youtube-viewer'
-alias gravit='~/my\ Files/Gravit/GravitDesigner.AppImage'
-alias redoom='~/doom refresh'
+alias gravit="$HOME/my\ Files/Gravit/GravitDesigner.AppImage"
+alias redoom="$HOME/doom refresh"
 alias rvim='doas vim'
 alias py='python'
-alias ps2c='doas sh $HOME/.scripts/ps2c'
 alias cls='clear'
 alias classprop='xprop WM_CLASS'
 alias storagelist='lsblk -f'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias q='exit'
 
+#ls stuff
 alias l='exa --color=always --group-directories-first' # my preferred listing
 alias ls='exa --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lla='exa -al --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
 alias md='mkdir -p'
 alias rd='rmdir'
 
 alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
-alias upElearn='sh $HOME/.scripts/elearning-isitup.sh'
-# alias old-ranger='ranger'
-alias ranger='lf'
 #alias mpv='mpv --geometry=1280x720'
 
 #config shortcuts
@@ -104,8 +97,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias mntfd='doas mount -o gid=users,fmask=113,dmask=002'
 alias umntfd='doas umount'
-alias cmatrix='unimatrix -n -s 96 -l 'o''
-alias make-xanmod='env use_tracers=n use_numa=n use_pds=y use_ns=y makepkg -s'
+alias cmatrix='unimatrix -n -s 96 -l "o"'
 alias s='cd $HOME/.local/bin/scripts;ls'
 
 #folder shortcut

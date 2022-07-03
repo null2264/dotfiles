@@ -41,14 +41,16 @@ else
   export EDITOR="nvim"
 fi
 export BROWSER="librewolf"
-# export BROWSER="waterfox-g3"
 export TERMINAL="kitty"
 export READER="zathura"
 export HTTPS="localhost:9050"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json"
 # vim/nvim as manpager
-export MANPAGER="nvimpager"
-# export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	export MANPAGER="nvimpager"
+	# export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
+fi
 
 # -- Wine problem workaround
 # - NOTE to self: this will prevent some (probably wine issue) games from launching
