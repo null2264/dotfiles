@@ -14,38 +14,46 @@ I'm still working on cleaning up some mess.
 <img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/07-26-20.17%3A19%3A32.1366x768.Zi.png'></img>
 My Setup:
 
-- **WM**: bspwm / DWM\*
-- **OS**: Arch Linux / macOS 10.15 (Catalina)\*\*\*
+- **WM**: bspwm / DWM*ʳ*
+- **OS**: Arch Linux / macOS 12.x (Monterey)*ᵖ*
 - **Shell**: zsh
-- **Terminal**: st\*\* / urxvt\*
-- **Editor**: Neovim / vim\*
-- **File Manager**: Thunar / lf\*
-- **Launcher**: rofi\* / dmenu\*
-- **Browser**: Firefox / Librewolf
+- **Terminal**: st*ʳ* / kitty / iTerm2
+- **Editor**: Neovim / vim
+- **File Manager**: Thunar / lf
+- **Launcher**: rofi / dmenu / Sol
+- **Browser**: Librewolf / Brave
 
-*info*: *\** = *config included*; *\*\** = *in separate repo*; *\*\*\** = *partially work*
+*info*: *ʳ* = *in separate repo*; *ᵖ* = *partially work*
 
 ## Setup
 Currently there's no automatic installer for my dotfiles.
 
 ~~I'm working on Luke Smith's LARBS fork to be able to install my dotfiles~~ (Too lazy lol)
 
-## Depedencies / Programs
-- ZSH
+## Recommended Project/Software
+- LARBS
 - Console-TDM
-- X11
-- Nerd Fonts (Iosevka, UbuntuMono, and Fira)
-- Feather (Font)
+- Nerd Fonts
+  - Iosevka
+  - Fira
+  - Sarasa Font
+- Feather / Lucide (Font)
 - st (st-zi build)
-- Tiling WM (Qtile, BSPWM, or DWM)
+- Tiling WM
+  - Qtile
+  - BSPWM
+  - DWM
+  - yabai
+- [dortania](https://github.com/dortania) (A great hackintosh guide)
 
 ## Tips
 
-Small guide for my dwm hotkeys
+### Small guide for my dwm hotkeys
 - MODKey (Super/Win Key): Window Manager
 - Alt/Option: Terminal
 - Ctrl/: Most program inside terminal
 
+### ZSH setup
 Add this to `/etc/zsh/zshenv` (**macOS**: `/etc/zshenv`)
 
 ```Shell
@@ -53,6 +61,6 @@ Add this to `/etc/zsh/zshenv` (**macOS**: `/etc/zshenv`)
 
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
-*Set $PROFILE environment variable to your powershell config file path (ex: $PROFILE='$HOME/.config/powershell/profile.ps1')*
 
-***README.md** is still under construction*
+### For winders peeps
+Set $PROFILE environment variable to your powershell config file path (ex: $PROFILE='$HOME/.config/powershell/profile.ps1')
