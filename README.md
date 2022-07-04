@@ -11,7 +11,7 @@ This is my personal collection of configuration files.
 
 I'm still working on cleaning up some mess.
 
-<img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/07-26-20.17%3A19%3A32.1366x768.Zi.png'></img>
+<img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/newSetup.png'></img>
 My Setup:
 
 - **WM**: bspwm / DWM*ʳ*
