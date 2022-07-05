@@ -32,8 +32,8 @@ alias p='doas pacman'
 alias a='paru'
 
 #ripper
-alias yt='youtube-dl --add-metadata'
-alias yta='youtube-dl --add-metadata -x --audio-format'
+alias yt='yt-dlp --add-metadata'
+alias yta='yt-dlp --add-metadata -x --audio-format'
 alias xreload='xrdb $HOME/.config/Xresources'
 
 #clean up
