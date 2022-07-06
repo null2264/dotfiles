@@ -1,7 +1,16 @@
 # vim: filetype=zsh
 zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 fpath=(/usr/local/share/zsh-completions $fpath)
-autoload -U compinit && compinit
+
+autoload -Uz compinit
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+	compinit -u # homebrew moment, not recommended but whatever
+else
+	compinit
+fi
+
 zmodload -i zsh/complist
 zstyle ':completion:*' menu select
 
