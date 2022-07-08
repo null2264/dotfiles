@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	alias brew="sudo -H -u maintenance brew"
+fi
+
 #sudo + vim without sacrificing config
 alias sudovim='sudoedit'
 alias doasvim='doasedit'
