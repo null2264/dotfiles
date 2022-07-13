@@ -8,13 +8,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 else
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-fi
 
-# Android stuff
-export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
+	# Android stuff
+	export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+	export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+	export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
+fi
 
 # -- Path
 if [[ "$OSTYPE" == "darwin"* ]]; then

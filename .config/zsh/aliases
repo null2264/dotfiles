@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+	# i need sudo to launch emulator
+	alias pixelemu="sudo $HOME/Library/Android/sdk/emulator/emulator @Pixel_2_API_28"
 	alias brew="sudo -H -u maintenance brew"
 fi
 
