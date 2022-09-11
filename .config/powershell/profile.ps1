@@ -17,13 +17,6 @@ function UsernameAtComputer
 	}
 	"`e[35;1m" + $username + "`e[0m`e[1m@" + "`e[35;1m" + $compname
 }
-Write-Host " `e[34;1m   ,___---'‾‾‾|`e[0m  " (UsernameAtComputer)
-Write-Host " `e[34;1m|'‾    |      |  "
-Write-Host " `e[34;1m|      |      |"
-Write-Host " `e[34;1m|------|------|"
-Write-Host " `e[34;1m|      |      |"
-Write-Host " `e[34;1m|,_    |      |"
-Write-Host " `e[34;1m   '‾‾‾---,___|"
 
 # ----- set default color
 Set-PSReadlineOption -Colors @{ Parameter = "`e[96m"}
