@@ -39,4 +39,6 @@ else
 endif
 
 " ----- PlugIns
-source ~/.config/vim/vim_plug
+if !exists('g:vscode')
+	source ~/.config/vim/vim_plug
+endif
