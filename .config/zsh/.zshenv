@@ -6,6 +6,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
+	export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 else
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 
