@@ -6,6 +6,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	alias brew="sudo -H -u maintenance brew"
 fi
 
+alias punten='doas'
 #sudo + vim without sacrificing config
 alias sudovim='sudoedit'
 alias doasvim='doasedit'
@@ -128,3 +129,4 @@ alias docx2pdf='lowriter --convert-to pdf'
 
 alias mirror-update='curl -s "https://archlinux.org/mirrorlist/?country=ID&country=SG&country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -'
 alias center-pfetch="printf '\n'; pfetch | sed '\$d' | center -l"
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"

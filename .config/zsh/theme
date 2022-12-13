@@ -30,12 +30,31 @@ function zle-line-init zle-keymap-select {
 	PS2="%B%F{blue}?>%f%b "
     # RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
     # RPS2=$RPS1
+
+	if [[ ${KEYMAP} == vicmd ]] ||
+	 [[ $1 = 'block' ]]; then
+	echo -ne '\e[1 q'
+
+	elif [[ ${KEYMAP} == main ]] ||
+	   [[ ${KEYMAP} == viins ]] ||
+	   [[ ${KEYMAP} = '' ]] ||
+	   [[ $1 = 'beam' ]]; then
+	echo -ne '\e[5 q'
+	fi
+
 	zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-precmd () { vcs_info }
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+
+precmd () {
+	vcs_info
+	_fix_cursor
+}
 #RPROMPT=\$vcs_info_msg_0_
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#60C0FF,bold,underline"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="ls *,cd *"
