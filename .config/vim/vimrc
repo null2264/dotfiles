@@ -31,14 +31,19 @@ if has('win64') || has('win32') || has('win16')
 	so C:\_config\vim\vim_win
 	" Universal
 	so C:\_config\vim\vim_uni
+
+	" ----- PlugIns
+	if !exists('g:vscode')
+		source C:\_config\vim\vim_plug
+	endif
 else
 	" *nix (Linux/Mac)
 	so ~/.config/vim/vim_nix
 	" Universal
 	so ~/.config/vim/vim_uni
-endif
 
-" ----- PlugIns
-if !exists('g:vscode')
-	source ~/.config/vim/vim_plug
+	" ----- PlugIns
+	if !exists('g:vscode')
+		source ~/.config/vim/vim_plug
+	endif
 endif
