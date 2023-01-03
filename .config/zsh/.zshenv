@@ -32,6 +32,9 @@ export QT_IM_MODULE="ibus"
 export GLFW_IM_MODULE="ibus"
 export XMODIFIERS=@im="ibus"
 
+# -- rootless docker
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
 # -- DEFAULT
 export QT_QPA_PLATFORMTHEME="qt5ct"
 if [[ -n $SSH_CONNECTION ]]; then

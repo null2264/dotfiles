@@ -12,13 +12,17 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	# Slow app startup fix (for flatpaks)
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-	# Universal Autostarts
-	# fcitx5 -d &
-	xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
-	unclutter &
-	dunst &
-	numlockx &
-	lxpolkit &
+	if [[ "1$(pidof dwm)" == "1" ]]; then
+		echo ""
+	else
+		# Autostarts for DWM
+		# fcitx5 -d &
+		xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
+		unclutter &
+		dunst &
+		numlockx &
+		lxpolkit &
+	fi
 
 	# Custom Resolutions
 	xrandr --newmode "768x432"   25.75  768 792 864 960  432 435 440 450 -hsync +vsync
