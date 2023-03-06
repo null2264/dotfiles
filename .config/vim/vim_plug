@@ -39,7 +39,7 @@ Plug 'ryanoasis/vim-devicons'
 " ======
 
 " -- Markdown preview, not really useful since it's only support github's md format.
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " --- Auto complete with NCM2 (nvim-completion-manager)
 " Plug 'ncm2/ncm2'
@@ -62,11 +62,11 @@ Plug 'neovim/nvim-lspconfig'
 " Plug 'Shougo/ddc-sorter_rank', { 'branch': 'main' }
 
 " --- Auto complete with CMP
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
+Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 
 " --- Indent visualization
 " Plug 'Yggdroot/indentLine'
@@ -78,7 +78,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'JuliaEditorSupport/julia-vim'
 
 " --- enhanced python highlighting
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'wookayin/semshi', {'do': ':UpdateRemotePlugins'}
 
 " --- For golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -398,7 +398,7 @@ lua <<EOF
   })
 
   -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities
