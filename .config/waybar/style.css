@@ -1,0 +1,62 @@
+* {
+    font-family: Sarasa Term J, Iosevka Nerd Font, monoscope;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces {
+    background-color: #0E1418;
+    border-radius: 6px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 6px;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button:hover {
+    background: #2c363d;
+    border-bottom: 3px solid #FFF;
+}
+
+#workspaces button.active {
+    border-bottom: 3px solid #08A5DE;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+box.modules-right {
+    background-color: #0E1418;
+    border-radius: 6px;
+}
