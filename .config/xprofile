@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 	if [[ "1$(pidof dwm)" == "1" ]]; then
-		echo ""
+		echo
 	else
 		# Autostarts for DWM
 		# fcitx5 -d &

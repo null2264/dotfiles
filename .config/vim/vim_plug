@@ -78,7 +78,7 @@ Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'JuliaEditorSupport/julia-vim'
 
 " --- enhanced python highlighting
-Plug 'wookayin/semshi', {'do': ':UpdateRemotePlugins'}
+"Plug 'wookayin/semshi', {'do': ':UpdateRemotePlugins'}
 
 " --- For golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -92,6 +92,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'wakatime/vim-wakatime'
 
 Plug 'GutenYe/json5.vim'
+
+" --- Project Fluent support
+Plug 'projectfluent/fluent.vim'
 
 call plug#end()
 
