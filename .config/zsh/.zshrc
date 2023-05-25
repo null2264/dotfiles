@@ -9,6 +9,7 @@
 # rateUSD | sed 's/^/ /g'
 
 setopt auto_cd # auto cd if directory
+
 # highlight on tab (completion)
 [ -f ~/.config/zsh/completion ] && source ~/.config/zsh/completion
 # zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash

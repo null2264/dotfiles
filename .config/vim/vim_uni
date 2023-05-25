@@ -52,10 +52,9 @@ noremap <C-Y> "+y
 noremap <C-P> "+P
 
 " Shortcut to comment a line
-" <C-_> means ctrl+/ for vim, for some reason...
-map <C-_> gcc
-vmap <C-_> gc
-imap <C-_> <esc>gc
+map <C-/> gcc
+vmap <C-/> gc
+imap <C-/> <esc>gc
 
 " Clear last search result
 map <leader>c :noh<CR>
