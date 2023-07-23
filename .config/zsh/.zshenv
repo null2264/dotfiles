@@ -17,9 +17,15 @@ else
 	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 fi
 
+# -- Python
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export PYTHONNOUSERSITE=1
+fi
+
 # -- Path
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	LOCAL_PATH=$(du "$HOME/.local/bin/" | cut -f2 > /tmp/path && paste -sd ':' /tmp/path)
+	LOCAL_PATH="$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 fi
