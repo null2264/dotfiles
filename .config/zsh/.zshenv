@@ -39,7 +39,11 @@ export GLFW_IM_MODULE="ibus"
 export XMODIFIERS=@im="ibus"
 
 # -- rootless docker
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export DOCKER_HOST=unix:///var/run/docker.sock
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+fi
 
 # -- DEFAULT
 export QT_QPA_PLATFORMTHEME="qt5ct"
