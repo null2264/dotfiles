@@ -52,6 +52,7 @@ _fix_cursor() {
 }
 
 precmd () {
+	RPROMPT=""  # for some reason path added to RPROMPT in macOS, I have no idea where it's coming from
 	vcs_info
 	_fix_cursor
 }
