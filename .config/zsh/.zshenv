@@ -24,6 +24,7 @@ fi
 
 # -- Path
 if [[ "$OSTYPE" == "darwin"* ]]; then
+	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du "$HOME/.local/bin/" | cut -f2 > /tmp/path && paste -sd ':' /tmp/path)
 	LOCAL_PATH="$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
