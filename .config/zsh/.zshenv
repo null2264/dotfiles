@@ -46,6 +46,14 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 fi
 
+# -- Proxy
+# export HTTP_PROXY="127.0.0.1:8080"
+# export HTTPS_PROXY="$HTTP_PROXY"
+# export FTP_PROXY="$HTTP_PROXY"
+# export http_proxy="$HTTP_PROXY"
+# export https_proxy="$HTTP_PROXY"
+# export ftp_proxy="$HTTP_PROXY"
+
 # -- DEFAULT
 export QT_QPA_PLATFORMTHEME="qt5ct"
 if [[ -n $SSH_CONNECTION ]]; then
