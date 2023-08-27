@@ -96,6 +96,9 @@ Plug 'GutenYe/json5.vim'
 " --- Project Fluent support
 Plug 'projectfluent/fluent.vim'
 
+" --- AIO solution for highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
 " ======================
@@ -408,3 +411,6 @@ lua <<EOF
     capabilities = capabilities
   }
 EOF
+
+" --- TSTree
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
