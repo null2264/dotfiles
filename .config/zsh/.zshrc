@@ -59,3 +59,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
+export PATH=$PATH:/home/ziro/.spicetify
+
+# bun completions
+[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"

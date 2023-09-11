@@ -18,12 +18,18 @@ else
 	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 fi
 
+# -- Wayland
+if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
 # -- Python
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PYTHONNOUSERSITE=1
 fi
 
 # -- Path
+export BUN_INSTALL="$HOME/.bun"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du "$HOME/.local/bin/" | cut -f2 > /tmp/path && paste -sd ':' /tmp/path)
@@ -31,7 +37,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 fi
-PATH="$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$LOCAL_PATH${PATH:+:${PATH}}"
+PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
