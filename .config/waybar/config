@@ -1,15 +1,14 @@
-// For Arch users: Compile waybar with `-Dexperimental=true` flag!
 {
     "layer": "top",
     "height": 28, // Waybar height (to be removed for auto height)
     "spacing": 0, // Gaps between modules (4px)
-    "modules-left": ["wlr/workspaces", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "disk", "memory", "temperature", "clock", "tray"],
-    "wlr/workspaces": {
-        "format": "{icon}",
+    "hyprland/workspaces": {
+        "format": "{id}",
         "on-click": "activate",
-	"sort-by-number": true
+	"sort-by": "number"
     },
     "keyboard-state": {
         "numlock": true,
