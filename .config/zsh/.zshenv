@@ -70,7 +70,7 @@ else
   export VISUAL="nvim"
   export EDITOR="nvim"
 fi
-export BROWSER="librewolf"
+export BROWSER="pulse-browser"
 export TERMINAL="kitty"
 export READER="zathura"
 export HTTPS="localhost:9050"
