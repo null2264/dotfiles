@@ -14,14 +14,14 @@ I'm still working on cleaning up some mess.
 <img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/newSetup.png'></img>
 My Setup:
 
-- **WM**: bspwm / DWM*ʳ*
-- **OS**: Arch Linux / macOS 12.x (Monterey)*ᵖ*
+- **WM**: Hyprland
+- **OS**: Arch Linux / macOS 13.x (Ventura)*ᵖ*
 - **Shell**: zsh
 - **Terminal**: st*ʳ* / kitty / iTerm2
-- **Editor**: Neovim / vim
-- **File Manager**: Thunar / lf
-- **Launcher**: rofi / dmenu / Sol
-- **Browser**: Librewolf / Brave
+- **Editor**: Neovim / VSCode / IDEA
+- **File Manager**: Thunar / Nautilus / lf
+- **Launcher**: tofi / Sol
+- **Browser**: Pulse
 
 *info*: *ʳ* = *in separate repo*; *ᵖ* = *partially work*
 
