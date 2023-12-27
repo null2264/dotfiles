@@ -2,34 +2,66 @@
 # -- XDG
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
+	export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 else
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+
+	# Android stuff
+	export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+	export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+	export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
+	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 fi
 
-# Android stuff
-export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
+# -- Wayland
+if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
+# -- Python
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export PYTHONNOUSERSITE=1
+fi
 
 # -- Path
+export BUN_INSTALL="$HOME/.bun"
 if [[ "$OSTYPE" == "darwin"* ]]; then
+	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du "$HOME/.local/bin/" | cut -f2 > /tmp/path && paste -sd ':' /tmp/path)
+	LOCAL_PATH="$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 fi
-PATH="$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$LOCAL_PATH${PATH:+:${PATH}}"
+PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
-export GTK_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus"
-export GLFW_IM_MODULE="ibus"
-export XMODIFIERS=@im="ibus"
+if [[ "$XDG_SESSION_TYPE" != "wayland" ]]; then
+	export GTK_IM_MODULE="ibus"
+	export QT_IM_MODULE="ibus"
+	export GLFW_IM_MODULE="ibus"
+	export XMODIFIERS=@im="ibus"
+fi
+
+# -- rootless docker
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export DOCKER_HOST=unix:///var/run/docker.sock
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+fi
+
+# -- Proxy
+# export HTTP_PROXY="127.0.0.1:8080"
+# export HTTPS_PROXY="$HTTP_PROXY"
+# export FTP_PROXY="$HTTP_PROXY"
+# export http_proxy="$HTTP_PROXY"
+# export https_proxy="$HTTP_PROXY"
+# export ftp_proxy="$HTTP_PROXY"
 
 # -- DEFAULT
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -40,17 +72,17 @@ else
   export VISUAL="nvim"
   export EDITOR="nvim"
 fi
-export BROWSER="librewolf"
+export BROWSER="pulse-browser"
 export TERMINAL="kitty"
 export READER="zathura"
 export HTTPS="localhost:9050"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json"
 # vim/nvim as manpager
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-	export MANPAGER="nvimpager"
+# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	# export MANPAGER="nvimpager"
 	# export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
-fi
+# fi
 
 # -- Wine problem workaround
 # - NOTE to self: this will prevent some (probably wine issue) games from launching

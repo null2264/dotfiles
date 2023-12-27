@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# i need sudo to launch emulator
+	alias pixelemu="sudo $HOME/Library/Android/sdk/emulator/emulator @Pixel_2_API_28"
+	alias mbrew="sudo -H -u maintenance -g staff brew"
+fi
+
+alias punten='doas'
 #sudo + vim without sacrificing config
 alias sudovim='sudoedit'
 alias doasvim='doasedit'
@@ -32,8 +39,8 @@ alias p='doas pacman'
 alias a='paru'
 
 #ripper
-alias yt='youtube-dl --add-metadata'
-alias yta='youtube-dl --add-metadata -x --audio-format'
+alias yt='yt-dlp --add-metadata'
+alias yta='yt-dlp --add-metadata -x --audio-format'
 alias xreload='xrdb $HOME/.config/Xresources'
 
 #clean up
@@ -121,3 +128,5 @@ alias qn='vim $HOME/Documents/QuickNote'
 alias docx2pdf='lowriter --convert-to pdf'
 
 alias mirror-update='curl -s "https://archlinux.org/mirrorlist/?country=ID&country=SG&country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -'
+alias center-pfetch="printf '\n'; pfetch | sed '\$d' | center -l"
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"

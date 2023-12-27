@@ -5,6 +5,7 @@ picom &
 nitrogen --restore &
 $HOME/.scripts/launch-conky_dwm.sh &
 sxhkd -c $HOME/.config/sxhkd/dwm &
+easyeffects --gapplication-service &
 if [ x$(pidof dwmblocks) = "x" ] 
 then
 	dwmblocks &

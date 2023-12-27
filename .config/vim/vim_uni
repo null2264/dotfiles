@@ -52,10 +52,9 @@ noremap <C-Y> "+y
 noremap <C-P> "+P
 
 " Shortcut to comment a line
-" <C-_> means ctrl+/ for vim, for some reason...
-map <C-_> gcc
-vmap <C-_> gc
-imap <C-_> <esc>gc
+map <C-/> gcc
+vmap <C-/> gc
+imap <C-/> <esc>gc
 
 " Clear last search result
 map <leader>c :noh<CR>
@@ -94,8 +93,9 @@ autocmd BufEnter *.py set ai sw=4 ts=4 sta et fo=croql
 autocmd BufEnter *.c set ai sw=4 ts=4 sta noet fo=croql
 autocmd BufEnter *.md set ai sw=3 ts=3 sta et fo=croql
 autocmd Filetype html* set ai sw=4 ts=4 sta et fo=croql
-autocmd Filetype css set ai sw=4 ts=4 sta et fo=croql
-autocmd Filetype javascript set ai sw=4 ts=4 sta et fo=croql
+autocmd Filetype *css set ai sw=4 ts=4 sta et fo=croql
+autocmd Filetype javascript* set ai sw=4 ts=4 sta et fo=croql
+autocmd Filetype json set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype vue set ai sw=4 ts=4 sta et fo=croql
 autocmd Filetype php set ai sw=4 ts=4 sta et fo=croql
 

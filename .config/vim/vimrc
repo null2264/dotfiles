@@ -26,17 +26,18 @@
 " Automatically source config for the correct OS
 " NOTE: By default the directory of Windows config will be located on
 " "C:\_config\vim"
+
 if has('win64') || has('win32') || has('win16')
-	" Windows
-	so C:\_config\vim\vim_win
-	" Universal
-	so C:\_config\vim\vim_uni
+	let $ZVIM_CONFIG_DIR = "C:/_config/vim"
+	let $ZVIM_OS_TYPE = "win"
 else
-	" *nix (Linux/Mac)
-	so ~/.config/vim/vim_nix
-	" Universal
-	so ~/.config/vim/vim_uni
+	let $ZVIM_CONFIG_DIR = "~/.config/vim"
+	let $ZVIM_OS_TYPE = "nix"
 endif
 
-" ----- PlugIns
-source ~/.config/vim/vim_plug
+so $ZVIM_CONFIG_DIR/vim_$ZVIM_OS_TYPE
+so $ZVIM_CONFIG_DIR/vim_uni
+
+if !exists('g:vscode')
+	source $ZVIM_CONFIG_DIR/vim_plug
+endif

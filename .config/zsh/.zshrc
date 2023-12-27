@@ -9,11 +9,12 @@
 # rateUSD | sed 's/^/ /g'
 
 setopt auto_cd # auto cd if directory
+
 # highlight on tab (completion)
 [ -f ~/.config/zsh/completion ] && source ~/.config/zsh/completion
 # zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 # fpath=(/usr/local/share/zsh-completions $fpath)
-# autoload -U compinit && compinit
+# autoload -U compinit && compinit -u
 # zmodload -i zsh/complist
 # zstyle ':completion:*' menu select
 
@@ -58,3 +59,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
+export PATH=$PATH:/home/ziro/.spicetify
+
+# bun completions
+[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
