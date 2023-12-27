@@ -5,6 +5,9 @@
 (deflisten workspace-list :initial '[1]'
   `stdbuf -oL $HOME/.local/bin/scripts/eww-hyprland-workspace-list-listener`)
 
+(deflisten datetime 
+  `stdbuf -oL $HOME/.local/bin/scripts/eww-datetime-listener`)
+
 ;; Windows
 (defwindow bar
   :monitor 0
@@ -23,10 +26,13 @@
   (workspaces))
 
 (defwidget middle []
-  (literal :content "test"))
+  (label :text "test"))
 
 (defwidget end []
-  (literal :content "test"))
+  (box :halign "end"
+       :class "end"
+       :space-evenly false
+       (clock)))
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -35,3 +41,12 @@
             (button :class {active-workspace == id ? "active" : ""}
                     :onclick `hyprctl dispatch workspace ${id}`
                     id))))
+
+(defwidget clock []
+  (pair :icon "a" :text {datetime.full})))
+
+(defwidget pair [icon text]
+  (box :width 70
+       :space-evenly false
+       (label :text icon)
+       (label :text text)))
