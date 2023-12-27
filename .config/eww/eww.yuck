@@ -43,7 +43,7 @@
                     id))))
 
 (defwidget clock []
-  (pair :icon "a" :text {datetime.full})))
+  (pair :icon "a" :text {datetime.full}))
 
 (defwidget pair [icon text]
   (box :width 70
