@@ -1,0 +1,47 @@
+# the keyboard devices it reads from, if no devices are specified, it reads from all
+devices:
+ - "/dev/input/by-id/usb-SEMICO_USB_Gaming_Keyboard-event-kbd"
+
+# this is executed when mouseless starts, e.g. useful for setting the keyboard layout
+# startCommand: "setxkbmap de"
+
+# the default speed for mouse movement and scrolling
+baseMouseSpeed: 750.0
+baseScrollSpeed: 20.0
+
+# the time it takes to accelerate to baseMouseSpeed (in ms), 0 to reach top speed immediately
+mouseAccelerationTime: 200.0
+# the shape of the acceleration curve, 1.0 is linear, higher values have more time at low speeds
+mouseAccelerationCurve: 2.0
+# speed of the mouse when it starts moving
+startMouseSpeed: 0.0
+# same for deceleration
+mouseDecelerationTime: 300.0
+mouseDecelerationCurve: 3.0
+
+layers:
+- name: initial
+  bindings:
+    pause: layer mouse
+    esc: capslock
+    capslock: esc
+- name: mouse
+  passThrough: true
+  bindings:
+    # quit mouse layer
+    #q: layer initial
+    backspace: layer initial
+    # keep the mouse layer active
+    space: layer mouse
+    r: reload-config
+    l: move  1  0
+    h: move -1  0
+    j: move  0  1
+    k: move  0 -1
+    rightbrace: scroll up
+    leftbrace: scroll down
+    rightctrl: speed 4.0
+    rightalt: speed 0.2
+    enter: button left
+    backslash: button middle
+    rightshift: button right
