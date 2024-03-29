@@ -5,7 +5,7 @@
 #fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	bash /usr/bin/tdm
+	[[ -n "$XDG_VTNR" && $XDG_VTNR -le 2 ]] && bash /usr/bin/tbsm
 
 	[[ -f ~/.zshrc ]] && . ~/.zshrc
 	[ ! -s ~/.config/mpd/pid ] && mpd
