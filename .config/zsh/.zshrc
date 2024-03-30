@@ -40,26 +40,32 @@ export KEYTIMEOUT=1
 # Keybindings
 [ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
 
-# ----- Plugins
+# [[ Plugins
 ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
 
-# source $ZSH/oh-my-zsh.sh
-# emulate -R zsh -c 'source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-# eval $(thefuck --alias) # thefuck - fix your stupid typo :)
-source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
-#source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-#source $ZSH_CUSTOM/plugins/fsh/fast-syntax-highlighting.plugin.zsh
+[ ! -d $ZSH_PLUGINS ] && mkdir -p $ZSH_PLUGINS
+
+# >> INSTALL: #!/bin/zsh
+# cd $ZSH_PLUGINS && git clone <plugin repo git url>
+# << INSTALL
+
+# >> ENABLED: silently fail if not installed
+source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null # https://github.com/zdharma-continuum/fast-syntax-highlighting
+source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null # https://github.com/zsh-users/zsh-autosuggestions
+#source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null # https://github.com/zsh-users/zsh-syntax-highlighting
+# << ENABLED
+
+# ]] Plugins
+
+export PATH=$PATH:/home/ziro/.spicetify
+
+# bun completions
+[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
-
 
 	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 	export SDKMAN_DIR="$HOME/.sdkman"
 	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
-export PATH=$PATH:/home/ziro/.spicetify
-
-# bun completions
-[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
