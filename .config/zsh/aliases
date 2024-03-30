@@ -76,6 +76,7 @@ alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
 #alias mpv='mpv --geometry=1280x720'
 
 #config shortcuts
+alias config='cd $HOME/Build/GIT/dotfiles'
 alias cfvim='vim $XDG_CONFIG_HOME/vim/vimrc'
 alias cfvimplug='vim $XDG_CONFIG_HOME/vim/vim_plug'
 alias cfvimnix='vim $XDG_CONFIG_HOME/vim/vim_nix'
@@ -112,6 +113,7 @@ alias cdclg='cd "$HOME/my Files/Kuliah/"'
 alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
+alias cdgit='cd $HOME/Build/GIT'
 alias gaa='git add -A'
 alias gci='git commit'
 alias gca='git commit --all'
@@ -121,7 +123,7 @@ alias gs='git status'
 alias gp='git push'
 alias gP='git pull'
 alias gcl='git clone'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+#alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 alias qn='vim $HOME/Documents/QuickNote'
 
