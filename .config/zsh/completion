@@ -73,3 +73,4 @@ if [[ $COMPLETION_WAITING_DOTS = true ]]; then
   bindkey "^I" expand-or-complete-with-dots
 fi
 
+[ -s "/usr/share/zsh/site-functions/_pass" ] && zstyle ':completion:*' "/usr/share/zsh/site-functions/_pass"
