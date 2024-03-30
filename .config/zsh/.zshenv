@@ -112,16 +112,14 @@ export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
-export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pyrc"
+#export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pyrc"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 
 # vimrc (this will init/source ~/.config/vim/vimrc instead of ~/.vimrc)
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
-# Path to oh-my-zsh installation
-export ZSH="${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh"
-export ZSH_CUSTOM="$ZSH/custom"
-export ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
+# zsh
+export ZSH_PLUGINS="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/plugins"
 
 # -- LF
 # icon for lf
