@@ -35,7 +35,8 @@
     (box :halign "end"
          :class "end"
          :space-evenly false
-        (clock)))
+        (clock)
+        (systray :icon-size "16" :pack-direction "rtl")))
 
 (defwidget workspaces []
     (box :class "workspaces"
