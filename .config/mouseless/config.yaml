@@ -1,6 +1,7 @@
 # the keyboard devices it reads from, if no devices are specified, it reads from all
 devices:
- - "/dev/input/by-id/usb-SEMICO_USB_Gaming_Keyboard-event-kbd"
+  #- "/dev/input/by-id/usb-SEMICO_USB_Gaming_Keyboard-event-kbd"
+  #- "/dev/input/by-id/usb-1bcf_08a0-event-kbd"
 
 # this is executed when mouseless starts, e.g. useful for setting the keyboard layout
 # startCommand: "setxkbmap de"
@@ -32,7 +33,7 @@ layers:
     #q: layer initial
     backspace: layer initial
     # keep the mouse layer active
-    space: layer mouse
+    space: layer game
     r: reload-config
     l: move  1  0
     h: move -1  0
@@ -45,3 +46,10 @@ layers:
     enter: button left
     backslash: button middle
     rightshift: button right
+- name: game
+  passThrough: true
+  bindings:
+    esc: layer initial
+    up: w
+    down: s
+    s: k0
