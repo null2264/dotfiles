@@ -3,5 +3,5 @@
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	# exec tdm --xstart
-	[[ -n "$XDG_VTNR" && $XDG_VTNR -le 2 ]] && exec tbsm
+	#[[ -n "$XDG_VTNR" && $XDG_VTNR -le 2 ]] && exec tbsm
 fi
