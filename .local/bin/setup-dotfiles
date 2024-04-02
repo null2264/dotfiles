@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+printf "Experimental script! Run it anyway? (y/N) "
+read choice
+[ "$choice" = "y" ] || exit 1
+
+[ ! $1 ] && >&2 echo "Usage: setup-dotfiles [PATH]" && exit 1
+
+cd $1 || { >&2 echo "Invalid path" && exit 1 }
+
+git status 2>/dev/null || { >&2 echo "Directory is not a git directory!" && exit 1 }
+
+cat << EOF
+#!/bin/zsh
+
+export DOTFILES="${PWD}"
+
+[ ! \$DOTFILES ] && unset DOTFILES
+EOF
+
+echo ""
+echo "##############################################################"
+echo "# Please replace ~/.config/zsh/dotfiles with the code above. #"
+echo "# TIPS: Run 'setup-dotfiles > ~/.config/zsh/dotfiles'        #"
+echo "##############################################################"
