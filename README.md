@@ -26,24 +26,26 @@ My Setup:
 *info*: *ʳ* = *in separate repo*; *ᵖ* = *partially work*
 
 ## Setup
-Currently there's no automatic installer for my dotfiles.
 
-~~I'm working on Luke Smith's LARBS fork to be able to install my dotfiles~~ (Too lazy lol)
+> [!WARNING]
+> This section is still WIP!
+
+First time setup only: run `setup-dotfiles <dotfiles path> > ~/.config/zsh/dotfiles`, e.g. `setup-dotfiles ~/Build/GIT/dotfiles > ~/.config/zsh/dotfiles`.
 
 ## Recommended Project/Software
-- LARBS
-- Console-TDM
-- Nerd Fonts
+- TBSM
+- Fonts
   - Iosevka
   - Fira
   - Sarasa Font
-- Feather / Lucide (Font)
-- st (st-zi build)
+  - Feather / Lucide (for Icons)
+- kitty
 - Tiling WM
-  - Qtile
-  - BSPWM
-  - DWM
-  - yabai
+  - Qtile (Linux - X11)
+  - BSPWM (Linux - X11)
+  - DWM (Linux - X11)
+  - Hyprland (Linux - Wayland)
+  - yabai (macOS)
 - [dortania](https://github.com/dortania) (A great hackintosh guide)
 
 ## Tips
