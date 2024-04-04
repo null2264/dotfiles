@@ -4,6 +4,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CONFIG_HOME="$HOME/.config"
+export BINARY_HOME="$HOME/.local/bin"
+export SCRIPTS_HOME="$HOME/.local/bin/scripts"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
@@ -32,12 +34,12 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
-	LOCAL_PATH=$(du "$HOME/.local/bin/" -d 1 | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
+	LOCAL_PATH=$(du "$BINARY_HOME" -d 1 | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
 	LOCAL_PATH="$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
-	LOCAL_PATH=$(du "$HOME/.local/bin/" -d 1 | cut -f2 | paste -sd ':')
+	LOCAL_PATH=$(du "$BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
 fi
-PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$LOCAL_PATH${PATH:+:${PATH}}"
+PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
