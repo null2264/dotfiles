@@ -53,3 +53,4 @@ layers:
     up: w
     down: s
     s: k0
+    w: k6
