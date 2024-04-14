@@ -1,43 +1,37 @@
 " vim: filetype=vim
-" ==============================
-"     ________ ++     ________
-"    /VVVVVVVV\++++  /VVVVVVVV\
-"    \VVVVVVVV/++++++\VVVVVVVV/
-"     |VVVVVV|++++++++/VVVVV/'
-"     |VVVVVV|++++++/VVVVV/'
-"    +|VVVVVV|++++/VVVVV/'+
-"  +++|VVVVVV|++/VVVVV/'+++++
-"+++++|VVVVVV|/VVVVV/'+++++++++
-"  +++|VVVVVVVVVVV/'+++++++++
-"    +|VVVVVVVVV/'+++++++++
-"     |VVVVVVV/'+++++++++
-"     |VVVVV/'+++++++++
-"     |VVV/'+++++++++
-"     'V/'   ++++++
-"              ++
-" ==============================
-" null2264's VIMRC
-" ==============================
-" NeoVIM is recommended! This vimrc created inside NeoVIM and not tested on
-" VIM
+"
+" ========================================
+"      ::-----------------------:
+"    .--------------------------:
+"     :---------------:--------:
+"                      :------.
+"                    :------.
+"                  .------:         .:::
+"                 ------:          :-----
+"               :------.           -----.
+"             .------:              ...
+"           .------:          .::.
+"          :------.          :----:
+"        .------.          :------.
+"      .------:          .------.
+"    .------:          .------:
+"   :-------:::::::::::------.
+"  :-----------------------:
+"  .---------------------:
+" ========================================
+"         null2264's NeoVim Config
+" ========================================
 
-" ----- Sourcing Mapping/Config
-
-" Automatically source config for the correct OS
-" NOTE: By default the directory of Windows config will be located on
-" "C:\_config\vim"
-
-if has('win64') || has('win32') || has('win16')
-	let $ZVIM_CONFIG_DIR = "C:/_config/vim"
-	let $ZVIM_OS_TYPE = "win"
-else
+if !has('nvim') || !has('win64') || !has('win32') || !has('win16')
 	let $ZVIM_CONFIG_DIR = "~/.config/vim"
 	let $ZVIM_OS_TYPE = "nix"
-endif
 
-so $ZVIM_CONFIG_DIR/vim_$ZVIM_OS_TYPE
-so $ZVIM_CONFIG_DIR/vim_uni
+	so $ZVIM_CONFIG_DIR/vim_$ZVIM_OS_TYPE
+	so $ZVIM_CONFIG_DIR/vim_uni
 
-if !exists('g:vscode')
-	source $ZVIM_CONFIG_DIR/vim_plug
+	if !exists('g:vscode')
+		source $ZVIM_CONFIG_DIR/vim_plug
+	endif
+else
+	echoerr "Only NeoVim on POSIX OS is supported!"
 endif
