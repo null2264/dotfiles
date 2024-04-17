@@ -6,7 +6,7 @@
 " ----- Vim Initial Config
 set encoding=utf-8
 set hls
-set number relativenumber
+set number relativenumber " -- converted
 set ignorecase
 set smartcase
 set mouse=a
@@ -24,8 +24,8 @@ set fillchars=eob:\
 syntax on
 filetype indent plugin on
 map <C-n> :NERDTreeToggle<CR>
-let mapleader=" "
-set guifont=Iosevka:h15
+let mapleader=" " " -- converted
+set guifont=Iosevka:h15 " -- converted
 
 " ----- Folding stuff
 set foldnestmax=10
@@ -40,19 +40,19 @@ autocmd FileType python setlocal foldmethod=indent
 " Norm but in shortcut
 vnoremap . :normal .<CR>
 
-" Map ctrl + u as U
+" Map ctrl + u as U -- converted
 noremap <C-u> U
 
-" Map U as redo (ctrl + r)
+" Map U as redo (ctrl + r) -- converted
 noremap U <C-r>
 
-" Yank and Put to/from clipboard/primary
+" Yank and Put to/from clipboard/primary -- converted
 noremap <C-y> "+y
 noremap <C-p> "+p
 noremap <C-Y> "+y
 noremap <C-P> "+P
 
-" Shortcut to comment a line
+" Shortcut to comment a line -- converted
 map <C-/> gcc
 vmap <C-/> gc
 imap <C-/> <esc>gc

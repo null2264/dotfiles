@@ -20,7 +20,8 @@
 --        null2264's NeoVim Config        --
 --========================================--
 
-require("null")
+-- TODO: Uncomment once we done migrating
+-- require("null")
 
 -- FIXME: Turn all these to LUA
 vim.cmd("source ~/.config/vim/vim_nix")
