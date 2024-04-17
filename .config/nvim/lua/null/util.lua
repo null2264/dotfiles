@@ -1,6 +1,6 @@
-local RT = {}
+local M = {}
 
-function RT.getch_lazy_nvim() -- Get or Fetch lazy.nvim
+function M.getch_lazy_nvim() -- Get or Fetch lazy.nvim
 	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 	if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		vim.fn.system({
@@ -17,7 +17,7 @@ function RT.getch_lazy_nvim() -- Get or Fetch lazy.nvim
 	return require("lazy")
 end
 
-function RT.map(modes, key, target, opts)
+function M.map(modes, key, target, opts)
 	local mt = {}
 
 	for mode in modes:gmatch"." do
@@ -30,4 +30,4 @@ function RT.map(modes, key, target, opts)
 	})
 end
 
-return RT
+return M
