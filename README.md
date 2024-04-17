@@ -63,6 +63,3 @@ Add this to `/etc/zsh/zshenv` (**macOS**: `/etc/zshenv`)
 
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
-
-### For winders peeps
-Set $PROFILE environment variable to your powershell config file path (ex: $PROFILE='$HOME/.config/powershell/profile.ps1')
