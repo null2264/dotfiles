@@ -37,7 +37,7 @@ set foldlevel=1
 autocmd FileType python setlocal foldmethod=indent
 
 " ----- Mapping
-" Norm but in shortcut
+" Norm but in shortcut -- converted
 vnoremap . :normal .<CR>
 
 " Map ctrl + u as U -- converted
