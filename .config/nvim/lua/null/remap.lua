@@ -1,16 +1,5 @@
 -- Loaded by `null.config`
-local map = function(modes, key, target, opts)
-	local mt = {}
-
-	for mode in modes:gmatch"." do
-		table.insert(mt, mode)
-	end
-
-	vim.keymap.set(mt, key, target, opts or {
-		noremap = true,
-		silent = true,
-	})
-end
+local map = require("null.util").map
 
 -- Map Ctrl+U as U so it can be used as redo
 map("n", "<C-u>", "U")
