@@ -11,6 +11,7 @@ set ignorecase
 set smartcase
 set mouse=a
 set background=dark
+set ffs=unix
 " set complete+=kspell
 " set completeopt=menuone,longest
 " set list lcs=trail:·,tab:··\|,nbsp:·
