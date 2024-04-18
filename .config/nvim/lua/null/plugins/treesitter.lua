@@ -4,6 +4,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"c",
+				"elixir",
 				"fluent",
 				"go",
 				"gsp",
