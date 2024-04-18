@@ -6,8 +6,17 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function ()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
+			require("tokyonight").setup({
+				style = "moon",
+				transparent = true,
+				styles = {
+					sidebars = "transparent"
+				},
+				on_highlights = function (hl, c)
+					hl.CursorLineNr = { fg = c.yellow, bold = true }
+				end,
+			})
+			vim.cmd([[colorscheme tokyonight-moon]])
 		end,
 	},
 	{
