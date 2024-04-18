@@ -23,7 +23,11 @@ return {
 		},
   		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function ()
-			require("oil").setup()
+			require("oil").setup({
+				keymaps = {
+					["q"] = "actions.close",
+				},
+			})
 		end
 	},
 }
