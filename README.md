@@ -15,7 +15,7 @@ I'm still working on cleaning up some mess.
 My Setup:
 
 - **WM**: Hyprland
-- **OS**: Arch Linux / macOS 13.x (Ventura)*ᵖ*
+- **OS**: Arch Linux / macOS 13.x (Ventura)[^mac]
 - **Shell**: zsh
 - **Terminal**: kitty / iTerm2
 - **Editor**: Neovim / VSCode / IDEA
@@ -23,7 +23,7 @@ My Setup:
 - **Launcher**: tofi / Alfred
 - **Browser**: Pulse
 
-*info*: *ᵖ* = *partially work*
+[^mac]: macOS support is partially working
 
 ## Setup
 
