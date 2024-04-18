@@ -29,6 +29,7 @@ return {
 					section_separators = "",
 					component_separators = "",
 				},
+				extensions = {"neo-tree", "oil", "lazy"},
 				sections = {
 					lualine_a = {"mode"},
 					lualine_b = {"branch", "diff", "diagnostics"},
