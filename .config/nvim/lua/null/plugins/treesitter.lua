@@ -1,6 +1,10 @@
+require("null.util").lazy_file()
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		event = { "LazyFile", "VeryLazy" },
 		opts = {
 			ensure_installed = {
 				"c",
