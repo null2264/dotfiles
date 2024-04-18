@@ -15,9 +15,14 @@ o.mouse = "a"
 o.splitbelow = true
 o.splitright = true
 
--- Remove ugly tilde at the end of a file
--- REF: https://vi.stackexchange.com/a/29181
-o.fillchars = "eob: "
+o.list = true
+-- o.listchars:append("space:⋅")
+-- > Visualize indent trails with dots
+o.listchars:append("trail:⋅")
+o.listchars:append("tab:▎―")
+-- > Remove ugly tilde at the end of a file
+-- > REF: https://vi.stackexchange.com/a/29181
+o.fillchars:append("eob: ")
 
 g.mapleader = " "
 g.guifont = { "Sarasa UI J", ":h16" }

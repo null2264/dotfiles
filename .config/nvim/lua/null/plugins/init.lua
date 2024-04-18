@@ -61,4 +61,11 @@ return {
 			-- Note to self: init is called during startup. Configuration for vim plugins typically should be set in an init function
 		end,
 	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function ()
+			require("ibl").setup()
+		end
+	},
 }
