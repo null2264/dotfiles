@@ -17,13 +17,13 @@ My Setup:
 - **WM**: Hyprland
 - **OS**: Arch Linux / macOS 13.x (Ventura)*ᵖ*
 - **Shell**: zsh
-- **Terminal**: st*ʳ* / kitty / iTerm2
+- **Terminal**: kitty / iTerm2
 - **Editor**: Neovim / VSCode / IDEA
 - **File Manager**: Thunar / Nautilus / lf
-- **Launcher**: tofi / Sol
+- **Launcher**: tofi / Alfred
 - **Browser**: Pulse
 
-*info*: *ʳ* = *in separate repo*; *ᵖ* = *partially work*
+*info*: *ᵖ* = *partially work*
 
 ## Setup
 
@@ -35,10 +35,9 @@ First time setup only: run `setup-dotfiles <dotfiles path> > ~/.config/zsh/dotfi
 ## Recommended Project/Software
 - TBSM
 - Fonts
-  - Iosevka
+  - Iosevka + Sarasa Gothic
   - Fira
-  - Sarasa Font
-  - Feather / Lucide (for Icons)
+  - Feather / Lucide / Phosphor (for Icons)
 - kitty
 - Tiling WM
   - Qtile (Linux - X11)
@@ -50,7 +49,7 @@ First time setup only: run `setup-dotfiles <dotfiles path> > ~/.config/zsh/dotfi
 
 ## Tips
 
-### Small guide for my dwm hotkeys
+### Small guide for my tiling WM hotkeys
 - MODKey (Super/Win Key): Window Manager
 - Alt/Option: Terminal
 - Ctrl/: Most program inside terminal
