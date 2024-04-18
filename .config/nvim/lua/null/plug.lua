@@ -14,4 +14,8 @@ util.getch_lazy_nvim().setup({
 			-- Note to self: init is called during startup. Configuration for vim plugins typically should be set in an init function
 		end,
 	},
+	{
+		url = "https://git.sr.ht/~mango/tree-sitter-gsp",
+		fp = "gsp",
+	},
 })
