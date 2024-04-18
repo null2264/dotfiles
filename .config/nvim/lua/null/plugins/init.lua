@@ -22,11 +22,7 @@ return {
 	},
 	{
 		"tpope/vim-commentary", -- shortcut to comment a line
-		keys = {
-			{ "gcc", mode = "n" },
-			{ "gc", mode = "v" },
-			{ "<esc>gcc", mode = "i" },
-		},
+		keys = { "gc" },
 	},
 	{
 		"dstein64/vim-startuptime",
