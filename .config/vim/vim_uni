@@ -23,6 +23,7 @@ hi Folded ctermbg=Black
 set fillchars=eob:\ 
 syntax on
 filetype indent plugin on
+" -- converted
 map <C-n> :NERDTreeToggle<CR>
 let mapleader=" " " -- converted
 set guifont=Iosevka:h15 " -- converted
