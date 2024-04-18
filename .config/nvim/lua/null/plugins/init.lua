@@ -1,4 +1,5 @@
 return {
+	{ "wakatime/vim-wakatime", lazy = false },
 	{
 		-- FIXME: Use my own colourscheme
 		"folke/tokyonight.nvim",
