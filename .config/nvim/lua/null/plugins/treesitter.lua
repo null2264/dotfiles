@@ -5,10 +5,15 @@ return {
 			ensure_installed = {
 				"c",
 				"fluent",
-				"python",
 				"go",
 				"gsp",
+				"hyprlang",
 				"json5",
+				"julia",
+				-- "latex",
+				"python",
+				"rust",
+				"sxhkdrc",
 			},
 
 			highlight = {
@@ -32,6 +37,12 @@ return {
 				},
 				filetype = "fluent", -- if filetype does not match the parser name
 			}
+			vim.filetype.add({
+				extension = { rasi = "rasi" },
+				pattern = {
+					[".*/hypr/.*%.conf"] = "hyprlang",
+				},
+			})
 			require("nvim-treesitter.configs").setup(opts)
 		end
 	},
