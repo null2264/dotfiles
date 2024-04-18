@@ -26,8 +26,8 @@ return {
 				options = {
 					theme = "tokyonight", -- FIXME: Use my own colourscheme
 					-- theme = "zi",
-					section_separators = '',
-					component_separators = '',
+					section_separators = "",
+					component_separators = "",
 				},
 				sections = {
 					lualine_a = {"mode"},
