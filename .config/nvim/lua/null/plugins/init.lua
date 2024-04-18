@@ -14,10 +14,29 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function ()
+			local _progress = require("lualine.components.progress")
+			local progress = function ()
+				return "☰ " .. _progress()
+			end
+			local _location = require("lualine.components.location")
+			local location = function ()
+				return "" .. _location()
+			end
 			require("lualine").setup {
 				options = {
-					theme = "tokyonight" -- FIXME: Use my own colourscheme
-				}
+					theme = "tokyonight", -- FIXME: Use my own colourscheme
+					-- theme = "zi",
+					section_separators = '',
+					component_separators = '',
+				},
+				sections = {
+					lualine_a = {"mode"},
+					lualine_b = {"branch", "diff", "diagnostics"},
+					lualine_c = {"filename"},
+					lualine_x = {location},
+					lualine_y = {progress},
+					lualine_z = {"encoding", "fileformat", "filetype"},
+				},
 			}
 		end,
 	},
