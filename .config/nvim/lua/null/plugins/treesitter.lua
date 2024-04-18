@@ -3,7 +3,12 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
+				"c",
+				"fluent",
+				"python",
+				"go",
 				"gsp",
+				"json5",
 			},
 
 			highlight = {
@@ -19,6 +24,13 @@ return {
 					files = {"src/parser.c"},
 				},
 				filetype = "gsp",
+			}
+			config.fluent = {
+				install_info = {
+					url = "https://github.com/projectfluent/tree-sitter-fluent", -- local path or git repo
+					files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+				},
+				filetype = "fluent", -- if filetype does not match the parser name
 			}
 			require("nvim-treesitter.configs").setup(opts)
 		end
