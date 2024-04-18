@@ -16,8 +16,8 @@ o.splitbelow = true
 o.splitright = true
 
 o.list = true
--- o.listchars:append("space:⋅")
 -- > Visualize indent trails with dots
+o.listchars:append("space:⋅")
 o.listchars:append("trail:⋅")
 o.listchars:append("tab:▎―")
 -- > Remove ugly tilde at the end of a file
