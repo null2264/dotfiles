@@ -99,6 +99,8 @@ Plug 'projectfluent/fluent.vim'
 " --- AIO solution for highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'https://git.sr.ht/~mango/tree-sitter-gsp'
+
 call plug#end()
 
 " ======================
