@@ -30,7 +30,7 @@ function M.map(modes, key, target, opts)
 	})
 end
 
--- << REF: https://github.com/LazyVim/LazyVim/blob/7a5dbea/lua/lazyvim/util/plugin.lua#L59-L124
+-- <<[LAZY] REF: https://github.com/LazyVim/LazyVim/blob/7a5dbea/lua/lazyvim/util/plugin.lua#L59-L124
 -- Properly load file based plugins without blocking the UI
 function M.lazy_file()
 	M.use_lazy_file = M.use_lazy_file and vim.fn.argc(-1) > 0
@@ -98,6 +98,6 @@ function M.lazy_file()
 		end,
 	})
 end
--- >>
+-- >>[LAZY]
 
 return M
