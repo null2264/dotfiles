@@ -8,5 +8,3 @@ o.relativenumber = true
 
 g.mapleader = " "
 g.guifont = { "Sarasa UI J", ":h16" }
-
-require("oil").setup()
