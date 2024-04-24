@@ -18,12 +18,11 @@ return {
 	},
 	{
   		"stevearc/oil.nvim",
-		keys = {
-			{ "-", "<cmd>Oil<cr>", desc = "Oil" },
-		},
+		lazy = false,
   		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function ()
 			require("oil").setup({
+				default_file_explorer = true,
 				keymaps = {
 					["q"] = "actions.close",
 				},
