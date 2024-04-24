@@ -1,3 +1,5 @@
+.config/discordcanary
+!.config/discordcanary/settings.json
 .config/zsh/
 !.config/zsh/.zprofile
 !.config/zsh/.zshenv
