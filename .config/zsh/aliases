@@ -77,6 +77,7 @@ alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
 
 #config shortcuts
 alias config='cd ${DOTFILES:-$HOME/Build/GIT/dotfiles}'
+alias cfg='config'
 alias cfvim='vim $XDG_CONFIG_HOME/nvim/init.lua'
 alias cfvimplug='vim $XDG_CONFIG_HOME/nvim/lua/null/plug.lua'
 alias cfvimnix='vim $XDG_CONFIG_HOME/nvim/lua/null/nix.lua'
