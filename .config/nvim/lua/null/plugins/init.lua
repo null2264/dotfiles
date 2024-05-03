@@ -70,4 +70,11 @@ return {
 			require("ibl").setup()
 		end
 	},
+	{
+		"folke/todo-comments.nvim",
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = "LazyFile",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+	},
 }
