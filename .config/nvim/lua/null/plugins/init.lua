@@ -52,7 +52,9 @@ return {
 	},
 	{
 		"tpope/vim-commentary", -- shortcut to comment a line
-		keys = { "gc" },
+		keys = {
+			{ "gc", mode = { "n", "v", "i" } },
+		},
 	},
 	{
 		"dstein64/vim-startuptime",
