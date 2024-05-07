@@ -1,20 +1,10 @@
 {
-  "SKIP_HOST_UPDATE": true,
-  "IS_MAXIMIZED": false,
-  "IS_MINIMIZED": false,
-  "WINDOW_BOUNDS": {
-    "x": 0,
-    "y": 28,
-    "width": 1366,
-    "height": 740
-  },
-  "DANGEROUS_ENABLE_DEVTOOLS_ONLY_ENABLE_IF_YOU_KNOW_WHAT_YOURE_DOING": true,
-  "MIN_WIDTH": 940,
-  "MIN_HEIGHT": 500,
-  "chromiumSwitches": {},
   "openasar": {
     "setup": true,
-    "css": "@import url(\"https://luckfire.github.io/amoled-cord/src/amoled-cord.css\")"
+    "noTyping": true,
+    "css": "@import url(\"https://luckfire.github.io/amoled-cord/src/amoled-cord.css\");"
   },
-  "trayBalloonShown": true
+  "chromiumSwitches": {},
+  "IS_MAXIMIZED": true,
+  "IS_MINIMIZED": false
 }
