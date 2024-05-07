@@ -77,4 +77,10 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
 	},
+	{
+		"akinsho/git-conflict.nvim",
+		event = "LazyFile",
+		version = "*",
+		config = true,
+	},
 }
