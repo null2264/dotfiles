@@ -110,11 +110,12 @@ tooltip {
             padding: 0 13px;
         }
 
-        &:hover, &.active {
-            label {
-                background: #1CA2DA;
-                color: white;
-            }
+        &:hover label {
+            background: $bg-100;
+        }
+
+        &.active label {
+            background: #1CA2DA;
         }
     }
 }
