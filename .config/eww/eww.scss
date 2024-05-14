@@ -1,21 +1,33 @@
+// vi: et ts=4 sw=4
 * {
-	all: unset;
-	font-family: 'monospace';
-	font-size: 16px;
-	font-feature-settings: 'tnum';
-	color: #FFF;
+    all: unset;
+    font-family: 'monospace';
+    font-size: 16px;
+    font-feature-settings: 'tnum';
+    color: #FFF;
 }
+
+// >> bg
+$bg-100: #434758;
+$bg-300: #2A3039;
+$bg-500: #0E1418; // base
+
+$bg-radius: 8px;
+$bg-margin: 4px;
+// << bg
 
 /** tooltip!! **/
-tooltip.background {
-    background-color: #0f0f17;
-    font-size: 18;
-    border-radius: 10px;
-    color: #bfc9db;
-}
+tooltip {
+    .background {
+        background-color: #0f0f17;
+        font-size: 18;
+        border-radius: 10px;
+        color: #bfc9db;
+    }
 
-tooltip label {
-    margin: 6px;
+    label {
+        margin: 6px;
+    }
 }
 
 .csd.background.popup { /* SysTray popup */
@@ -25,47 +37,82 @@ tooltip label {
         padding-bottom: 8px;
     }
 
+    menuitem {
+        -gtk-dpi: 16;
+    }
+
     menuitem:hover {
         background-color: red;
     }
 }
 
 .bar {
-	background-color: rgba(43, 48, 59, 1);
+    background: $bg-500;
+}
+
+.middle {
+    .clock label {
+        background: $bg-300;
+        margin: $bg-margin 0px;
+        padding: 0 13px;
+        border-radius: $bg-radius;
+    }
 }
 
 .end {
-	> box {
-		padding: 0 8px;
+    > box {
 
-		> label:first-child {
-			padding-right: 16px;
-		}
-	}
+        widget > image {
+            background: $bg-300;
+            margin: $bg-margin 0px;
+            padding: 0 6px;
+        }
 
-	label:last-child {
-		margin-right: 12px;
-	}
+        widget:first-child > image {
+            border-radius: $bg-radius 0px 0px $bg-radius;
+        }
 
-	box label:last-child {
-		margin-left: 12px;
-	}
+        widget:last-child > image {
+            border-radius: 0px $bg-radius $bg-radius 0px;
+        }
+
+        > label:first-child {
+            padding-right: 16px;
+        }
+    }
+
+    label:last-child {
+        margin-right: 12px;
+    }
+
+    box label:last-child {
+        margin-left: 12px;
+    }
 }
 
-.workspaces button {
-	label {
-		padding: 0 13px;
-	}
+.workspaces {
+    button:first-child label {
+        border-radius: $bg-radius 0px 0px $bg-radius;
+    }
 
-	&:hover {
-		background: rgba(0, 0, 0, 0.2);
-	}
+    button:last-child label {
+        border-radius: 0px $bg-radius $bg-radius 0px;
+    }
 
-	&.active {
-		background: rgba(0, 0, 0, 0.4);
-	}
+    button {
+        min-height: 13px;
 
-	&:hover, &.active {
-		box-shadow: inset 0 -3px #FAA14F;
-	}
+        label {
+            background: $bg-300;
+            margin: $bg-margin 0px;
+            padding: 0 13px;
+        }
+
+        &:hover, &.active {
+            label {
+                background: #1CA2DA;
+                color: white;
+            }
+        }
+    }
 }

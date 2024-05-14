@@ -29,7 +29,8 @@
     (workspaces))
 
 (defwidget middle []
-    (clock))
+    (box :class "middle"
+        (clock)))
 
 (defwidget end []
     (box :halign "end"
@@ -46,7 +47,7 @@
                 id))))
 
 (defwidget clock []
-    (eventbox :onclick `eww update dtfull=${!dtfull}`
+    (eventbox :class "clock" :onclick `eww update dtfull=${!dtfull}`
         (label :text {dtfull ? datetime.full : datetime.date})))
 
 (defwidget pair [icon text]
