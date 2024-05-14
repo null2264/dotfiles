@@ -92,11 +92,13 @@ tooltip {
 
 .workspaces {
     button:first-child label {
-        border-radius: $bg-radius 0px 0px $bg-radius;
+        border-top-left-radius: $bg-radius;
+        border-bottom-left-radius: $bg-radius
     }
 
     button:last-child label {
-        border-radius: 0px $bg-radius $bg-radius 0px;
+        border-top-right-radius: $bg-radius;
+        border-bottom-right-radius: $bg-radius
     }
 
     button {
