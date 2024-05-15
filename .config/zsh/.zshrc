@@ -9,9 +9,10 @@
 # rateUSD | sed 's/^/ /g'
 
 setopt auto_cd # auto cd if directory
+__CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
 
 # highlight on tab (completion)
-[ -f ~/.config/zsh/completion ] && source ~/.config/zsh/completion
+[ -f $__CONFIG_DIR/zsh/completion ] && source $__CONFIG_DIR/zsh/completion
 # zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 # fpath=(/usr/local/share/zsh-completions $fpath)
 # autoload -U compinit && compinit -u
@@ -19,16 +20,16 @@ setopt auto_cd # auto cd if directory
 # zstyle ':completion:*' menu select
 
 # Alias 
-[ -f ~/.config/zsh/aliases ] && source ~/.config/zsh/aliases
+[ -f $__CONFIG_DIR/zsh/aliases ] && source $__CONFIG_DIR/zsh/aliases
 
 # Theme
-[ -f ~/.config/zsh/theme ] && source ~/.config/zsh/theme
+[ -f $__CONFIG_DIR/zsh/theme ] && source $__CONFIG_DIR/zsh/theme
 
 # opam
 test -r /home/ziro/.opam/opam-init/init.zsh && . /home/ziro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # History in cache directory
-HISTFILE=~/.cache/zsh/zsh_history
+HISTFILE=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -38,7 +39,7 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Keybindings
-[ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
+[ -f $__CONFIG_DIR/zsh/keybinds ] && source $__CONFIG_DIR/zsh/keybinds
 
 # [[ Plugins
 ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
@@ -56,8 +57,6 @@ source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/nu
 # << ENABLED
 
 # ]] Plugins
-
-export PATH=$PATH:/home/ziro/.spicetify
 
 # bun completions
 [ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
