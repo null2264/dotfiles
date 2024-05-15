@@ -3,13 +3,13 @@
 
 ;; Listeners
 (deflisten active-workspace
-    `stdbuf -oL $HOME/.local/bin/scripts/eww-hyprland-active-workspace-listener`)
+    `stdbuf -oL ./scripts/workspace-active-listener`)
 
 (deflisten workspace-list :initial '[1]'
-    `stdbuf -oL $HOME/.local/bin/scripts/eww-hyprland-workspace-list-listener`)
+    `stdbuf -oL ./scripts/workspace-list-listener`)
 
 (deflisten datetime 
-    `stdbuf -oL $HOME/.local/bin/scripts/eww-datetime-listener`)
+    `stdbuf -oL ./scripts/datetime-listener`)
 
 ;; Windows
 (defwindow bar

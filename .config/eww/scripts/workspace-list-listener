@@ -1,0 +1,22 @@
+#!/bin/sh
+# REF: https://github.com/Mango0x45/dotfiles/blob/d620266/.config/eww/scripts/workspace-list-listener
+
+readonly IPC=$(./scripts/hyprland-getsocket)
+
+ws="`hyprctl -j workspaces | jq -r 'sort_by(.id) | .[] | .name'`"
+jo -a $ws
+
+socat -u UNIX-CONNECT:"$IPC" - \
+	| stdbuf -oL grep -E '^(create|destroy)workspace>>' \
+	| while IFS='>>' read -r e _ n
+	do
+		case "$e" in
+		c*)
+			ws="`printf '%s\n%s\n' "$ws" $n | sort -n`"
+			;;
+		d*)
+			ws="`echo "$ws" | grep -v "^$n$"`"
+			;;
+		esac
+		jo -a $ws
+	done
