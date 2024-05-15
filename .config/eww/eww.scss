@@ -33,7 +33,6 @@ tooltip {
 }
 
 .tray menu { /* SysTray popup */
-    padding: 5px;
     background-color: $bg-300;
     border-radius: $bg-radius;
 
@@ -43,19 +42,18 @@ tooltip {
 
     menuitem {
         padding: 2px 8px;
-        font-size: 14px;
-    }
 
-    menuitem:last-child {
-        margin: 0px 0px $bg-radius 0px;
-    }
+        &:last-child {
+            margin: 0px 0px $bg-radius 0px;
+        }
 
-    menuitem:first-child {
-        margin: $bg-radius 0px 0px 0px;
-    }
+        &:first-child {
+            margin: $bg-radius 0px 0px 0px;
+        }
 
-    menuitem:hover {
-        background-color: $blue-500;
+        &:hover {
+            background-color: $blue-500;
+        }
     }
 }
 
