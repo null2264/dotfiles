@@ -16,6 +16,8 @@ $bg-radius: 8px;
 $bg-margin: 4px;
 // << bg
 
+$blue-500: #1CA2DA;
+
 /** tooltip!! **/
 tooltip {
     .background {
@@ -30,19 +32,30 @@ tooltip {
     }
 }
 
-.csd.background.popup { /* SysTray popup */
-    background-color: black;
+.tray menu { /* SysTray popup */
+    padding: 5px;
+    background-color: $bg-300;
+    border-radius: $bg-radius;
 
     separator {
         padding-bottom: 8px;
     }
 
     menuitem {
-        -gtk-dpi: 16;
+        padding: 2px 8px;
+        font-size: 14px;
+    }
+
+    menuitem:last-child {
+        margin: 0px 0px $bg-radius 0px;
+    }
+
+    menuitem:first-child {
+        margin: $bg-radius 0px 0px 0px;
     }
 
     menuitem:hover {
-        background-color: red;
+        background-color: $blue-500;
     }
 }
 

@@ -36,7 +36,7 @@
     (box :halign "end"
          :class "end"
          :space-evenly false
-        (systray :icon-size "16" :pack-direction "rtl")))
+        (systray :class "tray" :icon-size "16" :pack-direction "rtl")))
 
 (defwidget workspaces []
     (box :class "workspaces"
