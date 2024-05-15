@@ -5,10 +5,10 @@
 (deflisten active-workspace
     `stdbuf -oL ./scripts/hypr/workspace-active-listener`)
 
-(deflisten workspace-list :initial '[1]'
+(deflisten workspace-list :initial "[1]"
     `stdbuf -oL ./scripts/hypr/workspace-list-listener`)
 
-(deflisten datetime 
+(deflisten datetime :initial "{}"
     `stdbuf -oL ./scripts/datetime-listener`)
 
 ;; Windows
@@ -36,7 +36,7 @@
     (box :halign "end"
          :class "end"
          :space-evenly false
-        (systray :class "tray" :icon-size "16" :pack-direction "rtl")))
+        (systray :class "tray" :icon-size "16")))
 
 (defwidget workspaces []
     (box :class "workspaces"
