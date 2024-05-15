@@ -43,16 +43,20 @@ tooltip {
     menuitem {
         padding: 2px 8px;
 
-        &:last-child {
-            margin: 0px 0px $bg-radius 0px;
+        &:first-child {
+            margin-top: $bg-radius;
         }
 
-        &:first-child {
-            margin: $bg-radius 0px 0px 0px;
+        &:last-child {
+            margin-bottom: $bg-radius;
         }
 
         &:hover {
             background-color: $blue-500;
+        }
+
+        image {
+            // -gtk-icon-size: 15px;
         }
     }
 }
@@ -70,37 +74,41 @@ tooltip {
     }
 }
 
-.end {
-    > box {
+.end .tray {
 
-        widget > image {
+    widget {
+        > image {
             background: $bg-300;
             margin: $bg-margin 0px;
             padding: 0 6px;
         }
 
-        widget:first-child > image {
-            border-top-left-radius: $bg-radius;
-            border-bottom-left-radius: $bg-radius;
-        }
-
-        widget:last-child > image {
-            border-top-right-radius: $bg-radius;
-            border-bottom-right-radius: $bg-radius;
-        }
-
-        > label:first-child {
-            padding-right: 16px;
+        &:hover > image {
+            background: $bg-100;
         }
     }
 
-    label:last-child {
-        margin-right: 12px;
+    widget:first-child > image {
+        border-top-left-radius: $bg-radius;
+        border-bottom-left-radius: $bg-radius;
     }
 
-    box label:last-child {
-        margin-left: 12px;
+    widget:last-child > image {
+        border-top-right-radius: $bg-radius;
+        border-bottom-right-radius: $bg-radius;
     }
+
+//     > label:first-child {
+//         padding-right: 16px;
+//     }
+
+//     label:last-child {
+//         margin-right: 12px;
+//     }
+
+//     box label:last-child {
+//         margin-left: 12px;
+//     }
 }
 
 .workspaces {
