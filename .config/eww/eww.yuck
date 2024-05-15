@@ -3,10 +3,10 @@
 
 ;; Listeners
 (deflisten active-workspace
-    `stdbuf -oL ./scripts/workspace-active-listener`)
+    `stdbuf -oL ./scripts/hypr/workspace-active-listener`)
 
 (deflisten workspace-list :initial '[1]'
-    `stdbuf -oL ./scripts/workspace-list-listener`)
+    `stdbuf -oL ./scripts/hypr/workspace-list-listener`)
 
 (deflisten datetime 
     `stdbuf -oL ./scripts/datetime-listener`)

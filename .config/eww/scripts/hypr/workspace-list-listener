@@ -1,7 +1,7 @@
 #!/bin/sh
 # REF: https://github.com/Mango0x45/dotfiles/blob/d620266/.config/eww/scripts/workspace-list-listener
 
-readonly IPC=$(./scripts/hyprland-getsocket)
+readonly IPC=$(./scripts/hypr/hyprland-getsocket)
 
 ws="`hyprctl -j workspaces | jq -r 'sort_by(.id) | .[] | .name'`"
 jo -a $ws
