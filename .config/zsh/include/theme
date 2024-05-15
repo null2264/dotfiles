@@ -1,0 +1,61 @@
+#!/bin/env zsh
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:*' stagedstr 'M' 
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '%F{5} %b %F{1}%c%u %f'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' enable git
++vi-git-untracked() {
+  
+	# git status ahead
+	if [[ $(git status --porcelain -b | grep '^## [^ ]\+ .*ahead') ]]; then
+		hook_com[unstaged]+='%F{1}⇡%f'
+	fi
+
+	# git untracked
+	if [ $(git rev-parse --is-inside-work-tree 2> /dev/null) = 'true' ] && \
+	[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') = 1 ] ; then
+		hook_com[unstaged]+='%F{1}?%f'
+	fi
+}
+
+function zle-line-init zle-keymap-select {
+	PS1="
+%B%F{blue}%~ \$vcs_info_msg_0_
+%F{green}${${KEYMAP/vicmd/N }/(main|viins)/}$>%f%b "
+	PS2="%B%F{blue}?>%f%b "
+    # RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    # RPS2=$RPS1
+
+	if [[ ${KEYMAP} == vicmd ]] ||
+	 [[ $1 = 'block' ]]; then
+	echo -ne '\e[1 q'
+
+	elif [[ ${KEYMAP} == main ]] ||
+	   [[ ${KEYMAP} == viins ]] ||
+	   [[ ${KEYMAP} = '' ]] ||
+	   [[ $1 = 'beam' ]]; then
+	echo -ne '\e[5 q'
+	fi
+
+	zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+
+precmd () {
+	RPROMPT=""  # for some reason path added to RPROMPT in macOS, I have no idea where it's coming from
+	vcs_info
+	_fix_cursor
+}
+#RPROMPT=\$vcs_info_msg_0_
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#60C0FF,bold,underline"
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="ls *,cd *"

@@ -12,7 +12,7 @@ setopt auto_cd # auto cd if directory
 __CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
 
 # highlight on tab (completion)
-[ -f $__CONFIG_DIR/zsh/completion ] && source $__CONFIG_DIR/zsh/completion
+[ -f $__CONFIG_DIR/zsh/include/completion ] && source $__CONFIG_DIR/zsh/include/completion
 # zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 # fpath=(/usr/local/share/zsh-completions $fpath)
 # autoload -U compinit && compinit -u
@@ -20,10 +20,10 @@ __CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
 # zstyle ':completion:*' menu select
 
 # Alias 
-[ -f $__CONFIG_DIR/zsh/aliases ] && source $__CONFIG_DIR/zsh/aliases
+[ -f $__CONFIG_DIR/zsh/include/aliases ] && source $__CONFIG_DIR/zsh/include/aliases
 
 # Theme
-[ -f $__CONFIG_DIR/zsh/theme ] && source $__CONFIG_DIR/zsh/theme
+[ -f $__CONFIG_DIR/zsh/include/theme ] && source $__CONFIG_DIR/zsh/include/theme
 
 # opam
 test -r /home/ziro/.opam/opam-init/init.zsh && . /home/ziro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -39,7 +39,7 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Keybindings
-[ -f $__CONFIG_DIR/zsh/keybinds ] && source $__CONFIG_DIR/zsh/keybinds
+[ -f $__CONFIG_DIR/zsh/include/keybinds ] && source $__CONFIG_DIR/zsh/include/keybinds
 
 # [[ Plugins
 ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
