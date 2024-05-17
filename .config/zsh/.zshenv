@@ -135,6 +135,7 @@ export PKG_CACHE_PATH="$XDG_DATA_HOME/pkg-cache"
 [ -f $WGETRC ] || touch $WGETRC  # wget will fail to run without this file
 [ -d $GNUPGHOME ] || mkdir -p $GNUPGHOME
 [ -d $WAKATIME_HOME ] || mkdir -p $WAKATIME_HOME
+[ -d $WINEPREFIX ] || mkdir -p $WINEPREFIX
 # << [XDG]
 
 # zsh
