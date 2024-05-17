@@ -125,11 +125,13 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
 [ -f $WGETRC ] || touch $WGETRC  # wget will fail to run without this file
 [ -d $GNUPGHOME ] || mkdir -p $GNUPGHOME
+[ -d $WAKATIME_HOME ] || mkdir -p $WAKATIME_HOME
 # << [XDG]
 
 # zsh
