@@ -105,27 +105,31 @@ export MESA_GLSL_VERSION_OVERRIDE=460
 #   export SUDO_ASKPASS="/bin/dmenu-askpass"
 # fi
 
-# cleaning up
+# >> [XDG]
+# Clean up
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
-export SCRIPTS="$HOME/.scripts"
+# export SCRIPTS="$HOME/.scripts"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
+export KODI_DATA="$XDG_DATA_HOME/kodi"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
-export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
-export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
-#export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pyrc"
-export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+# export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pyrc"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv/"
 
-# vimrc (this will init/source ~/.config/vim/vimrc instead of ~/.vimrc)
-#export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+# Fixes
+[ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
+[ -f $WGETRC ] || touch $WGETRC  # wget will fail to run without this file
+# << [XDG]
 
 # zsh
 export ZSH_PLUGINS="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/plugins"
