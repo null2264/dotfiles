@@ -124,11 +124,12 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
-export PYENV_ROOT="$XDG_DATA_HOME/pyenv/"
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
 [ -f $WGETRC ] || touch $WGETRC  # wget will fail to run without this file
+[ -d $GNUPGHOME ] || mkdir -p $GNUPGHOME
 # << [XDG]
 
 # zsh
