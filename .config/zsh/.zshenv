@@ -128,6 +128,7 @@ export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export PKG_CACHE_PATH="$XDG_DATA_HOME/pkg-cache"
 
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
