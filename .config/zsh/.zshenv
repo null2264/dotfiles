@@ -126,6 +126,7 @@ unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
