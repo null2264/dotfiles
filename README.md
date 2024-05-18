@@ -1,3 +1,4 @@
+<!-- ZI-DOTFILES -->
 <p align="center">
   <a href="https://github.com/null2264/dotfiles"><img width="25%" src="https://github.com/null2264.png"></img></a>
 </p>
@@ -30,7 +31,7 @@ My Setup:
 > [!WARNING]
 > This section is still WIP!
 
-First time setup only: run `setup-dotfiles <dotfiles path> > ~/.config/zsh/dotfiles`, e.g. `setup-dotfiles ~/Build/GIT/dotfiles > ~/.config/zsh/dotfiles`.
+First time setup only: run `./setup-dotfiles` then follow the instruction.
 
 ## Recommended Project/Software
 - TBSM

@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+printf "Experimental script! Run it anyway? (y/N) "
+read choice
+[ "$choice" = "y" ] || exit 1
+
+[ "$(cat README.md | head -n 1)" = "<!-- ZI-DOTFILES -->" ] || {
+	>&2 echo "Current working directory is not the dotfiles is located!";
+	>&2 echo "Please 'cd' to the dotfiles directory before running the script.";
+	exit 1;
+}
+
+info="""
+########################################################################
+# Please replace '~/.config/zsh/include/dotfiles' with the code above. #
+########################################################################
+"""
+
+echo "#!/bin/zsh"
+echo $info
+
+echo """export ZI_DOTFILES="${PWD}"
+
+[ ! \$ZI_DOTFILES ] && unset ZI_DOTFILES"""
+
+echo $info
