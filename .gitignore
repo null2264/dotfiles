@@ -12,3 +12,4 @@
 !.config/zsh/theme
 !.config/zsh/include/
 !.config/zsh/include/**
+.config/zsh/include/dotfiles
