@@ -63,3 +63,5 @@ Add this to `/etc/zsh/zshenv` (**macOS**: `/etc/zshenv`)
 
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
+
+Or run `./zsh-xdg-setup` as root
