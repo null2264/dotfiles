@@ -138,6 +138,7 @@ export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export PKG_CACHE_PATH="$XDG_DATA_HOME/pkg-cache"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
