@@ -31,7 +31,7 @@ My Setup:
 > [!WARNING]
 > This section is still WIP!
 
-First time setup only: run `./setup-dotfiles` then follow the instruction.
+First time setup only: run `./pre-bootstrap` then follow the instruction.
 
 ## Recommended Project/Software
 - TBSM
