@@ -61,6 +61,11 @@ source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/nu
 # bun completions
 [ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
 
+pyenv --version >/dev/null 2>/dev/null && {
+	eval "$(pyenv init -)";
+	eval "$(pyenv virtualenv-init -)";
+}
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 
