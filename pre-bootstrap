@@ -1,8 +1,10 @@
 #!/bin/zsh
 
-printf "Experimental script! Run it anyway? (y/N) "
-read choice
-[ "$choice" = "y" ] || exit 1
+[ "$1" = "-" ] || {
+	printf "Experimental script! Run it anyway? (y/N) ";
+	read choice;
+	[ "$choice" = "y" ] || exit 1;
+}
 
 [ "$(cat README.md | head -n 1)" = "<!-- ZI-DOTFILES -->" ] || {
 	>&2 echo "Current working directory is not the dotfiles is located!";
@@ -13,6 +15,7 @@ read choice
 info="""
 ########################################################################
 # Please replace '~/.config/zsh/include/dotfiles' with the code above. #
+# TIPS: Run './pre-bootstrap - > ~/.config/zsh/include/dotfiles'       #
 ########################################################################
 """
 

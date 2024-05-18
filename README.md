@@ -31,7 +31,7 @@ My Setup:
 > [!WARNING]
 > This section is still WIP!
 
-First time setup only: run `./pre-bootstrap` then follow the instruction.
+First time setup only: run `./pre-bootstrap` then follow the instruction. (Or run `./pre-bootstrap - > ~/.config/zsh/include/dotfiles`)
 
 ## Recommended Project/Software
 - TBSM
