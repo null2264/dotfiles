@@ -41,7 +41,7 @@ fi
 export BUN_INSTALL="$HOME/.bun"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
-	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
+	LOCAL_PATH=$(du -d1 "$ZI_BINARY_HOME" | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
 	LOCAL_PATH="$HOME/.rd/bin:$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
@@ -128,9 +128,11 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 # export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pyrc"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+	unset SSH_AGENT_PID
+	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+fi
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
@@ -140,7 +142,9 @@ export PKG_CACHE_PATH="$XDG_DATA_HOME/pkg-cache"
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
 [ -f $WGETRC ] || touch $WGETRC  # wget will fail to run without this file
-[ -d $GNUPGHOME ] || mkdir -p $GNUPGHOME
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	[ -d $GNUPGHOME ] || mkdir -p $GNUPGHOME
+fi
 [ -d $WAKATIME_HOME ] || mkdir -p $WAKATIME_HOME
 [ -d $WINEPREFIX ] || mkdir -p $WINEPREFIX
 # << [XDG]
