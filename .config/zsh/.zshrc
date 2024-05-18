@@ -54,6 +54,15 @@ source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/nu
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 
+	# pnpm
+	export PNPM_HOME="/Users/ziro/.local/share/pnpm"
+	case ":$PATH:" in
+	  *":$PNPM_HOME:"*) ;;
+	  *) export PATH="$PNPM_HOME:$PATH" ;;
+	esac
+	# pnpm end
+
+	export PATH=$PATH:/Users/ziro/.spicetify
 
 	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 	export SDKMAN_DIR="$HOME/.sdkman"

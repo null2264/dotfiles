@@ -7,6 +7,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 	export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+	export REPO_OS_OVERRIDE="macosx"
+
+	# Android stuff
+	export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+	export ANDROID_PREFS_ROOT="$HOME/Library/Android/sdk"
+	export ANDROID_HOME="$HOME/Library/Android/sdk"
+	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 else
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 
@@ -26,7 +33,7 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du "$HOME/.local/bin/" | cut -f2 > /tmp/path && paste -sd ':' /tmp/path)
-	LOCAL_PATH="$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
+	LOCAL_PATH="$HOME/.rd/bin:$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH="$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')${PATH:+:${PATH}}"
 fi
