@@ -7,6 +7,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export ZI_BINARY_HOME="$HOME/.local/bin"
 export ZI_SCRIPTS_HOME="$ZI_BINARY_HOME/scripts"
 
+[ -f "$XDG_CONFIG_HOME/zsh/include/dotfiles" ] && source "$XDG_CONFIG_HOME/zsh/include/dotfiles"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 	export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
