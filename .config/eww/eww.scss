@@ -1,0 +1,142 @@
+// vi: et ts=4 sw=4
+* {
+    all: unset;
+    font-family: 'monospace';
+    font-size: 16px;
+    font-feature-settings: 'tnum';
+    color: #FFF;
+}
+
+// >> bg
+$bg-100: #434758;
+$bg-300: #2A3039;
+$bg-500: #0E1418; // base
+
+$bg-radius: 8px;
+$bg-margin: 4px;
+// << bg
+
+$blue-500: #1CA2DA;
+
+/** tooltip!! **/
+tooltip {
+    .background {
+        background-color: #0f0f17;
+        font-size: 18;
+        border-radius: 10px;
+        color: #bfc9db;
+    }
+
+    label {
+        margin: 6px;
+    }
+}
+
+.tray menu { /* SysTray popup */
+    background-color: $bg-300;
+    border-radius: $bg-radius;
+
+    separator {
+        padding-bottom: 8px;
+    }
+
+    menuitem {
+        padding: 2px 8px;
+
+        &:first-child {
+            margin-top: $bg-radius;
+        }
+
+        &:last-child {
+            margin-bottom: $bg-radius;
+        }
+
+        &:hover {
+            background-color: $blue-500;
+        }
+
+        image {
+            // -gtk-icon-size: 15px;
+        }
+    }
+}
+
+.bar {
+    background: $bg-500;
+}
+
+.middle {
+    .clock label {
+        background: $bg-300;
+        margin: $bg-margin 0px;
+        padding: 0 13px;
+        border-radius: $bg-radius;
+    }
+}
+
+.end .tray {
+
+    widget {
+        > image {
+            background: $bg-300;
+            margin: $bg-margin 0px;
+            padding: 0 6px;
+        }
+
+        &:hover > image {
+            background: $bg-100;
+        }
+    }
+
+    widget:first-child > image {
+        border-top-left-radius: $bg-radius;
+        border-bottom-left-radius: $bg-radius;
+    }
+
+    widget:last-child > image {
+        border-top-right-radius: $bg-radius;
+        border-bottom-right-radius: $bg-radius;
+    }
+
+//     > label:first-child {
+//         padding-right: 16px;
+//     }
+
+//     label:last-child {
+//         margin-right: 12px;
+//     }
+
+//     box label:last-child {
+//         margin-left: 12px;
+//     }
+}
+
+.workspaces {
+    button:first-child label {
+        border-top-left-radius: $bg-radius;
+        border-bottom-left-radius: $bg-radius;
+    }
+
+    button:last-child label {
+        border-top-right-radius: $bg-radius;
+        border-bottom-right-radius: $bg-radius;
+    }
+
+    button {
+        min-height: 13px;
+
+        label {
+            background: $bg-300;
+            margin: $bg-margin 0px;
+            padding: 0 13px;
+        }
+
+        &:hover label {
+            background: $bg-100;
+        }
+
+        &.active label {
+            background: #1CA2DA;
+        }
+    }
+}

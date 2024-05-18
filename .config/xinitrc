@@ -2,5 +2,6 @@
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-	exec tdm --xstart
+	# exec tdm --xstart
+	#[[ -n "$XDG_VTNR" && $XDG_VTNR -le 2 ]] && exec tbsm
 fi

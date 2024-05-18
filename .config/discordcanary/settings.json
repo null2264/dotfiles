@@ -1,0 +1,11 @@
+{
+  "openasar": {
+    "setup": true,
+    "noTyping": true,
+    "css": "@import url(\"https://luckfire.github.io/amoled-cord/src/amoled-cord.css\");"
+  },
+  "chromiumSwitches": {},
+  "IS_MAXIMIZED": true,
+  "IS_MINIMIZED": false,
+  "trayBalloonShown": true
+}

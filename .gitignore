@@ -1,0 +1,14 @@
+.config/discordcanary/**
+!.config/discordcanary/settings.json
+
+.config/zsh/**
+!.config/zsh/.zprofile
+!.config/zsh/.zshenv
+!.config/zsh/.zshrc
+!.config/zsh/aliases
+!.config/zsh/completion
+!.config/zsh/dotfiles
+!.config/zsh/keybinds
+!.config/zsh/theme
+!.config/zsh/include/
+!.config/zsh/include/**

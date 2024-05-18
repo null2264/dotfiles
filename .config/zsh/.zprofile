@@ -5,10 +5,10 @@
 #fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	bash /usr/bin/tdm
+	[[ ! $DISPLAY && -n "$XDG_VTNR" && $XDG_VTNR -le 2 ]] && bash /usr/bin/tbsm
 
 	[[ -f ~/.zshrc ]] && . ~/.zshrc
-	[ ! -s ~/.config/mpd/pid ] && mpd
+	#[ ! -s ~/.config/mpd/pid ] && mpd
 
 	export PATH="$HOME/.poetry/bin:$PATH"
 fi

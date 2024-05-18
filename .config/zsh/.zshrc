@@ -9,9 +9,10 @@
 # rateUSD | sed 's/^/ /g'
 
 setopt auto_cd # auto cd if directory
+__CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
 
 # highlight on tab (completion)
-[ -f ~/.config/zsh/completion ] && source ~/.config/zsh/completion
+[ -f $__CONFIG_DIR/zsh/include/completion ] && source $__CONFIG_DIR/zsh/include/completion
 # zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 # fpath=(/usr/local/share/zsh-completions $fpath)
 # autoload -U compinit && compinit -u
@@ -19,16 +20,16 @@ setopt auto_cd # auto cd if directory
 # zstyle ':completion:*' menu select
 
 # Alias 
-[ -f ~/.config/zsh/aliases ] && source ~/.config/zsh/aliases
+[ -f $__CONFIG_DIR/zsh/include/aliases ] && source $__CONFIG_DIR/zsh/include/aliases
 
 # Theme
-[ -f ~/.config/zsh/theme ] && source ~/.config/zsh/theme
+[ -f $__CONFIG_DIR/zsh/include/theme ] && source $__CONFIG_DIR/zsh/include/theme
 
 # opam
 test -r /home/ziro/.opam/opam-init/init.zsh && . /home/ziro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # History in cache directory
-HISTFILE=~/.cache/zsh/zsh_history
+HISTFILE=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -38,18 +39,27 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Keybindings
-[ -f ~/.config/zsh/keybinds ] && source ~/.config/zsh/keybinds
+[ -f $__CONFIG_DIR/zsh/include/keybinds ] && source $__CONFIG_DIR/zsh/include/keybinds
 
-# ----- Plugins
+# [[ Plugins
 ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
 
-# source $ZSH/oh-my-zsh.sh
-# emulate -R zsh -c 'source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-# eval $(thefuck --alias) # thefuck - fix your stupid typo :)
-source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
-#source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-#source $ZSH_CUSTOM/plugins/fsh/fast-syntax-highlighting.plugin.zsh
+[ ! -d $ZSH_PLUGINS ] && mkdir -p $ZSH_PLUGINS
+
+# >> INSTALL: #!/bin/zsh
+# cd $ZSH_PLUGINS && git clone <plugin repo git url>
+# << INSTALL
+
+# >> ENABLED: silently fail if not installed
+source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null # https://github.com/zdharma-continuum/fast-syntax-highlighting
+source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null # https://github.com/zsh-users/zsh-autosuggestions
+#source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null # https://github.com/zsh-users/zsh-syntax-highlighting
+# << ENABLED
+
+# ]] Plugins
+
+# bun completions
+[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"

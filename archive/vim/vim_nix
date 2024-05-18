@@ -1,0 +1,78 @@
+" vim: filetype=vim
+" ==============================
+" Linux Specific Configuration
+" ==============================
+
+" ----- Cleaning up
+set undodir=$XDG_DATA_HOME/vim/undo
+set directory=$XDG_DATA_HOME/vim/swap
+set backupdir=$XDG_DATA_HOME/vim/backup
+set viewdir=$XDG_DATA_HOME/vim/view
+if !has('nvim')
+	set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+else
+	set viminfo+='1000,n$XDG_DATA_HOME/nvim/nviminfo
+endif
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+if !has('nvim')
+	let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+else
+	let $MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
+endif
+
+" ----- Mutt
+au BufRead /tmp/mutt-* set tw=72
+
+" ----- Execute corresponding language
+" python
+if !has("nvim")
+ 	autocmd FileType python map <buffer> <F9> :w<CR>:!clear; python3 "%"<CR>
+ 	autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear; python3 "%"<CR>
+else
+	autocmd FileType python map <buffer> <F9> :w<CR>:vs<CR>:ter python3 "%"<CR>
+	autocmd FileType python imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter python3 "%"<CR>
+endif
+
+" sh (either bash or zsh)
+autocmd FileType sh map <buffer> <F9> :w<CR>:vs<CR>:ter sh "%"<CR>
+autocmd FileType sh imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter sh "%"<CR>
+
+" c
+autocmd FileType c map <buffer> <F9> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./%< && read<CR>
+autocmd FileType c imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter gcc "%" -o %< && ./%< && read<CR>
+
+" pandoc (markdown to pdf)
+autocmd FileType markdown map <buffer> <F9> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex -c ~/Documents/College/pandoc_themes/buttondown.css "%" --from markdown+grid_tables+smart-implicit_figures --pdf-engine=xelatex<CR>
+autocmd FileType markdown imap <buffer> <F9> <esc> :w<CR>:!pandoc -o "%:r.pdf" -H ~/Documents/College/include.tex -c ~/Documents/College/pandoc_themes/buttondown.css "%" --from markdown+grid_tables+smart-implicit_figures --pdf-engine=xelatex<CR>
+" Open pdf via zathura if exist
+autocmd FileType markdown map <leader>o :!setsid pdfview "%:r.pdf"<CR><CR>
+
+" m (matlab/octave)
+autocmd FileType matlab map <buffer> <F9> :w<CR>:vs<CR>:ter octave "%"<CR>
+autocmd FileType matlab imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter octave "%"<CR>
+
+" ruby
+autocmd FileType ruby map <buffer> <F9> :w<CR>:vs<CR>:ter ruby "%"<CR>
+autocmd FileType ruby imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter ruby "%"<CR>
+
+" golang
+autocmd FileType go map <buffer> <F9> :w<CR>:vs<CR>:ter go run "%"<CR>
+autocmd FileType go imap <buffer> <F9> <esc> :w<CR>:vs<CR>:ter go run "%"<CR>
+
+" ----- Automatically Render PDF
+autocmd FileType plaintex command! -nargs=0 Lw w !pdflatex % > /dev/null
+autocmd FileType tex command! -nargs=0 Lw w !pdflatex % > /dev/null
+
+" ----- Install plug (Plugin Manager)
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" - Lf Shortcut
+" let g:lf_map_keys = 0
+" map <C-n> :Lf<CR>
+
+" - exit if only nerdtree left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

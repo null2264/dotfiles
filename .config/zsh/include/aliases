@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# i need sudo to launch emulator
+	alias pixelemu="sudo $HOME/Library/Android/sdk/emulator/emulator @Pixel_2_API_28"
+	alias mbrew="sudo -H -u maintenance -g staff brew"
+fi
+
+alias punten='doas'
+#sudo + vim without sacrificing config
+alias sudovim='sudoedit'
+alias doasvim='doasedit'
+
+#switch to pgsql user
+alias pg='doas -u postgres'
+
+#mysql with color
+# alias mysql=$(echo -e 'mysql --prompt="\x1B[34m\\d\x1B[32m \n>\x1B[0m "')
+
+#vim
+alias nano=nvim
+alias vim=nvim
+alias vimsudo='sudoedit /etc/sudoers'
+alias vimdoas='doasedit /etc/sudoers'
+alias vi=nvim
+alias v=nvim
+
+#emacs
+alias emacs="emacs -nw"
+
+#mutt
+alias mutt="neomutt"
+
+#curl
+alias weather='curl wttr.in'
+
+#install
+alias p='doas pacman'
+alias a='paru'
+
+#ripper
+alias yt='yt-dlp --add-metadata'
+alias yta='yt-dlp --add-metadata -x --audio-format'
+alias xreload='xrdb $HOME/.config/Xresources'
+
+#clean up
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
+#shortcuts
+alias ytv='youtube-viewer'
+alias gravit="$HOME/my\ Files/Gravit/GravitDesigner.AppImage"
+alias redoom="$HOME/doom refresh"
+alias rvim='doas vim'
+alias py='python'
+alias cls='clear'
+alias classprop='xprop WM_CLASS'
+alias storagelist='lsblk -f'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias q='exit'
+
+#ls stuff
+alias l='exa --color=always --group-directories-first' # my preferred listing
+alias ls='exa --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lla='exa -al --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
+alias md='mkdir -p'
+alias rd='rmdir'
+
+alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
+#alias mpv='mpv --geometry=1280x720'
+
+#config shortcuts
+alias config='cd ${DOTFILES:-$HOME/Build/GIT/dotfiles}'
+alias cfg='config'
+alias cfvim='vim $XDG_CONFIG_HOME/nvim/init.lua'
+alias cfvimplug='vim $XDG_CONFIG_HOME/nvim/lua/null/plugins/'
+alias cfvimnix='vim $XDG_CONFIG_HOME/nvim/lua/null/nix.lua'
+alias cfvimuni='vim $XDG_CONFIG_HOME/nvim/lua/null/config.lua'
+alias cfbash='vim $HOME/.bashrc'
+alias cfzsh='vim $XDG_CONFIG_HOME/zsh/.zshrc'
+alias cfxres='vim $XDG_CONFIG_HOME/Xresources'
+alias cfbsp='vim $XDG_CONFIG_HOME/bspwm/bspwmrc'
+alias cfqtile='vim $XDG_CONFIG_HOME/qtile/config.py'
+alias cfpoly='vim $XDG_CONFIG_HOME/polybar/config'
+alias cfkeys='vim $XDG_CONFIG_HOME/sxhkd/sxhkdrc'
+alias cfalias='vim $XDG_CONFIG_HOME/zsh/aliases'
+alias cfbind='vim $XDG_CONFIG_HOME/zsh/keybinds'
+alias cfprofile='vim $XDG_CONFIG_HOME/zsh/.zprofile'
+alias cfxprofile='vim $XDG_CONFIG_HOME/xprofile'
+alias cfcompt='vim $XDG_CONFIG_HOME/picom/picom.conf'
+alias cfenv='vim $XDG_CONFIG_HOME/zsh/.zshenv'
+alias cfmutt='vim $XDG_CONFIG_HOME/mutt/muttrc'
+alias cfnews='vim $XDG_CONFIG_HOME/newsboat/urls'
+
+#more shortcuts
+alias htop='htop -t'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias mntfd='doas mount -o gid=users,fmask=113,dmask=002'
+alias umntfd='doas umount'
+alias cmatrix='unimatrix -n -s 96 -l "o"'
+alias s='cd $HOME/.local/bin/scripts;ls'
+
+#folder shortcut
+alias cdclg='cd "$HOME/my Files/Kuliah/"'
+alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
+
+#Git Aliases
+alias cdgit='cd $HOME/Build/GIT'
+alias gaa='git add -A'
+alias gci='git commit'
+alias gca='git commit --all'
+alias gr='git rm'
+alias gR='git restore'
+alias gs='git status'
+alias gp='git push'
+alias gP='git pull'
+alias gcl='git clone'
+#alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+alias qn='vim $HOME/Documents/QuickNote'
+
+alias docx2pdf='lowriter --convert-to pdf'
+
+alias mirror-update='curl -s "https://archlinux.org/mirrorlist/?country=ID&country=SG&country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -'
+alias center-pfetch="printf '\n'; pfetch | sed '\$d' | center -l"
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+alias neofetch='fastfetch'

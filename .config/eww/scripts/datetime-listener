@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while :
+do
+	date +"full='%a, %d %b %Y • %H:%M %Z' date='%Y-%m-%d'" \
+	| xargs jo
+	date +%s.%N | dc -e "? d 1 + 1 / r - p" | xargs sleep
+done

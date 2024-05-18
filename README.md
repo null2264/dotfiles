@@ -14,41 +14,42 @@ I'm still working on cleaning up some mess.
 <img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/newSetup.png'></img>
 My Setup:
 
-- **WM**: bspwm / DWM*ʳ*
-- **OS**: Arch Linux / macOS 12.x (Monterey)*ᵖ*
+- **WM**: Hyprland
+- **OS**: Arch Linux / macOS 13.x (Ventura)[^mac]
 - **Shell**: zsh
-- **Terminal**: st*ʳ* / kitty / iTerm2
-- **Editor**: Neovim / vim
-- **File Manager**: Thunar / lf
-- **Launcher**: rofi / dmenu / Sol
-- **Browser**: Librewolf / Brave
+- **Terminal**: kitty / iTerm2
+- **Editor**: Neovim / VSCode / IDEA
+- **File Manager**: Thunar / Nautilus / lf
+- **Launcher**: tofi / Alfred
+- **Browser**: Pulse
 
-*info*: *ʳ* = *in separate repo*; *ᵖ* = *partially work*
+[^mac]: macOS support is partially working
 
 ## Setup
-Currently there's no automatic installer for my dotfiles.
 
-~~I'm working on Luke Smith's LARBS fork to be able to install my dotfiles~~ (Too lazy lol)
+> [!WARNING]
+> This section is still WIP!
+
+First time setup only: run `setup-dotfiles <dotfiles path> > ~/.config/zsh/dotfiles`, e.g. `setup-dotfiles ~/Build/GIT/dotfiles > ~/.config/zsh/dotfiles`.
 
 ## Recommended Project/Software
-- LARBS
-- Console-TDM
-- Nerd Fonts
-  - Iosevka
+- TBSM
+- Fonts
+  - Iosevka + Sarasa Gothic
   - Fira
-  - Sarasa Font
-- Feather / Lucide (Font)
-- st (st-zi build)
+  - Feather / Lucide / Phosphor (for Icons)
+- kitty
 - Tiling WM
-  - Qtile
-  - BSPWM
-  - DWM
-  - yabai
+  - Qtile (Linux - X11)
+  - BSPWM (Linux - X11)
+  - DWM (Linux - X11)
+  - Hyprland (Linux - Wayland)
+  - yabai (macOS)
 - [dortania](https://github.com/dortania) (A great hackintosh guide)
 
 ## Tips
 
-### Small guide for my dwm hotkeys
+### Small guide for my tiling WM hotkeys
 - MODKey (Super/Win Key): Window Manager
 - Alt/Option: Terminal
 - Ctrl/: Most program inside terminal
@@ -61,6 +62,3 @@ Add this to `/etc/zsh/zshenv` (**macOS**: `/etc/zshenv`)
 
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 ```
-
-### For winders peeps
-Set $PROFILE environment variable to your powershell config file path (ex: $PROFILE='$HOME/.config/powershell/profile.ps1')
