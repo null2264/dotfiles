@@ -31,7 +31,12 @@ My Setup:
 > [!WARNING]
 > This section is still WIP!
 
+> [!TIP]
+> It's recommended to [configure zsh to follow XDG directory specs](#zsh-setup) before proceeding.
+
 First time setup only: run `./pre-bootstrap` then follow the instruction. (Or run `./pre-bootstrap - > ~/.config/zsh/include/dotfiles`)
+
+Then run `./bootstrap`.
 
 ## Recommended Project/Software
 - TBSM

@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+[ $ZI_DOTFILES ] || { >&2 echo "Please run pre-bootstrap first!"; exit 1; }
+
+[ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
+
+link_x_configs() {
+	ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
+	ln -si $ZI_DOTFILES/.config/xprofile $HOME/.xprofile
+}
+
+link_x_configs
