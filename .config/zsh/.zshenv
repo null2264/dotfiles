@@ -20,6 +20,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export ANDROID_HOME="$HOME/Library/Android/sdk"
 	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 else
+	# Use 'archlinux-java' to set java version
+	[ -f "/etc/arch-release" ] && \
+	export JAVA_HOME="/usr/lib/jvm/default" || \
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 
 	# Android stuff
