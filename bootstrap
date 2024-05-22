@@ -1,10 +1,9 @@
-#!/bin/zsh
+#!/bin/sh
 
 [ $ZI_DOTFILES ] || { >&2 echo "Please run pre-bootstrap first!"; exit 1; }
-
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
-packages=(
+packages_arch=(
 	jo
 	bc
 	socat
@@ -12,16 +11,35 @@ packages=(
 	zsh
 )
 
-link_x_configs() {
-	ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
-	ln -si $ZI_DOTFILES/.config/xprofile $HOME/.xprofile
-}
+# === Function and Variable ===
 
 SUDO="${SUDO:-sudo}"
 PACMAN="${PACMAN:-pacman}"
+AUR="${AUR:-paru}"
 install_package() {
-	[ $PACMAN = "pacman" ] && { $SUDO $PACMAN -S --noconfirm "$@" || echo "Failed to install a package, skipping..." }
+	[ $PACMAN = "pacman" ] && { $SUDO $PACMAN -S --noconfirm "$@" || echo "Failed to install some packages, skipping..."; }
 }
 
-link_x_configs
-install_package $packages
+install_aur_package() {
+	$AUR -S --noconfirm "$@"
+}
+
+# === Actual automation ===
+
+echo "Linking x* configs"
+ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
+ln -si $ZI_DOTFILES/.config/xprofile $HOME/.xprofile
+
+echo "Updating package database..."
+[ $PACMAN = "pacman" ] && { $SUDO $PACMAN -Sy || echo "Failed to update package database, skipping..."; }
+
+echo "Installing packages..."
+install_package $packages_arch
+
+echo "Changing default shell to zsh..."
+sudo chsh -s $(which zsh)
+
+echo "Configuring zsh to use XDG Base Directory..."
+sudo $ZI_DOTFILES/zsh-xdg-setup
+echo "Installing zsh config..."
+ln -si $ZI_DOTFILES/.config/zsh $HOME/.config/zsh
