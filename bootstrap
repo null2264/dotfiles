@@ -4,9 +4,24 @@
 
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
+packages=(
+	jo
+	bc
+	socat
+	jq
+	zsh
+)
+
 link_x_configs() {
 	ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
 	ln -si $ZI_DOTFILES/.config/xprofile $HOME/.xprofile
 }
 
+SUDO="${SUDO:-sudo}"
+PACMAN="${PACMAN:-pacman}"
+install_package() {
+	[ $PACMAN = "pacman" ] && { $SUDO $PACMAN -S --noconfirm "$@" || echo "Failed to install a package, skipping..." }
+}
+
 link_x_configs
+install_package $packages
