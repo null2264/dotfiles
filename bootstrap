@@ -9,6 +9,7 @@ packages_arch=(
 	socat
 	jq
 	zsh
+	opendoas
 )
 
 # === Function and Variable ===
@@ -43,3 +44,11 @@ echo "Configuring zsh to use XDG Base Directory..."
 sudo $ZI_DOTFILES/zsh-xdg-setup
 echo "Installing zsh config..."
 ln -si $ZI_DOTFILES/.config/zsh $HOME/.config/zsh
+
+echo "Configuring doas..."
+echo """permit persist :wheel
+permit nopass root as root""" > /tmp/doas.conf.tmp
+echo "======doas.conf======"
+cat /tmp/doas.conf.tmp
+echo "====================="
+sudo cp -i /tmp/doas.conf.tmp /etc/doas.conf
