@@ -4,7 +4,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 autoload -Uz compinit
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* && "v$(which brew)" != "v" ]]; then
 	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 	compinit -u # homebrew moment, not recommended but whatever
 else
