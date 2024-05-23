@@ -1,9 +1,0 @@
-" vim: filetype=vim
-
-" augroup myvimrc
-"     au!
-"     au BufWritePost vim_idea so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-" augroup END
-
-map <leader>r <Action>(RenameElement)
-unmap <C-n>
