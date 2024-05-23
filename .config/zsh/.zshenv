@@ -47,7 +47,7 @@ export BUN_INSTALL="$HOME/.bun"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du -d1 "$ZI_BINARY_HOME" | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
-	LOCAL_PATH="$HOME/.rd/bin:$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
+	LOCAL_PATH="/usr/local/bin:$HOME/.rd/bin:$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
 fi
