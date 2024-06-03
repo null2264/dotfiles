@@ -55,17 +55,17 @@ PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_H
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
-if [[ "$XDG_SESSION_TYPE" != "wayland" ]]; then
-	export GTK_IM_MODULE="ibus"
-	export QT_IM_MODULE="ibus"
-	export GLFW_IM_MODULE="ibus"
-	export XMODIFIERS=@im="ibus"
-else
-	unset GTK_IM_MODULE
-	unset QT_IM_MODULE
-	unset GLFW_IM_MODULE
-	unset XMODIFIERS
-fi
+# if [[ "$XDG_SESSION_TYPE" != "wayland" ]]; then
+# 	export GTK_IM_MODULE="ibus"
+# 	export QT_IM_MODULE="ibus"
+# 	export GLFW_IM_MODULE="ibus"
+# 	export XMODIFIERS=@im="ibus"
+# else
+# 	unset GTK_IM_MODULE
+# 	unset QT_IM_MODULE
+# 	unset GLFW_IM_MODULE
+# 	unset XMODIFIERS
+# fi
 
 # -- rootless docker
 if [[ "$OSTYPE" == "darwin"* ]]; then
