@@ -3,6 +3,9 @@
 " REF: https://github.com/JetBrains/ideavim/discussions/402
 " REF: https://youtrack.jetbrains.com/issue/VIM-2463
 
+set ignorecase
+set smartcase
+
 let mapleader=" "
 
 map <leader>r <Action>(RenameElement)
