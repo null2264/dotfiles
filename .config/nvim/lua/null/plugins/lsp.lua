@@ -1,12 +1,81 @@
+require("null.util").lazy_file()
+
 return {
+	{
+		"williamboman/mason.nvim",
+		lazy = true,
+		config = function(_, opts)
+			require("mason").setup()
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = true,
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+		opts = {
+			ensure_installed = {
+				"pyright",
+				-- "ruff",
+				-- "ruff_lsp",
+			},
+			automatic_installation = { exclude = { "rust_analyzer" } },
+		},
+		config = function(_, opts)
+			require("mason-lspconfig").setup(opts)
+		end,
+	},
 	{
 		"neovim/nvim-lspconfig",
 		lazy = true,
-		config = function ()
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+		},
+		opts = function()
+			return {
+				diagnostics = {
+					underline = true,
+					update_in_insert = false,
+					virtual_text = {
+						spacing = 4,
+						source = "if_many",
+						prefix = "•",
+					},
+					severity_sort = true,
+					signs = {
+						text = {
+							[vim.diagnostic.severity.ERROR] = " ",
+							[vim.diagnostic.severity.WARN] = " ",
+							[vim.diagnostic.severity.HINT] = " ",
+							[vim.diagnostic.severity.INFO] = " ",
+						},
+					},
+				},
+			}
+		end,
+		config = function(_, opts)
+			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+
+			-- Setup lspconfig
+			local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+			local capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+				opts.capabilities or {}
+			)
 			local lsp = require("lspconfig")
-			lsp.pyright.setup{}
-			-- lsp.jedi_language_server.setup{}
+			-- FIXME: Re enable once ruff is able to type check
+			-- lsp.ruff_lsp.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			lsp.pyright.setup({
+				capabilities = capabilities,
+			})
 			lsp.rust_analyzer.setup({
+				capabilities = capabilities,
 				settings = {
 					["rust-analyzer"] = {
 						assist = {
@@ -20,20 +89,53 @@ return {
 							enable = true
 						},
 					}
-				}
+				},
+			})
+		end,
+	},
+	{
+		"mfussenegger/nvim-lint",
+		event = { "LazyFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+		opts = function()
+			return {
+				ignored = { },
+			}
+		end,
+		config = function(_, opts)
+			require("lint").linters_by_ft = {
+				bash = {
+					"shellcheck",
+				},
+				cmake = {
+					"cmakelint",
+				},
+			}
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" }, {
+				callback = function(E)
+					if E.event == "TextChanged" then
+						return
+					end
+					require("lint").try_lint()
+					-- FIXME: If filename in opts.ignored:
+					-- vim.diagnostic.disable()
+				end,
 			})
 		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = { "LazyFile" },
 		dependencies = {
+			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 		},
-		config = function ()
+		config = function(_, opts)
 			-- From vimrc, may need clean up
 			local cmp = require("cmp")
 
@@ -43,6 +145,7 @@ return {
 			end
 
 			cmp.setup({
+				auto_brackets = { "python" },
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
@@ -120,12 +223,6 @@ return {
 					{ name = "cmdline" }
 				})
 			})
-
-			-- Setup lspconfig.
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			require("lspconfig")["pyright"].setup {
-				capabilities = capabilities
-			}
 		end,
 	},
 }
