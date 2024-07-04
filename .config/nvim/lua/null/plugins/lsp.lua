@@ -16,9 +16,15 @@ return {
 		},
 		opts = {
 			ensure_installed = {
+				-- >> Kotlin
+				"kotlin_language_server",
+				-- << Kotlin
+
+				-- >> Python
 				"pyright",
 				-- "ruff",
 				-- "ruff_lsp",
+				-- << Python
 			},
 			automatic_installation = { exclude = { "rust_analyzer" } },
 		},
@@ -72,6 +78,9 @@ return {
 			-- 	capabilities = capabilities,
 			-- })
 			lsp.pyright.setup({
+				capabilities = capabilities,
+			})
+			lsp.kotlin_language_server.setup({
 				capabilities = capabilities,
 			})
 			lsp.rust_analyzer.setup({
