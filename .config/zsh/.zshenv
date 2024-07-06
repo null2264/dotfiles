@@ -6,6 +6,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZI_BINARY_HOME="$HOME/.local/bin"
 export ZI_SCRIPTS_HOME="$ZI_BINARY_HOME/scripts"
+export ZI_ANDROID_SDK_VER="35.0.0"
 
 [ -f "$XDG_CONFIG_HOME/zsh/include/dotfiles" ] && source "$XDG_CONFIG_HOME/zsh/include/dotfiles"
 
@@ -42,6 +43,8 @@ else
 	# 'android-sdk-cmdline-tools-latest' from AUR, copy 'cmdline-tools' to
 	# '~/.config/android/Android/Sdk', then finally uninstall
 	# 'android-sdk-cmdline-tools-latest'.
+	#
+	# Lastly, run: 'sdkmanager --install "build-tools;$ZI_ANDROID_SDK_VER"'
 	export ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk}"
 	export ANDROID_HOME="${ANDROID_HOME:-${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk}"
 	export ANDROID_PREFS_ROOT="$ANDROID_HOME"
@@ -49,6 +52,7 @@ else
 fi
 export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
+export PATH="${PATH}:${ANDROID_HOME}/build-tools/$ZI_ANDROID_SDK_VER"
 
 # -- Wayland
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
@@ -69,7 +73,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
 fi
-PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$ZI_SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
+PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$ZI_SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
