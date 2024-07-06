@@ -18,19 +18,37 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 	export ANDROID_PREFS_ROOT="$HOME/Library/Android/sdk"
 	export ANDROID_HOME="$HOME/Library/Android/sdk"
-	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
 else
 	# Use 'archlinux-java' to set java version
 	[ -f "/etc/arch-release" ] && \
 	export JAVA_HOME="/usr/lib/jvm/default" || \
 	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 
-	# Android stuff
-	export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-	export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-	export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk"
-	export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
+	# >> Android stuff
+	#
+	# TIPS:
+	# You need to choose between android-sdk-cmdline-tools-latest (AUR) or
+	# Android Studio (or IDEA with Android plugin if you're a KMP
+	# developer), as they're mutually exclusive and will break each other.
+	#
+	# If you need CLI access while using Android Studio method, install
+	# cmdline-tools (and optionally, build-tools). By installing
+	# cmdline-tools, you should now be able to manager Android SDK outside
+	# of Android Studio. (You can even install build-tools without Android
+	# Studio using 'sdkmanager')
+	#
+	# Another way to do it (for future proof, maybe you don't need Android
+	# Studio now, but may need it in the future) is by installing
+	# 'android-sdk-cmdline-tools-latest' from AUR, copy 'cmdline-tools' to
+	# '~/.config/android/Android/Sdk', then finally uninstall
+	# 'android-sdk-cmdline-tools-latest'.
+	export ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk}"
+	export ANDROID_HOME="${ANDROID_HOME:-${XDG_CONFIG_HOME:-$HOME/.config}/android/Android/Sdk}"
+	export ANDROID_PREFS_ROOT="$ANDROID_HOME"
+	# << Android stuff
 fi
+export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android/.android/avd"
+export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
 
 # -- Wayland
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
