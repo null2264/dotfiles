@@ -1,0 +1,26 @@
+#!/bin/sh
+
+mkdir -p "$HOME/Library/Java/JavaVirtualMachines/sdkman-current/Contents"
+ln -si $HOME/.sdkman/candidates/java/current "$HOME/Library/Java/JavaVirtualMachines/sdkman-current/Contents/Home"
+
+echo "<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>sdkman.current</string>
+    <key>CFBundleName</key>
+    <string>SDKMAN Current JDK</string>
+    <key>JavaVM</key>
+    <dict>
+        <key>JVMPlatformVersion</key>
+        <string>9999</string>
+        <key>JVMVendor</key>
+        <string>Homebrew</string>
+        <key>JVMVersion</key>
+        <string>9999</string>
+    </dict>
+</dict>
+</plist>" > "$HOME/Library/Java/JavaVirtualMachines/sdkman-current/Contents/__tmp"
+mv -i "$HOME/Library/Java/JavaVirtualMachines/sdkman-current/Contents/__tmp" "$HOME/Library/Java/JavaVirtualMachines/sdkman-current/Contents/Info.plist"
+rm "$HOME/Library/Java/JavaVirtualMachines/sdkman-current/Contents/__tmp" 2>/dev/null
