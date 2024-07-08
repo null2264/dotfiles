@@ -2,8 +2,16 @@
 
 [ "${EUID:-$(id -u)}" -eq 0 ] || { >&2 echo "Please run this as root."; exit 1; }
 
+ZSHENV_PATH="/etc/zshenv"
+
+case "$(realpath $ZSHENV_PATH)" in
+    *"/nix/"* )
+        ZSHENV_PATH="/etc/zshenv.local"
+        ;;
+esac 
+
 echo """#!/bin/zsh
 
 export ZDOTDIR=\"\${XDG_CONFIG_HOME:-\$HOME/.config}/zsh\"""" > /etc/__zshenv && \
-mv -i /etc/__zshenv /etc/zshenv
-ln -si /etc/zshenv /etc/zsh/zshenv
+mv -i /etc/__zshenv $ZSHENV_PATH
+ln -si $ZSHENV_PATH /etc/zsh/zshenv
