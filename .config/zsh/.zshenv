@@ -175,6 +175,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 fi
 [ -d $WAKATIME_HOME ] || mkdir -p $WAKATIME_HOME
 [ -d $WINEPREFIX ] || mkdir -p $WINEPREFIX
+
+[ -d $PYENV_ROOT/bin ] && export PATH="$PYENV_ROOT/bin:$PATH"
 # << [XDG]
 
 # zsh
