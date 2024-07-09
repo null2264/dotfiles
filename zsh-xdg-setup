@@ -10,8 +10,16 @@ case "$(realpath $ZSHENV_PATH)" in
         ;;
 esac 
 
-echo """#!/bin/zsh
+__EXTRA=""
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# REF: https://github.com/null2264/Hackintosh-L460?tab=readme-ov-file#bluetooth-workaround
+	BT_ADDRESS="$(system_profiler SPBluetoothDataType | grep "Address:" | head -1 | sed "s/ *Address: \(.*\)/\1/g")"
+	[ "$BT_ADDRESS" = "" ] || __EXTRA="""
+export BT_DEVICE_ADDRESS=\"$BT_ADDRESS\""""
+fi
 
+echo """#!/bin/zsh
+$__EXTRA
 export ZDOTDIR=\"\${XDG_CONFIG_HOME:-\$HOME/.config}/zsh\"""" > /etc/__zshenv && \
 mv -i /etc/__zshenv $ZSHENV_PATH
 ln -si $ZSHENV_PATH /etc/zsh/zshenv
