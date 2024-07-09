@@ -113,7 +113,11 @@ alias cdclg='cd "$HOME/my Files/Kuliah/"'
 alias cdwine='cd "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
-alias cdgit='cd $HOME/Build/GIT'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	alias cdgit='cd /Volumes/CaseSensitive/Build/GIT'
+else
+	alias cdgit='cd $HOME/Build/GIT'
+fi
 alias gaa='git add -A'
 alias gci='git commit'
 alias gca='git commit --all'
