@@ -54,7 +54,7 @@ Then run `./bootstrap`.
 - [dortania](https://github.com/dortania) (A great hackintosh guide)
 
 ## Special directory
-- `.include/`: Directory containing configs that need to be installed manually
+- [`.include/`](./.include/): Directory containing configs that need to be installed manually
 
 ## Tips
 
