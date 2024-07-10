@@ -1,0 +1,37 @@
+/**
+ * Better Floorp vertical tabs
+ *
+ * This makes Floorp's (expanded) vertical tabs not affecting sites' width,
+ * which can cause lag on heavy websites like Twitch and YouTube.
+ *
+ * This also fixed vertical tabs' width breaking when some preference related
+ * to browser's "head" is changed
+ *
+ * Based on my changes fpr Pulse, but Pulse is dead.
+ * REF: https://github.com/null2264/pulse/commit/fce966a110c2987b08d35bcd04c5992655b24b13
+ */
+:root {
+  /* from Floorp source code, too big for me */
+  /*--hoverd-verticaltab-width: 20em;*/
+
+  --hoverd-verticaltab-width: 16em;
+}
+
+@charset "UTF-8";
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+#TabsToolbar {
+  position: relative !important;
+  transition: all 300ms !important;
+  min-width: var(--default-verticaltab-width) !important;
+  max-width: var(--default-verticaltab-width) !important;
+  z-index: 1;  /* Probably not needed, since Floorp already handle this */
+}
+
+#TabsToolbar:hover {
+  transition: all 300ms !important;
+  min-width: var(--hoverd-verticaltab-width) !important;
+  max-width: var(--hoverd-verticaltab-width) !important;
+  z-index: 2;  /* Probably not needed, since Floorp already handle this */
+  margin-right: calc((var(--hoverd-verticaltab-width) - var(--default-verticaltab-width)) * -1) !important;
+}
+}
