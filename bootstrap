@@ -10,6 +10,8 @@ packages_arch=(
 	jq
 	zsh
 	opendoas
+	ffmpeg
+	ffmpeg4.4
 )
 
 # === Function and Variable ===
