@@ -53,6 +53,9 @@ Then run `./bootstrap`.
   - yabai (macOS)
 - [dortania](https://github.com/dortania) (A great hackintosh guide)
 
+## Special directory
+- `.include/`: Directory containing configs that need to be installed manually
+
 ## Tips
 
 ### Small guide for my tiling WM hotkeys

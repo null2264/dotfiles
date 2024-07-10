@@ -69,11 +69,11 @@ chrome_path = pathlib.Path(f"{profile_path}/chrome")
 chrome_path.mkdir(parents=True, exist_ok=True)
 user_chrome_path = chrome_path / "userChrome.css"
 try:
-    user_chrome_path.symlink_to(f"{dotfiles}/.ff-chrome/userChrome.css")
+    user_chrome_path.symlink_to(f"{dotfiles}/.include/ff-chrome/userChrome.css")
 except FileExistsError:
     prompt = input("Overwrite existing userChrome.css? [y/N] ")
     if not bool_from_string(prompt, False):
         exit(0)
     user_chrome_path.unlink()
-    user_chrome_path.symlink_to(f"{dotfiles}/.ff-chrome/userChrome.css")
+    user_chrome_path.symlink_to(f"{dotfiles}/.include/ff-chrome/userChrome.css")
 print("userChrome.css has successfully installed.")
