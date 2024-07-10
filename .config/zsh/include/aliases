@@ -76,6 +76,7 @@ alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
 #alias mpv='mpv --geometry=1280x720'
 
 #config shortcuts
+alias cdnixd="cd $XDG_CONFIG_HOME/nix-darwin"
 alias cdnix="cd $XDG_CONFIG_HOME/nix"
 alias config="cd ${DOTFILES:-$HOME/Build/GIT/dotfiles}"
 alias cfg='config'
