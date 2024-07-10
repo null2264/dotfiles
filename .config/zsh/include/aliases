@@ -76,7 +76,8 @@ alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
 #alias mpv='mpv --geometry=1280x720'
 
 #config shortcuts
-alias config='cd ${DOTFILES:-$HOME/Build/GIT/dotfiles}'
+alias cdnix="cd $XDG_CONFIG_HOME/nix"
+alias config="cd ${DOTFILES:-$HOME/Build/GIT/dotfiles}"
 alias cfg='config'
 alias cfvim='vim $XDG_CONFIG_HOME/nvim/init.lua'
 alias cfvimplug='vim $XDG_CONFIG_HOME/nvim/lua/null/plugins/'
