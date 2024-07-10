@@ -17,7 +17,7 @@ return {
 		opts = {
 			ensure_installed = {
 				-- >> Kotlin
-				"kotlin_language_server",
+				-- "kotlin_language_server",
 				-- << Kotlin
 
 				-- >> Python
@@ -80,9 +80,9 @@ return {
 			lsp.pyright.setup({
 				capabilities = capabilities,
 			})
-			lsp.kotlin_language_server.setup({
-				capabilities = capabilities,
-			})
+			-- lsp.kotlin_language_server.setup({
+			-- 	capabilities = capabilities,
+			-- })
 			lsp.rust_analyzer.setup({
 				capabilities = capabilities,
 				settings = {
