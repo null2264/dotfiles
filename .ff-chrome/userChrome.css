@@ -49,6 +49,6 @@
   min-width: var(--hoverd-verticaltab-width) !important;
   max-width: var(--hoverd-verticaltab-width) !important;
   z-index: 2;  /* Probably not needed, since Floorp already handle this */
-  margin-right: calc((var(--hoverd-verticaltab-width) - var(--default-verticaltab-width)) * -1) !important;
+  margin-right: calc((var(--hoverd-verticaltab-width) - var(--default-verticaltab-width) - 5px) * -1) !important;
 }
 }
