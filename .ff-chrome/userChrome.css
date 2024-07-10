@@ -7,7 +7,7 @@
  * This also fixed vertical tabs' width breaking when some preference related
  * to browser's "head" is changed
  *
- * Based on my changes fpr Pulse, but Pulse is dead.
+ * Based on my changes for Pulse, but Pulse is dead.
  * REF: https://github.com/null2264/pulse/commit/fce966a110c2987b08d35bcd04c5992655b24b13
  */
 :root {
