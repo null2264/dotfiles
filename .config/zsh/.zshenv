@@ -113,7 +113,7 @@ else
   export VISUAL="nvim"
   export EDITOR="nvim"
 fi
-export BROWSER="pulse-browser"
+export BROWSER="floorp"
 export TERMINAL="kitty"
 export READER="zathura"
 export HTTPS="localhost:9050"
