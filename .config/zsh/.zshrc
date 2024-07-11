@@ -35,7 +35,7 @@ SAVEHIST=1000
 
 # vi mode
 set -o vi
-bindkey -v
+bindkey -M viins "^?" backward-delete-char  # fix backspace after switching from visual mode
 export KEYTIMEOUT=1
 
 # Keybindings
