@@ -13,11 +13,12 @@
     pkgs.pinentry_mac
     pkgs.gnupg
     pkgs.htop-vim
-    pkgs.python312Full
+    (pkgs.python312Full.withPackages (py: [
+      py.pip
+      py.tkinter
+    ]))
     # FIXME: Build failed, dnspython pytest keep returning FAILED caused by timeout. Maybe find a way to bypass check for them
     # (pkgs.poetry.override { python3 = python; })
-    pkgs.python312Packages.pip
-    pkgs.python312Packages.tkinter
     pkgs.fastfetch
     pkgs.eza
     pkgs.lf
