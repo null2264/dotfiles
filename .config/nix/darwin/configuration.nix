@@ -1,11 +1,5 @@
 { pkgs, vars, ... }:
 
-let
-  python = pkgs.python312Full.override {
-    # FIXME: Build failed, maybe override postInstall instead?
-    #enableFramework = true;
-  };
-in
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -19,7 +13,7 @@ in
     pkgs.pinentry_mac
     pkgs.gnupg
     pkgs.htop-vim
-    python
+    pkgs.python312Full
     # FIXME: Build failed, dnspython pytest keep returning FAILED caused by timeout. Maybe find a way to bypass check for them
     # (pkgs.poetry.override { python3 = python; })
     pkgs.python312Packages.pip
