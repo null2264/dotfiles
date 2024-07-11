@@ -4,14 +4,14 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 autoload -Uz compinit
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	brew >/dev/null 2>/dev/null && {
-		FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}";
-		compinit -u; # homebrew moment, not recommended but whatever
-	}
-else
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+# 	brew >/dev/null 2>/dev/null && {
+# 		FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}";
+# 		compinit -u; # homebrew moment, not recommended but whatever
+# 	}
+# else
 	compinit
-fi
+# fi
 
 zmodload -i zsh/complist
 zstyle ':completion:*' menu select
