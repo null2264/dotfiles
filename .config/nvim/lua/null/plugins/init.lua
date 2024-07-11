@@ -55,6 +55,16 @@ return {
 		keys = {
 			{ "gc", mode = { "n", "v", "i" } },
 		},
+		init = function ()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "nix" },
+				callback = function()
+					vim.opt_local.commentstring = "# %s"
+				end,
+				group = generalSettingsGroup,
+			})
+
+		end,
 	},
 	{
 		"dstein64/vim-startuptime",
