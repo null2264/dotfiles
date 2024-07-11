@@ -4,6 +4,7 @@
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
 packages_arch=(
+	# for shell scripts
 	jo
 	bc
 	socat
@@ -11,6 +12,7 @@ packages_arch=(
 	zsh
 	opendoas
 	ffmpeg
+	# required by firefox, without it firefox-based browser can't play video from certain website
 	ffmpeg4.4
 )
 
