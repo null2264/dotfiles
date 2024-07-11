@@ -1,5 +1,17 @@
 #!/bin/zsh
 # -- XDG
+export ZI_IS_DARWIN=0
+case "$OSTYPE" in
+    "darwin"*)
+        ZI_IS_DARWIN=1
+        ;;
+    "linux-gnu")
+        ZI_IS_DARWIN=0
+        ;;
+    *)
+        >&2 echo "System '$OSTYPE' is not supported, assuming it's a Linux system..."
+	;;
+esac
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
@@ -10,7 +22,7 @@ export ZI_ANDROID_SDK_VER="35.0.0"
 
 [ -f "$XDG_CONFIG_HOME/zsh/include/dotfiles" ] && source "$XDG_CONFIG_HOME/zsh/include/dotfiles"
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ $ZI_IS_DARWIN = 1 ]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 	export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 	export REPO_OS_OVERRIDE="macosx"
@@ -60,17 +72,17 @@ if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
 fi
 
 # -- Python
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ $ZI_IS_DARWIN = 1 ]; then
 	export PYTHONNOUSERSITE=1
 fi
 
 # -- Path
 export BUN_INSTALL="$HOME/.bun"
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ $ZI_IS_DARWIN ]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du -d1 "$ZI_BINARY_HOME" | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
 	LOCAL_PATH="/run/current-system/sw/bin:/usr/local/bin:$HOME/.rd/bin:$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+else
 	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
 fi
 PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$ZI_SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
@@ -90,9 +102,9 @@ PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_A
 # fi
 
 # -- rootless docker
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ $ZI_IS_DARWIN = 1 ]; then
 	export DOCKER_HOST=unix:///var/run/docker.sock
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+else
 	export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 fi
 
@@ -120,7 +132,7 @@ export HTTPS="localhost:9050"
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/Downloads/youtube-9ab71578c563.json"
 # vim/nvim as manpager
 
-# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+# if [ $ZI_IS_DARWIN = 0 ]; then
 	# export MANPAGER="nvimpager"
 	# export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 # fi
@@ -155,7 +167,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 # export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pyrc"
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [ $ZI_IS_DARWIN = 0 ]; then
 	export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 	unset SSH_AGENT_PID
 	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
@@ -170,7 +182,7 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 # Fixes
 [ -d $XDG_CONFIG_HOME ] || mkdir -p $XDG_CONFIG_HOME
 [ -f $WGETRC ] || touch $WGETRC  # wget will fail to run without this file
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [ $ZI_IS_DARWIN = 0 ]; then
 	[ -d $GNUPGHOME ] || mkdir -p $GNUPGHOME
 fi
 [ -d $WAKATIME_HOME ] || mkdir -p $WAKATIME_HOME
