@@ -1,7 +1,7 @@
 { pkgs, vars, ... }:
 
 let
-  python = pkgs.python310Full.override {
+  python = pkgs.python312Full.override {
     # FIXME: Build failed, maybe override postInstall instead?
     #enableFramework = true;
   };
@@ -22,8 +22,8 @@ in
     python
     # FIXME: Build failed, dnspython pytest keep returning FAILED caused by timeout. Maybe find a way to bypass check for them
     # (pkgs.poetry.override { python3 = python; })
-    pkgs.python310Packages.pip
-    pkgs.python310Packages.tkinter
+    pkgs.python312Packages.pip
+    pkgs.python312Packages.tkinter
     pkgs.fastfetch
     pkgs.eza
     pkgs.lf
