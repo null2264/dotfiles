@@ -20,6 +20,7 @@ fi
 
 echo """#!/bin/zsh
 $__EXTRA
-export ZDOTDIR=\"\${XDG_CONFIG_HOME:-\$HOME/.config}/zsh\"""" > /etc/__zshenv && \
+export ZDOTDIR=\"\${XDG_CONFIG_HOME:-\$HOME/.config}/zsh\"
+[ -d \$ZDOTDIR ] || mkdir -p \$ZDOTDIR""" > /etc/__zshenv && \
 mv -i /etc/__zshenv $ZSHENV_PATH
 ln -si $ZSHENV_PATH /etc/zsh/zshenv
