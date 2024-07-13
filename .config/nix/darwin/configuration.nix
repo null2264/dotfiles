@@ -1,8 +1,12 @@
 { pkgs, vars, ... }:
 
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
+  # I don't want to risk breaking my hackintosh setup in case Apple decided to
+  # turn on auto install by default.
+  system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+
+  # NOTE: List packages installed in system profile. To search by name, run:
+  # `nix-env -qaP | grep wget`
   environment.systemPackages = [
     pkgs.zsh
     pkgs.git
@@ -52,6 +56,7 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = vars.arch;
 
+  # Swap CapsLock with Esc for better vi-mode experience.
   launchd.user.agents.CapsEscSwap = {
     serviceConfig = {
       ProgramArguments = [
