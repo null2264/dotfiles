@@ -49,9 +49,6 @@
   # Set Git commit hash for darwin-version.
   system.configurationRevision = vars.rev or null;
 
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = vars.arch;
-
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system = {

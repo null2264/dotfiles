@@ -18,8 +18,7 @@ in
   # Lenovo ThinkPad L460; Intel Core i5-6300U
   "ThiccBook-Pro" =
     let
-      vars.arch = "x86_64-darwin";
-      inherit (systemConfig vars.arch) system pkgs;
+      inherit (systemConfig "x86_64-darwin") system pkgs;
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
@@ -37,8 +36,7 @@ in
   # Imaginary M1, just for reference
   MacBookProM1 =
     let
-      vars.arch = "aarch64-darwin";
-      inherit (systemConfig vars.arch) system pkgs;
+      inherit (systemConfig "aarch64-darwin") system pkgs;
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
