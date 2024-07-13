@@ -51,5 +51,17 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = vars.arch;
+
+  launchd.user.agents.CapsEscSwap = {
+    serviceConfig = {
+      ProgramArguments = [
+        "/usr/bin/hidutil"
+        "property"
+        "--set"
+        "{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":0x700000039,\"HIDKeyboardModifierMappingDst\":0x700000029},{\"HIDKeyboardModifierMappingSrc\":0x700000029,\"HIDKeyboardModifierMappingDst\":0x700000039}]}"
+      ];
+      RunAtLoad = true;
+    };
+  };
 }
 # vim:set ts=2 sw=2 et:
