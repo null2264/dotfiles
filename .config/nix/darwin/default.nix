@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nix-darwin, vars, ... }:
+{ inputs, nixpkgs, nix-darwin, home-manager, vars, ... }:
 
 let
   systemConfig = system: {
@@ -23,8 +23,15 @@ in
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs vars; };
-      modules = [ ./configuration.nix ];
+      specialArgs = { inherit inputs pkgs home-manager vars; };
+      modules = [
+        ./configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }
+      ];
     };
 
   # Imaginary M1, just for reference
@@ -35,8 +42,15 @@ in
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs vars; };
-      modules = [ ./configuration.nix ];
+      specialArgs = { inherit inputs pkgs home-manager vars; };
+      modules = [
+        ./configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }
+      ];
     };
 }
 # vim:set ts=2 sw=2 et:

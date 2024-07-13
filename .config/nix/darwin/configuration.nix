@@ -49,23 +49,33 @@
   # Set Git commit hash for darwin-version.
   system.configurationRevision = vars.rev or null;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
-
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = vars.arch;
 
-  # Swap CapsLock with Esc for better vi-mode experience.
-  launchd.user.agents.CapsEscSwap = {
-    serviceConfig = {
-      ProgramArguments = [
-        "/usr/bin/hidutil"
-        "property"
-        "--set"
-        "{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":0x700000039,\"HIDKeyboardModifierMappingDst\":0x700000029},{\"HIDKeyboardModifierMappingSrc\":0x700000029,\"HIDKeyboardModifierMappingDst\":0x700000039}]}"
-      ];
-      RunAtLoad = true;
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system = {
+    stateVersion = 4;
+  };
+
+  users.users.ziro = {
+    name = "ziro";
+    home = "/Users/ziro";
+  };
+  home-manager.users.ziro = {
+    home.stateVersion = "22.05";
+    # Swap CapsLock with Esc for better vi-mode experience.
+    launchd.agents.CapsEscSwap = {
+      enable = true;
+      config = {
+        ProgramArguments = [
+          "/usr/bin/hidutil"
+          "property"
+          "--set"
+          "{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":0x700000039,\"HIDKeyboardModifierMappingDst\":0x700000029},{\"HIDKeyboardModifierMappingSrc\":0x700000029,\"HIDKeyboardModifierMappingDst\":0x700000039}]}"
+        ];
+        RunAtLoad = true;
+      };
     };
   };
 }
