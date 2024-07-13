@@ -1,24 +1,28 @@
-#!/bin/bash
+#!/bin/sh
 
 [ "${EUID:-$(id -u)}" -eq 0 ] || { >&2 echo "Please run this as root."; exit 1; }
 
 ZSHENV_PATH="/etc/zshenv"
 
-# FIXME: Use POSIX-compliant method
 case "$(realpath $ZSHENV_PATH)" in
-    *"/nix/"* )
-        ZSHENV_PATH="/etc/zshenv.local"
-        ;;
+	*"/nix/"* )
+		ZSHENV_PATH="/etc/zshenv.local"
+		;;
 esac 
 
-__EXTRA=""
-# FIXME: Use POSIX-compliant method
-if [[ "$OSTYPE" == "darwin"* ]]; then  # We can't access ZI_IS_DARWIN just yet, so we'll do it manually
-	# REF: https://github.com/null2264/Hackintosh-L460?tab=readme-ov-file#bluetooth-workaround
-	BT_ADDRESS="$(system_profiler SPBluetoothDataType | grep "Address:" | head -1 | sed "s/ *Address: \(.*\)/\1/g")"
-	[ "$BT_ADDRESS" = "" ] || __EXTRA="""
+case "$OSTYPE" in
+	"darwin"* )  # We can't access ZI_IS_DARWIN just yet, so we'll do it manually
+		# REF: https://github.com/null2264/Hackintosh-L460?tab=readme-ov-file#bluetooth-workaround
+		BT_ADDRESS="$(system_profiler SPBluetoothDataType | grep "Address:" | head -1 | sed "s/ *Address: \(.*\)/\1/g")"
+		[ "$BT_ADDRESS" = "" ] && \
+		__EXTRA="" || \
+		__EXTRA="""
 export BT_DEVICE_ADDRESS=\"$BT_ADDRESS\""""
-fi
+		;;
+	* )
+		__EXTRA=""
+		;;
+esac
 
 echo """#!/bin/zsh
 $__EXTRA
