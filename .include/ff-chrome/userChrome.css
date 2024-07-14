@@ -16,7 +16,7 @@
   /*--hoverd-verticaltab-width: 20em;*/
 
   --default-verticaltab-width: 35px !important;
-  --hoverd-verticaltab-width: 16em;
+  --hoverd-verticaltab-width: 18em;
 }
 
 @charset "UTF-8";
@@ -24,6 +24,17 @@
 .browserContainer {
   border-inline-width: 0 !important;
 }
+
+/* >> Fix height being inconsistent on hover */
+.tab-icon-stack,
+.tab-label-container {
+  height: 2.7em !important;
+}
+
+.tab-icon-stack {
+  align-items: center;
+}
+/* << Fix height being inconsistent on hover */
 
 #sidebar-select-box {
   width: var(--default-verticaltab-width) !important;
