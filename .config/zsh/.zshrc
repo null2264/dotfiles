@@ -66,20 +66,22 @@ pyenv --version >/dev/null 2>/dev/null && {
 	eval "$(pyenv virtualenv-init -)";
 }
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
+case "$OSTYPE" in
+	"darwin"* )
+		test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 
-	# pnpm
-	export PNPM_HOME="/Users/ziro/.local/share/pnpm"
-	case ":$PATH:" in
-	  *":$PNPM_HOME:"*) ;;
-	  *) export PATH="$PNPM_HOME:$PATH" ;;
-	esac
-	# pnpm end
+		# pnpm
+		export PNPM_HOME="/Users/ziro/.local/share/pnpm"
+		case ":$PATH:" in
+		  *":$PNPM_HOME:"*) ;;
+		  *) export PATH="$PNPM_HOME:$PATH" ;;
+		esac
+		# pnpm end
 
-	export PATH=$PATH:/Users/ziro/.spicetify
+		export PATH=$PATH:/Users/ziro/.spicetify
 
-	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-	export SDKMAN_DIR="$HOME/.sdkman"
-	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
+		#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+		export SDKMAN_DIR="$HOME/.sdkman"
+		[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+		;;
+esac
