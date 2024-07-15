@@ -33,6 +33,7 @@
     pkgs.android-tools
     # pkgs.browserpass
     pkgs.coreutils-full
+    pkgs.duti
     ];
 
   # Auto upgrade nix package and the daemon service.
