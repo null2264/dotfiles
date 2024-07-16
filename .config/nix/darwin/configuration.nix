@@ -36,6 +36,7 @@
     ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
     pkgs.duti
     pkgs.pinentry_mac
+    pkgs.iina
     ];
     # << For macOS only
 
