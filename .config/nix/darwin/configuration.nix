@@ -32,13 +32,13 @@
     pkgs.android-tools
     pkgs.coreutils-full
     pkgs.rclone
-    # >> For macOS only
-    ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
+  # >> For macOS only
+  ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
     pkgs.duti
     pkgs.pinentry_mac
     pkgs.iina
-    ];
-    # << For macOS only
+  ];
+  # << For macOS only
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -98,6 +98,11 @@
   };
   home-manager.users.ziro = {
     home.stateVersion = "22.05";
+
+    programs = {
+      browserpass.enable = true;
+    };
+
     # Swap CapsLock with Esc for better vi-mode experience.
     launchd.agents.CapsEscSwap = {
       enable = true;
