@@ -100,7 +100,10 @@
     home.stateVersion = "22.05";
 
     programs = {
-      browserpass.enable = true;
+      browserpass = {
+        enable = true;
+        browsers = [ "brave" "chrome" ];  # Arc and Chrome share the same `Application Support` dir, not sure why tbh.
+      };
     };
 
     # Swap CapsLock with Esc for better vi-mode experience.
