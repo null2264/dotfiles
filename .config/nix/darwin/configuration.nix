@@ -14,7 +14,6 @@
     pkgs.neovim
     pkgs.pass
     pkgs.passExtensions.pass-otp
-    pkgs.pinentry_mac
     pkgs.gnupg
     pkgs.htop-vim
     (pkgs.python312Full.withPackages (py: [
@@ -32,9 +31,11 @@
     pkgs.cargo
     pkgs.android-tools
     pkgs.coreutils-full
+    pkgs.rclone
     # >> For macOS only
     ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
     pkgs.duti
+    pkgs.pinentry_mac
     ];
     # << For macOS only
 
