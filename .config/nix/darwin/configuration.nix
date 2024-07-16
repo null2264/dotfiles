@@ -7,7 +7,17 @@
 
   # NOTE: List packages installed in system profile. To search by name, run:
   # `nix-env -qaP | grep wget`
-  environment.systemPackages = [
+  environment.systemPackages =
+  let
+    dontCheckPython = drv: drv.overridePythonAttrs (old: {
+    });
+    python = (pkgs.python312Full.withPackages (py: [
+      py.pip
+      py.tkinter
+      py.dnspython
+    ]));
+  in
+  [
     pkgs.zsh
     pkgs.git
     pkgs.vim
@@ -16,11 +26,8 @@
     pkgs.passExtensions.pass-otp
     pkgs.gnupg
     pkgs.htop-vim
-    (pkgs.python312Full.withPackages (py: [
-      py.pip
-      py.tkinter
-    ]))
-    # FIXME: Build failed, dnspython pytest keep returning FAILED caused by timeout. Maybe find a way to bypass check for them
+    python
+    (pkgs.inkscape.override { python3 = python; })
     # (pkgs.poetry.override { python3 = python; })
     pkgs.fastfetch
     pkgs.eza
