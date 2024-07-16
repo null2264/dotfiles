@@ -31,10 +31,12 @@
     pkgs.nmap
     pkgs.cargo
     pkgs.android-tools
-    # pkgs.browserpass
     pkgs.coreutils-full
+    # >> For macOS only
+    ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
     pkgs.duti
     ];
+    # << For macOS only
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -77,4 +79,3 @@
     };
   };
 }
-# vim:set ts=2 sw=2 et:
