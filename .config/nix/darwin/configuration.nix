@@ -9,8 +9,6 @@
   # `nix-env -qaP | grep wget`
   environment.systemPackages =
   let
-    dontCheckPython = drv: drv.overridePythonAttrs (old: {
-    });
     python = (pkgs.python312Full.withPackages (py: [
       py.pip
       py.tkinter
