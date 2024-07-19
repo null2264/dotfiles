@@ -63,17 +63,22 @@ if not bool_from_string(prompt, False):
 # default = next(config[p] for p in profiles if str(config[p].get("Default", "0")) == "1")
 
 _install = [p for p in config.sections() if p.startswith("Install")]
-default_path = next(config[p] for p in _install)
-profile_path = f"{browser_path}/{default_path['Default']}"
-chrome_path = pathlib.Path(f"{profile_path}/chrome")
-chrome_path.mkdir(parents=True, exist_ok=True)
-user_chrome_path = chrome_path / "userChrome.css"
-try:
-    user_chrome_path.symlink_to(f"{dotfiles}/.include/ff-chrome/userChrome.css")
-except FileExistsError:
-    prompt = input("Overwrite existing userChrome.css? [y/N] ")
-    if not bool_from_string(prompt, False):
-        exit(0)
-    user_chrome_path.unlink()
-    user_chrome_path.symlink_to(f"{dotfiles}/.include/ff-chrome/userChrome.css")
-print("userChrome.css has successfully installed.")
+default_paths = [config[p] for p in _install]
+installed = 0
+for default_path in default_paths:
+    profile_path = f"{browser_path}/{default_path['Default']}"
+    chrome_path = pathlib.Path(f"{profile_path}/chrome")
+    chrome_path.mkdir(parents=True, exist_ok=True)
+    user_chrome_path = chrome_path / "userChrome.css"
+    target_path = f"{dotfiles}/.include/ff-chrome/userChrome.css"
+    try:
+        user_chrome_path.symlink_to(target_path)
+        installed += 1
+    except FileExistsError:
+        prompt = input(f"[{default_path['Default']}] Overwrite existing userChrome.css? [y/N] ")
+        if not bool_from_string(prompt, False):
+            continue
+        user_chrome_path.unlink()
+        user_chrome_path.symlink_to(target_path)
+        installed += 1
+print(f"userChrome.css has successfully installed in {installed} out of {len(default_paths)} profile(s).")
