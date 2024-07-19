@@ -61,22 +61,23 @@ install_aur_package() {
 
 # === Actual automation ===
 
-echo "Linking x* configs"
+echo "Linking x* configs..."
 ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
 ln -si $ZI_DOTFILES/.config/xprofile $HOME/.xprofile
 
 echo "Updating package database..."
 update_package_db
 
-echo "Installing packages..."
-install_package $packages
+echo "Installing common packages..."
+install_package "${packages[@]}"
+echo "Installing distro-specific packages..."
 case $DISTRO in
 	"arch" )
-		install_package $packages_arch
+		install_package "${packages_arch[@]}"
 		echo "Installing AUR packages..."
-		install_aur_package $packages_arch_aur
+		install_aur_package "${packages_arch_aur[@]}"
 	;;
-	"ubuntu" ) install_package $packages_ubuntu ;;
+	"ubuntu" ) install_package "${packages_ubuntu[@]}" ;;
 esac
 
 echo "Changing default shell to zsh..."
