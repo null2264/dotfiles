@@ -37,6 +37,7 @@
     pkgs.android-tools
     pkgs.coreutils-full
     pkgs.rclone
+    (pkgs.yt-dlp.override { withAlias = true; })
   # >> For macOS only
   ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
     pkgs.duti
