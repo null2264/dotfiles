@@ -4,19 +4,22 @@
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
 packages_arch=(
-	# for shell scripts
+	git
+	opendoas
+	zsh
+	# >> for shell scripts
 	jo
 	bc
 	socat
 	jq
-	zsh
-	opendoas
+	# << for shell scripts
 	ffmpeg
 	# required by firefox, without it firefox-based browser can't play video from certain website
 	ffmpeg4.4
 )
 
 packages_arch_aur=(
+	floorp-bin
 )
 
 # === Function and Variable ===
