@@ -16,16 +16,55 @@ packages_arch=(
 	ffmpeg4.4
 )
 
+packages_arch_aur=(
+)
+
 # === Function and Variable ===
 
+DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)"
 SUDO="${SUDO:-sudo}"
 PACMAN="${PACMAN:-pacman}"
 AUR="${AUR:-paru}"
+
+is_package_exists() {
+	[ $(command -v "$1" | wc -l) -gt 0 ] && echo 1 || echo 0
+}
+
+update_package_db() {
+	MSG_FAILED="Failed to update package database, skipping..."
+	case "$PACMAN" in
+		"pacman" )
+			$SUDO $PACMAN -Sy || echo $MSG_FAILED
+		;;
+		"apt" )
+			$SUDO $PACMAN update || echo $MSG_FAILED
+		;;
+	esac
+}
+
 install_package() {
-	[ $PACMAN = "pacman" ] && { $SUDO $PACMAN -S --noconfirm "$@" || echo "Failed to install some packages, skipping..."; }
+	[ "$1" = "" ] && { echo "No package candidate is specified, skipping..."; return; }
+
+	MSG_FAILED="Failed to install some packages, skipping..."
+	case "$PACMAN" in
+		"pacman" )
+			$SUDO $PACMAN -S --noconfirm "$@" || echo $MSG_FAILED
+		;;
+		"apt" )
+			$SUDO $PACMAN install "$@" || echo $MSG_FAILED
+		;;
+	esac
 }
 
 install_aur_package() {
+	# >> Paranoia checks
+	[ $DISTRO = "arch" ] || { echo "AUR only available in Arch, skipping..."; return; }
+
+	[ $(is_package_exists $AUR) = 1 ] || { echo "AUR helper '$AUR' is not installed, skipping..."; return; }
+
+	[ "$1" = "" ] && { echo "No AUR package candidate is specified, skipping..."; return; }
+	# <<
+
 	$AUR -S --noconfirm "$@"
 }
 
@@ -36,10 +75,15 @@ ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
 ln -si $ZI_DOTFILES/.config/xprofile $HOME/.xprofile
 
 echo "Updating package database..."
-[ $PACMAN = "pacman" ] && { $SUDO $PACMAN -Sy || echo "Failed to update package database, skipping..."; }
+update_package_db
 
 echo "Installing packages..."
 install_package $packages_arch
+
+[ $DISTRO = "arch" ] && {
+	echo "Installing AUR packages..."
+	install_aur_package $packages_arch_aur
+}
 
 echo "Changing default shell to zsh..."
 sudo chsh -s $(which zsh)
