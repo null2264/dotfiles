@@ -3,24 +3,7 @@
 [ $ZI_DOTFILES ] || { >&2 echo "Please run pre-bootstrap first!"; exit 1; }
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
-packages_arch=(
-	git
-	opendoas
-	zsh
-	# >> for shell scripts
-	jo
-	bc
-	socat
-	jq
-	# << for shell scripts
-	ffmpeg
-	# required by firefox, without it firefox-based browser can't play video from certain website
-	ffmpeg4.4
-)
-
-packages_arch_aur=(
-	floorp-bin
-)
+. $ZI_DOTFILES/bootstrap-pkgs
 
 # === Function and Variable ===
 
@@ -30,7 +13,12 @@ is_package_exists() {
 
 DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)"
 [ "$SUDO" = "" ] && { [ $(is_package_exists doas) = 1 ] && SUDO="doas" || SUDO="sudo"; }
-PACMAN="${PACMAN:-pacman}"
+[ "$PACMAN" = "" ] && {
+	case $DISTRO in
+		"arch" ) PACMAN="pacman" ;;
+		"ubuntu" ) PACMAN="apt" ;;
+	esac
+}
 AUR="${AUR:-paru}"
 
 update_package_db() {
@@ -81,12 +69,15 @@ echo "Updating package database..."
 update_package_db
 
 echo "Installing packages..."
-install_package $packages_arch
-
-[ $DISTRO = "arch" ] && {
-	echo "Installing AUR packages..."
-	install_aur_package $packages_arch_aur
-}
+install_package $packages
+case $DISTRO in
+	"arch" )
+		install_package $packages_arch
+		echo "Installing AUR packages..."
+		install_aur_package $packages_arch_aur
+	;;
+	"ubuntu" ) install_package $packages_ubuntu ;;
+esac
 
 echo "Changing default shell to zsh..."
 $SUDO chsh -s $(which zsh)
