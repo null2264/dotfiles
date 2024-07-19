@@ -24,14 +24,14 @@ packages_arch_aur=(
 
 # === Function and Variable ===
 
-DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)"
-SUDO="${SUDO:-sudo}"
-PACMAN="${PACMAN:-pacman}"
-AUR="${AUR:-paru}"
-
 is_package_exists() {
 	[ $(command -v "$1" | wc -l) -gt 0 ] && echo 1 || echo 0
 }
+
+DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)"
+[ "$SUDO" = "" ] && { [ $(is_package_exists doas) = 1 ] && SUDO="doas" || SUDO="sudo"; }
+PACMAN="${PACMAN:-pacman}"
+AUR="${AUR:-paru}"
 
 update_package_db() {
 	MSG_FAILED="Failed to update package database, skipping..."
@@ -89,10 +89,10 @@ install_package $packages_arch
 }
 
 echo "Changing default shell to zsh..."
-sudo chsh -s $(which zsh)
+$SUDO chsh -s $(which zsh)
 
 echo "Configuring zsh to use XDG Base Directory..."
-sudo $ZI_DOTFILES/zsh-xdg-setup
+$SUDO $ZI_DOTFILES/zsh-xdg-setup
 echo "Installing zsh config..."
 ln -si $ZI_DOTFILES/.config/zsh $HOME/.config/zsh
 
@@ -102,4 +102,4 @@ permit nopass root as root""" > /tmp/doas.conf.tmp
 echo "======doas.conf======"
 cat /tmp/doas.conf.tmp
 echo "====================="
-sudo cp -i /tmp/doas.conf.tmp /etc/doas.conf
+$SUDO cp -i /tmp/doas.conf.tmp /etc/doas.conf
