@@ -1,29 +1,33 @@
-#!/bin/zsh
+#!/bin/sh
+
+. ./common
 
 [ "$1" = "-" ] || {
-	printf "Experimental script! Run it anyway? (y/N) ";
-	read choice;
-	[ "$choice" = "y" ] || exit 1;
+	prompt 'Experimental script! Run it anyway? [y/N] ' || exit 1
 }
 
 [ "$(cat README.md | head -n 1)" = "<!-- ZI-DOTFILES -->" ] || {
-	>&2 echo "Current working directory is not the dotfiles is located!";
-	>&2 echo "Please 'cd' to the dotfiles directory before running the script.";
-	exit 1;
+	>&2 echo "Current working directory is not the dotfiles is located!"
+	>&2 echo "Please 'cd' to the dotfiles directory before running the script."
+	exit 1
 }
 
-info="""
-########################################################################
-# Please replace '~/.config/zsh/include/dotfiles' with the code above. #
-# TIPS: Run './pre-bootstrap - > ~/.config/zsh/include/dotfiles'       #
-########################################################################
-"""
+echo_info() {
+	echo "########################################################################"
+	echo "# Please replace '~/.config/zsh/include/dotfiles' with the code above. #"
+	echo "# TIPS: Run './pre-bootstrap - > ~/.config/zsh/include/dotfiles'       #"
+	echo "########################################################################"
+}
 
-echo "#!/bin/zsh"
-echo $info
+echo_config() {
+	echo "#!/bin/zsh"
+	[ "$1" = "-" ] || echo_info
 
-echo """export ZI_DOTFILES="${PWD}"
+	echo "export ZI_DOTFILES=\"${PWD}\""
+	echo ""
+	echo "[ ! \$ZI_DOTFILES ] && unset ZI_DOTFILES"
 
-[ ! \$ZI_DOTFILES ] && unset ZI_DOTFILES"""
+	[ "$1" = "-" ] || echo_info
+}
 
-echo $info
+echo_config $1

@@ -1,6 +1,23 @@
 #!/bin/sh
 
-[ $ZI_DOTFILES ] || { >&2 echo "Please run pre-bootstrap first!"; exit 1; }
+[ $ZI_DOTFILES ] && {
+	. $ZI_DOTFILES/common
+} || {
+	[ -f ./common ] || { >&2 echo "Bootstrap should be ran directly from dotfiles directory ('./bootstrap'), or run './pre-bootstrap' before running bootstrap!"; exit 1; }
+	. ./common
+}
+
+[ $ZI_DOTFILES ] || {
+	ZI_DOTFILES=$PWD
+	echo "'./pre-bootstrap' was never ran before. This script will store '$PWD' in \$ZI_DOTFILES as helper variable for automation scripts."
+	prompt "Run it now? [y/N] " || { >&2 echo "You need to run './pre-bootstrap' before running bootstrap!"; exit 1; }
+	echo "======include/dotfiles======"
+	./pre-bootstrap -
+	echo "============================"
+	prompt "Set '$PWD' as dotfiles directory? [y/N] " || exit 1
+	./pre-bootstrap - > $ZI_DOTFILES/.config/zsh/include/dotfiles
+}
+
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
 . $ZI_DOTFILES/bootstrap-pkgs
@@ -91,7 +108,10 @@ ln -si $ZI_DOTFILES/.config/zsh $HOME/.config/zsh
 echo "Configuring doas..."
 echo """permit persist :wheel
 permit nopass root as root""" > /tmp/doas.conf.tmp
-echo "======doas.conf======"
+echo "=======/etc/doas.conf======="
 cat /tmp/doas.conf.tmp
-echo "====================="
+echo "============================"
 $SUDO cp -i /tmp/doas.conf.tmp /etc/doas.conf
+
+echo "============================"
+echo "Bootstrap completed, please restart your shell!"

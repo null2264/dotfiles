@@ -1,0 +1,10 @@
+#!/bin/sh
+
+prompt() {
+	printf "$1"
+	read INPUT
+	case $INPUT in
+		[yY] ) return 0 ;;
+		* ) return 1 ;;
+	esac;
+}
