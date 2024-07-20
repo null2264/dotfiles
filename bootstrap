@@ -41,12 +41,9 @@ AUR="${AUR:-paru}"
 update_package_db() {
 	MSG_FAILED="Failed to update package database, skipping..."
 	case "$PACMAN" in
-		"pacman" )
-			$SUDO $PACMAN -Sy || echo $MSG_FAILED
-		;;
-		"apt" )
-			$SUDO $PACMAN update || echo $MSG_FAILED
-		;;
+		"pacman" ) $SUDO $PACMAN -Sy || echo $MSG_FAILED ;;
+		"apt" ) $SUDO $PACMAN update || echo $MSG_FAILED ;;
+		* ) echo "Not implemented, skipping..." ;;
 	esac
 }
 
@@ -55,12 +52,9 @@ install_package() {
 
 	MSG_FAILED="Failed to install some packages, skipping..."
 	case "$PACMAN" in
-		"pacman" )
-			$SUDO $PACMAN -S --noconfirm "$@" || echo $MSG_FAILED
-		;;
-		"apt" )
-			$SUDO $PACMAN install "$@" || echo $MSG_FAILED
-		;;
+		"pacman" ) $SUDO $PACMAN -S --noconfirm "$@" || echo $MSG_FAILED ;;
+		"apt" )	$SUDO $PACMAN install "$@" || echo $MSG_FAILED ;;
+		* ) echo "Not implemented, skipping..." ;;
 	esac
 }
 
@@ -95,6 +89,7 @@ case $DISTRO in
 		install_aur_package "${packages_arch_aur[@]}"
 	;;
 	"ubuntu" ) install_package "${packages_ubuntu[@]}" ;;
+	* ) echo "Not implemented, skipping..." ;;
 esac
 
 echo "Changing default shell to zsh..."
