@@ -59,7 +59,7 @@ install_plugin() {
 		_PREV_PWD=$PWD
 		cd "$ZSH_PLUGINS"
 		echo "========================================"
-		git clone $1 "$_PLUGIN_TARGET_NAME" 2>/dev/null || echo "Failed to install plugin '$_PLUGIN_DIR_NAME', skipping..."
+		git clone $1 "$_PLUGIN_TARGET_NAME" || echo "Failed to install plugin '$_PLUGIN_DIR_NAME', skipping..."
 		echo "========================================"
 		echo "Installing plugin '$_PLUGIN_DIR_NAME'..."
 		cd "$_PREV_PWD"
@@ -70,7 +70,8 @@ install_plugin() {
 # >> ENABLED: silently fail if not installed
 install_plugin https://github.com/zdharma-continuum/fast-syntax-highlighting
 install_plugin https://github.com/zsh-users/zsh-autosuggestions
-#install_plugin https://github.com/zsh-users/zsh-syntax-highlighting
+# install_plugin https://github.com/marlonrichert/zsh-autocomplete
+# install_plugin https://github.com/zsh-users/zsh-syntax-highlighting
 # << ENABLED
 
 # ]] Plugins
