@@ -32,7 +32,11 @@ case "$OSTYPE" in
 	"darwin"* ) DISTRO="apple" ;;
 	* ) DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)" ;;
 esac
-[ "$SUDO" = "" ] && { is_package_exists doas && SUDO="doas" || SUDO="sudo"; }
+[ "$SUDO" = "" ] && {
+	FALLBACK_SUDO="sudo"
+	is_package_exists doas && SUDO="doas" || SUDO=$FALLBACK_SUDO
+	doas echo "" >/dev/null 2>/dev/null || SUDO=$FALLBACK_SUDO
+}
 [ "$PACMAN" = "" ] && {
 	case $DISTRO in
 		"arch" ) PACMAN="pacman" ;;
@@ -114,12 +118,16 @@ ln -si $ZI_DOTFILES/.config/zsh $HOME/.config/zsh
 
 is_package_exists doas && {
 	echo "Configuring doas..."
-	echo "permit persist :wheel" > /tmp/doas.conf.tmp
+	case "$OSTYPE" in
+		"darwin"* ) echo "permit persist :staff" > /tmp/doas.conf.tmp ;;
+		* ) echo "permit persist :wheel" > /tmp/doas.conf.tmp ;;
+	esac
 	echo "permit nopass root as root" >> /tmp/doas.conf.tmp
 	echo "=======/etc/doas.conf======="
 	cat /tmp/doas.conf.tmp
 	echo "============================"
 	$SUDO cp -i /tmp/doas.conf.tmp /etc/doas.conf
+	$SUDO ln -si /etc/doas.conf /usr/local/etc/doas.conf
 }
 
 echo "============================"
