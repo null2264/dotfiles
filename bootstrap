@@ -76,7 +76,10 @@ install_aur_package() {
 	[ "$1" = "" ] && { echo "No AUR package candidate is specified, skipping..."; return; }
 	# <<
 
-	$AUR -S --noconfirm "$@"
+	case "$AUR" in
+		"paru" ) $AUR -S --noconfirm --skipreview "$@"
+		* ) $AUR -S --noconfirm "$@"
+	esac
 }
 
 # === Actual automation ===
