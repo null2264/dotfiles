@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Packages that share the same name across distro
 packages=(
 	git
 	zsh
@@ -13,20 +14,22 @@ packages_ubuntu=(
 )
 
 packages_arch=(
+	ffmpeg
+	# required by firefox-based browser, without it firefox-based browser can't play video from certain website
+	ffmpeg4.4
 	opendoas
 	# >> for shell scripts
-	jo
 	bc
-	socat
+	jo
 	jq
+	socat
 	# << for shell scripts
-	ffmpeg
-	# required by firefox, without it firefox-based browser can't play video from certain website
-	ffmpeg4.4
 	# signing tools for Secure Boot
 	sbsigntools
 )
 
 packages_arch_aur=(
 	floorp-bin
+	spicetify-cli
+	spicetify-marketplace-bin
 )
