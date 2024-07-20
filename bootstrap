@@ -28,12 +28,16 @@ is_package_exists() {
 	[ $(command -v "$1" | wc -l) -gt 0 ] && echo 1 || echo 0
 }
 
-DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)"
+case "$OSTYPE" in
+	"darwin"* ) DISTRO="apple" ;;
+	*) DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)" ;;
+esac
 [ "$SUDO" = "" ] && { [ $(is_package_exists doas) = 1 ] && SUDO="doas" || SUDO="sudo"; }
 [ "$PACMAN" = "" ] && {
 	case $DISTRO in
 		"arch" ) PACMAN="pacman" ;;
 		"ubuntu" ) PACMAN="apt" ;;
+		"apple" ) PACMAN="apple" ;;
 	esac
 }
 AUR="${AUR:-paru}"
@@ -43,6 +47,7 @@ update_package_db() {
 	case "$PACMAN" in
 		"pacman" ) $SUDO $PACMAN -Sy || echo $MSG_FAILED ;;
 		"apt" ) $SUDO $PACMAN update || echo $MSG_FAILED ;;
+		"apple" ) ;;
 		* ) echo "Not implemented, skipping..." ;;
 	esac
 }
@@ -54,6 +59,10 @@ install_package() {
 	case "$PACMAN" in
 		"pacman" ) $SUDO $PACMAN -S --noconfirm "$@" || echo $MSG_FAILED ;;
 		"apt" )	$SUDO $PACMAN install "$@" || echo $MSG_FAILED ;;
+		"apple" )
+			echo "Handled by nix. Read '.config/nix/README.md' for more information."
+			sleep 5
+		;;
 		* ) echo "Not implemented, skipping..." ;;
 	esac
 }
