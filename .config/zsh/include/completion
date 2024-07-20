@@ -76,3 +76,5 @@ if [[ $COMPLETION_WAITING_DOTS = true ]]; then
 fi
 
 [ -s "/usr/share/zsh/site-functions/_pass" ] && zstyle ':completion:*' "/usr/share/zsh/site-functions/_pass"
+
+[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"

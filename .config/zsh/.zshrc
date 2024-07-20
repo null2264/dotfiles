@@ -11,13 +11,8 @@
 setopt auto_cd # auto cd if directory
 __CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}
 
-# highlight on tab (completion)
+# Completion
 [ -f $__CONFIG_DIR/zsh/include/completion ] && source $__CONFIG_DIR/zsh/include/completion
-# zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
-# fpath=(/usr/local/share/zsh-completions $fpath)
-# autoload -U compinit && compinit -u
-# zmodload -i zsh/complist
-# zstyle ':completion:*' menu select
 
 # Alias 
 [ -f $__CONFIG_DIR/zsh/include/aliases ] && source $__CONFIG_DIR/zsh/include/aliases
@@ -75,9 +70,6 @@ install_plugin https://github.com/zsh-users/zsh-autosuggestions
 # << ENABLED
 
 # ]] Plugins
-
-# bun completions
-[ -s "/home/ziro/.bun/_bun" ] && source "/home/ziro/.bun/_bun"
 
 pyenv --version >/dev/null 2>/dev/null && {
 	eval "$(pyenv init -)";
