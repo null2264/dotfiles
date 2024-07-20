@@ -16,17 +16,24 @@ case "$OSTYPE" in
 		BT_ADDRESS="$(system_profiler SPBluetoothDataType | grep "Address:" | head -1 | sed "s/ *Address: \(.*\)/\1/g")"
 		[ "$BT_ADDRESS" = "" ] && \
 		__EXTRA="" || \
-		__EXTRA="""
-export BT_DEVICE_ADDRESS=\"$BT_ADDRESS\""""
+		__EXTRA="export BT_DEVICE_ADDRESS=\"$BT_ADDRESS\""
 		;;
 	* )
 		__EXTRA=""
 		;;
 esac
 
-echo """#!/bin/zsh
-$__EXTRA
-export ZDOTDIR=\"\${XDG_CONFIG_HOME:-\$HOME/.config}/zsh\"
-[ -d \$ZDOTDIR ] || mkdir -p \$ZDOTDIR""" > /etc/__zshenv && \
-mv -i /etc/__zshenv $ZSHENV_PATH
+echo_config() {
+	echo "#!/bin/zsh"
+	[ "$__EXTRA" = "" ] || echo ""
+	echo "$__EXTRA"
+	echo "export ZDOTDIR=\"\${XDG_CONFIG_HOME:-\$HOME/.config}/zsh\""
+	echo "[ -d \$ZDOTDIR ] || mkdir -p \$ZDOTDIR"
+}
+
+echo_config > /tmp/__zshenv || exit 1
+echo "========/etc/zshenv========="
+cat /tmp/__zshenv
+echo "============================"
+mv -i /tmp/__zshenv $ZSHENV_PATH
 ln -si $ZSHENV_PATH /etc/zsh/zshenv
