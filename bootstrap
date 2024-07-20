@@ -46,7 +46,7 @@ update_package_db() {
 	MSG_FAILED="Failed to update package database, skipping..."
 	case "$PACMAN" in
 		"pacman" ) $SUDO $PACMAN -Sy || echo $MSG_FAILED ;;
-		"apt" ) $SUDO $PACMAN update || echo $MSG_FAILED ;;
+		"apt" ) $SUDO $PACMAN -y update || echo $MSG_FAILED ;;
 		"apple" ) ;;
 		* ) echo "Not implemented, skipping..." ;;
 	esac
@@ -58,7 +58,7 @@ install_package() {
 	MSG_FAILED="Failed to install some packages, skipping..."
 	case "$PACMAN" in
 		"pacman" ) $SUDO $PACMAN -S --noconfirm "$@" || echo $MSG_FAILED ;;
-		"apt" )	$SUDO $PACMAN install "$@" || echo $MSG_FAILED ;;
+		"apt" )	$SUDO $PACMAN -y install "$@" || echo $MSG_FAILED ;;
 		"apple" )
 			echo "Handled by nix. Read '.config/nix/README.md' for more information."
 			sleep 5
