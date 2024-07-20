@@ -50,10 +50,27 @@ ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
 # cd $ZSH_PLUGINS && git clone <plugin repo git url>
 # << INSTALL
 
+install_plugin() {
+	_PLUGIN_DIR_NAME=${1##*/}
+	_PLUGIN_TARGET_NAME=${2:-$_PLUGIN_DIR_NAME}
+	_PLUGIN_DIR="$ZSH_PLUGINS/$_PLUGIN_TARGET_NAME"
+	[ -d "$_PLUGIN_DIR" ] || {
+		echo "Installing plugin '$_PLUGIN_DIR_NAME'..."
+		_PREV_PWD=$PWD
+		cd "$ZSH_PLUGINS"
+		echo "========================================"
+		git clone $1 "$_PLUGIN_TARGET_NAME" 2>/dev/null || echo "Failed to install plugin '$_PLUGIN_DIR_NAME', skipping..."
+		echo "========================================"
+		echo "Installing plugin '$_PLUGIN_DIR_NAME'..."
+		cd "$_PREV_PWD"
+	}
+	source "$_PLUGIN_DIR/$_PLUGIN_DIR_NAME.plugin.zsh" 2>/dev/null
+}
+
 # >> ENABLED: silently fail if not installed
-source $ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null # https://github.com/zdharma-continuum/fast-syntax-highlighting
-source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null # https://github.com/zsh-users/zsh-autosuggestions
-#source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null # https://github.com/zsh-users/zsh-syntax-highlighting
+install_plugin https://github.com/zdharma-continuum/fast-syntax-highlighting
+install_plugin https://github.com/zsh-users/zsh-autosuggestions
+#install_plugin https://github.com/zsh-users/zsh-syntax-highlighting
 # << ENABLED
 
 # ]] Plugins
