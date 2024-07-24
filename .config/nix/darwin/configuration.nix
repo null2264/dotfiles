@@ -26,7 +26,7 @@
     pkgs.htop-vim
     python
     (pkgs.inkscape.override { python3 = python; })
-    # (pkgs.poetry.override { python3 = python; })
+    #(pkgs.poetry.override { python3 = python; })
     pkgs.fastfetch
     pkgs.eza
     pkgs.lf
@@ -48,14 +48,14 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
+  #nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
-  # programs.fish.enable = true;
+  #programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = vars.rev or null;
@@ -99,8 +99,8 @@
   };
 
   users.users.ziro = {
-    name = "ziro";
-    home = "/Users/ziro";
+    name = vars.user;
+    home = "/Users/${vars.user}";
   };
   home-manager.users.ziro = {
     home.stateVersion = "22.05";

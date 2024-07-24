@@ -57,13 +57,12 @@ return {
 		},
 		init = function ()
 			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "nix" },
+				pattern = { "nix", "hyprlang" },
 				callback = function()
-					vim.opt_local.commentstring = "# %s"
+					vim.opt_local.commentstring = "#%s"
 				end,
 				group = generalSettingsGroup,
 			})
-
 		end,
 	},
 	{

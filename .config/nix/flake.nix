@@ -16,6 +16,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     vars = {
+      user = "ziro";  # TODO: Make it possible to setup multi-user
       rev = self.rev or self.dirtyRev or null;
     };
   in
