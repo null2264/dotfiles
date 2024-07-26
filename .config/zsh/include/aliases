@@ -9,7 +9,7 @@ fi
 alias punten='doas'
 #sudo + vim without sacrificing config
 alias sudovim='sudoedit'
-alias doasvim='doasedit'
+alias doasvim='doasedit'  # FIXME: Not sure where this come from tbh, OpenDoas implementation doesn't include this command
 
 #switch to pgsql user
 alias pg='doas -u postgres'
@@ -60,6 +60,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias q='exit'
+# based on Windows' command(s)
+alias md='mkdir -p'
+alias rd='rmdir'
 
 #ls stuff
 alias l='exa --color=always --group-directories-first' # my preferred listing
@@ -68,12 +71,6 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lla='exa -al --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
-
-alias md='mkdir -p'
-alias rd='rmdir'
-
-alias reUSD='rm -rf /tmp/rate.html /tmp/rateUSD.txt'
-#alias mpv='mpv --geometry=1280x720'
 
 #config shortcuts
 alias cdnixd='cd $XDG_CONFIG_HOME/nix/darwin'
