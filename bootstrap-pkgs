@@ -26,10 +26,15 @@ packages_arch=(
 	# << for shell scripts
 	# signing tools for Secure Boot
 	sbsigntools
+	net-tools
 )
 
 packages_arch_aur=(
 	floorp-bin
 	spicetify-cli
 	spicetify-marketplace-bin
+)
+
+packages_flatpak=(
+	io.mrarm.mcpelauncher
 )
