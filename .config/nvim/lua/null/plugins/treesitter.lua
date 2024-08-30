@@ -19,6 +19,7 @@ return {
 				"python",
 				"rust",
 				"sxhkdrc",
+				"latex",
 			},
 
 			sync_install = false,
