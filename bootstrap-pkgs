@@ -27,6 +27,9 @@ packages_arch=(
 	# signing tools for Secure Boot
 	sbsigntools
 	net-tools
+	# for nvim-treesitter
+	tree-sitter
+	tree-sitter-cli
 )
 
 packages_arch_aur=(
