@@ -45,7 +45,7 @@ ZSH_PLUGINS="$XDG_DATA_HOME/zsh/plugins"
 # cd $ZSH_PLUGINS && git clone <plugin repo git url>
 # << INSTALL
 
-install_plugin() {
+_install_plugin() {
 	_PLUGIN_DIR_NAME=${1##*/}
 	_PLUGIN_TARGET_NAME=${2:-$_PLUGIN_DIR_NAME}
 	_PLUGIN_DIR="$ZSH_PLUGINS/$_PLUGIN_TARGET_NAME"
@@ -63,18 +63,24 @@ install_plugin() {
 }
 
 # >> ENABLED: silently fail if not installed
-install_plugin https://github.com/zdharma-continuum/fast-syntax-highlighting
-install_plugin https://github.com/zsh-users/zsh-autosuggestions
-# install_plugin https://github.com/marlonrichert/zsh-autocomplete
-# install_plugin https://github.com/zsh-users/zsh-syntax-highlighting
+_install_plugin https://github.com/zdharma-continuum/fast-syntax-highlighting
+_install_plugin https://github.com/zsh-users/zsh-autosuggestions
+# _install_plugin https://github.com/marlonrichert/zsh-autocomplete
+# _install_plugin https://github.com/zsh-users/zsh-syntax-highlighting
 # << ENABLED
 
 # ]] Plugins
 
-pyenv --version >/dev/null 2>/dev/null && {
+_command_exists() {
+	[ $(command -v $1 | wc -l) -gt 0 ] && return 0 || return 1
+}
+
+_command_exists pyenv && {
 	eval "$(pyenv init -)";
 	eval "$(pyenv virtualenv-init -)";
 }
+
+_command_exists zoxide && eval "$(zoxide init zsh)"
 
 case "$OSTYPE" in
 	"darwin"* )
