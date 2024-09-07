@@ -1,5 +1,6 @@
 {
   "openasar": {
+    "autoupdate": false,
     "setup": true,
     "noTyping": true,
     "css": "@import url(\"https://luckfire.github.io/amoled-cord/src/amoled-cord.css\");"
