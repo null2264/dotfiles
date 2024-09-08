@@ -38,6 +38,7 @@
     pkgs.coreutils-full
     pkgs.rclone
     (pkgs.yt-dlp.override { withAlias = true; })
+    pkgs.zoxide
   # >> For macOS only
   ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
     pkgs.duti
