@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-z 2>/dev/null && alias _cd="z" || alias _cd="cd"
+z 2>/dev/null && alias __zi_cd="z" || alias __zi_cd="cd"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	# i need sudo to launch emulator
@@ -57,10 +57,10 @@ alias py='python'
 alias cls='clear'
 alias classprop='xprop WM_CLASS'
 alias storagelist='lsblk -f'
-alias ..='_cd ..'
-alias ...='_cd ../..'
-alias ....='_cd ../../..'
-alias .....='_cd ../../../..'
+alias ..='__zi_cd ..'
+alias ...='__zi_cd ../..'
+alias ....='__zi_cd ../../..'
+alias .....='__zi_cd ../../../..'
 alias q='exit'
 # based on Windows' command(s)
 alias md='mkdir -p'
@@ -75,11 +75,11 @@ alias lla='exa -al --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
 #config shortcuts
-alias cdnixd='_cd $XDG_CONFIG_HOME/nix/darwin'
-alias cdnix='_cd $XDG_CONFIG_HOME/nix'
+alias cdnixd='__zi_cd $XDG_CONFIG_HOME/nix/darwin'
+alias cdnix='__zi_cd $XDG_CONFIG_HOME/nix'
 alias znixd='z $XDG_CONFIG_HOME/nix/darwin'
 alias znix='z $XDG_CONFIG_HOME/nix'
-alias config='_cd ${ZI_DOTFILES:-$HOME/Build/GIT/dotfiles}'
+alias config='__zi_cd ${ZI_DOTFILES:-$HOME/Build/GIT/dotfiles}'
 alias cfg='config'
 alias cfvim='vim $XDG_CONFIG_HOME/nvim/init.lua'
 alias cfvimplug='vim $XDG_CONFIG_HOME/nvim/lua/null/plugins/'
@@ -109,10 +109,10 @@ alias cp='cp -i'
 alias mntfd='doas mount -o gid=users,fmask=113,dmask=002'
 alias umntfd='doas umount'
 alias cmatrix='unimatrix -n -s 96 -l "o"'
-alias s='_cd $HOME/.local/bin/scripts;ls'
+alias s='__zi_cd $HOME/.local/bin/scripts;ls'
 
 #folder shortcut
-alias cdclg='_cd "$HOME/my Files/Kuliah/"'
+alias cdclg='__zi_cd "$HOME/my Files/Kuliah/"'
 alias cdwine='_cd "$HOME/.local/share/wineprefixes/"'
 alias zclg='z "$HOME/my Files/Kuliah/"'
 alias zwine='z "$HOME/.local/share/wineprefixes/"'
