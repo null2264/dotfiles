@@ -82,6 +82,11 @@ _command_exists pyenv && {
 
 _command_exists zoxide && eval "$(zoxide init zsh)"
 
+_command_exists fzf && {
+	source <(fzf --zsh)
+	FZF_ALT_C_COMMAND=""  # use zoxide instead
+}
+
 case "$OSTYPE" in
 	"darwin"* )
 		test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
