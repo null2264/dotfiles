@@ -4,7 +4,11 @@ You need to install Nix before following this guide: `sh <(curl -L https://nixos
 
 ## Setup
 
-### Initial
+### macOS
+
+Nix in macOS is handled by [nix-darwin](https://github.com/LnL7/nix-darwin).
+
+#### Initial
 
 This is done because nix-darwin commands is not yet added to PATH, should be a one-time thing
 
@@ -19,10 +23,34 @@ nix build .#darwinConfigurations.<host>.system
 nix run nix-darwin -- switch --flake .#<host>
 ```
 
-### Rebuild
+#### Rebuild
 
 After initial setup, you should now be able to use the command directly:
 
+```sh
+darwin-rebuild build --flake .  # or you can specify the hostname with `--flake . #<hostname>`
+
+# or if you're feeling lucky
+
+darwin-rebuild switch --flake .
 ```
-darwin-rebuild switch --flake .#<host>
+
+### Other
+
+Nix in non-NixOS Linux is handled by [system-manager](https://github.com/numtide/system-manager).
+
+### Home
+
+This is for per-user setup. Instead of managing the entire system, you're
+managing one user at a time. This is handled by
+[home-manager](https://github.com/nix-community/home-manager)
+
+#### Rebuild
+
+```sh
+home-manager build --flake .  # or you can specify the user with `--flake . #<username>@<hostname>`
+
+# or if you're feeling lucky
+
+home-manager switch --flake .
 ```
