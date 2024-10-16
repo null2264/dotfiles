@@ -3,5 +3,6 @@
 {
   packages = [
     pkgs.zsh
+    pkgs.home-manager
   ];
 }

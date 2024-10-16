@@ -4,7 +4,6 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, system-manager }:
   let
     vars = {
-      user = "ziro";  # TODO: Make it possible to setup multi-user
       rev = self.rev or self.dirtyRev or null;
     };
   in
@@ -21,6 +20,13 @@
       import ./systems/nix {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs system-manager home-manager vars;
+      }
+    );
+
+    homeConfigurations = (
+      import ./users {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs home-manager vars;
       }
     );
   };

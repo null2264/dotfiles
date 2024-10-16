@@ -1,49 +1,20 @@
-{ inputs, nixpkgs, system-manager, home-manager, vars, ... }:
+{ inputs, nixpkgs, system-manager, vars, ... }:
 
 let
-  mkCommon = import ../mkCommon.nix;
-
-  disablePyChecks = pkg: pkg.overridePythonAttrs (old: {
-    doCheck = false;
-    doInstallCheck = false;
-    dontCheck = true;
-  });
-  systemConfig = system: {
-    system = system;
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [(final: prev: {
-        pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [(pyfinal: pyprev: {
-          dnspython = (disablePyChecks pyprev.dnspython).overridePythonAttrs (old: {
-            disabledTests = [
-              # This test is unreliable when my internet is throttled by Indonesian ISP, timeout everywhere... lovely...
-              "test_resolver"
-            ] ++ old.disabledTests;
-          });
-          pillow = disablePyChecks pyprev.pillow;
-          cherrypy = disablePyChecks pyprev.cherrypy;
-        })];
-      })];
-      config.allowUnfree = true;
-    };
-  };
+  mkCommon = import ../../lib/mkCommon.nix;
+  mkSystem = import ../../lib/mkSystem.nix;
 in
 {
   "potato" =
     let
-      inherit (systemConfig "x86_64-linux") system pkgs;
+      inherit (mkSystem "x86_64-linux" nixpkgs) system pkgs;
       common = (mkCommon pkgs);
     in
     system-manager.lib.makeSystemConfig {
       inherit system;
-      specialArgs = { inherit inputs pkgs home-manager vars common; };
+      specialArgs = { inherit inputs pkgs vars common; };
       modules = [
         ./configuration.nix
-        # home-manager.darwinModules.home-manager
-        # {
-        #   home-manager.useGlobalPkgs = true;
-        #   home-manager.useUserPackages = true;
-        # }
       ];
     };
 }
