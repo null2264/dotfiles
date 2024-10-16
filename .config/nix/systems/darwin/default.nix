@@ -25,6 +25,7 @@ let
       config.allowUnfree = true;
     };
   };
+  mkCommon = import ../mkCommon.nix;
 in
 {
   # Host list
@@ -36,10 +37,11 @@ in
   "ThiccBook-Pro" =
     let
       inherit (systemConfig "x86_64-darwin") system pkgs;
+      common = (mkCommon pkgs);
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs home-manager vars; };
+      specialArgs = { inherit inputs pkgs home-manager vars common; };
       modules = [
         ./configuration.nix
         home-manager.darwinModules.home-manager
@@ -54,6 +56,7 @@ in
   MacBookProM1 =
     let
       inherit (systemConfig "aarch64-darwin") system pkgs;
+      vars.common = (mkCommon pkgs);
     in
     nix-darwin.lib.darwinSystem {
       inherit system;

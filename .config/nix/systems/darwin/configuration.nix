@@ -1,4 +1,4 @@
-{ pkgs, config, vars, ... }:
+{ pkgs, config, vars, common, ... }:
 
 {
   # I don't want to risk breaking my hackintosh setup in case Apple decided to
@@ -15,8 +15,7 @@
       py.dnspython
     ]));
   in
-  [
-    pkgs.zsh
+  common.packages ++ [
     pkgs.git
     pkgs.vim
     pkgs.neovim

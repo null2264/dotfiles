@@ -1,4 +1,4 @@
-{ pkgs, config, vars, ... }:
+{ pkgs, config, vars, common, ... }:
 
 {
   # NOTE: List packages installed in system profile. To search by name, run:
@@ -11,7 +11,7 @@
       py.dnspython
     ]));
   in
-  [
+  common.packages ++ [
     pkgs.zsh
     pkgs.git
     pkgs.vim

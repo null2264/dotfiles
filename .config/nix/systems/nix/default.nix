@@ -25,15 +25,17 @@ let
       config.allowUnfree = true;
     };
   };
+  mkCommon = import ../mkCommon.nix;
 in
 {
   "potato" =
     let
       inherit (systemConfig "x86_64-linux") system pkgs;
+      common = (mkCommon pkgs);
     in
     system-manager.lib.makeSystemConfig {
       inherit system;
-      specialArgs = { inherit inputs pkgs home-manager vars; };
+      specialArgs = { inherit inputs pkgs home-manager vars common; };
       modules = [
         ./configuration.nix
         # home-manager.darwinModules.home-manager
