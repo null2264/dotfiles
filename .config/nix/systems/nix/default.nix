@@ -1,6 +1,8 @@
 { inputs, nixpkgs, system-manager, home-manager, vars, ... }:
 
 let
+  mkCommon = import ../mkCommon.nix;
+
   disablePyChecks = pkg: pkg.overridePythonAttrs (old: {
     doCheck = false;
     doInstallCheck = false;
@@ -25,7 +27,6 @@ let
       config.allowUnfree = true;
     };
   };
-  mkCommon = import ../mkCommon.nix;
 in
 {
   "potato" =
