@@ -15,8 +15,7 @@
       }
     );
 
-    # FIXME: Not yet functional
-    systemConfigs = (
+    systemConfigs = (  # sudo is required, sadly
       import ./systems/nix {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs system-manager home-manager vars;

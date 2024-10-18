@@ -78,12 +78,13 @@ fi
 
 # -- Path
 export BUN_INSTALL="$HOME/.bun"
-if [ $ZI_IS_DARWIN ]; then
+if [ $ZI_IS_DARWIN = 1 ]; then
 	export PYTHONPATH="$HOME/Library/Python/3.10/lib:$PYTHONPATH"
 	LOCAL_PATH=$(du -d1 "$ZI_BINARY_HOME" | cut -f2 > /tmp/ENV_PATH && paste -sd ':' /tmp/ENV_PATH)
 	LOCAL_PATH="/run/current-system/sw/bin:/usr/local/bin:$HOME/.rd/bin:$HOME/Library/Python/3.10/bin:$LOCAL_PATH"
 else
 	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
+	LOCAL_PATH="/run/system-manager/sw/bin:$LOCAL_PATH"
 fi
 PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$ZI_SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library

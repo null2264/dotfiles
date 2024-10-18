@@ -39,6 +39,14 @@ darwin-rebuild switch --flake .
 
 Nix in non-NixOS Linux is handled by [system-manager](https://github.com/numtide/system-manager).
 
+#### Rebuild
+
+Unfortunately, root access is required in order to use system-manager.
+
+```sh
+sudo -i nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" -- switch --flake $PWD
+```
+
 ### Home
 
 This is for per-user setup. Instead of managing the entire system, you're

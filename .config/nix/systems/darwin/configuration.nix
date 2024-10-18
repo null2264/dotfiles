@@ -8,43 +8,36 @@
   # NOTE: List packages installed in system profile. To search by name, run:
   # `nix-env -qaP | grep wget`
   environment.systemPackages =
-  let
-    python = (pkgs.python312Full.withPackages (py: [
-      py.pip
-      py.tkinter
-      py.dnspython
-    ]));
-  in
-  common.packages ++ [
-    pkgs.git
-    pkgs.vim
-    pkgs.neovim
-    pkgs.pass
-    pkgs.passExtensions.pass-otp
-    pkgs.gnupg
-    pkgs.htop-vim
-    python
-    (pkgs.inkscape.override { python3 = python; })
-    #(pkgs.poetry.override { python3 = python; })
-    pkgs.fastfetch
-    pkgs.eza
-    pkgs.lf
-    pkgs.wimlib
-    pkgs.google-cloud-sdk
-    pkgs.nmap
-    pkgs.cargo
-    pkgs.android-tools
-    pkgs.coreutils-full
-    pkgs.rclone
-    (pkgs.yt-dlp.override { withAlias = true; })
-    pkgs.zoxide
-  # >> For macOS only
-  ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
-    pkgs.duti
-    pkgs.pinentry_mac
-    pkgs.iina
-  ];
-  # << For macOS only
+    common.packages ++ [
+      pkgs.git
+      pkgs.vim
+      pkgs.neovim
+      pkgs.pass
+      pkgs.passExtensions.pass-otp
+      pkgs.gnupg
+      pkgs.htop-vim
+      common.custom.python
+      (pkgs.inkscape.override { python3 = common.custom.python; })
+      #(pkgs.poetry.override { python3 = common.custom.python; })
+      pkgs.fastfetch
+      pkgs.eza
+      pkgs.lf
+      pkgs.wimlib
+      pkgs.google-cloud-sdk
+      pkgs.nmap
+      pkgs.cargo
+      pkgs.android-tools
+      pkgs.coreutils-full
+      pkgs.rclone
+      (pkgs.yt-dlp.override { withAlias = true; })
+      pkgs.zoxide
+    # >> For macOS only
+    ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
+      pkgs.duti
+      pkgs.pinentry_mac
+      pkgs.iina
+    ];
+    # << For macOS only
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

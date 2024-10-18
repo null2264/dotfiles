@@ -11,10 +11,9 @@ in
       common = (mkCommon pkgs);
     in
     system-manager.lib.makeSystemConfig {
-      inherit system;
-      specialArgs = { inherit inputs pkgs vars common; };
+      extraSpecialArgs = { inherit inputs pkgs vars common; };
       modules = [
-        ./configuration.nix
+        ./potato
       ];
     };
 }
