@@ -2,6 +2,33 @@
 
 You need to install Nix before following this guide: `sh <(curl -L https://nixos.org/nix/install)` and symlink this dir to `~/.config/nix`
 
+## Structure
+
+```
+├── flake.lock
+├── flake.nix
+├── lib                 # Self-explanatory, it contains helper functions
+│   ├── mkCommon.nix
+│   └── mkSystem.nix
+├── modules             # Contains shared configuration across system, across user
+│   └── home-manager
+│       └── floorp.nix
+├── systems             # Contains configurations depending on what type OS nix is being used in
+│   ├── darwin          # macOS
+│   │   ├── configuration.nix
+│   │   └── default.nix
+│   └── nix             # Linux-alike
+│       ├── default.nix
+│       └── potato
+│           └── default.nix
+└── users               # Contains configurations for multi-user setup
+    ├── default.nix
+    └── ziro
+        ├── darwin.nix
+        ├── default.nix
+        └── linux.nix
+```
+
 ## Setup
 
 ### macOS
