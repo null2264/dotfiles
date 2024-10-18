@@ -24,7 +24,22 @@ in
       inherit pkgs;
       extraSpecialArgs = { inherit inputs pkgs home-manager vars; };
       modules = [
-        ./ziro.nix
+        ./ziro
+        ./ziro/darwin.nix
+      ];
+    };
+
+  "ziro@potato" =
+    let
+      inherit (mkSystem "x86_64-linux" nixpkgs) system pkgs;
+    in
+    home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = { inherit inputs pkgs home-manager vars; };
+      modules = [
+        ./ziro
+        ./ziro/linux.nix
+        #../modules/home-manager/floorp.nix  # FIXME: Added on 24.11
       ];
     };
 }

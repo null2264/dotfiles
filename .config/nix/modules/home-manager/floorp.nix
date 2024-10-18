@@ -1,0 +1,80 @@
+{ pkgs, config, vars, ... }:
+
+{
+  programs = {
+    floorp = {
+      enable = true;
+      package = pkgs.emptyDirectory;  # we only want the config
+      profiles.ziro = {
+        userChrome =
+          ''
+            /**
+             * Better Floorp vertical tabs
+             *
+             * This makes Floorp's (expanded) vertical tabs not affecting sites' width,
+             * which can cause lag on heavy websites like Twitch and YouTube.
+             *
+             * This also fixed vertical tabs' width breaking when some preference related
+             * to browser's "head" is changed
+             *
+             * Based on my changes for Pulse, but Pulse is dead.
+             * REF: https://github.com/null2264/pulse/commit/fce966a110c2987b08d35bcd04c5992655b24b13
+             */
+            :root {
+              /* from Floorp source code, too big for me */
+              /*--default-verticaltab-width: 45px;*/
+              /*--hoverd-verticaltab-width: 20em;*/
+
+              --default-verticaltab-width: 35px !important;
+              --hoverd-verticaltab-width: 18em;
+            }
+
+            @charset "UTF-8";
+            @-moz-document url(chrome://browser/content/browser.xhtml) {
+            .browserContainer {
+              border-inline-width: 0 !important;
+            }
+
+            /* >> Fix height being inconsistent on hover */
+            .tab-icon-stack,
+            .tab-label-container {
+              height: 2.7em !important;
+            }
+
+            .tab-icon-stack {
+              align-items: center;
+            }
+            /* << Fix height being inconsistent on hover */
+
+            #sidebar-select-box {
+              width: var(--default-verticaltab-width) !important;
+              min-width: var(--default-verticaltab-width) !important;
+              max-width: var(--default-verticaltab-width) !important;
+            }
+
+            #TabsToolbar {
+              position: relative !important;
+              transition: all 300ms !important;
+              width: calc(var(--default-verticaltab-width) + 5px) !important;
+              min-width: calc(var(--default-verticaltab-width) + 5px) !important;
+              max-width: calc(var(--default-verticaltab-width) + 5px) !important;
+              z-index: 1;  /* Probably not needed, since Floorp already handle this */
+            }
+            #TabsToolbar:not(:hover) {
+              scrollbar-width: none !important;
+            }
+
+            #TabsToolbar:hover {
+              transition: all 300ms !important;
+              width: var(--hoverd-verticaltab-width) !important;
+              min-width: var(--hoverd-verticaltab-width) !important;
+              max-width: var(--hoverd-verticaltab-width) !important;
+              z-index: 2;  /* Probably not needed, since Floorp already handle this */
+              margin-right: calc((var(--hoverd-verticaltab-width) - var(--default-verticaltab-width) - 5px) * -1) !important;
+            }
+            }
+          '';
+      };
+    };
+  };
+}

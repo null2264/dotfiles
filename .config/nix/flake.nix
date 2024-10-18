@@ -31,7 +31,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
