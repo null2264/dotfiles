@@ -19,6 +19,7 @@ in
   "ziro@ThiccBook-Pro" =
     let
       inherit (mkSystem "x86_64-darwin" nixpkgs) system pkgs;
+      vars.name = "ziro";
     in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
@@ -32,6 +33,7 @@ in
   "ziro@potato" =
     let
       inherit (mkSystem "x86_64-linux" nixpkgs) system pkgs;
+      vars.name = "ziro";
     in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
@@ -39,7 +41,7 @@ in
       modules = [
         ./ziro
         ./ziro/linux.nix
-        #../modules/home-manager/floorp.nix  # FIXME: Added on 24.11
+        ../modules/home-manager/floorp.nix
       ];
     };
 }
