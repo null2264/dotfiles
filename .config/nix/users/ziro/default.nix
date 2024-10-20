@@ -5,5 +5,11 @@
     username = "ziro";
   };
 
-  home.stateVersion = "24.05";
+  xdg.configFile = {
+    "nix/nix.conf".text = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
+  home.stateVersion = "24.11";
 }
