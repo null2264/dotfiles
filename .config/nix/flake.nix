@@ -34,7 +34,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/ccc0c2126893dd20963580b6478d1a10a4512185";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:LnL7/nix-darwin/a60ac02f9466f85f092e576fd8364dfc4406b5a6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,7 +44,7 @@
     };
 
     system-manager = {
-      url = "github:numtide/system-manager";
+      url = "github:numtide/system-manager/c93e62f2e962b54fd961798731d25eaa5778dbe2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
