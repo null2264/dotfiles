@@ -3,6 +3,10 @@
 {
   home = {
     username = "ziro";
+    packages =
+      [
+        pkgs.passff-host
+      ];
   };
 
   xdg.configFile = {
