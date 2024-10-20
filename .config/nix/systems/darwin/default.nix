@@ -3,6 +3,7 @@
 let
   mkCommon = import ../../lib/mkCommon.nix;
   mkSystem = import ../../lib/mkSystem.nix;
+  pkgs.overlays = pkgs.overlays ++ [ inputs.firefox-darwin.overlay ];
 in
 {
   # Host list
