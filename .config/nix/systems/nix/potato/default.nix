@@ -10,6 +10,7 @@
       etc = {
         "nix/nix.conf".text =
           ''
+            trusted-users = [ root @wheel ]
             experimental-features = nix-command flakes
             build-users-group = nixbld
           '';
