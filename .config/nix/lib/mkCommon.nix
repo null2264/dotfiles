@@ -13,5 +13,6 @@ in {
   packages = [
     pkgs.zsh
     pkgs.home-manager
+    pkgs.zoxide
   ];
 }

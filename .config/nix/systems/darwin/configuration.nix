@@ -30,14 +30,10 @@
       pkgs.coreutils-full
       pkgs.rclone
       (pkgs.yt-dlp.override { withAlias = true; })
-      pkgs.zoxide
-    # >> For macOS only
-    ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
       pkgs.duti
       pkgs.pinentry_mac
       pkgs.iina
     ];
-    # << For macOS only
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

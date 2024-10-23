@@ -17,7 +17,6 @@
       };
       systemPackages =
         common.packages ++ [
-          pkgs.zoxide
         ];
     };
 
