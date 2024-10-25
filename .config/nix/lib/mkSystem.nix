@@ -1,4 +1,4 @@
-system: nixpkgs:  # e.g. x86_64-linux
+system: nixpkgs: extraOverlays:
 
 {
   system = system;
@@ -7,7 +7,7 @@ system: nixpkgs:  # e.g. x86_64-linux
     overlays =
       [
         (import ../overlays/python.nix)
-      ];
+      ] ++ extraOverlays;
     config.allowUnfree = true;
   };
 }

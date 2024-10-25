@@ -7,7 +7,7 @@ in
 {
   "potato" =
     let
-      inherit (mkSystem "x86_64-linux" nixpkgs) system pkgs;
+      inherit (mkSystem "x86_64-linux" nixpkgs []) system pkgs;
       common = (mkCommon pkgs);
     in
     system-manager.lib.makeSystemConfig {

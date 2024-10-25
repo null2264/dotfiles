@@ -1,4 +1,4 @@
-{ pkgs, config, vars, common, ... }:
+{ pkgs, config, vars, common, inputs, ... }:
 
 {
   # I don't want to risk breaking my hackintosh setup in case Apple decided to
@@ -33,6 +33,7 @@
       pkgs.duti
       pkgs.pinentry_mac
       pkgs.iina
+      pkgs.floorp-bin
     ];
 
   # Auto upgrade nix package and the daemon service.

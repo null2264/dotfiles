@@ -18,7 +18,7 @@ in
 
   "ziro@ThiccBook-Pro" =
     let
-      inherit (mkSystem "x86_64-darwin" nixpkgs) system pkgs;
+      inherit (mkSystem "x86_64-darwin" nixpkgs [inputs.firefox-darwin.overlay]) system pkgs;
       vars.name = "ziro";
     in
     home-manager.lib.homeManagerConfiguration {
@@ -27,12 +27,13 @@ in
       modules = [
         ./ziro
         ./ziro/darwin.nix
+        ../modules/home-manager/floorp.nix
       ];
     };
 
   "ziro@potato" =
     let
-      inherit (mkSystem "x86_64-linux" nixpkgs) system pkgs;
+      inherit (mkSystem "x86_64-linux" nixpkgs []) system pkgs;
       vars.name = "ziro";
     in
     home-manager.lib.homeManagerConfiguration {
