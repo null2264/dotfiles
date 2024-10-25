@@ -21,4 +21,6 @@
       RunAtLoad = true;
     };
   };
+
+  home.sessionVariables.MOZ_LEGACY_PROFILES = 1;
 }
