@@ -14,6 +14,7 @@
         "floorp.browser.tabs.verticaltab" = true;
         "floorp.verticaltab.hover.enabled" = true;
         "floorp.tabbar.style" = 2;
+        "network.dns.disableIPv6" = true;
         "sidebar.position_start" = false;
         "signon.management.page.breach-alerts.enabled" = false;
         "signon.rememberSignons" = false;
