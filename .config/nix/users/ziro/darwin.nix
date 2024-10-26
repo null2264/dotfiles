@@ -8,6 +8,8 @@
     browsers = [ "brave" "chrome" ];  # Arc and Chrome share the same `Application Support` dir, not sure why tbh.
   };
 
+  home.file."Library/Application Support/Floorp/native-messaging-hosts/passff.json".source = "${pkgs.passff-host}/share/passff-host/passff.json";
+
   # Swap CapsLock with Esc for better vi-mode experience.
   launchd.agents.CapsEscSwap = {
     enable = true;
