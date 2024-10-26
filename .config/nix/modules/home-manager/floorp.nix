@@ -12,9 +12,11 @@
         "floorp.browser.sidebar.is.displayed" = false;
         "floorp.browser.tabbar.settings" = 2;
         "floorp.browser.tabs.verticaltab" = true;
-        "floorp.browser.tabs.verticaltab.width" = 208;
         "floorp.verticaltab.hover.enabled" = true;
         "floorp.tabbar.style" = 2;
+        "sidebar.position_start" = false;
+        "signon.management.page.breach-alerts.enabled" = false;
+        "signon.rememberSignons" = false;
       };
     };
   };
