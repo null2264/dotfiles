@@ -4,6 +4,9 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, system-manager, ... }:
   let
     vars = {
+      floorp = {
+        verticalTabHoverWidthInEm = 18;
+      };
       rev = self.rev or self.dirtyRev or null;
     };
   in

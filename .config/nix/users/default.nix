@@ -20,6 +20,7 @@ in
     let
       inherit (mkSystem "x86_64-darwin" nixpkgs [inputs.firefox-darwin.overlay]) system pkgs;
       vars.name = "ziro";
+      vars.floorp.verticalTabHoverWidthInEm = 30;
     in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;

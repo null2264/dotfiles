@@ -16,7 +16,7 @@
   /*--hoverd-verticaltab-width: 20em;*/
 
   --default-verticaltab-width: 4.125em !important;
-  --hoverd-verticaltab-width: 18em;
+  --hoverd-verticaltab-width: /*ZI:VERTICAL-TAB-HOVER-WIDTH-IN-EM*/ !important;
 }
 
 @charset "UTF-8";
