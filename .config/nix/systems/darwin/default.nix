@@ -13,7 +13,12 @@ in
   # Lenovo ThinkPad L460; Intel Core i5-6300U
   "ThiccBook-Pro" =
     let
-      inherit (mkSystem "x86_64-darwin" nixpkgs [inputs.firefox-darwin.overlay]) system pkgs;
+      inherit (
+        mkSystem "x86_64-darwin" nixpkgs [
+          inputs.firefox-darwin.overlay
+          inputs.brew-nix.overlays.default
+        ]
+      ) system pkgs;
       common = (mkCommon pkgs);
     in
     nix-darwin.lib.darwinSystem {
@@ -27,7 +32,12 @@ in
   # Imaginary M1, just for reference
   MacBookProM1 =
     let
-      inherit (mkSystem "aarch64-darwin" nixpkgs [inputs.firefox-darwin.overlay]) system pkgs;
+      inherit (
+        mkSystem "aarch64-darwin" nixpkgs [
+          inputs.firefox-darwin.overlay
+          inputs.brew-nix.overlays.default
+        ]
+      ) system pkgs;
       common = (mkCommon pkgs);
     in
     nix-darwin.lib.darwinSystem {

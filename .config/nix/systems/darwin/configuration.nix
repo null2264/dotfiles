@@ -34,6 +34,7 @@
       pkgs.pinentry_mac
       pkgs.iina
       pkgs.floorp-bin
+      pkgs.brewCasks.zotero
     ];
 
   # Auto upgrade nix package and the daemon service.

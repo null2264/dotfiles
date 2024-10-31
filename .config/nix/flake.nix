@@ -40,6 +40,20 @@
       url = "github:LnL7/nix-darwin/a60ac02f9466f85f092e576fd8364dfc4406b5a6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-darwin = {
+      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix/d3d3a2666e5330e83b6a64b1eb3e1e9380f6da9b";
+      inputs.nix-darwin.follows = "nix-darwin";
+      inputs.brew-api.follows = "brew-api";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
+      flake = false;
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/64c6325b28ebd708653dd41d88f306023f296184";
@@ -48,11 +62,6 @@
 
     system-manager = {
       url = "github:numtide/system-manager/c93e62f2e962b54fd961798731d25eaa5778dbe2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
