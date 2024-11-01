@@ -34,7 +34,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/ccc0c2126893dd20963580b6478d1a10a4512185";
+    nixpkgs.url = "github:NixOS/nixpkgs/2d2a9ddbe3f2c00747398f3dc9b05f7f2ebb0f53";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/470f87c1827b51169ed4f91cdbdfd48417bfff3d";
