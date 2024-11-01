@@ -21,7 +21,6 @@
       #(pkgs.poetry.override { python3 = common.custom.python; })
       pkgs.fastfetch
       pkgs.eza
-      pkgs.lf
       pkgs.wimlib
       pkgs.google-cloud-sdk
       pkgs.nmap
@@ -35,6 +34,9 @@
       pkgs.iina
       pkgs.floorp-bin
       pkgs.brewCasks.zotero
+
+      pkgs.lf
+      pkgs.yazi  # lf replacement, need further testing
     ];
 
   # Auto upgrade nix package and the daemon service.
