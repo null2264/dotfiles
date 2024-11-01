@@ -37,7 +37,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/ccc0c2126893dd20963580b6478d1a10a4512185";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/a60ac02f9466f85f092e576fd8364dfc4406b5a6";
+      url = "github:LnL7/nix-darwin/470f87c1827b51169ed4f91cdbdfd48417bfff3d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-darwin = {
