@@ -14,12 +14,12 @@ let
 
         nativeBuildInputs = [ final.undmg ];
 
-        sourceRoot = "HeliPort.app";
+        sourceRoot = ".";
 
         phases = [ "unpackPhase" "installPhase" ];
         installPhase = ''
           mkdir -p $out/Applications
-          cp -R . "$out/Applications/HeliPort.app"
+          cp -R HeliPort.app "$out/Applications/"
         '';
 
       meta = with final.lib; {
