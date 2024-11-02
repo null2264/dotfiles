@@ -38,6 +38,8 @@
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
+
+      pkgs.iterm2
     ];
 
   # Auto upgrade nix package and the daemon service.
