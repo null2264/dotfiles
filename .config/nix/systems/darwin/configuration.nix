@@ -32,7 +32,8 @@
       pkgs.pinentry_mac
       pkgs.iina
       pkgs.floorp-bin
-      pkgs.brewCasks.zotero
+
+      pkgs.casks.zotero
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
@@ -41,7 +42,7 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nix = {
-    package = pkgs.nixVersions.nix_2_19;  # brew-nix requires nix v2.19
+    package = pkgs.nix;
     settings.experimental-features = "nix-command flakes";  # stopping nix from crying about using experimental features flakes and nix-command
   };
 

@@ -1,7 +1,7 @@
 {
   description = "null2264's Nix Setup";
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs-stable, nixpkgs-unstable, home-manager, system-manager, ... }:
+  outputs = inputs@{ self, nix-darwin, brew-api, nixpkgs-stable, nixpkgs-unstable, home-manager, system-manager, ... }:
   let
     vars = {
       floorp = {
@@ -14,7 +14,7 @@
     darwinConfigurations = (
       import ./systems/darwin {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable nix-darwin home-manager vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nix-darwin brew-api home-manager vars;
       }
     );
 
@@ -36,6 +36,7 @@
   inputs = {
     nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/2d2a9ddbe3f2c00747398f3dc9b05f7f2ebb0f53";
+    flake-utils.url = "github:numtide/flake-utils";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/470f87c1827b51169ed4f91cdbdfd48417bfff3d";
@@ -43,12 +44,6 @@
     };
     firefox-darwin = {
       url = "github:bandithedoge/nixpkgs-firefox-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    brew-nix = {
-      url = "github:BatteredBunny/brew-nix/d3d3a2666e5330e83b6a64b1eb3e1e9380f6da9b";
-      inputs.nix-darwin.follows = "nix-darwin";
-      inputs.brew-api.follows = "brew-api";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     brew-api = {

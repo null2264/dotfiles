@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, nix-darwin, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nix-darwin, brew-api, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;
@@ -13,18 +13,22 @@ in
   # Lenovo ThinkPad L460; Intel Core i5-6300U
   "ThiccBook-Pro" =
     let
+      system = "x86_64-darwin";
       inherit (
         mkSystem {
-          arch = "x86_64-darwin";
+          arch = system;
           stable = nixpkgs-stable;
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            inputs.brew-nix.overlays.default
+            (import ../../overlays/darwin/brew.nix {
+              inherit system brew-api;
+              nixpkgs = nixpkgs-stable;
+            })
             (import ../../overlays/darwin/inkscape.nix)
           ];
         }
-      ) system pkgs pkgs-unstable;
+      ) pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });
     in
     nix-darwin.lib.darwinSystem {
@@ -38,18 +42,22 @@ in
   # Imaginary M1, just for reference
   MacBookProM1 =
     let
+      system = "aarch64-darwin";
       inherit (
         mkSystem {
-          arch = "aarch64-darwin";
+          arch = system;
           stable = nixpkgs-stable;
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            inputs.brew-nix.overlays.default
+            (import ../../overlays/darwin/brew.nix {
+              inherit system brew-api;
+              nixpkgs = nixpkgs-stable;
+            })
             (import ../../overlays/darwin/inkscape.nix)
           ];
         }
-      ) system pkgs pkgs-unstable;
+      ) pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });
     in
     nix-darwin.lib.darwinSystem {
