@@ -8,7 +8,7 @@ let
       py.dnspython
     ]));
   };
-  custom.inkscape = if pkgs.stdenv.isDarwin then pkgs.brewCasks.inkscape else (pkgs.inkscape.override { python3 = custom.python; });
+  custom.inkscape = if pkgs.stdenv.isDarwin then pkgs.inkscape-bin else (pkgs.inkscape.override { python3 = custom.python; });
 in {
   inherit custom;
   packages = [

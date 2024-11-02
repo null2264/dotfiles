@@ -21,6 +21,7 @@ in
           extraOverlays = [
             inputs.firefox-darwin.overlay
             inputs.brew-nix.overlays.default
+            (import ../../overlays/darwin/inkscape.nix)
           ];
         }
       ) system pkgs pkgs-unstable;
@@ -45,6 +46,7 @@ in
           extraOverlays = [
             inputs.firefox-darwin.overlay
             inputs.brew-nix.overlays.default
+            (import ../../overlays/darwin/inkscape.nix)
           ];
         }
       ) system pkgs pkgs-unstable;
