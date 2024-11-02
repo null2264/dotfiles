@@ -25,6 +25,7 @@ in
               inherit system brew-api;
               nixpkgs = nixpkgs-stable;
             })
+            (import ../../overlays/darwin/heliport.nix)
           ];
         }
       ) pkgs pkgs-unstable;

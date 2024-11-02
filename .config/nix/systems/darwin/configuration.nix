@@ -12,34 +12,39 @@
       pkgs.git
       pkgs.vim
       pkgs.neovim
-      pkgs.pass
-      pkgs.passExtensions.pass-otp
-      pkgs.gnupg
       pkgs.htop-vim
-      common.custom.python
-      common.custom.inkscape
-      #(pkgs.poetry.override { python3 = common.custom.python; })
-      pkgs.fastfetch
+      pkgs.wget
       pkgs.eza
-      pkgs.wimlib
-      pkgs.google-cloud-sdk
+      pkgs.coreutils-full
+      pkgs.rclone
+      pkgs.fastfetch
+      pkgs.iterm2
       pkgs.nmap
       pkgs.cargo
       pkgs.android-tools
-      pkgs.coreutils-full
-      pkgs.rclone
-      (pkgs.yt-dlp.override { withAlias = true; })
       pkgs.duti
+      pkgs.undmg
+
+      pkgs.pass
+      pkgs.passExtensions.pass-otp
+      pkgs.gnupg
       pkgs.pinentry_mac
+
+      common.custom.python
+      #(pkgs.poetry.override { python3 = common.custom.python; })
+      pkgs.wimlib
+      pkgs.google-cloud-sdk
+      (pkgs.yt-dlp.override { withAlias = true; })
+
       pkgs.iina
       pkgs.floorp-bin
-
+      common.custom.inkscape
       pkgs.casks.zotero
+      # pkgs.casks.lulu  # Doesn't work, it needs to be installed on /Applications/
+      # pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
-
-      pkgs.iterm2
     ];
 
   # Auto upgrade nix package and the daemon service.
