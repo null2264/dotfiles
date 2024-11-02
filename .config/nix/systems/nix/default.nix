@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, system-manager, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, system-manager, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;
@@ -7,11 +7,17 @@ in
 {
   "potato" =
     let
-      inherit (mkSystem "x86_64-linux" nixpkgs []) system pkgs;
-      common = (mkCommon pkgs);
+      inherit (
+        mkSystem {
+          arch = "x86_64-linux";
+          stable = nixpkgs-stable;
+          unstable = nixpkgs-unstable;
+        }
+      ) system pkgs pkgs-unstable;
+      common = (mkCommon { inherit pkgs pkgs-unstable; });
     in
     system-manager.lib.makeSystemConfig {
-      extraSpecialArgs = { inherit inputs pkgs vars common; };
+      extraSpecialArgs = { inherit inputs pkgs pkgs-unstable vars common; };
       modules = [
         ./potato
       ];

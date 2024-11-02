@@ -1,9 +1,17 @@
-system: nixpkgs: extraOverlays:
+{ arch, stable, unstable, extraOverlays ? [] }:
 
 {
-  system = system;
-  pkgs = import nixpkgs {
-    inherit system;
+  system = arch;
+  pkgs = import stable {
+    system = arch;
+    overlays =
+      [
+        (import ../overlays/python.nix)
+      ] ++ extraOverlays;
+    config.allowUnfree = true;
+  };
+  pkgs-unstable = import unstable {
+    system = arch;
     overlays =
       [
         (import ../overlays/python.nix)

@@ -1,4 +1,4 @@
-{ pkgs, config, vars, common, ... }:
+{ pkgs, pkgs-unstable, config, vars, common, ... }:
 
 {
   config = {

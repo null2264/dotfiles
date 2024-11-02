@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nix-darwin, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nix-darwin, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;
@@ -14,16 +14,21 @@ in
   "ThiccBook-Pro" =
     let
       inherit (
-        mkSystem "x86_64-darwin" nixpkgs [
-          inputs.firefox-darwin.overlay
-          inputs.brew-nix.overlays.default
-        ]
-      ) system pkgs;
-      common = (mkCommon pkgs);
+        mkSystem {
+          arch = "x86_64-darwin";
+          stable = nixpkgs-stable;
+          unstable = nixpkgs-unstable;
+          extraOverlays = [
+            inputs.firefox-darwin.overlay
+            inputs.brew-nix.overlays.default
+          ];
+        }
+      ) system pkgs pkgs-unstable;
+      common = (mkCommon { inherit pkgs pkgs-unstable; });
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs vars common; };
+      specialArgs = { inherit inputs pkgs pkgs-unstable vars common; };
       modules = [
         ./configuration.nix
       ];
@@ -33,16 +38,21 @@ in
   MacBookProM1 =
     let
       inherit (
-        mkSystem "aarch64-darwin" nixpkgs [
-          inputs.firefox-darwin.overlay
-          inputs.brew-nix.overlays.default
-        ]
-      ) system pkgs;
-      common = (mkCommon pkgs);
+        mkSystem {
+          arch = "aarch64-darwin";
+          stable = nixpkgs-stable;
+          unstable = nixpkgs-unstable;
+          extraOverlays = [
+            inputs.firefox-darwin.overlay
+            inputs.brew-nix.overlays.default
+          ];
+        }
+      ) system pkgs pkgs-unstable;
+      common = (mkCommon { inherit pkgs pkgs-unstable; });
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs vars common; };
+      specialArgs = { inherit inputs pkgs pkgs-unstable vars common; };
       modules = [
         ./configuration.nix
       ];

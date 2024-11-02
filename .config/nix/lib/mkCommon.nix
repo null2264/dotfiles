@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 let
   custom = {
@@ -8,11 +8,13 @@ let
       py.dnspython
     ]));
   };
+  custom.inkscape = if pkgs.stdenv.isDarwin then pkgs.brewCasks.inkscape else (pkgs.inkscape.override { python3 = custom.python; });
 in {
   inherit custom;
   packages = [
     pkgs.zsh
     pkgs.home-manager
     pkgs.zoxide
+    custom.inkscape
   ];
 }

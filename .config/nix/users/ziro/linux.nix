@@ -1,4 +1,4 @@
-{ pkgs, config, vars, ... }:
+{ pkgs, pkgs-unstable, config, vars, ... }:
 
 {
   home.homeDirectory = "/home/ziro";

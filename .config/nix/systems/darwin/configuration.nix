@@ -1,4 +1,4 @@
-{ pkgs, config, vars, common, inputs, ... }:
+{ pkgs, pkgs-unstable, config, vars, common, inputs, ... }:
 
 {
   # I don't want to risk breaking my hackintosh setup in case Apple decided to
@@ -17,7 +17,6 @@
       pkgs.gnupg
       pkgs.htop-vim
       common.custom.python
-      (pkgs.inkscape.override { python3 = common.custom.python; })
       #(pkgs.poetry.override { python3 = common.custom.python; })
       pkgs.fastfetch
       pkgs.eza

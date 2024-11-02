@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, home-manager, vars, ... }:
 
 let
   mkSystem = import ../lib/mkSystem.nix;
@@ -18,13 +18,23 @@ in
 
   "ziro@ThiccBook-Pro" =
     let
-      inherit (mkSystem "x86_64-darwin" nixpkgs [inputs.firefox-darwin.overlay]) system pkgs;
+      inherit (
+        mkSystem {
+          arch = "x86_64-darwin";
+          stable = nixpkgs-stable;
+          unstable = nixpkgs-unstable;
+          extraOverlays = [
+            inputs.firefox-darwin.overlay
+            inputs.brew-nix.overlays.default
+          ];
+        }
+      ) system pkgs pkgs-unstable;
       vars.name = "ziro";
       vars.floorp.verticalTabHoverWidthInEm = 28;
     in
     home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = { inherit inputs pkgs home-manager vars; };
+      pkgs = pkgs-unstable;  # FIXME: switch to stable when 24.11 become stable
+      extraSpecialArgs = { inherit inputs pkgs pkgs-unstable home-manager vars; };
       modules = [
         ./ziro
         ./ziro/darwin.nix
@@ -34,12 +44,18 @@ in
 
   "ziro@potato" =
     let
-      inherit (mkSystem "x86_64-linux" nixpkgs []) system pkgs;
+      inherit (
+        mkSystem {
+          arch = "x86_64-linux";
+          stable = nixpkgs-stable;
+          unstable = nixpkgs-unstable;
+        }
+      ) system pkgs pkgs-unstable;
       vars.name = "ziro";
     in
     home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = { inherit inputs pkgs home-manager vars; };
+      pkgs = pkgs-unstable;  # FIXME: switch to stable when 24.11 become stable
+      extraSpecialArgs = { inherit inputs pkgs pkgs-unstable home-manager vars; };
       modules = [
         ./ziro
         ./ziro/linux.nix
