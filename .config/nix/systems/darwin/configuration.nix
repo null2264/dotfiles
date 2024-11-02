@@ -17,6 +17,7 @@
       pkgs.gnupg
       pkgs.htop-vim
       common.custom.python
+      common.custom.inkscape
       #(pkgs.poetry.override { python3 = common.custom.python; })
       pkgs.fastfetch
       pkgs.eza

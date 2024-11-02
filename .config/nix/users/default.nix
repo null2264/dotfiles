@@ -18,6 +18,7 @@ in
 
   "ziro@ThiccBook-Pro" =
     let
+      system = "x86_64-darwin";
       inherit (
         mkSystem {
           arch = "x86_64-darwin";
@@ -25,10 +26,13 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            inputs.brew-nix.overlays.default
+            (import ../../overlays/darwin/brew.nix {
+              inherit system brew-api;
+              nixpkgs = nixpkgs-stable;
+            })
           ];
         }
-      ) system pkgs pkgs-unstable;
+      ) pkgs pkgs-unstable;
       vars.name = "ziro";
       vars.floorp.verticalTabHoverWidthInEm = 28;
     in

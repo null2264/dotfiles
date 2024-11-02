@@ -1,7 +1,7 @@
 # Modified version of brew-nix/casks.nix
 #
 # REF: https://github.com/BatteredBunny/brew-nix/blob/9dfab294afea5029922bbc59a10ae487c7318d59/casks.nix
-{ system, nixpkgs, brew-api, ... }:
+{ system, mac-version ? "ventura", nixpkgs, brew-api, ... }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -17,14 +17,16 @@ let
   getApp = cask: builtins.elemAt (getArtifacts cask).app 0;
   getArtifacts = cask: pkgs.lib.mergeAttrsList cask.artifacts;
 
+  getUrl = cask: (cask.variations.${mac-version} or cask).url;
+  getHash = cask: (cask.variations.${mac-version} or cask).sha256;
+
   caskToDerivation = cask: pkgs.stdenv.mkDerivation rec {
     pname = cask.token;
     version = cask.version;
 
-    # FIXME: support variants
     src = pkgs.fetchurl {
-      url = cask.url;
-      sha256 = pkgs.lib.optionalString (cask.sha256 != "no_check") cask.sha256;
+      url = (getUrl cask);
+      sha256 = pkgs.lib.optionalString ((getHash cask) != "no_check") (getHash cask);
     };
 
     nativeBuildInputs = with pkgs; [

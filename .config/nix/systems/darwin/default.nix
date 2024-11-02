@@ -25,7 +25,6 @@ in
               inherit system brew-api;
               nixpkgs = nixpkgs-stable;
             })
-            (import ../../overlays/darwin/inkscape.nix)
           ];
         }
       ) pkgs pkgs-unstable;
@@ -54,7 +53,6 @@ in
               inherit system brew-api;
               nixpkgs = nixpkgs-stable;
             })
-            (import ../../overlays/darwin/inkscape.nix)
           ];
         }
       ) pkgs pkgs-unstable;
