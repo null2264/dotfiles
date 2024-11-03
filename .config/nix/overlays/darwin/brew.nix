@@ -18,7 +18,7 @@ let
   getArtifacts = cask: pkgs.lib.mergeAttrsList cask.artifacts;
 
   getUrl = cask: (cask.variations.${mac-version} or cask).url;
-  getHash = cask: (cask.variations.${mac-version} or cask).sha256;
+  getHash = cask: (cask.variations.${mac-version} or cask).sha256;  # TODO: convert it to SRI
 
   caskToDerivation = cask: pkgs.stdenv.mkDerivation rec {
     pname = cask.token;
