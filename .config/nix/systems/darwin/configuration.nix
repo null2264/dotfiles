@@ -24,6 +24,7 @@
       pkgs.android-tools
       pkgs.duti
       pkgs.undmg
+      pkgs.mkalias
 
       pkgs.pass
       pkgs.passExtensions.pass-otp
@@ -68,33 +69,22 @@
     # in spotlight, and when launched through the dock they come with a terminal window. This is a workaround.
     # Upstream issue: https://github.com/LnL7/nix-darwin/issues/214
     # Original code: https://github.com/IvarWithoutBones/dotfiles/commit/0b3faad8bd1d0e1af6103caf59b206666ab742f4
-    activationScripts.applications.text = pkgs.lib.mkForce ''
-      echo "setting up ~/Applications..." >&2
-      applications="/Applications"
-      nix_apps="$applications/Nix Apps"
-
-      # Delete the directory to remove old links
-      rm -rf "$nix_apps"
-      mkdir -p "$nix_apps"
-      find ${config.system.build.applications}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-          while read src; do
-            ln -s "$src" "$nix_apps"
-
-            # >> Original linking script - I don't use Spotlight
-            # Spotlight does not recognize symlinks, it will ignore directory we link to the applications folder.
-            # It does understand MacOS aliases though, a unique filesystem feature. Sadly they cannot be created
-            # from bash (as far as I know), so we use the oh-so-great Apple Script instead.
-            # /usr/bin/osascript -e "
-            #     set fileToAlias to POSIX file \"$src\" 
-            #     set applicationsFolder to POSIX file \"$nix_apps\"
-            #     tell application \"Finder\"
-            #         make alias file to fileToAlias at applicationsFolder
-            #         # This renames the alias; 'mpv.app alias' -> 'mpv.app'
-            #         set name of result to \"$(rev <<< "$src" | cut -d'/' -f1 | rev)\"
-            #     end tell
-            # " 1>/dev/null
-            # << Original linking script
-          done
+    activationScripts.applications.text = let
+      env = pkgs.buildEnv {
+        name = "system-applications";
+        paths = config.environment.systemPackages;
+        pathsToLink = "/Applications";
+      };
+    in pkgs.lib.mkForce ''
+      echo "setting up /Applications..." >&2
+      rm -rf "/Applications/Nix Apps"
+      mkdir -p "/Applications/Nix Apps"
+      find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+        while read src; do
+          app_name=$(basename "$src")
+          echo "copying $src" >&2
+          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+        done
     '';
   };
 }
