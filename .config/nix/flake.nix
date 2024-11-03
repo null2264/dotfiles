@@ -47,7 +47,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     brew-api = {
-      url = "github:BatteredBunny/brew-api";
+      url = "github:null2264/brew-api";
       flake = false;
     };
 
