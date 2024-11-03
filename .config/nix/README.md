@@ -33,6 +33,12 @@ You need to install Nix before following this guide: `sh <(curl -L https://nixos
 
 ### macOS
 
+> [!NOTE]
+> If you're using Alfred, to make Applications installed via Nix to appear on Alfred:
+> - Open Alfred Preferences
+> - General > Default Results > Extras > Click `Advanced`
+> - Add `com.apple.alias-file`
+
 Nix in macOS is handled by [nix-darwin](https://github.com/LnL7/nix-darwin).
 
 #### Initial
