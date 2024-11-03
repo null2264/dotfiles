@@ -2,6 +2,7 @@
 
 let
   mkSystem = import ../lib/mkSystem.nix;
+  mkBrew = import ../../overlays/darwin/brew.nix
 in
 {
   # Host list
@@ -21,15 +22,12 @@ in
       system = "x86_64-darwin";
       inherit (
         mkSystem {
-          arch = "x86_64-darwin";
+          arch = system;
           stable = nixpkgs-stable;
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (import ../../overlays/darwin/brew.nix {
-              inherit system brew-api;
-              nixpkgs = nixpkgs-stable;
-            })
+            (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
           ];
         }
       ) pkgs pkgs-unstable;

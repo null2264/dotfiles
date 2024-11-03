@@ -3,6 +3,7 @@
 let
   mkCommon = import ../../lib/mkCommon.nix;
   mkSystem = import ../../lib/mkSystem.nix;
+  mkBrew = import ../../overlays/darwin/brew.nix;
 in
 {
   # Host list
@@ -21,10 +22,7 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (import ../../overlays/darwin/brew.nix {
-              inherit system brew-api;
-              nixpkgs = nixpkgs-stable;
-            })
+            (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
             (import ../../overlays/darwin/heliport.nix)
           ];
         }
@@ -50,10 +48,7 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (import ../../overlays/darwin/brew.nix {
-              inherit system brew-api;
-              nixpkgs = nixpkgs-stable;
-            })
+            (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
           ];
         }
       ) pkgs pkgs-unstable;
