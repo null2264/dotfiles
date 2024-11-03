@@ -25,6 +25,7 @@
       pkgs.duti
       pkgs.undmg
       pkgs.mkalias
+      pkgs.jq
 
       pkgs.pass
       pkgs.passExtensions.pass-otp
