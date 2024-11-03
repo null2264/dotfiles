@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, config, vars, ... }:
+{ pkgs, pkgs-unstable, config, vars, lib, ... }:
 
 {
   home.homeDirectory = "/Users/ziro";
@@ -25,4 +25,22 @@
   };
 
   home.sessionVariables.MOZ_LEGACY_PROFILES = 1;
+
+  home.activation.applications = let
+    env = pkgs.buildEnv {
+      name = "home-applications";
+      paths = config.home.packages;
+      pathsToLink = "/Applications";
+    };
+  in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    echo "setting up ${config.home.homeDirectory}/Applications..." >&2
+    rm -rf "${config.home.homeDirectory}/Applications/Nix Home Manager Apps"
+    mkdir -p "${config.home.homeDirectory}/Applications/Nix Home Manager Apps"
+    find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+      while read src; do
+        app_name=$(basename "$src")
+        echo "copying $src" >&2
+        ${pkgs.mkalias}/bin/mkalias "$src" "${config.home.homeDirectory}/Applications/Nix Home Manager Apps/$app_name"
+      done
+  '';
 }
