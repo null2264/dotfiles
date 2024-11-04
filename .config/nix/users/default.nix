@@ -31,7 +31,6 @@ in
           ];
         }
       ) pkgs pkgs-unstable;
-      vars.name = "ziro";
       vars.floorp.verticalTabHoverWidthInEm = 28;
     in
     home-manager.lib.homeManagerConfiguration {
@@ -53,7 +52,6 @@ in
           unstable = nixpkgs-unstable;
         }
       ) system pkgs pkgs-unstable;
-      vars.name = "ziro";
     in
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs-unstable;  # FIXME: switch to stable when 24.11 become stable
