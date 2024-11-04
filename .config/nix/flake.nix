@@ -39,7 +39,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/470f87c1827b51169ed4f91cdbdfd48417bfff3d";
+      url = "github:LnL7/nix-darwin/189d2d422c773fa065cc9c72e6806f007ebb9be0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     firefox-darwin = {
