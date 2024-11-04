@@ -6,8 +6,6 @@
     packages =
       [
         pkgs.passff-host
-      ] ++ pkgs.lib.optionals (pkgs.stdenv.isDarwin) [
-        pkgs.casks.vscodium
       ];
   };
 

@@ -2,6 +2,10 @@
 
 {
   home.homeDirectory = "/Users/ziro";
+  home.packages = lib.mkAfter
+    [
+      pkgs.casks.vscodium
+    ];
 
   programs.browserpass = {
     enable = true;
