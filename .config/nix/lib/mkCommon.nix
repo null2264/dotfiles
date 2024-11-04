@@ -15,5 +15,6 @@ in {
     pkgs.zsh
     pkgs.home-manager
     pkgs.zoxide
+    pkgs.ruby
   ];
 }
