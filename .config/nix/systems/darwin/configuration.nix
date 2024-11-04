@@ -1,6 +1,8 @@
 { pkgs, pkgs-unstable, config, vars, common, inputs, ... }:
 
-{
+let
+  libFixup = import ../../lib/darwin/libFixup.nix;
+in {
   # I don't want to risk breaking my hackintosh setup in case Apple decided to
   # turn on auto install by default.
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
@@ -26,6 +28,17 @@
       pkgs.undmg
       pkgs.mkalias
       pkgs.jq
+
+      # lan-mouse deps
+      (libFixup { package = pkgs.libadwaita; inherit (pkgs) runCommandLocal; name = "libadwaita"; })
+      (libFixup { package = pkgs.gtk4; inherit (pkgs) runCommandLocal; name = "gtk4"; })
+      (libFixup { package = pkgs.pango; inherit (pkgs) runCommandLocal; name = "pango"; })
+      (libFixup { package = pkgs.harfbuzz; inherit (pkgs) runCommandLocal; name = "harfbuzz"; })
+      (libFixup { package = pkgs.gdk-pixbuf; inherit (pkgs) runCommandLocal; name = "gdk-pixbuf"; })
+      (libFixup { package = pkgs.cairo; inherit (pkgs) runCommandLocal; name = "cairo"; })
+      (libFixup { package = pkgs.graphene; inherit (pkgs) runCommandLocal; name = "graphene"; })
+      (libFixup { package = pkgs.glib; inherit (pkgs) runCommandLocal; name = "glib"; })
+      (libFixup { package = pkgs.gettext; inherit (pkgs) runCommandLocal; name = "gettext"; })
 
       pkgs.pass
       pkgs.passExtensions.pass-otp
