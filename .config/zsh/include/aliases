@@ -146,7 +146,7 @@ alias center-pfetch="printf '\n'; pfetch | sed '\$d' | center -l"
 
 alias neofetch='fastfetch'
 
-[ "$ZI_NIX_FLAKE" = "" ] || {
+[ $ZI_NIX_FLAKE ] && {
 	# FIXME: Alias for NixOS
 	[ $ZI_IS_DARWIN = 1 ] && {
 		alias nix-switch='darwin-rebuild switch --flake $ZI_NIX_FLAKE'
