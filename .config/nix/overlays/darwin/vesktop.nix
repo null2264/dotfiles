@@ -6,13 +6,11 @@ let
   version = "1.5.3";
 in {
   vesktop = mkApp {
-    inherit (final) stdenv undmg;
+    inherit (final) stdenv undmg _7zz;
 
     pname = "Vesktop";
     appFileName = "Vesktop*.app";
     inherit version;
-
-    nativeBuildInputs = [ final._7zz ];
 
     src = final.fetchurl {
       url = "https://github.com/Vencord/Vesktop/releases/download/v${version}/Vesktop-${version}-universal.dmg";

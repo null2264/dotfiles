@@ -1,5 +1,12 @@
 # REF: https://github.com/bandithedoge/nixpkgs-firefox-darwin/blob/ceaca2359e5371ccef3f92a36baf7c438b354afb/overlay.nix
-{ stdenv, undmg, pname, version, sourceRoot ? ".", appFileName, src, meta, nativeBuildInputs ? [ undmg ] }:
+{ stdenv, undmg, _7zz, pname, version, sourceRoot ? ".", appFileName, src, meta
+, nativeBuildInputs ? [ undmg _7zz ]
+, unpackPhase ? "undmg $src || 7zz x -snld $src"
+, installPhase ? ''
+    mkdir -p $out/Applications
+    cp -R ${appFileName} "$out/Applications/"
+''
+}:
 
 stdenv.mkDerivation rec {
   inherit pname version;
@@ -9,10 +16,7 @@ stdenv.mkDerivation rec {
   inherit sourceRoot;
 
   phases = [ "unpackPhase" "installPhase" ];
-  installPhase = ''
-    mkdir -p $out/Applications
-    cp -R ${appFileName} "$out/Applications/"
-  '';
+  inherit unpackPhase installPhase;
 
   inherit meta;
 }

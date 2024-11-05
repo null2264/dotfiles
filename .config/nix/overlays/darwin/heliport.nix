@@ -6,7 +6,7 @@ let
   version = "1.5.0";
 in {
   heliport = mkApp {
-    inherit (final) stdenv undmg;
+    inherit (final) stdenv undmg _7zz;
 
     pname = "HeliPort";
     appFileName = "HeliPort.app";
