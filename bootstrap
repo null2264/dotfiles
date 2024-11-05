@@ -34,8 +34,13 @@ case "$OSTYPE" in
 esac
 [ "$SUDO" = "" ] && {
 	FALLBACK_SUDO="sudo"
-	is_package_exists doas && SUDO="doas" || SUDO=$FALLBACK_SUDO
-	doas echo "" >/dev/null 2>/dev/null || SUDO=$FALLBACK_SUDO
+	case $DISTRO in
+		"apple" ) SUDO=$FALLBACK_SUDO ;;  # There's no good doas implementation for macOS
+		* )
+			is_package_exists doas && SUDO="doas" || SUDO=$FALLBACK_SUDO
+			doas echo "" >/dev/null 2>/dev/null || SUDO=$FALLBACK_SUDO
+		;;
+	esac
 }
 [ "$PACMAN" = "" ] && {
 	case $DISTRO in
@@ -86,6 +91,11 @@ install_aur_package() {
 	esac
 }
 
+install_nix() {
+	is_package_exists nix && { echo "nix is already installed, skipping..."; return; }
+	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+}
+
 # === Actual automation ===
 
 echo "Linking x* configs..."
@@ -107,6 +117,9 @@ case $DISTRO in
 	"ubuntu" ) install_package "${packages_ubuntu[@]}" ;;
 	* ) echo "Not implemented, skipping..." ;;
 esac
+
+echo "Installing nix..."
+install_nix
 
 echo "Changing default shell to zsh..."
 $SUDO chsh -s $(which zsh)
