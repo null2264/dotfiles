@@ -20,7 +20,7 @@ in {
       pkgs.coreutils-full
       pkgs.rclone
       pkgs.fastfetch
-      pkgs.iterm2
+      pkgs.casks.iterm2
       pkgs.nmap
       pkgs.cargo
       pkgs.android-tools
