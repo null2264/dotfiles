@@ -16,5 +16,6 @@ in {
     pkgs.home-manager
     pkgs.zoxide
     pkgs.ruby
+    pkgs._7zz
   ];
 }

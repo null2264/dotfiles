@@ -57,7 +57,7 @@ in {
       pkgs.casks.zotero
       # pkgs.casks.lulu  # Doesn't work, it needs to be installed on /Applications/
       # pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
-      # pkgs.vesktop  # FIXME: "only HFS file systems are supported."
+      pkgs.vesktop
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing

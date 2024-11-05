@@ -12,6 +12,8 @@ in {
     appFileName = "Vesktop*.app";
     inherit version;
 
+    nativeBuildInputs = [ final._7zz ];
+
     src = final.fetchurl {
       url = "https://github.com/Vencord/Vesktop/releases/download/v${version}/Vesktop-${version}.dmg";
       hash = "sha256-/u2G5v98+FAIfg7UMq5vUFmYO2Tj5ZiAaLrdqUdOMAo";
