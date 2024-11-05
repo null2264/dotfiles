@@ -2,7 +2,7 @@
 
 let
   username = "ziro";
-  userChrome = builtins.replaceStrings ["/*ZI:VERTICAL-TAB-HOVER-WIDTH-IN-EM*/"] ["${builtins.toString vars.floorp.verticalTabHoverWidthInEm}em"] (builtins.readFile ../../files/floorp/ziro-userChrome.css);
+  userChrome = builtins.replaceStrings ["/*ZI:*/18em/*:VERTICAL-TAB-HOVER-WIDTH-IN-EM*/"] ["${builtins.toString vars.floorp.verticalTabHoverWidthInEm}em"] (builtins.readFile ../../../include/floorp/ziro-userChrome.css);
   settings = {
     "browser.toolbars.bookmarks.visibility" = "newtab";
     "floorp.browser.sidebar.is.displayed" = false;

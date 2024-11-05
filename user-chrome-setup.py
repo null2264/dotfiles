@@ -70,7 +70,7 @@ for default_path in default_paths:
     chrome_path = pathlib.Path(f"{profile_path}/chrome")
     chrome_path.mkdir(parents=True, exist_ok=True)
     user_chrome_path = chrome_path / "userChrome.css"
-    target_path = f"{dotfiles}/.include/ff-chrome/userChrome.css"
+    target_path = f"{dotfiles}/include/floorp/ziro-userChrome.css"
     try:
         user_chrome_path.symlink_to(target_path)
         installed += 1

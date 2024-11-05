@@ -16,7 +16,7 @@
   /*--hoverd-verticaltab-width: 20em;*/
 
   --default-verticaltab-width: 4.125em !important;
-  --hoverd-verticaltab-width: /*ZI:VERTICAL-TAB-HOVER-WIDTH-IN-EM*/ !important;
+  --hoverd-verticaltab-width: /*ZI:*/18em/*:VERTICAL-TAB-HOVER-WIDTH-IN-EM*/ !important;
 }
 
 @charset "UTF-8";
@@ -93,5 +93,4 @@
   max-width: var(--hoverd-verticaltab-width) !important;
   z-index: 2;  /* Probably not needed, since Floorp already handle this */
   margin-right: calc((var(--hoverd-verticaltab-width) - var(--default-verticaltab-width) - 0.125em) * -1) !important;
-}
 }
