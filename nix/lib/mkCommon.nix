@@ -17,5 +17,6 @@ in {
     pkgs.zoxide
     pkgs.ruby
     pkgs._7zz
+    pkgs.enchive
   ];
 }
