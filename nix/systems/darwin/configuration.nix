@@ -62,12 +62,16 @@ in {
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
     ];
+  environment.extraSetup = ''
+    ln -sv ${pkgs.path} $out/nixpkgs
+  '';
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nix;
     settings.experimental-features = "nix-command flakes";  # stopping nix from crying about using experimental features flakes and nix-command
+    nixPath = [ "nixpkgs=/run/current-system/sw/nixpkgs" ];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
