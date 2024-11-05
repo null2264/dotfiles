@@ -12,7 +12,7 @@ esac
 
 case "$OSTYPE" in
 	"darwin"* )  # We can't access ZI_IS_DARWIN just yet, so we'll do it manually
-		# REF: https://github.com/null2264/Hackintosh-L460?tab=readme-ov-file#bluetooth-workaround
+		# REF: https://github.com/null2264/ThinkPad-L460-OpenCore/blob/d7b92805f14947c14359b53bd8ff6af199883c36/README.md#bluetooth-workaround
 		BT_ADDRESS="$(system_profiler SPBluetoothDataType | grep "Address:" | head -1 | sed "s/ *Address: \(.*\)/\1/g")"
 		[ "$BT_ADDRESS" = "" ] && \
 		__EXTRA="" || \
