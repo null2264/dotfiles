@@ -14,7 +14,11 @@ let
     "sidebar.position_start" = false;
     "signon.management.page.breach-alerts.enabled" = false;
     "signon.rememberSignons" = false;
+    "extensions.autoDisableScopes" = 0;  # Auto enable extensions
   };
+  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    ublock-origin
+  ];
 in {
   home = {
     inherit username;
@@ -25,11 +29,11 @@ in {
   };
 
   programs.floorp.profiles.${username} = {
-    inherit userChrome settings;
+    inherit userChrome settings extensions;
   };
   programs.floorp.profiles.null = {
     id = 1;
-    inherit userChrome settings;
+    inherit userChrome settings extensions;
   };
 
   xdg.configFile = {

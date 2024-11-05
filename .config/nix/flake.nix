@@ -1,7 +1,7 @@
 {
   description = "null2264's Nix Setup";
 
-  outputs = inputs@{ self, nix-darwin, brew-api, nixpkgs-stable, nixpkgs-unstable, home-manager, system-manager, ... }:
+  outputs = inputs@{ self, nix-darwin, brew-api, nixpkgs-stable, nixpkgs-unstable, home-manager, system-manager, nur, ... }:
   let
     vars = {
       floorp = {
@@ -14,21 +14,21 @@
     darwinConfigurations = (
       import ./systems/darwin {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable nix-darwin brew-api home-manager vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nix-darwin brew-api home-manager nur vars;
       }
     );
 
     systemConfigs = (  # sudo is required, sadly
       import ./systems/nix {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable system-manager home-manager vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable system-manager home-manager nur vars;
       }
     );
 
     homeConfigurations = (
       import ./users {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable home-manager vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable home-manager nur vars;
       }
     );
   };
@@ -60,5 +60,7 @@
       url = "github:numtide/system-manager/c93e62f2e962b54fd961798731d25eaa5778dbe2";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    nur.url = "github:nix-community/NUR";
   };
 }

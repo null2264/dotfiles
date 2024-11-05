@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, nix-darwin, brew-api, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nix-darwin, brew-api, nur, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;
@@ -26,6 +26,7 @@ in
             (import ../../overlays/darwin/heliport.nix)
             (import ../../overlays/darwin/vesktop.nix)
           ];
+          nur = nur;
         }
       ) pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });
@@ -52,6 +53,7 @@ in
             (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
             (import ../../overlays/darwin/vesktop.nix)
           ];
+          nur = nur;
         }
       ) pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });

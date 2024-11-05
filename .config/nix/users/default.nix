@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, home-manager, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, home-manager, nur, vars, ... }:
 
 let
   mkSystem = import ../lib/mkSystem.nix;
@@ -29,6 +29,7 @@ in
             inputs.firefox-darwin.overlay
             (mkBrew { inherit system; brew-api = inputs.brew-api; nixpkgs = nixpkgs-stable; })
           ];
+          nur = nur;
         }
       ) pkgs pkgs-unstable;
       vars.floorp.verticalTabHoverWidthInEm = 28;
@@ -50,6 +51,7 @@ in
           arch = "x86_64-linux";
           stable = nixpkgs-stable;
           unstable = nixpkgs-unstable;
+          nur = nur;
         }
       ) system pkgs pkgs-unstable;
     in

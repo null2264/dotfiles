@@ -1,21 +1,29 @@
-{ arch, stable, unstable, extraOverlays ? [] }:
+{ arch, stable, unstable, nur, extraOverlays ? [] }:
 
-{
+let
+  overlays = [
+      (import ../overlays/python.nix)
+  ] ++ extraOverlays;
+
+  # Placed here so that we don't need to specify hash for fetchTarball
+  packageOverrides = pkgs: {
+    nur = import nur {
+      nurpkgs = pkgs;
+      inherit pkgs;
+    };
+  };
+in {
   system = arch;
   pkgs = import stable {
     system = arch;
-    overlays =
-      [
-        (import ../overlays/python.nix)
-      ] ++ extraOverlays;
+    inherit overlays;
     config.allowUnfree = true;
+    config.packageOverrides = packageOverrides;
   };
   pkgs-unstable = import unstable {
     system = arch;
-    overlays =
-      [
-        (import ../overlays/python.nix)
-      ] ++ extraOverlays;
+    inherit overlays;
     config.allowUnfree = true;
+    # config.packageOverrides = packageOverrides;
   };
 }

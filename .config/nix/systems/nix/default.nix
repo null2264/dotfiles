@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, system-manager, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, system-manager, nur, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;
@@ -12,6 +12,7 @@ in
           arch = "x86_64-linux";
           stable = nixpkgs-stable;
           unstable = nixpkgs-unstable;
+          nur = nur;
         }
       ) system pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });
