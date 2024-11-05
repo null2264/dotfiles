@@ -3,7 +3,7 @@ final: prev:
 
 let
   mkApp = import ../../lib/darwin/mkApp.nix;
-  version = "1.5.2";
+  version = "1.5.3";
 in {
   vesktop = mkApp {
     inherit (final) stdenv undmg;
@@ -15,8 +15,8 @@ in {
     nativeBuildInputs = [ final._7zz ];
 
     src = final.fetchurl {
-      url = "https://github.com/Vencord/Vesktop/releases/download/v${version}/Vesktop-${version}.dmg";
-      hash = "sha256-/u2G5v98+FAIfg7UMq5vUFmYO2Tj5ZiAaLrdqUdOMAo";
+      url = "https://github.com/Vencord/Vesktop/releases/download/v${version}/Vesktop-${version}-universal.dmg";
+      hash = "sha256-ceOUNHSOaEqCbzkM64RtUu0Yhrq4tThcXZTDd+OsEXI";
     };
 
     meta = with final.lib; {
