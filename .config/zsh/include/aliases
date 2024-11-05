@@ -118,7 +118,7 @@ alias zclg='z "$HOME/my Files/Kuliah/"'
 alias zwine='z "$HOME/.local/share/wineprefixes/"'
 
 #Git Aliases
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ $ZI_IS_DARWIN = 1 ]; then
 	alias cdgit='_cd /Volumes/CaseSensitive/Build/GIT'
 	alias zgit='z /Volumes/CaseSensitive/Build/GIT'
 else
@@ -145,3 +145,16 @@ alias center-pfetch="printf '\n'; pfetch | sed '\$d' | center -l"
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 alias neofetch='fastfetch'
+
+[ "$ZI_NIX_FLAKE" = "" ] || {
+	# FIXME: Alias for NixOS
+	[ $ZI_IS_DARWIN = 1 ] && {
+		alias nix-switch='darwin-rebuild switch --flake $ZI_NIX_FLAKE'
+		alias nix-build='darwin-rebuild build --flake $ZI_NIX_FLAKE'
+	} || {
+		alias nix-switch='system-manager switch --flake $ZI_NIX_FLAKE'
+		alias nix-build='system-manager build --flake $ZI_NIX_FLAKE'
+	}
+	alias nix-home-switch='darwin-rebuild switch --flake $ZI_NIX_FLAKE'
+	alias nix-home-build='darwin-rebuild build --flake $ZI_NIX_FLAKE'
+}
