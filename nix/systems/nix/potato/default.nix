@@ -17,6 +17,7 @@
       };
       systemPackages =
         common.packages ++ [
+          pkgs.system-manager
         ];
     };
 

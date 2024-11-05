@@ -12,6 +12,9 @@ in
           arch = "x86_64-linux";
           stable = nixpkgs-stable;
           unstable = nixpkgs-unstable;
+          extraOverlays = [
+            system-manager.overlays.default
+          ];
           nur = nur;
         }
       ) system pkgs pkgs-unstable;
