@@ -20,7 +20,10 @@ export ZI_BINARY_HOME="$HOME/.local/bin"
 export ZI_SCRIPTS_HOME="$ZI_BINARY_HOME/scripts"
 export ZI_ANDROID_SDK_VER="35.0.0"
 
-[ -f "$XDG_CONFIG_HOME/zsh/include/dotfiles" ] && source "$XDG_CONFIG_HOME/zsh/include/dotfiles"
+[ -f "$XDG_CONFIG_HOME/zsh/include/dotfiles" ] && {
+	source "$XDG_CONFIG_HOME/zsh/include/dotfiles"
+	export ZI_NIX_FLAKE="$ZI_DOTFILES/nix"
+}
 
 if [ $ZI_IS_DARWIN = 1 ]; then
 	export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
