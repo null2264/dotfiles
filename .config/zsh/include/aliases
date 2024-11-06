@@ -155,6 +155,6 @@ alias neofetch='fastfetch'
 		alias nix-switch='system-manager switch --flake $ZI_NIX_FLAKE'
 		alias nix-build='system-manager build --flake $ZI_NIX_FLAKE'
 	}
-	alias nix-home-switch='darwin-rebuild switch --flake $ZI_NIX_FLAKE'
-	alias nix-home-build='darwin-rebuild build --flake $ZI_NIX_FLAKE'
+	alias nix-home-switch='home-manager switch --flake $ZI_NIX_FLAKE'
+	alias nix-home-build='home-manager build --flake $ZI_NIX_FLAKE'
 }
