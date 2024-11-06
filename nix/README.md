@@ -39,6 +39,10 @@ You need to install Nix before following this guide: `sh <(curl -L https://nixos
 > - General > Default Results > Extras > Click `Advanced`
 > - Add `com.apple.alias-file`
 
+> [!CAUTION]
+> This setup is NOT compatible with homebrew, it is designed to completely replaces homebrew.
+> Uninstall homebrew before proceeding.
+
 Nix in macOS is handled by [nix-darwin](https://github.com/LnL7/nix-darwin).
 
 #### Initial
