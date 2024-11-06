@@ -30,11 +30,13 @@ in
         }
       ) pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs pkgs-unstable vars common; };
+      specialArgs = { inherit inputs pkgs pkgs-unstable spicePkgs vars common; };
       modules = [
+        inputs.spicetify-nix.nixosModules.default  # Also works on nix-darwin thanks to it being nixosConfiguration replacement for macOS
         ./configuration.nix
       ];
     };
@@ -57,11 +59,13 @@ in
         }
       ) pkgs pkgs-unstable;
       common = (mkCommon { inherit pkgs pkgs-unstable; });
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
     in
     nix-darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs pkgs-unstable vars common; };
+      specialArgs = { inherit inputs pkgs pkgs-unstable spicePkgs vars common; };
       modules = [
+        inputs.spicetify-nix.nixosModules.default
         ./configuration.nix
       ];
     };

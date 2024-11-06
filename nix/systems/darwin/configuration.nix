@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, config, vars, common, inputs, ... }:
+{ pkgs, pkgs-unstable, spicePkgs, config, vars, common, inputs, ... }:
 
 let
   libFixup = import ../../lib/darwin/libFixup.nix;
@@ -73,6 +73,14 @@ in {
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enableCompletion = false;  # causing "insecure directories and files" error if user doesn't have configured zsh
+
+  programs.spicetify = {
+    enable = true;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      shuffle
+    ];
+  };
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = vars.rev or null;

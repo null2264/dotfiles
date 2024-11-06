@@ -27,7 +27,7 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (mkBrew { inherit system; brew-api = inputs.brew-api; nixpkgs = nixpkgs-stable; })
+            (mkBrew { inherit system; inherit (inputs) brew-api; nixpkgs = nixpkgs-stable; })
           ];
           nur = nur;
         }
