@@ -1,35 +1,39 @@
 # `null2264`'s Nix Setup
 
-You need to install Nix before following this guide: `sh <(curl -L https://nixos.org/nix/install)` and symlink this dir to `~/.config/nix`
-
 ## Structure
 
 ```
 ├── flake.lock
 ├── flake.nix
-├── lib                 # Self-explanatory, it contains helper functions
+├── lib/                        # Self-explanatory, it contains helper functions
 │   ├── mkCommon.nix
 │   └── mkSystem.nix
-├── modules             # Contains shared configuration across system, across user
+├── modules/                    # Contains shared configuration across system, across user
 │   └── home-manager
 │       └── floorp.nix
-├── systems             # Contains configurations depending on what type OS nix is being used in
-│   ├── darwin          # macOS
-│   │   ├── configuration.nix
-│   │   └── default.nix
-│   └── nix             # Linux-alike
-│       ├── default.nix
-│       └── potato
-│           └── default.nix
-└── users               # Contains configurations for multi-user setup
-    ├── default.nix
-    └── ziro
-        ├── darwin.nix
-        ├── default.nix
-        └── linux.nix
+├── overlays/                   # Nix overlays, self-explanatory
+├── systems/                    # Contains configurations depending on what type OS nix is being used in
+│   ├── darwin/                 # - macOS
+│   │   ├── configuration.nix   # -- There supposed supposed to be a split here just like `nix/`, but I got lazy
+│   │   ├── default.nix         # -- Where you register your Mac (based on hostname)
+│   ├── nix/                    # - non-NixOS (Linux/BSD/etc..)
+│   │   ├── default.nix         # -- Where you register your PC (based on hostname)
+│   │   └── <hostname>/
+│   │       └── default.nix
+│   └── nixos/                  # - NixOS
+└── users/                      # Contains configurations for multi-user setup
+    ├── default.nix             # - Where you register the user(s)
+    └── <user>/                 # - Recommended to split it to several nix files depending on the OS type you're planning to use
+        ├── darwin.nix          # -- macOS
+        ├── default.nix         # -- Common (works on all OS type)
+        └── linux.nix           # -- Linux
 ```
 
 ## Setup
+
+### Nix
+
+It is recommended to install nix using [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer) or [Nix's Official Installer](https://nixos.org/download/) (with `--daemon` flag, aka Multi-user installation) instead of whatever provided by your OS' package manager to avoid potential incompatibility.
 
 ### macOS
 
