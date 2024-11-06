@@ -25,7 +25,6 @@ in {
     inherit username;
     packages =
       [
-        pkgs.passff-host
       ];
   };
 
