@@ -40,10 +40,7 @@ in {
       (libFixup { package = pkgs.glib; inherit (pkgs) runCommandLocal; name = "glib"; })
       (libFixup { package = pkgs.gettext; inherit (pkgs) runCommandLocal; name = "gettext"; })
 
-      pkgs.pass
-      pkgs.passExtensions.pass-otp
-      pkgs.gnupg
-      pkgs.pinentry_mac
+      pkgs.pinentry_mac  # for GPG
 
       common.custom.python
       #(pkgs.poetry.override { python3 = common.custom.python; })
