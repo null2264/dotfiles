@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, nix-darwin, brew-api, nur, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, nix-darwin, brew-api, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;

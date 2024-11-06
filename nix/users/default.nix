@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, home-manager, nur, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, home-manager, vars, ... }:
 
 let
   mkSystem = import ../lib/mkSystem.nix;

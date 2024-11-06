@@ -1,4 +1,4 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, system-manager, nur, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, system-manager, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;

@@ -17,21 +17,21 @@
     darwinConfigurations = (
       import ./systems/darwin {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable nix-darwin brew-api home-manager nur vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nur nix-darwin brew-api home-manager vars;
       }
     );
 
     systemConfigs = (  # sudo is required, sadly
       import ./systems/nix {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable system-manager home-manager nur vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nur system-manager home-manager vars;
       }
     );
 
     homeConfigurations = (
       import ./users {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable home-manager nur vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nur home-manager vars;
       }
     );
   };
