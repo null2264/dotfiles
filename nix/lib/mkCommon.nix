@@ -17,8 +17,11 @@ in {
     pkgs.zoxide
     pkgs.ruby
     pkgs._7zz
+
     pkgs.enchive
     (pkgs.pass.withExtensions (exts: [ exts.pass-otp ]))
     pkgs.gnupg
+
+    pkgs.vesktop
   ];
 }

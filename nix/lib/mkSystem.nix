@@ -2,7 +2,8 @@
 
 let
   overlays = [
-      (import ../overlays/python.nix)
+    (import ../overlays/python.nix)
+    (import ../overlays/vesktop.nix)
   ] ++ extraOverlays;
 
   # Placed here so that we don't need to specify hash for fetchTarball

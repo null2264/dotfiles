@@ -24,7 +24,6 @@ in
             inputs.firefox-darwin.overlay
             (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
             (import ../../overlays/darwin/heliport.nix)
-            (import ../../overlays/darwin/vesktop.nix)
           ];
           nur = nur;
         }
@@ -53,7 +52,6 @@ in
           extraOverlays = [
             inputs.firefox-darwin.overlay
             (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
-            (import ../../overlays/darwin/vesktop.nix)
           ];
           nur = nur;
         }
