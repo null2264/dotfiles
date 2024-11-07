@@ -2,6 +2,7 @@
 { stdenv, undmg, _7zz, pname, version, sourceRoot ? ".", appFileName, src, meta
 , nativeBuildInputs ? [ undmg _7zz ]
 , unpackPhase ? "undmg $src || 7zz x -snld $src"
+, configurePhase ? ""
 , installPhase ? ''
     mkdir -p $out/Applications
     cp -R ${appFileName} "$out/Applications/"
@@ -15,8 +16,8 @@ stdenv.mkDerivation rec {
 
   inherit sourceRoot;
 
-  phases = [ "unpackPhase" "installPhase" ];
-  inherit unpackPhase installPhase;
+  phases = [ "unpackPhase" "configurePhase" "installPhase" ];
+  inherit unpackPhase configurePhase installPhase;
 
   inherit meta;
 }

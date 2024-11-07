@@ -30,15 +30,16 @@ in {
       pkgs.jq
 
       # lan-mouse deps
-      (libFixup { package = pkgs.libadwaita; inherit (pkgs) runCommandLocal; name = "libadwaita"; })
-      (libFixup { package = pkgs.gtk4; inherit (pkgs) runCommandLocal; name = "gtk4"; })
-      (libFixup { package = pkgs.pango; inherit (pkgs) runCommandLocal; name = "pango"; })
-      (libFixup { package = pkgs.harfbuzz; inherit (pkgs) runCommandLocal; name = "harfbuzz"; })
-      (libFixup { package = pkgs.gdk-pixbuf; inherit (pkgs) runCommandLocal; name = "gdk-pixbuf"; })
-      (libFixup { package = pkgs.cairo; inherit (pkgs) runCommandLocal; name = "cairo"; })
-      (libFixup { package = pkgs.graphene; inherit (pkgs) runCommandLocal; name = "graphene"; })
-      (libFixup { package = pkgs.glib; inherit (pkgs) runCommandLocal; name = "glib"; })
-      (libFixup { package = pkgs.gettext; inherit (pkgs) runCommandLocal; name = "gettext"; })
+      # FIXME: Find a better way to link <packages>/lib to /usr/local/opt/<lib>/lib
+      # (libFixup { package = pkgs.libadwaita; inherit (pkgs) runCommandLocal; name = "libadwaita"; })
+      # (libFixup { package = pkgs.gtk4; inherit (pkgs) runCommandLocal; name = "gtk4"; })
+      # (libFixup { package = pkgs.pango; inherit (pkgs) runCommandLocal; name = "pango"; })
+      # (libFixup { package = pkgs.harfbuzz; inherit (pkgs) runCommandLocal; name = "harfbuzz"; })
+      # (libFixup { package = pkgs.gdk-pixbuf; inherit (pkgs) runCommandLocal; name = "gdk-pixbuf"; })
+      # (libFixup { package = pkgs.cairo; inherit (pkgs) runCommandLocal; name = "cairo"; })
+      # (libFixup { package = pkgs.graphene; inherit (pkgs) runCommandLocal; name = "graphene"; })
+      # (libFixup { package = pkgs.glib; inherit (pkgs) runCommandLocal; name = "glib"; })
+      # (libFixup { package = pkgs.gettext; inherit (pkgs) runCommandLocal; name = "gettext"; })
 
       pkgs.pinentry_mac  # for GPG
 
