@@ -11,12 +11,29 @@
         lctl lmet lalt           spc            ralt f13  rctl
 )
 
-;; Swap CapsLock with ESC
+(defalias
+  nav (tap-hold 200 200 / (layer-toggle mouse))
+
+  mvmu (movemouse-up 1 1)
+  mvmd (movemouse-down 1 1)
+  mvml (movemouse-left 1 1)
+  mvmr (movemouse-right 1 1)
+)
+
 (deflayer base
   caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab   q    w    e    r    t    y    u    i    o    p    [    ]
   esc   a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  lsft  102d z    x    c    v    b    n    m    ,    .    /    rsft
+  lsft  102d z    x    c    v    b    n    m    ,    .    @nav rsft
         lctl lmet lalt           spc            ralt f13  rctl
+)
+
+(deflayer mouse
+  _    _    _    _    _    _    _      _      _      _      _    _    _
+  _     _    _    _    _    _    _      _      _      _      _    _    _    _
+  _     _    _    _    _    _    _      _      _      _      _    _    _
+  _     _    _    _    _    _    @mvml  @mvmd  @mvmu  @mvmr  _    _    _    _
+  _     _    _    _    _    _    _      _      _      _      _    _    _
+        _    _    _              _                    _      _    _
 )
