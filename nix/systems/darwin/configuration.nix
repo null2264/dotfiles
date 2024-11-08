@@ -58,6 +58,8 @@ in {
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
+
+      pkgs.kanata
     ];
   environment.extraSetup = ''
     ln -sv ${pkgs.path} $out/nixpkgs

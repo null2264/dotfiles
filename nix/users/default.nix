@@ -28,6 +28,7 @@ in
           extraOverlays = [
             inputs.firefox-darwin.overlay
             (mkBrew { inherit system; inherit (inputs) brew-api; nixpkgs = nixpkgs-stable; })
+            (import ../overlays/darwin/kanata.nix)
           ];
           nur = nur;
         }

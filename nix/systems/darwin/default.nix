@@ -4,6 +4,10 @@ let
   mkCommon = import ../../lib/mkCommon.nix;
   mkSystem = import ../../lib/mkSystem.nix;
   mkBrew = import ../../overlays/darwin/brew.nix;
+
+  kanataModules = [
+    (import ../../modules/darwin/kanata.nix { user = "ziro"; })
+  ];
 in
 {
   # Host list
@@ -24,6 +28,7 @@ in
             inputs.firefox-darwin.overlay
             (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
             (import ../../overlays/darwin/heliport.nix)
+            (import ../../overlays/darwin/kanata.nix)
           ];
           nur = nur;
         }
@@ -37,7 +42,7 @@ in
       modules = [
         inputs.spicetify-nix.nixosModules.default  # Also works on nix-darwin thanks to it being nixosConfiguration replacement for macOS
         ./configuration.nix
-      ];
+      ] ++ kanataModules;
     };
 
   # Imaginary M1, just for reference
@@ -52,6 +57,7 @@ in
           extraOverlays = [
             inputs.firefox-darwin.overlay
             (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
+            (import ../../overlays/darwin/kanata.nix)
           ];
           nur = nur;
         }
@@ -65,6 +71,6 @@ in
       modules = [
         inputs.spicetify-nix.nixosModules.default
         ./configuration.nix
-      ];
+      ] ++ kanataModules;
     };
 }
