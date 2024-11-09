@@ -17,8 +17,19 @@ let
     "extensions.autoDisableScopes" = 0;  # Auto enable extensions
   };
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    passff
+    # AdBlocker
     ublock-origin
+
+    # YouTube
+    enhancer-for-youtube
+    sponsorblock
+    dearrow
+
+    # Other
+    passff
+    tampermonkey
+    indie-wiki-buddy
+    facebook-container
   ];
 in {
   home = {
