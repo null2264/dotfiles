@@ -12,28 +12,44 @@
 )
 
 (defalias
-  nav (tap-hold 200 200 / (layer-toggle mouse))
-
-  mvmu (movemouse-up 1 1)
-  mvmd (movemouse-down 1 1)
-  mvml (movemouse-left 1 1)
-  mvmr (movemouse-right 1 1)
+  ;; << Mouse
+  mnav (tap-hold 200 200 / (layer-toggle mnav))
+  mact (tap-hold 200 200 rctl (layer-toggle mact))
+  ;; -- actions
+  mvmu (movemouse-accel-up    5 800 1 15)
+  mvmd (movemouse-accel-down  5 800 1 15)
+  mvml (movemouse-accel-left  5 800 1 15)
+  mvmr (movemouse-accel-right 5 800 1 15)
+  msu (mwheel-up   50 120)
+  msd (mwheel-down 50 120)
+  ;; >> Mouse
 )
 
 (deflayer base
-  caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab   q    w    e    r    t    y    u    i    o    p    [    ]
-  esc   a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  lsft  102d z    x    c    v    b    n    m    ,    .    @nav rsft
+  caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12
+  grv   1    2    3    4    5    6    7    8    9    0    -     =    bspc
+  tab   q    w    e    r    t    y    u    i    o    p    [     ]
+  esc   a    s    d    f    g    h    j    k    l    ;    '     \    ret
+  lsft  102d z    x    c    v    b    n    m    ,    .    @mnav rsft
         lctl lmet lalt           spc            ralt f13  rctl
 )
 
-(deflayer mouse
-  _    _    _    _    _    _    _      _      _      _      _    _    _
+;; << Mouse
+(deflayer mnav
+  _     _    _    _    _    _    _      _      _      _      _    _    _
+  _     _    _    _    _    _    _      _      _      _      _    _     _    _
+  _     _    _    _    _    _    _      _      _      _      _    @msu  @msd
+  _     _    _    _    _    _    @mvml  @mvmd  @mvmu  @mvmr  _    _     _    _
+  _     _    _    _    _    _    _      _      _      _      _    _     _
+        _    _    _              mlft                 _      _    @mact
+)
+
+(deflayer mact
+  _     _    _    _    _    _    _      _      _      _      _    _    _
   _     _    _    _    _    _    _      _      _      _      _    _    _    _
   _     _    _    _    _    _    _      _      _      _      _    _    _
-  _     _    _    _    _    _    @mvml  @mvmd  @mvmu  @mvmr  _    _    _    _
+  _     _    _    _    _    _    _      _      _      _      _    _    _    _
   _     _    _    _    _    _    _      _      _      _      _    _    _
-        _    _    _              _                    _      _    _
+        _    _    _              mrgt                 _      _    _
 )
+;; >> Mouse
