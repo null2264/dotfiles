@@ -2,6 +2,24 @@
 
 let
   libFixup = import ../../lib/darwin/libFixup.nix;
+  nix-srisum = pkgs.writeShellScriptBin "nix-srisum" ''
+    nix-hash --to-sri --type sha256 $(nix-prefetch-url ''$1)
+  '';
+  nix-srisum-unzip = pkgs.writeShellScriptBin "nix-srisum-unzip" ''
+    FILES_TO_DOWNLOAD=($@)
+    mkdir -p /tmp/nix-srisum-unzip-files
+    for i in "''${FILES_TO_DOWNLOAD[@]}"; do
+      filename="''$(uuidgen):archive.zip"
+      wget -q -O /tmp/nix-srisum-unzip-files/$filename ''$i
+
+      dirname="$(uuidgen):extract"
+      mkdir -p /tmp/nix-srisum-unzip-files/$dirname
+      unzip -qq -d /tmp/nix-srisum-unzip-files/$dirname /tmp/nix-srisum-unzip-files/$filename
+
+      hash=$(nix-hash --to-sri --type sha256 $(nix-hash --type sha256 /tmp/nix-srisum-unzip-files/$dirname))
+      echo "''$hash - ''$i"
+    done
+  '';
 in {
   # I don't want to risk breaking my hackintosh setup in case Apple decided to
   # turn on auto install by default.
@@ -19,7 +37,6 @@ in {
       pkgs.eza
       pkgs.coreutils-full
       pkgs.rclone
-      pkgs.fastfetch
       pkgs.casks.iterm2
       pkgs.nmap
       pkgs.cargo
@@ -28,6 +45,8 @@ in {
       pkgs.undmg
       pkgs.mkalias
       pkgs.jq
+      nix-srisum
+      nix-srisum-unzip
 
       # lan-mouse deps
       # FIXME: Find a better way to link <packages>/lib to /usr/local/opt/<lib>/lib

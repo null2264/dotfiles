@@ -37,7 +37,8 @@
   };
 
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";  # FIXME: p11-kit failed to build
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/f39f1d2a8fe191e442ce641a6dc1320f6aa17d04";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/2d2a9ddbe3f2c00747398f3dc9b05f7f2ebb0f53";
     nur.url = "github:nix-community/NUR";
 
