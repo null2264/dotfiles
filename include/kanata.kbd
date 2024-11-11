@@ -12,6 +12,7 @@
 )
 
 (defalias
+  \ (tap-hold 200 200 \ 102d)  ;; Allow US keyboard on non-US keyboard mac to use backslash
   ;; << Mouse
   mnav (tap-hold 200 200 / (layer-toggle mnav))
   mact (tap-hold 200 200 rctl (layer-toggle mact))
@@ -29,7 +30,7 @@
   caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12
   grv   1    2    3    4    5    6    7    8    9    0    -     =    bspc
   tab   q    w    e    r    t    y    u    i    o    p    [     ]
-  esc   a    s    d    f    g    h    j    k    l    ;    '     \    ret
+  esc   a    s    d    f    g    h    j    k    l    ;    '     @\   ret
   lsft  102d z    x    c    v    b    n    m    ,    .    @mnav rsft
         lctl lmet lalt           spc            ralt f13  rctl
 )
@@ -38,7 +39,7 @@
 (deflayer mnav
   _     _    _    _    _    _    _      _      _      _      _    _    _
   _     _    _    _    _    _    _      _      _      _      _    _     _    _
-  _     _    _    _    _    _    _      _      _      _      _    @msu  @msd
+  _     _    _    _    _    _    _      _      _      _      _    pgup  pgdn
   _     _    _    _    _    _    @mvml  @mvmd  @mvmu  @mvmr  _    _     _    _
   _     _    _    _    _    _    _      _      _      _      _    _     _
         _    _    _              mlft                 _      _    @mact
