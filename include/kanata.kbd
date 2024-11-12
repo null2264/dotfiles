@@ -23,8 +23,8 @@
   mvmd (movemouse-accel-down  5 800 1 15)
   mvml (movemouse-accel-left  5 800 1 15)
   mvmr (movemouse-accel-right 5 800 1 15)
-  msu (mwheel-up   50 120)
-  msd (mwheel-down 50 120)
+  msu (mwheel-up   150 15)
+  msd (mwheel-down 150 15)
   ;; >> Mouse
 )
 
@@ -41,7 +41,7 @@
 (deflayer mnav
   _     _    _    _    _    _    _      _      _      _      _    _    _
   _     _    _    _    _    _    _      _      _      _      _    _     _    _
-  _     _    _    _    _    _    _      _      _      _      _    pgup  pgdn
+  _     _    _    _    _    _    _      _      _      _      _    @msu  @msd
   _     _    _    _    _    _    @mvml  @mvmd  @mvmu  @mvmr  _    _     _    _
   _     _    _    _    _    _    _      _      _      _      _    _     _
         _    _    _              mlft                 _      _    @mact
