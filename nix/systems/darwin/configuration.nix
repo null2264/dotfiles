@@ -70,6 +70,7 @@ in {
 
       pkgs.iina
       pkgs.floorp-bin
+      pkgs.zen-bin  # Trying out Zen Browser; FIXME: Choose between floorp and zen
       common.custom.inkscape
       pkgs.casks.zotero
       # pkgs.casks.lulu  # Doesn't work, it needs to be installed on /Applications/

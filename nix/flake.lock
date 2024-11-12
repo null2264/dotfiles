@@ -59,15 +59,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1731113649,
-        "narHash": "sha256-U6FMghMpHTk2Pb5VsjNk8tBgCiiyB+bebmfOuNtMisA=",
-        "owner": "bandithedoge",
+        "lastModified": 1731384384,
+        "narHash": "sha256-QvpgSxzLNvGV/J2zgIol9VDkJprfb1H7GqQgWBjOuF8=",
+        "owner": "null2264",
         "repo": "nixpkgs-firefox-darwin",
-        "rev": "22a53e2cae4d37fb24e9326c6f72a54cb4f269d5",
+        "rev": "326e29e863afb2e7048d662edb3a2e665c64a5e7",
         "type": "github"
       },
       "original": {
-        "owner": "bandithedoge",
+        "owner": "null2264",
         "repo": "nixpkgs-firefox-darwin",
         "type": "github"
       }

@@ -59,7 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     firefox-darwin = {
-      url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      url = "github:null2264/nixpkgs-firefox-darwin";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     brew-api = {
