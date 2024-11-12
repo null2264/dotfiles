@@ -37,7 +37,10 @@
   };
 
   inputs = {
-    # nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";  # FIXME: p11-kit failed to build
+    # FIXME: p11-kit failed to build. Probably due to them focusing on Linux for iteration 6.
+    #
+    # REF: https://github.com/NixOS/nixpkgs/pull/352800 -> "Let's consider this one Linux-only."
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.05";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/3efbba06438ad7962122a725b316bc7c7a72981b";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/2d2a9ddbe3f2c00747398f3dc9b05f7f2ebb0f53";
     nur.url = "github:nix-community/NUR";
