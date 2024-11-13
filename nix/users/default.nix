@@ -3,6 +3,10 @@
 let
   mkSystem = import ../lib/mkSystem.nix;
   mkBrew = import ../overlays/darwin/brew.nix;
+
+  defaultModules = [
+    ../modules/home-manager/__programs/zen.nix
+  ];
 in
 {
   # Host list
@@ -38,10 +42,11 @@ in
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs-unstable;  # FIXME: switch to stable when 24.11 become stable
       extraSpecialArgs = { inherit inputs pkgs pkgs-unstable home-manager vars; };
-      modules = [
+      modules = defaultModules ++ [
         ./ziro
         ./ziro/darwin.nix
         ../modules/home-manager/floorp.nix
+        ../modules/home-manager/zen.nix
       ];
     };
 
@@ -59,10 +64,11 @@ in
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs-unstable;  # FIXME: switch to stable when 24.11 become stable
       extraSpecialArgs = { inherit inputs pkgs pkgs-unstable home-manager vars; };
-      modules = [
+      modules = defaultModules ++ [
         ./ziro
         ./ziro/linux.nix
         ../modules/home-manager/floorp.nix
+        ../modules/home-manager/zen.nix
       ];
     };
 }
