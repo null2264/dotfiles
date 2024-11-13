@@ -18,6 +18,9 @@ let
     "floorp.verticaltab.hover.enabled" = true;
     "floorp.tabbar.style" = 2;
   };
+  settings-ff-zen = settings-ff-common // {
+    "zen.view.compact" = true;
+  };
   extensions-ff-common = with pkgs.nur.repos.rycee.firefox-addons; [
     # AdBlocker
     ublock-origin
@@ -54,7 +57,12 @@ in {
   };
 
   programs.zen.profiles.${username} = {
-    settings = settings-ff-common;
+    settings = settings-ff-zen;
+    extensions = extensions-ff-common;
+  };
+  programs.zen.profiles.null = {
+    id = 1;
+    settings = settings-ff-zen;
     extensions = extensions-ff-common;
   };
 
