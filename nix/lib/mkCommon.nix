@@ -33,5 +33,8 @@ in {
     pkgs.gnupg
 
     pkgs.vesktop
+
+    # For hackintosh-ing
+    pkgs.acpica-tools
   ];
 }
