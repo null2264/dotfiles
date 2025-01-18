@@ -129,7 +129,7 @@ else
   export VISUAL="nvim"
   export EDITOR="nvim"
 fi
-export BROWSER="floorp"
+export BROWSER="zen-browser"
 export TERMINAL="kitty"
 export READER="zathura"
 export HTTPS="localhost:9050"
