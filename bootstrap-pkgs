@@ -30,6 +30,8 @@ packages_arch=(
 	# for nvim-treesitter
 	tree-sitter
 	tree-sitter-cli
+	# mostly for rankmirrors
+	pacman-contrib
 )
 
 packages_arch_aur=(
