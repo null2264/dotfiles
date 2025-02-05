@@ -140,7 +140,7 @@ alias qn='vim $HOME/Documents/QuickNote'
 
 alias docx2pdf='lowriter --convert-to pdf'
 
-alias mirror-update='curl -s "https://archlinux.org/mirrorlist/?country=ID&country=SG&country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -'
+alias mirror-update='curl -s "https://archlinux.org/mirrorlist/?country=ID&country=SG&country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 6 -'
 alias center-pfetch="printf '\n'; pfetch | sed '\$d' | center -l"
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
