@@ -13,11 +13,6 @@ let
       pkgs.casks.inkscape
     else
       (pkgs.inkscape.override { python3 = custom.python; });
-  custom.fastfetch =
-    if pkgs.stdenv.isDarwin then
-      pkgs.fastfetch.override { imagemagick_light = pkgs.imagemagick; }
-    else
-      pkgs.fastfetch;
 in {
   inherit custom;
   packages = [
@@ -26,7 +21,7 @@ in {
     pkgs.zoxide
     pkgs.ruby
     pkgs._7zz
-    custom.fastfetch
+    pkgs.fastfetch
 
     pkgs.enchive
     (pkgs.pass.withExtensions (exts: [ exts.pass-otp ]))

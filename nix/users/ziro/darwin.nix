@@ -41,7 +41,7 @@
     rm -rf "${config.home.homeDirectory}/Applications/Nix Home Manager Apps"
     mkdir -p "${config.home.homeDirectory}/Applications/Nix Home Manager Apps"
     find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-      while read src; do
+      while read -r src; do
         app_name=$(basename "$src")
         echo "copying $src" >&2
         ${pkgs.mkalias}/bin/mkalias "$src" "${config.home.homeDirectory}/Applications/Nix Home Manager Apps/$app_name"
