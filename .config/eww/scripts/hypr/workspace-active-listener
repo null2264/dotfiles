@@ -1,17 +1,7 @@
 #!/bin/sh
-# REF: https://github.com/Mango0x45/dotfiles/blob/c3e4bf8/.config/eww/scripts/active-workspace-listener
+# REF: https://github.com/Mango0x45/dotfiles/blob/d62026673b0b833f27b85f8a551cb646ae2bd751/.config/eww/scripts/active-workspace-listener
 
 readonly IPC="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 
-report() {
-	hyprctl -j monitors | jq -cr '[.[] | .activeWorkspace.id % 10]'
-}
-
-report
-socat -u UNIX-CONNECT:"$IPC" - | while read -r _
-do
-	case "${_%>>*}" in
-		workspace|moveworkspace)
-			report
-	esac
-done
+hyprctl -j activeworkspace | jq -r '.name'
+socat -u UNIX-CONNECT:"$IPC" - | sed -n 's/^workspace>>//p'
