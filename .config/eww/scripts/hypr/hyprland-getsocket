@@ -1,4 +1,0 @@
-#!/bin/sh
-
-tmp=/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock
-[ -f $tmp ] && echo $tmp || echo $XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock
