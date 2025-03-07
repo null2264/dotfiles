@@ -16,7 +16,7 @@ let
       mkdir -p /tmp/nix-srisum-unzip-files/$dirname
       unzip -qq -d /tmp/nix-srisum-unzip-files/$dirname /tmp/nix-srisum-unzip-files/$filename
 
-      hash=$(nix-hash --to-sri --type sha256 $(nix-hash --type sha256 /tmp/nix-srisum-unzip-files/$dirname))
+      hash=$(nix hash path /tmp/nix-srisum-unzip-files/$dirname)
       echo "''$hash - ''$i"
     done
   '';
