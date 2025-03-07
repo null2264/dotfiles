@@ -3,9 +3,9 @@
 let
   custom = {
     python = (pkgs.python312Full.withPackages (py: [
-      py.pip
+      #py.pip
       py.tkinter
-      py.dnspython
+      #py.dnspython
     ]));
   };
   custom.inkscape =
