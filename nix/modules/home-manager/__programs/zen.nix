@@ -36,11 +36,11 @@ in {
 
       platforms.linux = rec {
         vendorPath = ".zen";
-        configPath = "${vendorPath}";
+        configPath = ".zen";
       };
       platforms.darwin = rec {
         vendorPath = "Library/Application Support/Zen";
-        configPath = "${vendorPath}";
+        configPath = "Library/Application Support/Zen";
       };
     })
   ];
