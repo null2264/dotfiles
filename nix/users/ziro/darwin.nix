@@ -33,6 +33,23 @@
     MOZ_ALLOW_DOWNGRADE = 1;
   };
 
+  # Pass sessionVariables to GUI apps with launchctl
+  #
+  # REF: https://github.com/nix-community/home-manager/pull/5801/commits/dbe54a48a0bc9942289f6a5d8a751ed3be065c81
+  launchd.agents.launchctl-setenv = let
+    launchctl-setenv = pkgs.writeShellScriptBin "launchctl-setenv"
+      (concatStringsSep "\n" (mapAttrsToList
+        (name: val: "/bin/launchctl setenv ${name} ${toString val}")
+        config.home.sessionVariables));
+  in {
+    enable = true;
+    config = {
+      ProgramArguments = [ "${launchctl-setenv}/bin/launchctl-setenv" ];
+      KeepAlive.SuccessfulExit = false;
+      RunAtLoad = true;
+    };
+  };
+
   home.activation.applications = let
     env = pkgs.buildEnv {
       name = "home-applications";
