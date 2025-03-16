@@ -28,8 +28,6 @@
   #   };
   # };
 
-  home.sessionVariables.MOZ_LEGACY_PROFILES = 1;
-
   home.activation.applications = let
     env = pkgs.buildEnv {
       name = "home-applications";
