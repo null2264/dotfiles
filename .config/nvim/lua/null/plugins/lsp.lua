@@ -25,6 +25,8 @@ return {
 				-- "ruff",
 				-- "ruff_lsp",
 				-- << Python
+
+				"jinja_lsp",
 			},
 			automatic_installation = { exclude = { "rust_analyzer" } },
 		},

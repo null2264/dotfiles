@@ -20,6 +20,10 @@ return {
 				"rust",
 				"sxhkdrc",
 				"latex",
+				-- HTML template langs
+				"htmljinja",
+				"jinja",
+				"jinja_inline",
 			},
 
 			sync_install = false,
@@ -45,6 +49,13 @@ return {
 					files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
 				},
 				filetype = "fluent", -- if filetype does not match the parser name
+			}
+			config.htmljinja = {
+				install_info = {
+					url = "https://github.com/null2264/tree-sitter-htmldjango", -- local path or git repo
+					files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+				},
+				filetype = "htmldjango", -- if filetype does not match the parser name
 			}
 			vim.filetype.add({
 				extension = { rasi = "rasi" },
