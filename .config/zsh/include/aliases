@@ -125,6 +125,7 @@ else
 	alias cdgit='_cd $HOME/Build/GIT'
 	alias zgit='z $HOME/Build/GIT'
 fi
+alias g='git'
 alias gaa='git add -A'
 alias gci='git commit'
 alias gca='git commit --all'
