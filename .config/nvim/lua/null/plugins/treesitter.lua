@@ -35,7 +35,8 @@ return {
 			},
 		},
 		config = function (_, opts)
-			local config = require("nvim-treesitter.parsers").get_parser_configs()
+			local parsers = require("nvim-treesitter.parsers")
+			local config = parsers.get_parser_configs()
 			config.gsp = {
 				install_info = {
 					url = "https://git.sr.ht/~mango/tree-sitter-gsp",
@@ -63,6 +64,12 @@ return {
 					[".*/hypr/.*%.conf"] = "hyprlang",
 				},
 			})
+			vim.filetype.add({
+				extension = {
+					mdx = "mdx"
+				}
+			})
+			vim.treesitter.language.register("markdown", "mdx")
 			require("nvim-treesitter.configs").setup(opts)
 		end
 	},
