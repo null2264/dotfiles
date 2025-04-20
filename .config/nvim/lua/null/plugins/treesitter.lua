@@ -21,6 +21,9 @@ return {
 				"sxhkdrc",
 				"latex",
 				-- HTML template langs
+				"javascript",
+				"typescript",
+				"html",
 				"htmljinja",
 				"jinja",
 				"jinja_inline",
@@ -35,8 +38,7 @@ return {
 			},
 		},
 		config = function (_, opts)
-			local parsers = require("nvim-treesitter.parsers")
-			local config = parsers.get_parser_configs()
+			local config = require("nvim-treesitter.parsers").get_parser_configs()
 			config.gsp = {
 				install_info = {
 					url = "https://git.sr.ht/~mango/tree-sitter-gsp",
@@ -56,7 +58,7 @@ return {
 					url = "https://github.com/null2264/tree-sitter-htmldjango", -- local path or git repo
 					files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
 				},
-				filetype = "htmldjango", -- if filetype does not match the parser name
+				filetype = "htmljinja", -- if filetype does not match the parser name
 			}
 			vim.filetype.add({
 				extension = { rasi = "rasi" },
@@ -76,5 +78,9 @@ return {
 	{
 		url = "https://git.sr.ht/~mango/tree-sitter-gsp",
 		fp = "gsp",
+	},
+	{
+		url = "https://github.com/null2264/tree-sitter-htmldjango",
+		fp = "htmljinja",
 	},
 }
