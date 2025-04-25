@@ -71,6 +71,9 @@ _install_plugin https://github.com/zsh-users/zsh-autosuggestions
 
 # ]] Plugins
 
+# Custom fpath
+fpath+=( "$XDG_DATA_HOME/zsh/functions/VCS_Info" )
+
 _command_exists() {
 	[ $(command -v $1 | wc -l) -gt 0 ] && return 0 || return 1
 }
