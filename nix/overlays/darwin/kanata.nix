@@ -7,16 +7,16 @@ final: prev:
 {
   kanata = final.stdenv.mkDerivation rec {
     name = "kanata";
-    version = "v1.7.0";
+    version = "v1.8.1";
 
     src = final.fetchurl {
       url = "https://github.com/jtroo/kanata/releases/download/${version}/kanata_macos_" +
         (if final.stdenv.hostPlatform.isAarch64 then "arm64" else "x86_64");
       sha256 =
         if final.stdenv.hostPlatform.isAarch64 then
-          "83ad80fbaf8c7b0ec0e17052a02ca0b3057cbbeaf8a023a61541f1514a936b43"
+          "f8704e1007cef9533bd80452e343ffc6f84f2b7747124716cdb533106ffa2e12"
         else
-          "e3f0d99e512a84c5cae1f63e71c07ecdbff66dc89b053aba0abb4f9dee0cadc0";
+          "7d5abf3dbe4b9a4aca85fa7b61f821fed9b1cf4e502a641b639b54e8eb45326c";
     };
 
     phases = ["installPhase" "patchPhase"];
