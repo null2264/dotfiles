@@ -3,7 +3,8 @@
 let
   overlays = [
     (import ../overlays/python.nix)
-    (import ../overlays/vesktop.nix)
+    # FIXME: Can't enable this here since brew-nix is not yet "initialized" at this point
+    #(import ../overlays/vesktop.nix)
   ] ++ extraOverlays;
 
   # Placed here so that we don't need to specify hash for fetchTarball
