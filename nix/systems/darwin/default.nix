@@ -43,6 +43,7 @@ in
       modules = [
         inputs.spicetify-nix.nixosModules.default  # Also works on nix-darwin thanks to it being nixosConfiguration replacement for macOS
         ./configuration.nix
+        #../../modules/darwin/dnscrypt.nix
       ] ++ kanataModules;
     };
 
@@ -73,6 +74,7 @@ in
       modules = [
         inputs.spicetify-nix.nixosModules.default
         ./configuration.nix
+        #../../modules/darwin/dnscrypt.nix
       ] ++ kanataModules;
     };
 }
