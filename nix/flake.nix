@@ -40,7 +40,7 @@
     # FIXME: p11-kit failed to build. Probably due to them focusing on Linux for iteration 6.
     #
     # REF: https://github.com/NixOS/nixpkgs/pull/352800 -> "Let's consider this one Linux-only."
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
     nur.url = "github:nix-community/NUR";
 
@@ -52,12 +52,12 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     firefox-darwin = {

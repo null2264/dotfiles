@@ -1,8 +1,9 @@
-{ user }:
-
 { pkgs, ... }:
 
-{
+let
+  # Figure out how to do multi-user here now that nix-darwin forced you to use root
+  user = "ziro";
+in {
   launchd.user.agents.kanata = {
     command = "/usr/bin/sudo ${pkgs.kanata}/bin/kanata -c ${../../../include/kanata.kbd} -n";
     serviceConfig = {

@@ -4,10 +4,6 @@ let
   mkCommon = import ../../lib/mkCommon.nix;
   mkSystem = import ../../lib/mkSystem.nix;
   mkBrew = import ../../overlays/darwin/brew.nix;
-
-  kanataModules = [
-    (import ../../modules/darwin/kanata.nix { user = "ziro"; })
-  ];
 in
 {
   # Host list
@@ -30,6 +26,7 @@ in
             (import ../../overlays/darwin/heliport.nix)
             (import ../../overlays/darwin/kanata.nix)
             (import ../../overlays/vesktop.nix)
+            (import ../../overlays/rclone.nix)  # FIXME: Remove later
           ];
           nur = nur;
         }
@@ -43,8 +40,9 @@ in
       modules = [
         inputs.spicetify-nix.nixosModules.default  # Also works on nix-darwin thanks to it being nixosConfiguration replacement for macOS
         ./configuration.nix
+        ../../modules/darwin/kanata.nix
         #../../modules/darwin/dnscrypt.nix
-      ] ++ kanataModules;
+      ];
     };
 
   # Imaginary M1, just for reference
@@ -61,6 +59,7 @@ in
             (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
             (import ../../overlays/darwin/kanata.nix)
             (import ../../overlays/vesktop.nix)
+            (import ../../overlays/rclone.nix)  # FIXME: Remove later
           ];
           nur = nur;
         }
@@ -74,7 +73,8 @@ in
       modules = [
         inputs.spicetify-nix.nixosModules.default
         ./configuration.nix
+        ../../modules/darwin/kanata.nix
         #../../modules/darwin/dnscrypt.nix
-      ] ++ kanataModules;
+      ];
     };
 }

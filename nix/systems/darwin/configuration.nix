@@ -86,8 +86,8 @@ in {
   '';
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
   nix = {
+    enable = true;
     package = pkgs.nix;
     settings.experimental-features = "nix-command flakes";  # stopping nix from crying about using experimental features flakes and nix-command
     nixPath = [ "nixpkgs=/run/current-system/sw/nixpkgs" ];
@@ -110,6 +110,7 @@ in {
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system = {
+    primaryUser = "ziro";
     stateVersion = 4;
     # Nix-darwin does not link installed applications to the user environment. This means apps will not show up
     # in spotlight, and when launched through the dock they come with a terminal window. This is a workaround.
