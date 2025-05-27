@@ -2,6 +2,10 @@
 end_of_line = lf
 insert_final_newline = true
 
+[*.lua]
+indent_style = space
+indent_size = 4
+
 [*.{nix,kbd}]
 indent_style = space
 indent_size = 2
