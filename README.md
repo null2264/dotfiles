@@ -15,14 +15,14 @@ I'm still working on cleaning up some mess.
 <img align="right" width="55%" src='https://raw.githubusercontent.com/null2264/null2264/master/assets/newSetup.png'></img>
 My Setup:
 
-- **WM**: Hyprland
+- **WM**: Hyprland on Linux
 - **OS**: Arch Linux / macOS 13.x (Ventura)[^mac]
 - **Shell**: zsh
 - **Terminal**: kitty / iTerm2
-- **Editor**: Neovim / VSCode / IDEA
+- **Editor**: Neovim / IDEA
 - **File Manager**: Thunar / Nautilus / lf
 - **Launcher**: tofi / Alfred
-- **Browser**: Pulse
+- **Browser**: Zen
 
 [^mac]: macOS support is partially working
 
