@@ -2,20 +2,22 @@ require("null.util").lazy_file()
 
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		lazy = true,
-		config = function(_, opts)
+		config = function(_, _opts)
 			require("mason").setup()
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		lazy = true,
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 		},
 		opts = {
 			ensure_installed = {
+				"ast_grep",
+
 				-- >> Kotlin
 				-- "kotlin_language_server",
 				-- << Kotlin
@@ -26,7 +28,14 @@ return {
 				-- "ruff_lsp",
 				-- << Python
 
+				-- >> Jinja
 				"jinja_lsp",
+				-- << Jinja
+
+				-- >> Lua
+				"emmylua_ls",
+				"luau_lsp",
+				-- << Lua
 			},
 			automatic_installation = { exclude = { "rust_analyzer" } },
 		},
@@ -38,7 +47,7 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = true,
 		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
+			"mason-org/mason-lspconfig.nvim",
 		},
 		opts = function()
 			return {
@@ -82,9 +91,25 @@ return {
 			lsp.pyright.setup({
 				capabilities = capabilities,
 			})
+			-- FIXME: Causing memleak, probably not compatible with Oil / neotree
 			-- lsp.kotlin_language_server.setup({
 			-- 	capabilities = capabilities,
 			-- })
+			lsp.emmylua_ls.setup({
+				capabilities = capabilities,
+				root_markers = {
+					".luarc.json",
+					"luarc.json",
+					".git",
+					"lazy-lock.json",
+					".emmyrc.json",
+				},
+				settings = {
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("lua/*.lua", true),
+					},
+				},
+			})
 			lsp.rust_analyzer.setup({
 				capabilities = capabilities,
 				settings = {
@@ -108,7 +133,7 @@ return {
 		"mfussenegger/nvim-lint",
 		event = { "LazyFile" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 		},
 		opts = function()
 			return {
@@ -167,13 +192,14 @@ return {
 					end,
 				},
 				window = {
-					-- completion = cmp.config.window.bordered(),
+					completion = cmp.config.window.bordered(),
 					-- documentation = cmp.config.window.bordered(),
 				},
+				-- NOTE: fallback function (or the first parameter inside `cmp.mapping(function(fallback) {})`) sends a already mapped key.
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
+					["<A-Space>"] = cmp.mapping.complete(),  -- Alt instead of Ctrl because Ctrl+Space is used by IME to switch between input method
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping(function(fallback)
 						if cmp.visible() and not cmp.confirm() then
@@ -188,7 +214,7 @@ return {
 							-- elseif has_words_before() then
 							--   cmp.complete()
 						else
-							fallback() -- The fallback function sends a already mapped key. In this case, it"s probably `<Tab>`.
+							fallback()
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function()
