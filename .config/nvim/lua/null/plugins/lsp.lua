@@ -83,19 +83,18 @@ return {
                 has_cmp and cmp_nvim_lsp.default_capabilities() or {},
                 opts.capabilities or {}
             )
-            local lsp = require("lspconfig")
             -- FIXME: Re enable once ruff is able to type check
-            -- lsp.ruff_lsp.setup({
-            -- 	capabilities = capabilities,
-            -- })
-            lsp.pyright.setup({
+            -- vim.lsp.config["ruff_lsp"] = {
+            --     capabilities = capabilities,
+            -- }
+            vim.lsp.config["pyright"] = {
                 capabilities = capabilities,
-            })
+            }
             -- FIXME: Causing memleak, probably not compatible with Oil / neotree
-            -- lsp.kotlin_language_server.setup({
-            -- 	capabilities = capabilities,
-            -- })
-            lsp.emmylua_ls.setup({
+            -- vim.lsp.config["kotlin_language_server"] = {
+            --     capabilities = capabilities,
+            -- }
+            vim.lsp.config["emmylua_ls"] = {
                 capabilities = capabilities,
                 root_markers = {
                     ".luarc.json",
@@ -108,9 +107,14 @@ return {
                     workspace = {
                         library = vim.api.nvim_get_runtime_file("lua/*.lua", true),
                     },
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        },
+                    },
                 },
-            })
-            lsp.rust_analyzer.setup({
+            }
+            vim.lsp.config["rust_analyzer"] = {
                 capabilities = capabilities,
                 settings = {
                     ["rust-analyzer"] = {
@@ -126,7 +130,7 @@ return {
                         },
                     }
                 },
-            })
+            }
         end,
     },
     {
@@ -140,7 +144,7 @@ return {
                 ignored = {},
             }
         end,
-        config = function(_, opts)
+        config = function(_, _opts)
             require("lint").linters_by_ft = {
                 bash = {
                     "shellcheck",
@@ -171,21 +175,20 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
         },
-        config = function(_, opts)
+        config = function(_, _opts)
             -- From vimrc, may need clean up
             local cmp = require("cmp")
 
-            local has_words_before = function()
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and
-                vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
+            -- local has_words_before = function()
+            --     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+            --     return col ~= 0 and vim.api.nvim_buf_get_lines(0, (line or 0) - 1, line, true)[1]:sub(col, col):match("%s") == nil
+            -- end
 
             cmp.setup({
                 auto_brackets = { "python" },
                 snippet = {
                     -- REQUIRED - you must specify a snippet engine
-                    expand = function(args)
+                    expand = function(_args)
                         -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
                         -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
                         -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
@@ -196,7 +199,7 @@ return {
                     completion = cmp.config.window.bordered(),
                     -- documentation = cmp.config.window.bordered(),
                 },
-                -- NOTE: fallback function (or the first parameter inside `cmp.mapping(function(fallback) {})`) sends a already mapped key.
+                -- NOTE: fallback function (or the first parameter inside `cmp.mapping(function(fallback) ...)`) sends a already mapped key.
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
