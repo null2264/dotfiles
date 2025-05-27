@@ -131,6 +131,14 @@ return {
                     }
                 },
             }
+            -- REF: https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/neovim.md
+            vim.lsp.config["kotlin-lsp"] = {
+                cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(9999)),
+                single_file_support = false,
+                filetypes = { "kotlin" },
+                root_markers = { "build.gradle", "build.gradle.kts", "pom.xml" },
+            }
+            vim.lsp.enable("kotlin-lsp")
         end,
     },
     {
