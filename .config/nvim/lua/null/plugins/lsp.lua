@@ -23,7 +23,7 @@ return {
                 -- << Kotlin
 
                 -- >> Python
-                "pyright",
+                "basedpyright",
                 -- "ruff",
                 -- "ruff_lsp",
                 -- << Python
@@ -87,7 +87,7 @@ return {
             -- vim.lsp.config["ruff_lsp"] = {
             --     capabilities = capabilities,
             -- }
-            vim.lsp.config["pyright"] = {
+            vim.lsp.config["basedpyright"] = {
                 capabilities = capabilities,
             }
             -- FIXME: Causing memleak, probably not compatible with Oil / neotree
