@@ -7,9 +7,9 @@ map("n", "<C-u>", "U")
 map("n", "U", "<C-r>")
 
 -- Yank and Put
-map("n", "<C-y>", '"+y')
+map("nv", "<C-y>", '"+y')
 map("n", "<C-p>", '"+p')
-map("n", "<C-Y>", '"+y')
+map("nv", "<C-Y>", '"+y')
 map("n", "<C-P>", '"+p')
 
 -- Comment a line like how it is on VSC (using vim-commentary)
