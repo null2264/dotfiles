@@ -8,3 +8,12 @@ prompt() {
 		* ) return 1 ;;
 	esac;
 }
+
+prompt_pos() {
+	printf "$1"
+	read INPUT
+	case $INPUT in
+		[nN] ) return 0 ;;
+		* ) return 1 ;;
+	esac;
+}
