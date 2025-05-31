@@ -90,6 +90,7 @@ return {
             vim.lsp.config["basedpyright"] = {
                 capabilities = capabilities,
             }
+            vim.lsp.enable("basedpyright")
             -- FIXME: Causing memleak, probably not compatible with Oil / neotree
             -- vim.lsp.config["kotlin_language_server"] = {
             --     capabilities = capabilities,
@@ -114,6 +115,7 @@ return {
                     },
                 },
             }
+            vim.lsp.enable("emmylua_ls")
             vim.lsp.config["rust_analyzer"] = {
                 capabilities = capabilities,
                 settings = {
@@ -131,8 +133,10 @@ return {
                     }
                 },
             }
+            vim.lsp.enable("rust_analyzer")
             -- REF: https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/neovim.md
             vim.lsp.config["kotlin-lsp"] = {
+                capabilities = capabilities,
                 cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(9999)),
                 single_file_support = false,
                 filetypes = { "kotlin" },
