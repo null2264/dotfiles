@@ -78,11 +78,6 @@ _command_exists() {
 	[ $(command -v $1 | wc -l) -gt 0 ] && return 0 || return 1
 }
 
-_command_exists pyenv && {
-	eval "$(pyenv init -)";
-	eval "$(pyenv virtualenv-init -)";
-}
-
 _command_exists zoxide && eval "$(zoxide init zsh)"
 
 _command_exists fzf && {
