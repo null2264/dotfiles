@@ -89,7 +89,7 @@ else
 	LOCAL_PATH=$(du "$ZI_BINARY_HOME" -d 1 | cut -f2 | paste -sd ':')
 	LOCAL_PATH="/run/system-manager/sw/bin:$LOCAL_PATH"
 fi
-PATH="$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$ZI_SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
+PATH="$HOME/.rokit/bin:$BUN_INSTALL/bin:$HOME/.pub-cache/bin:$HOME/.local/share/go/bin:$ANDROID_AVD_HOME:$HOME/.local/share/npm/bin:$HOME/.local/share/cargo/bin:$ZI_SCRIPTS_HOME/bin:$LOCAL_PATH${PATH:+:${PATH}}"
 # export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/library
 
 # -- IBus stuff (IME)
