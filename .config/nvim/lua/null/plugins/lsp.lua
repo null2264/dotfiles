@@ -1,3 +1,5 @@
+local map = require("null.util").map
+
 require("null.util").lazy_file()
 
 return {
@@ -44,9 +46,19 @@ return {
         end,
     },
     {
+        "lopi-py/luau-lsp.nvim",
+        lazy = true,
+        opts = {
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
+    {
         "neovim/nvim-lspconfig",
         lazy = true,
         dependencies = {
+            "lopi-py/luau-lsp.nvim",
             "mason-org/mason-lspconfig.nvim",
         },
         opts = function()
@@ -69,10 +81,20 @@ return {
                         },
                     },
                 },
+                capabilities = {
+                    workspace = {
+                        didChangeWatchedFiles = {
+                            dynamicRegistration = true,
+                        },
+                    },
+                },
             }
         end,
         config = function(_, opts)
             vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+            local on_attach = function(client, bufnr)
+                map("n", "<Space><CR>", require("null.lsp-diagnostics").line_diagnostics, { buffer = bufnr })
+            end
 
             -- Setup lspconfig
             local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -115,7 +137,36 @@ return {
                     },
                 },
             }
-            vim.lsp.enable("emmylua_ls")
+            -- vim.lsp.enable("emmylua_ls")
+            require("luau-lsp").setup {
+                platform = {
+                    type = "roblox",
+                },
+                types = {
+                    roblox_security_level = "PluginSecurity",
+                },
+                sourcemap = {
+                    enabled = true,
+                    autogenerate = true, -- automatic generation when the server is attached
+                    rojo_project_file = "default.project.json",
+                    sourcemap_file = "sourcemap.json",
+                },
+                server = {
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                    settings = {
+                        -- https://github.com/folke/neoconf.nvim/blob/main/schemas/luau_lsp.json
+                        ["luau-lsp"] = {
+                            completion = {
+                                imports = {
+                                    enabled = true, -- enable auto imports
+                                },
+                            },
+                        },
+                    },
+                },
+            }
+            -- vim.lsp.enable("luau_lsp")
             vim.lsp.config["rust_analyzer"] = {
                 capabilities = capabilities,
                 settings = {
