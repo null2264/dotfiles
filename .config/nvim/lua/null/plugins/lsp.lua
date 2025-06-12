@@ -46,6 +46,24 @@ return {
         end,
     },
     {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        lazy = true,
+        dependencies = {
+            "mason-org/mason.nvim",
+        },
+        opts = {
+            ensure_installed = {
+                -- >> Lua(u)
+                "stylua",
+                "selene",
+                -- << Lua(u)
+            },
+        },
+        config = function(_, opts)
+            require("mason-tool-installer").setup(opts)
+        end,
+    },
+    {
         "lopi-py/luau-lsp.nvim",
         lazy = true,
         opts = {
@@ -225,6 +243,16 @@ return {
                     -- FIXME: If filename in opts.ignored:
                     -- vim.diagnostic.disable()
                 end,
+            })
+            local autoformat_group = vim.api.nvim_create_augroup("Auto format", { clear = true })
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                pattern = { "*.luau" },
+                desc = "Auto-format Luau files after saving",
+                callback = function()
+                    local fileName = vim.api.nvim_buf_get_name(0)
+                    vim.cmd(":silent !stylua " .. fileName)
+                end,
+                group = autoformat_group,
             })
         end,
     },
