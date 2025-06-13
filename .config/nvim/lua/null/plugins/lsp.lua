@@ -39,7 +39,11 @@ return {
                 "luau_lsp",
                 -- << Lua
             },
-            automatic_installation = { exclude = { "rust_analyzer" } },
+            automatic_enable = {
+                excluded = {
+                    "luau_lsp",  -- Already handled by "lopi-py/luau-lsp.nvim"
+                },
+            }
         },
         config = function(_, opts)
             require("mason-lspconfig").setup(opts)
@@ -65,6 +69,7 @@ return {
     },
     {
         "lopi-py/luau-lsp.nvim",
+        branch = "nvim-011",
         lazy = true,
         opts = {
         },
@@ -155,7 +160,22 @@ return {
                     },
                 },
             }
-            -- vim.lsp.enable("emmylua_ls")
+            vim.lsp.enable("emmylua_ls")
+            vim.lsp.config["luau_lsp"] = {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                settings = {
+                    -- https://github.com/folke/neoconf.nvim/blob/main/schemas/luau_lsp.json
+                    ["luau-lsp"] = {
+                        completion = {
+                            imports = {
+                                enabled = true,     -- enable auto imports
+                            },
+                        },
+                    },
+                },
+            }
+            -- This will setup AND enable "luau_lsp", so vim.lsp.enable(...) is not needed
             require("luau-lsp").setup {
                 platform = {
                     type = "roblox",
@@ -169,22 +189,7 @@ return {
                     rojo_project_file = "default.project.json",
                     sourcemap_file = "sourcemap.json",
                 },
-                server = {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    settings = {
-                        -- https://github.com/folke/neoconf.nvim/blob/main/schemas/luau_lsp.json
-                        ["luau-lsp"] = {
-                            completion = {
-                                imports = {
-                                    enabled = true, -- enable auto imports
-                                },
-                            },
-                        },
-                    },
-                },
             }
-            -- vim.lsp.enable("luau_lsp")
             vim.lsp.config["rust_analyzer"] = {
                 capabilities = capabilities,
                 settings = {
