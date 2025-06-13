@@ -27,4 +27,7 @@ o.fillchars:append("eob: ")
 g.mapleader = " "
 g.guifont = { "Sarasa UI J", ":h16" }
 
+o.foldmethod = "marker"
+o.foldmarker = { "#region" , "#endregion" }
+
 require("null.remap")

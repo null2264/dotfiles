@@ -72,6 +72,10 @@ return {
         "lopi-py/luau-lsp.nvim",
         branch = "nvim-011",
         lazy = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "mason-org/mason.nvim",
+        },
         opts = {
             platform = {
                 type = "roblox",
@@ -85,10 +89,6 @@ return {
                 rojo_project_file = "default.project.json",
                 sourcemap_file = "sourcemap.json",
             },
-        },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "mason-org/mason.nvim",
         },
         config = function(_, opts)
             require("luau-lsp").setup(opts)
@@ -145,6 +145,8 @@ return {
                 opts.capabilities or {}
             )
             -- NOTE: If the LSP is installed through Mason, vim.lsp.enable(...) is not needed since they're enabled automatically.
+
+            --#region Python
             -- FIXME: Re enable once ruff is able to type check
             -- vim.lsp.config["ruff_lsp"] = {
             --     capabilities = capabilities,
@@ -152,10 +154,8 @@ return {
             vim.lsp.config["basedpyright"] = {
                 capabilities = capabilities,
             }
-            -- FIXME: Causing memleak, probably not compatible with Oil / neotree
-            -- vim.lsp.config["kotlin_language_server"] = {
-            --     capabilities = capabilities,
-            -- }
+            --#endregion
+            --#region Lua(U)
             vim.lsp.config["emmylua_ls"] = {
                 capabilities = capabilities,
                 root_markers = {
@@ -191,6 +191,8 @@ return {
                     },
                 },
             }
+            --#endregion
+            --#region Rust
             vim.lsp.config["rust_analyzer"] = {
                 capabilities = capabilities,
                 settings = {
@@ -208,8 +210,9 @@ return {
                     }
                 },
             }
+            --#endregion
 
-            --#region custom lsp (not handled by mason)
+            --#region Custom LSP (not handled by mason)
             -- REF: https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/neovim.md
             vim.lsp.config["kotlin-lsp"] = {
                 capabilities = capabilities,
