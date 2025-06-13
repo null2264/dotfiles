@@ -219,7 +219,7 @@ return {
                 cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(9999)),
                 single_file_support = false,
                 filetypes = { "kotlin" },
-                root_markers = { "build.gradle", "build.gradle.kts", "pom.xml" },
+                root_markers = { "settings.gradle", "settings.gradle.kts", "pom.xml", "build.gradle", "build.gradle.kts", "workspace.json" },
             }
             vim.lsp.enable("kotlin-lsp")
             --#endregion

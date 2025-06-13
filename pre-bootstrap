@@ -2,6 +2,7 @@
 
 . ./common
 
+##region Sanity checks
 [ "$1" = "-" ] || {
 	prompt 'Experimental script! Run it anyway? [y/N] ' || exit 1
 }
@@ -11,6 +12,7 @@
 	>&2 echo "Please 'cd' to the dotfiles directory before running the script."
 	exit 1
 }
+##endregion
 
 echo_info() {
 	echo "########################################################################"

@@ -1,5 +1,6 @@
 #!/bin/sh
 
+##region Sanity checks and "imports"
 [ $ZI_DOTFILES ] && {
 	. $ZI_DOTFILES/common
 } || {
@@ -21,9 +22,9 @@
 [ -d $ZI_DOTFILES ] || { >&2 echo "Invalid dotfiles path, please re-run pre-bootstrap!"; exit 1; }
 
 . $ZI_DOTFILES/bootstrap-pkgs
+##endregion
 
-# === Function and Variable ===
-
+##region Function and Variable
 is_package_exists() {
 	[ $(command -v "$1" | wc -l) -gt 0 ] && return 0 || return 1
 }
@@ -95,8 +96,7 @@ install_nix() {
 	is_package_exists nix && { echo "nix is already installed, skipping..."; return; }
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 }
-
-# === Actual automation ===
+##endregion
 
 echo "Linking x* configs..."
 ln -si $ZI_DOTFILES/.config/xinitrc $HOME/.xinitrc
