@@ -15,6 +15,7 @@ return {
         lazy = true,
         dependencies = {
             "mason-org/mason.nvim",
+            "neovim/nvim-lspconfig",
         },
         opts = {
             ensure_installed = {
@@ -72,17 +73,32 @@ return {
         branch = "nvim-011",
         lazy = true,
         opts = {
+            platform = {
+                type = "roblox",
+            },
+            types = {
+                roblox_security_level = "PluginSecurity",
+            },
+            sourcemap = {
+                enabled = true,
+                autogenerate = true, -- automatic generation when the server is attached
+                rojo_project_file = "default.project.json",
+                sourcemap_file = "sourcemap.json",
+            },
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "mason-org/mason.nvim",
         },
+        config = function(_, opts)
+            require("luau-lsp").setup(opts)
+        end,
     },
     {
         "neovim/nvim-lspconfig",
         lazy = true,
         dependencies = {
             "lopi-py/luau-lsp.nvim",
-            "mason-org/mason-lspconfig.nvim",
         },
         opts = function()
             return {
@@ -128,6 +144,7 @@ return {
                 has_cmp and cmp_nvim_lsp.default_capabilities() or {},
                 opts.capabilities or {}
             )
+            -- NOTE: If the LSP is installed through Mason, vim.lsp.enable(...) is not needed since they're enabled automatically.
             -- FIXME: Re enable once ruff is able to type check
             -- vim.lsp.config["ruff_lsp"] = {
             --     capabilities = capabilities,
@@ -135,7 +152,6 @@ return {
             vim.lsp.config["basedpyright"] = {
                 capabilities = capabilities,
             }
-            vim.lsp.enable("basedpyright")
             -- FIXME: Causing memleak, probably not compatible with Oil / neotree
             -- vim.lsp.config["kotlin_language_server"] = {
             --     capabilities = capabilities,
@@ -160,7 +176,7 @@ return {
                     },
                 },
             }
-            vim.lsp.enable("emmylua_ls")
+            -- "luau_lsp" already handle vim.lsp.enable(...), so it's no longer needed
             vim.lsp.config["luau_lsp"] = {
                 capabilities = capabilities,
                 on_attach = on_attach,
@@ -173,21 +189,6 @@ return {
                             },
                         },
                     },
-                },
-            }
-            -- This will setup AND enable "luau_lsp", so vim.lsp.enable(...) is not needed
-            require("luau-lsp").setup {
-                platform = {
-                    type = "roblox",
-                },
-                types = {
-                    roblox_security_level = "PluginSecurity",
-                },
-                sourcemap = {
-                    enabled = true,
-                    autogenerate = true, -- automatic generation when the server is attached
-                    rojo_project_file = "default.project.json",
-                    sourcemap_file = "sourcemap.json",
                 },
             }
             vim.lsp.config["rust_analyzer"] = {
@@ -207,7 +208,8 @@ return {
                     }
                 },
             }
-            vim.lsp.enable("rust_analyzer")
+
+            --#region custom lsp (not handled by mason)
             -- REF: https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/neovim.md
             vim.lsp.config["kotlin-lsp"] = {
                 capabilities = capabilities,
@@ -217,6 +219,7 @@ return {
                 root_markers = { "build.gradle", "build.gradle.kts", "pom.xml" },
             }
             vim.lsp.enable("kotlin-lsp")
+            --#endregion
         end,
     },
     {
