@@ -76,23 +76,6 @@ return {
             "nvim-lua/plenary.nvim",
             "mason-org/mason.nvim",
         },
-        opts = {
-            platform = {
-                type = "roblox",
-            },
-            types = {
-                roblox_security_level = "PluginSecurity",
-            },
-            sourcemap = {
-                enabled = true,
-                autogenerate = true, -- automatic generation when the server is attached
-                rojo_project_file = "default.project.json",
-                sourcemap_file = "sourcemap.json",
-            },
-        },
-        config = function(_, opts)
-            require("luau-lsp").setup(opts)
-        end,
     },
     {
         "neovim/nvim-lspconfig",
@@ -105,11 +88,12 @@ return {
                 diagnostics = {
                     underline = true,
                     update_in_insert = false,
-                    virtual_text = {
-                        spacing = 4,
-                        source = "if_many",
-                        prefix = "•",
-                    },
+                    virtual_lines = true,
+                    -- virtual_text = {
+                    --     spacing = 4,
+                    --     source = "if_many",
+                    --     prefix = "•",
+                    -- },
                     severity_sort = true,
                     signs = {
                         text = {
@@ -126,6 +110,9 @@ return {
                             dynamicRegistration = true,
                         },
                     },
+                    textDocument = {
+                        diagnostic = vim.NIL,  -- I don't know why, but I need to set this to vim.NIL otherwise diagnostic would show up
+                    },
                 },
             }
         end,
@@ -137,10 +124,10 @@ return {
 
             -- Setup lspconfig
             local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-            local capabilities = vim.tbl_deep_extend(
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = vim.tbl_deep_extend(
                 "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
+                capabilities,
                 has_cmp and cmp_nvim_lsp.default_capabilities() or {},
                 opts.capabilities or {}
             )
@@ -176,8 +163,8 @@ return {
                     },
                 },
             }
-            -- "luau_lsp" already handle vim.lsp.enable(...), so it's no longer needed
-            vim.lsp.config["luau_lsp"] = {
+            -- "require("luau-lsp").setup(...)" already handle vim.lsp.enable(...), so it's no longer needed
+            vim.lsp.config("luau-lsp", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -189,6 +176,20 @@ return {
                             },
                         },
                     },
+                },
+            })
+            require("luau-lsp").setup {
+                platform = {
+                    type = "roblox",
+                },
+                types = {
+                    roblox_security_level = "PluginSecurity",
+                },
+                sourcemap = {
+                    enabled = true,
+                    autogenerate = true, -- automatic generation when the server is attached
+                    rojo_project_file = "default.project.json",
+                    sourcemap_file = "sourcemap.json",
                 },
             }
             --#endregion
