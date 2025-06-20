@@ -18,12 +18,12 @@ packages_arch=(
 	# required by firefox-based browser, without it firefox-based browser can't play video from certain website
 	ffmpeg4.4
 	opendoas
-	# >> for shell scripts
+	##region For shell scripts
 	bc
 	jo
 	jq
 	socat
-	# << for shell scripts
+	##endregion
 	# signing tools for Secure Boot
 	sbsigntools
 	net-tools
@@ -32,6 +32,8 @@ packages_arch=(
 	tree-sitter-cli
 	# mostly for rankmirrors
 	pacman-contrib
+	# because pyenv can't do virtualenv properly
+	uv
 )
 
 packages_arch_aur=(
@@ -42,4 +44,8 @@ packages_arch_aur=(
 
 packages_flatpak=(
 	io.mrarm.mcpelauncher
+	##region Roblox
+	org.vinegarhq.Sober
+	org.vinegarhq.Vinegar
+	##endregion
 )
