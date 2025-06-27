@@ -130,6 +130,7 @@ tooltip {
         min-height: 13px;
 
         .inner {
+            transition: min-width 0.3s ease, min-height 0.2s ease, margin 0.2s ease;
             background: $bg-300;
             /*
              * Dammit, I hate doing CSS so much...
