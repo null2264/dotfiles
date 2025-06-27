@@ -1,17 +1,22 @@
-;; Variables
+;;#region Window: Bar
+;;#region Variables
 (defvar dtfull true)
+;;#endregion
 
-;; Listeners
+;;#region Listeners
 (deflisten active-workspace
     `stdbuf -oL ./scripts/hypr/workspace-active-listener`)
+
+(deflisten used-workspace
+    `stdbuf -oL ./scripts/hypr/workspace-used-listener`)
 
 (deflisten workspace-list :initial "[1]"
     `stdbuf -oL ./scripts/hypr/workspace-list-listener`)
 
 (deflisten datetime :initial "{}"
     `stdbuf -oL ./scripts/datetime-listener`)
+;;#endregion
 
-;; Windows
 (defwindow bar
     :monitor 0
     :stacking "fg"
@@ -42,7 +47,7 @@
     (box :class "workspaces"
          :space-evenly false
         (for id in workspace-list
-            (button :class {active-workspace == id ? "active" : ""}
+            (button :class {active-workspace == id ? "active" : `${used-workspace?.["${id}"] ?: "unused"}`}
                     :onclick `hyprctl dispatch workspace ${id}`
                 (box :class "inner")))))
 
@@ -55,3 +60,4 @@
          :space-evenly false
         (label :text icon)
         (label :text text)))
+;;#endregion

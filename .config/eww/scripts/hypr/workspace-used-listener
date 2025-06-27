@@ -1,0 +1,12 @@
+#!/bin/sh
+# REF: https://github.com/Mango0x45/dotfiles/blob/d62026673b0b833f27b85f8a551cb646ae2bd751/.config/eww/scripts/active-workspace-listener
+
+readonly IPC="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+
+hyprctl -j workspaces | jq -rcM 'sort_by(.id) | map(select(.windows >= 1)) | map({ (.id|tostring): "used" }) | add'
+socat -u UNIX-CONNECT:"$IPC" - \
+	| sed -n 's/^workspace>>//p' \
+	| while IFS='>>' read -r e _ n
+	do
+		hyprctl -j workspaces | jq -rcM 'sort_by(.id) | map(select(.windows >= 1)) | map({ (.id|tostring): "used" }) | add'
+	done

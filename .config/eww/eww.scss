@@ -8,6 +8,7 @@
 }
 
 // >> bg
+$bg-50: #575B6E;
 $bg-100: #434758;
 $bg-300: #2A3039;
 $bg-500: #0E1418; // base
@@ -138,6 +139,10 @@ tooltip {
             min-height: calc($bg-height - $bg-workspace-margin);
             min-width: calc($bg-height - $bg-workspace-margin);
             border-radius: calc($bg-height - $bg-workspace-margin);
+        }
+
+        &.used .inner {
+            background: $bg-50;
         }
 
         &:hover .inner {
