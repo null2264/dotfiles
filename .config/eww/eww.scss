@@ -131,7 +131,10 @@ tooltip {
 
         .inner {
             transition: min-width 0.3s ease, min-height 0.2s ease, margin 0.2s ease;
-            background: $bg-300;
+            background: transparent;
+            border-width: 2px;
+            border-color: white;
+            border-style: solid inset;
             /*
              * Dammit, I hate doing CSS so much...
              * This basically to achive perfectly centered and circular button when workspace is not active while also preventing it from streching the bar.
@@ -143,19 +146,20 @@ tooltip {
         }
 
         &.used .inner {
-            background: $bg-50;
+            background: white;
         }
 
         &:hover .inner {
-            background: $bg-100;
+            border-color: $bg-50;
         }
 
         &.active .inner {
+            border-color: transparent;
+            background: #1CA2DA;
             margin: calc($bg-workspace-active-margin / 2) 4px;
             min-height: calc($bg-height - $bg-workspace-active-margin);
             min-width: 24px;
             border-radius: calc($bg-height - $bg-workspace-active-margin);
-            background: #1CA2DA;
         }
     }
 }
