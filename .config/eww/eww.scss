@@ -12,7 +12,10 @@ $bg-100: #434758;
 $bg-300: #2A3039;
 $bg-500: #0E1418; // base
 
+$bg-height: 28px;
 $bg-radius: 8px;
+$bg-workspace-margin: 20px;
+$bg-workspace-active-margin: 16px;
 $bg-margin: 4px;
 // << bg
 
@@ -125,17 +128,27 @@ tooltip {
     button {
         min-height: 13px;
 
-        label {
+        .inner {
             background: $bg-300;
-            margin: $bg-margin 0px;
-            padding: 0 13px;
+            /*
+             * Dammit, I hate doing CSS so much...
+             * This basically to achive perfectly centered and circular button when workspace is not active while also preventing it from streching the bar.
+             */
+            margin: calc($bg-workspace-margin / 2) 4px;
+            min-height: calc($bg-height - $bg-workspace-margin);
+            min-width: calc($bg-height - $bg-workspace-margin);
+            border-radius: calc($bg-height - $bg-workspace-margin);
         }
 
-        &:hover label {
+        &:hover .inner {
             background: $bg-100;
         }
 
-        &.active label {
+        &.active .inner {
+            margin: calc($bg-workspace-active-margin / 2) 4px;
+            min-height: calc($bg-height - $bg-workspace-active-margin);
+            min-width: 24px;
+            border-radius: calc($bg-height - $bg-workspace-active-margin);
             background: #1CA2DA;
         }
     }

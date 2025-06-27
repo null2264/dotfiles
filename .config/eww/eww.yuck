@@ -44,7 +44,7 @@
         (for id in workspace-list
             (button :class {active-workspace == id ? "active" : ""}
                     :onclick `hyprctl dispatch workspace ${id}`
-                id))))
+                (box :class "inner")))))
 
 (defwidget clock []
     (eventbox :class "clock" :onclick `eww update dtfull=${!dtfull}`
