@@ -10,8 +10,8 @@
 (deflisten used-workspace
     `stdbuf -oL ./scripts/hypr/workspace-used-listener`)
 
-(deflisten workspace-list :initial "[1]"
-    `stdbuf -oL ./scripts/hypr/workspace-list-listener`)
+;;(deflisten workspace-list :initial "[1]"
+;;    `stdbuf -oL ./scripts/hypr/workspace-list-listener`)
 
 (deflisten datetime :initial "{}"
     `stdbuf -oL ./scripts/datetime-listener`)
@@ -46,7 +46,7 @@
 (defwidget workspaces []
     (box :class "workspaces"
          :space-evenly false
-        (for id in workspace-list
+        (for id in {jq("{}", "[range(10)+1]")}
             (button :class {active-workspace == id ? "active" : `${used-workspace?.["${id}"] ?: "unused"}`}
                     :onclick `hyprctl dispatch workspace ${id}`
                 (box :class "inner")))))
