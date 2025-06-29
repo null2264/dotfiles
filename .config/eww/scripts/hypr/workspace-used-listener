@@ -5,7 +5,7 @@ readonly IPC="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 
 hyprctl -j workspaces | jq -rcM 'sort_by(.id) | map(select(.windows >= 1)) | map({ (.id|tostring): "used" }) | add'
 socat -u UNIX-CONNECT:"$IPC" - \
-	| sed -n 's/^workspace>>//p' \
+	| stdbuf -oL grep -E '^(open|close|move)window>>' \
 	| while IFS='>>' read -r e _ n
 	do
 		hyprctl -j workspaces | jq -rcM 'sort_by(.id) | map(select(.windows >= 1)) | map({ (.id|tostring): "used" }) | add'
