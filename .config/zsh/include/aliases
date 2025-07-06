@@ -150,8 +150,8 @@ alias neofetch='fastfetch'
 [ $ZI_NIX_FLAKE ] && {
 	# FIXME: Alias for NixOS
 	[ $ZI_IS_DARWIN = 1 ] && {
-		alias nix-switch='darwin-rebuild switch --flake $ZI_NIX_FLAKE'
-		alias nix-build='darwin-rebuild build --flake $ZI_NIX_FLAKE'
+		alias nix-switch='sudo darwin-rebuild switch --flake $ZI_NIX_FLAKE'
+		alias nix-build='sudo darwin-rebuild build --flake $ZI_NIX_FLAKE'
 	} || {
 		# alias nix-switch='sudo -H --preserve-env=PATH --preserve-env=SSH_CONNECTION env system-manager switch --flake $ZI_NIX_FLAKE'
 		alias nix-switch='system-manager switch --flake $ZI_NIX_FLAKE'
