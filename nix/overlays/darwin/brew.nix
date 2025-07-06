@@ -26,7 +26,7 @@ let
       isApp = lib.hasAttr "app" artifacts;
       isPkg = lib.hasAttr "pkg" artifacts;
       url = (cask.variations.${mac-version} or cask).url;
-      hash = (cask.variations.${mac-version} or cask).sha256;
+      hash = (cask.variations.${mac-version} or cask).sha256 or null;
     in
     pkgs.stdenv.mkDerivation rec {
       pname = cask.token;
@@ -34,7 +34,7 @@ let
 
       src = pkgs.fetchurl {
         inherit url;
-        sha256 = pkgs.lib.optionalString (hash != "no_check") hash;
+        sha256 = pkgs.lib.optionalString (hash != null || hash != "no_check") hash;
       };
 
       nativeBuildInputs =

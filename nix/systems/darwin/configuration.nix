@@ -102,6 +102,7 @@ in {
       adblock
       shuffle
     ];
+    #spotifyPackage = pkgs.casks.spotify;
   };
 
   # Set Git commit hash for darwin-version.
