@@ -37,7 +37,7 @@ in {
       pkgs.eza
       pkgs.coreutils-full
       pkgs.rclone
-      pkgs.casks.iterm2
+      pkgs.iterm2
       pkgs.nmap
       pkgs.cargo
       pkgs.android-tools
