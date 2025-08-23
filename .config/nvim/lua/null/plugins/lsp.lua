@@ -141,6 +141,7 @@ return {
             vim.lsp.config["basedpyright"] = {
                 capabilities = capabilities,
             }
+            vim.lsp.enable("basedpyright")
             --#endregion
             --#region Lua(U)
             vim.lsp.config["emmylua_ls"] = {
