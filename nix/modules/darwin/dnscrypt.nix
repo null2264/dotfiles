@@ -33,4 +33,6 @@
       anonymized_dns.skip_incompatible = true;
     };
   };
+
+  launchd.daemons.dnscrypt-proxy.serviceConfig.UserName = pkgs.lib.mkForce "root";
 }
