@@ -140,6 +140,21 @@ return {
             -- }
             vim.lsp.config["basedpyright"] = {
                 capabilities = capabilities,
+                settings = {
+                    basedpyright = {
+                        analysis = {
+                            diagnosticSeverityOverrides = {
+                              reportWildcardImportFromLibrary = "none",
+                              reportUnusedImport = "information",
+                              reportUnusedClass = "information",
+                              reportUnusedFunction = "information",
+                              reportOptionalMemberAccess = "none",
+                              reportUnknownVariableType = "none",
+                              reportUnusedCallResult = "none",
+                            },
+                        },
+                    },
+                },
             }
             vim.lsp.enable("basedpyright")
             --#endregion
