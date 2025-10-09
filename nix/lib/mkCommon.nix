@@ -29,6 +29,9 @@ in {
 
     pkgs.vesktop
 
+    # for sane Python dev env
+    pkgs.uv
+
     # For hackintosh-ing
     pkgs.acpica-tools
   ];
