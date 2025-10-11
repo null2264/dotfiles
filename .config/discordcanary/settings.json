@@ -14,8 +14,8 @@
   "enableHardwareAcceleration": true,
   "WINDOW_BOUNDS": {
     "x": 0,
-    "y": 32,
-    "width": 1366,
+    "y": 0,
+    "width": 1334,
     "height": 736
   },
   "BACKGROUND_COLOR": "#000000"
