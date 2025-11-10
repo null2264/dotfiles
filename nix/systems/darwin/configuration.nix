@@ -36,7 +36,7 @@ in {
       pkgs.wget
       pkgs.eza
       pkgs.coreutils-full
-      pkgs.rclone
+      #pkgs.rclone
       pkgs.iterm2
       pkgs.nmap
       pkgs.cargo

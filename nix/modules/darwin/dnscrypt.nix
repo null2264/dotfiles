@@ -6,7 +6,7 @@
 
     settings = {
       server_names = [
-        "adguard-dns-doh"
+        #"adguard-dns-doh"
         "cloudflare"
       ];
 
