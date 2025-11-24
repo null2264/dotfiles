@@ -6,6 +6,7 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
 # jj and git support
+fpath+=$__CONFIG_DIR/zsh/include/VCS_INFO/
 zstyle ':vcs_info:*' enable jj git
 
 zstyle ':vcs_info:jj:*' formats '%F{5}(jj)  %b %F{1}%c%u %f'
