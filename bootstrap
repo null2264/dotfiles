@@ -135,26 +135,28 @@ echo "Installing nix..."
 install_nix
 
 echo "Changing default shell to zsh..."
-$SUDO chsh -s $(which zsh)
+chsh -s $(which zsh)
 
-echo "Configuring zsh to use XDG Base Directory..."
-$SUDO $ZI_DOTFILES/zsh-xdg-setup
+has_sudo_priv && {
+	echo "Configuring zsh to use XDG Base Directory..."
+	$SUDO $ZI_DOTFILES/zsh-xdg-setup
+}
 echo "Installing zsh config..."
 ln -si $ZI_DOTFILES/.config/zsh $HOME/.config/zsh
 
-is_package_exists doas && {
-	echo "Configuring doas..."
-	case "$OSTYPE" in
-		"darwin"* ) echo "permit persist :staff" > /tmp/doas.conf.tmp ;;
-		* ) echo "permit persist :wheel" > /tmp/doas.conf.tmp ;;
-	esac
-	echo "permit nopass root as root" >> /tmp/doas.conf.tmp
-	echo "=======/etc/doas.conf======="
-	cat /tmp/doas.conf.tmp
-	echo "============================"
-	$SUDO cp -i /tmp/doas.conf.tmp /etc/doas.conf
-	$SUDO ln -si /etc/doas.conf /usr/local/etc/doas.conf
-}
+# is_package_exists doas && {
+# 	echo "Configuring doas..."
+# 	case "$OSTYPE" in
+# 		"darwin"* ) echo "permit persist :staff" > /tmp/doas.conf.tmp ;;
+# 		* ) echo "permit persist :wheel" > /tmp/doas.conf.tmp ;;
+# 	esac
+# 	echo "permit nopass root as root" >> /tmp/doas.conf.tmp
+# 	echo "=======/etc/doas.conf======="
+# 	cat /tmp/doas.conf.tmp
+# 	echo "============================"
+# 	$SUDO cp -i /tmp/doas.conf.tmp /etc/doas.conf
+# 	$SUDO ln -si /etc/doas.conf /usr/local/etc/doas.conf
+# }
 
 echo "============================"
 echo "Bootstrap completed, please restart your shell!"
