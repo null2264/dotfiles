@@ -33,16 +33,23 @@ case "$OSTYPE" in
 	"darwin"* ) DISTRO="apple" ;;
 	* ) DISTRO="$(cat /etc/*-release | grep ^ID | head -n1 | cut -d '=' -f2 | cut -d '"' -f2)" ;;
 esac
-[ "$SUDO" = "" ] && {
-	FALLBACK_SUDO="sudo"
-	case $DISTRO in
-		"apple" ) SUDO=$FALLBACK_SUDO ;;  # There's no good doas implementation for macOS
-		* )
-			is_package_exists doas && SUDO="doas" || SUDO=$FALLBACK_SUDO
-			doas echo "" >/dev/null 2>/dev/null || SUDO=$FALLBACK_SUDO
-		;;
-	esac
+
+SUDO="sudo"
+# [ "$SUDO" = "" ] && {
+# 	FALLBACK_SUDO="sudo"
+# 	case $DISTRO in
+# 		"apple" ) SUDO=$FALLBACK_SUDO ;;  # There's no good doas implementation for macOS
+# 		* )
+# 			is_package_exists doas && SUDO="doas" || SUDO=$FALLBACK_SUDO
+# 			doas echo "" >/dev/null 2>/dev/null || SUDO=$FALLBACK_SUDO
+# 		;;
+# 	esac
+# }
+
+has_sudo_priv() {
+	return $SUDO -v 2>/dev/null
 }
+
 [ "$PACMAN" = "" ] && {
 	case $DISTRO in
 		"arch" ) PACMAN="pacman" ;;
@@ -53,6 +60,8 @@ esac
 AUR="${AUR:-paru}"
 
 update_package_db() {
+	has_sudo_priv || { echo "No sudo privilege, skipping..."; return; }
+
 	MSG_FAILED="Failed to update package database, skipping..."
 	case "$PACMAN" in
 		"pacman" ) $SUDO $PACMAN -Sy || echo $MSG_FAILED ;;
@@ -63,6 +72,8 @@ update_package_db() {
 }
 
 install_package() {
+	has_sudo_priv || { echo "No sudo privilege, skipping..."; return; }
+
 	[ "$1" = "" ] && { echo "No package candidate is specified, skipping..."; return; }
 
 	MSG_FAILED="Failed to install some packages, skipping..."
@@ -78,6 +89,8 @@ install_package() {
 }
 
 install_aur_package() {
+	has_sudo_priv || { echo "No sudo privilege, skipping..."; return; }
+
 	# >> Paranoia checks
 	[ $DISTRO = "arch" ] || { echo "AUR only available in Arch, skipping..."; return; }
 
