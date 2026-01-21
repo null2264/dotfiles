@@ -28,7 +28,7 @@
 
       anonymized_dns.routes = [{
         server_name = "*";
-        via = [ "anon-plan9-dns" "anon-v.dnscrypt.up-ipv4" ];
+        via = [ "cloudflare" ];
       }];
       anonymized_dns.skip_incompatible = true;
     };
