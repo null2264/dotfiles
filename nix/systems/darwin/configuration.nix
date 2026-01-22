@@ -74,7 +74,10 @@ in {
       common.custom.inkscape
       pkgs.casks.zotero
       # pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
-      #pkgs.casks.sikarugir
+      # FIXME: Remove .overrideAttrs once brew-nix supports tar files
+      (pkgs.casks.sikarugir.overrideAttrs (o: {
+        unpackPhase = "${pkgs.lib.getExe pkgs.gnutar} xf $src";
+      }))
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
