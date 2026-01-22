@@ -34,7 +34,7 @@
   tab   q    w    e    r    t    y    u    i    o    p    [     ]
   esc   a    s    d    f    g    h    j    k    l    ;    '     @\   ret
   lsft  102d z    x    c    v    b    n    m    ,    .    @mnav rsft
-        lctl lmet lalt           spc            ralt f13  rctl
+        lctl lmet lalt           spc            ralt f13  rmet
 )
 
 ;; << Mouse
