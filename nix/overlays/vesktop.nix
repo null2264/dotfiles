@@ -5,20 +5,9 @@ final: prev:
 let
   vesktop = if prev.stdenv.isDarwin then
     # Use casks version because nodejs is pain
-    prev.casks.vesktop.overrideAttrs (old: {
-      configurePhase =
-        ''
-          cp -f ${../../include/vesktop/icon.icns} Contents/Resources/icon.icns
-        '';
-    })
+    prev.casks.vesktop
   else
-    prev.vesktop.overrideAttrs (old: {
-      preBuild =
-        old.preBuild
-        + ''
-          cp -f ${../../include/vesktop/icon.icns} build/icon.icns
-        '';
-    });
+    prev.vesktop;
 in {
   inherit vesktop;
 }

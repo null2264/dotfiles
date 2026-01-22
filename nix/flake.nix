@@ -1,7 +1,7 @@
 {
   description = "null2264's Nix Setup";
 
-  outputs = inputs@{ self, nix-darwin, brew-api, nixpkgs-stable, nixpkgs-unstable, home-manager, system-manager, nur, ... }:
+  outputs = inputs@{ self, nix-darwin, brew-nix, nixpkgs-stable, nixpkgs-unstable, home-manager, system-manager, nur, ... }:
   let
     utils = inputs.flake-utils.lib;
 
@@ -17,7 +17,7 @@
     darwinConfigurations = (
       import ./systems/darwin {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable nur nix-darwin brew-api home-manager vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nur nix-darwin brew-nix home-manager vars;
       }
     );
 
@@ -67,6 +67,10 @@
     brew-api = {
       url = "github:null2264/brew-api";
       flake = false;
+    };
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs.brew-api.follows = "brew-api";
     };
 
     system-manager = {

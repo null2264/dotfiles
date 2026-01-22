@@ -1,9 +1,13 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, nix-darwin, brew-api, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, nix-darwin, brew-nix, vars, ... }:
 
 let
   mkCommon = import ../../lib/mkCommon.nix;
   mkSystem = import ../../lib/mkSystem.nix;
-  mkBrew = import ../../overlays/darwin/brew.nix;
+  mkBrew =
+    system:
+    final: _: {
+      casks = brew-nix.packages.${system};
+    };
 in
 {
   # Host list
@@ -22,7 +26,7 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
+            (mkBrew system)
             (import ../../overlays/darwin/heliport.nix)
             (import ../../overlays/darwin/kanata.nix)
             (import ../../overlays/vesktop.nix)
@@ -56,7 +60,7 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (mkBrew { inherit system brew-api; nixpkgs = nixpkgs-stable; })
+            (mkBrew system)
             (import ../../overlays/darwin/kanata.nix)
             (import ../../overlays/vesktop.nix)
             (import ../../overlays/rclone.nix)  # FIXME: Remove later

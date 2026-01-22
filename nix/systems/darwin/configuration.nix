@@ -73,8 +73,8 @@ in {
       pkgs.zen-bin
       common.custom.inkscape
       pkgs.casks.zotero
-      # pkgs.casks.lulu  # Doesn't work, it needs to be installed on /Applications/
       # pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
+      #pkgs.casks.sikarugir
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
