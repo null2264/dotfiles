@@ -23,6 +23,7 @@ return {
 
                 -- >> Kotlin
                 -- "kotlin_language_server",
+                "kotlin-lsp",
                 -- << Kotlin
 
                 -- >> Python
@@ -207,6 +208,11 @@ return {
                     rojo_project_file = "default.project.json",
                     sourcemap_file = "sourcemap.json",
                 },
+                plugin = {
+                    -- REF: https://create.roblox.com/store/asset/10913122509/Luau-Language-Server-Companion
+                    enabled = true,
+                    port = 3667,
+                },
             }
             --#endregion
             --#region Rust
@@ -229,16 +235,23 @@ return {
             }
             --#endregion
 
-            --#region Custom LSP (not handled by mason)
-            -- REF: https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/neovim.md
             vim.lsp.config["kotlin-lsp"] = {
                 capabilities = capabilities,
-                cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(9999)),
-                single_file_support = false,
+                cmd = { "kotlin-lsp", "--stdio" },
+                -- cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(9999)),
+                -- single_file_support = false,
                 filetypes = { "kotlin" },
-                root_markers = { "settings.gradle", "settings.gradle.kts", "pom.xml", "build.gradle", "build.gradle.kts", "workspace.json" },
+                root_markers = {
+                    "settings.gradle",
+                    "settings.gradle.kts",
+                    "pom.xml",
+                    "build.gradle",
+                    "build.gradle.kts",
+                    "workspace.json",
+                },
             }
             vim.lsp.enable("kotlin-lsp")
+            --#region Custom LSP (not handled by mason)
             --#endregion
         end,
     },
