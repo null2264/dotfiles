@@ -73,7 +73,7 @@ in {
       pkgs.zen-bin
       common.custom.inkscape
       pkgs.casks.zotero
-      # pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
+      pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
       # FIXME: Remove .overrideAttrs once brew-nix supports tar files
       (pkgs.casks.sikarugir.overrideAttrs (o: {
         unpackPhase = "${pkgs.lib.getExe pkgs.gnutar} xf $src";

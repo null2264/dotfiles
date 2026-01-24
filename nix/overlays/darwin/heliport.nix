@@ -4,20 +4,22 @@ final: prev:
 let
   mkApp = import ../../lib/darwin/mkApp.nix;
   version = "2.0.0-alpha";
+  pname = "HeliPort";
+  appFileName = "HeliPort.app";
 in {
   heliport = mkApp {
     inherit (final) stdenv undmg _7zz;
-
-    pname = "HeliPort";
-    appFileName = "HeliPort.app";
-    inherit version;
+    inherit version pname appFileName;
 
     src = final.fetchurl {
       url = "https://github.com/OpenIntelWireless/HeliPort/releases/download/v${version}/HeliPort.dmg";
       sha256 = "751e09824c3bd0662287c42d9dd3568bed9f3e7cff920e3a47b5ef67a82975db";
     };
 
-    unpackPhase = "7zz x -snld $src || true  # assume true since it returns error even tho it's fine??";
+    unpackPhase = ''
+      7zz x -snld $src || true  # assume true since it returns error even tho it's fine??
+      mv ${pname}/${appFileName} ./
+    '';
 
     meta = with final.lib; {
       description = "Intel WiFi Client for itlwm";
