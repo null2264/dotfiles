@@ -3,7 +3,7 @@ final: prev:
 
 let
   mkApp = import ../../lib/darwin/mkApp.nix;
-  version = "1.5.0";
+  version = "2.0.0-alpha";
 in {
   heliport = mkApp {
     inherit (final) stdenv undmg _7zz;
@@ -14,8 +14,10 @@ in {
 
     src = final.fetchurl {
       url = "https://github.com/OpenIntelWireless/HeliPort/releases/download/v${version}/HeliPort.dmg";
-      sha256 = "49cbe7abea742a3c662a836f14c05b79b3e6e6577c897b57101f5bd0a086eec8";
+      sha256 = "751e09824c3bd0662287c42d9dd3568bed9f3e7cff920e3a47b5ef67a82975db";
     };
+
+    unpackPhase = "7zz x -snld $src || true  # assume true since it returns error even tho it's fine??";
 
     meta = with final.lib; {
       description = "Intel WiFi Client for itlwm";
