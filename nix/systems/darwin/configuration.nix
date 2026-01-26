@@ -120,22 +120,22 @@ in {
     # in spotlight, and when launched through the dock they come with a terminal window. This is a workaround.
     # Upstream issue: https://github.com/LnL7/nix-darwin/issues/214
     # Original code: https://github.com/IvarWithoutBones/dotfiles/commit/0b3faad8bd1d0e1af6103caf59b206666ab742f4
-    activationScripts.applications.text = let
-      env = pkgs.buildEnv {
-        name = "system-applications";
-        paths = config.environment.systemPackages;
-        pathsToLink = "/Applications";
-      };
-    in pkgs.lib.mkForce ''
-      echo "setting up /Applications..." >&2
-      rm -rf "/Applications/Nix Apps"
-      mkdir -p "/Applications/Nix Apps"
-      find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-        while read -r src; do
-          app_name=$(basename "$src")
-          echo "copying $src" >&2
-          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-        done
-    '';
+    # activationScripts.applications.text = let
+    #   env = pkgs.buildEnv {
+    #     name = "system-applications";
+    #     paths = config.environment.systemPackages;
+    #     pathsToLink = "/Applications";
+    #   };
+    # in pkgs.lib.mkForce ''
+    #   echo "setting up /Applications..." >&2
+    #   rm -rf "/Applications/Nix Apps"
+    #   mkdir -p "/Applications/Nix Apps"
+    #   find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+    #     while read -r src; do
+    #       app_name=$(basename "$src")
+    #       echo "copying $src" >&2
+    #       ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+    #     done
+    # '';
   };
 }

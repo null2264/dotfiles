@@ -5,7 +5,7 @@ let
   user = "ziro";
 in {
   launchd.user.agents.kanata = {
-    command = "/usr/bin/sudo ${pkgs.kanata}/bin/kanata -c ${../../../include/kanata.kbd} -n";
+    command = "/usr/bin/sudo /run/current-system/sw/bin/kanata -c ${../../../include/kanata.kbd} -n";
     serviceConfig = {
       UserName = user;
       RunAtLoad = true;
@@ -21,6 +21,6 @@ in {
   };
 
   security.sudo.extraConfig = ''
-    ${user} ALL=(ALL) NOPASSWD: ${pkgs.kanata}/bin/kanata
+    ${user} ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/kanata
   '';
 }

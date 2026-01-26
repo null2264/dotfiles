@@ -2,7 +2,7 @@
 
 let
   custom = {
-    python = (pkgs.python312Full.withPackages (py: [
+    python = (pkgs.python312.withPackages (py: [
       #py.pip
       py.tkinter
       #py.dnspython
