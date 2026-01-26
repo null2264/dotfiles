@@ -35,4 +35,5 @@
   };
 
   launchd.daemons.dnscrypt-proxy.serviceConfig.UserName = pkgs.lib.mkForce "root";
+  users.users._dnscrypt-proxy.home = pkgs.lib.mkForce "/private/var/lib/dnscrypt-proxy";
 }
