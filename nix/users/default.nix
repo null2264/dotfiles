@@ -1,8 +1,12 @@
-{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, home-manager, vars, ... }:
+{ inputs, nixpkgs-stable, nixpkgs-unstable, nur, brew-nix, home-manager, vars, ... }:
 
 let
   mkSystem = import ../lib/mkSystem.nix;
-  mkBrew = import ../overlays/darwin/brew.nix;
+  mkBrew =
+    system:
+    final: _: {
+      casks = brew-nix.packages.${system};
+    };
 
   defaultModules = [
     ../modules/home-manager/__programs/zen.nix
@@ -31,7 +35,7 @@ in
           unstable = nixpkgs-unstable;
           extraOverlays = [
             inputs.firefox-darwin.overlay
-            (mkBrew { inherit system; inherit (inputs) brew-api; nixpkgs = nixpkgs-stable; })
+            (mkBrew system)
             (import ../overlays/darwin/kanata.nix)
           ];
           nur = nur;

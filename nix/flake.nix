@@ -31,7 +31,7 @@
     homeConfigurations = (
       import ./users {
         inherit (nixpkgs-unstable) lib;
-        inherit inputs nixpkgs-stable nixpkgs-unstable nur home-manager vars;
+        inherit inputs nixpkgs-stable nixpkgs-unstable nur brew-nix home-manager vars;
       }
     );
   };

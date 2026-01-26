@@ -12,8 +12,6 @@
     browsers = [ "brave" "chrome" ];  # Arc and Chrome share the same `Application Support` dir, not sure why tbh.
   };
 
-  home.file."Library/Application Support/Floorp/native-messaging-hosts/passff.json".source = "${pkgs.passff-host}/share/passff-host/passff.json";
-
   home.sessionVariables = {
     MOZ_LEGACY_PROFILES = 1;
     MOZ_ALLOW_DOWNGRADE = 1;
@@ -24,7 +22,7 @@
   # REF: https://github.com/nix-community/home-manager/pull/5801/commits/dbe54a48a0bc9942289f6a5d8a751ed3be065c81
   launchd.agents.launchctl-setenv = let
     launchctl-setenv = pkgs.writeShellScriptBin "launchctl-setenv"
-      (concatStringsSep "\n" (mapAttrsToList
+      (lib.concatStringsSep "\n" (lib.mapAttrsToList
         (name: val: "/bin/launchctl setenv ${name} ${toString val}")
         config.home.sessionVariables));
   in {
