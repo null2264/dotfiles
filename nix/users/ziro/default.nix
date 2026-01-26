@@ -60,11 +60,6 @@ in {
     settings = settings-ff-zen;
     extensions = extensions-ff-common;
   };
-  programs.zen.profiles.null = {
-    id = 1;
-    settings = settings-ff-zen;
-    extensions = extensions-ff-common;
-  };
 
   xdg.configFile = {
     "nix/nix.conf".text =
@@ -73,5 +68,5 @@ in {
       '';
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 }

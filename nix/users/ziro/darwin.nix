@@ -4,7 +4,7 @@
   home.homeDirectory = "/Users/ziro";
   home.packages = lib.mkAfter
     [
-      pkgs.casks.vscodium
+      (pkgs.casks.vscodium.override { variation = "sonoma"; })
     ];
 
   programs.browserpass = {
@@ -33,22 +33,4 @@
       RunAtLoad = true;
     };
   };
-
-  home.activation.applications = let
-    env = pkgs.buildEnv {
-      name = "home-applications";
-      paths = config.home.packages;
-      pathsToLink = "/Applications";
-    };
-  in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    echo "setting up ${config.home.homeDirectory}/Applications..." >&2
-    rm -rf "${config.home.homeDirectory}/Applications/Nix Home Manager Apps"
-    mkdir -p "${config.home.homeDirectory}/Applications/Nix Home Manager Apps"
-    find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-      while read -r src; do
-        app_name=$(basename "$src")
-        echo "copying $src" >&2
-        ${pkgs.mkalias}/bin/mkalias "$src" "${config.home.homeDirectory}/Applications/Nix Home Manager Apps/$app_name"
-      done
-  '';
 }
