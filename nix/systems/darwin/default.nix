@@ -42,9 +42,9 @@ in
       inherit system;
       specialArgs = { inherit inputs pkgs pkgs-unstable spicePkgs vars common; };
       modules = [
-        inputs.spicetify-nix.nixosModules.default  # Also works on nix-darwin thanks to it being nixosConfiguration replacement for macOS
+        ../../modules/darwin/custom
+        inputs.spicetify-nix.darwinModules.default  # Also works on nix-darwin thanks to it being nixosConfiguration replacement for macOS
         ./configuration.nix
-        ../../modules/darwin/kanata.nix
         ../../modules/darwin/dnscrypt.nix
       ];
     };
@@ -75,9 +75,9 @@ in
       inherit system;
       specialArgs = { inherit inputs pkgs pkgs-unstable spicePkgs vars common; };
       modules = [
-        inputs.spicetify-nix.nixosModules.default
+        ../../modules/darwin/custom
+        inputs.spicetify-nix.darwinModules.default
         ./configuration.nix
-        ../../modules/darwin/kanata.nix
         #../../modules/darwin/dnscrypt.nix
       ];
     };

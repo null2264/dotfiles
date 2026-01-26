@@ -73,7 +73,6 @@ in {
       pkgs.zen-bin
       common.custom.inkscape
       pkgs.casks.zotero
-      pkgs.heliport  # FIXME: https://github.com/matthewbauer/undmg/issues/2
       # FIXME: Remove .overrideAttrs once brew-nix supports tar files
       (pkgs.casks.sikarugir.overrideAttrs (o: {
         unpackPhase = "${pkgs.lib.getExe pkgs.gnutar} xf $src";
@@ -81,8 +80,6 @@ in {
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
-
-      pkgs.kanata
     ];
   environment.extraSetup = ''
     ln -sv ${pkgs.path} $out/nixpkgs
@@ -108,6 +105,9 @@ in {
     #spotifyPackage = pkgs.casks.spotify;
   };
 
+  custom.kanata.enable = true;
+  custom.heliport.enable = true;
+
   # Set Git commit hash for darwin-version.
   system.configurationRevision = vars.rev or null;
 
@@ -116,26 +116,5 @@ in {
   system = {
     primaryUser = "ziro";
     stateVersion = 4;
-    # Nix-darwin does not link installed applications to the user environment. This means apps will not show up
-    # in spotlight, and when launched through the dock they come with a terminal window. This is a workaround.
-    # Upstream issue: https://github.com/LnL7/nix-darwin/issues/214
-    # Original code: https://github.com/IvarWithoutBones/dotfiles/commit/0b3faad8bd1d0e1af6103caf59b206666ab742f4
-    # activationScripts.applications.text = let
-    #   env = pkgs.buildEnv {
-    #     name = "system-applications";
-    #     paths = config.environment.systemPackages;
-    #     pathsToLink = "/Applications";
-    #   };
-    # in pkgs.lib.mkForce ''
-    #   echo "setting up /Applications..." >&2
-    #   rm -rf "/Applications/Nix Apps"
-    #   mkdir -p "/Applications/Nix Apps"
-    #   find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-    #     while read -r src; do
-    #       app_name=$(basename "$src")
-    #       echo "copying $src" >&2
-    #       ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-    #     done
-    # '';
   };
 }
