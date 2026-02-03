@@ -77,6 +77,7 @@ in {
       (pkgs.casks.sikarugir.overrideAttrs (o: {
         unpackPhase = "${pkgs.lib.getExe pkgs.gnutar} xf $src";
       }))
+      pkgs.casks.lulu
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
