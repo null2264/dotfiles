@@ -30,7 +30,6 @@ in
             (import ../../overlays/darwin/heliport.nix)
             (import ../../overlays/darwin/kanata.nix)
             (import ../../overlays/vesktop.nix)
-            (import ../../overlays/rclone.nix)  # FIXME: Remove later
           ];
           nur = nur;
         }
@@ -63,7 +62,6 @@ in
             (mkBrew system)
             (import ../../overlays/darwin/kanata.nix)
             (import ../../overlays/vesktop.nix)
-            (import ../../overlays/rclone.nix)  # FIXME: Remove later
           ];
           nur = nur;
         }
