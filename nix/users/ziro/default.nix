@@ -2,7 +2,6 @@
 
 let
   username = "ziro";
-  userChrome-ff-floorp = builtins.replaceStrings ["/*ZI:*/18em/*:VERTICAL-TAB-HOVER-WIDTH-IN-EM*/"] ["${builtins.toString vars.floorp.verticalTabHoverWidthInEm}em"] (builtins.readFile ../../../include/floorp/ziro-userChrome.css);
   settings-ff-common = {
     "browser.toolbars.bookmarks.visibility" = "newtab";
     "network.dns.disableIPv6" = true;
@@ -10,13 +9,6 @@ let
     "signon.management.page.breach-alerts.enabled" = false;
     "signon.rememberSignons" = false;
     "extensions.autoDisableScopes" = 0;  # Auto enable extensions
-  };
-  settings-ff-floorp = settings-ff-common // {
-    "floorp.browser.sidebar.is.displayed" = false;
-    "floorp.browser.tabbar.settings" = 2;
-    "floorp.browser.tabs.verticaltab" = true;
-    "floorp.verticaltab.hover.enabled" = true;
-    "floorp.tabbar.style" = 2;
   };
   settings-ff-zen = settings-ff-common // {
     "zen.view.compact" = true;
@@ -44,21 +36,9 @@ in {
       ];
   };
 
-  programs.floorp.profiles.${username} = {
-    userChrome = userChrome-ff-floorp;
-    settings = settings-ff-floorp;
-    extensions = extensions-ff-common;
-  };
-  programs.floorp.profiles.null = {
-    id = 1;
-    userChrome = userChrome-ff-floorp;
-    settings = settings-ff-floorp;
-    extensions = extensions-ff-common;
-  };
-
   programs.zen.profiles.${username} = {
     settings = settings-ff-zen;
-    extensions = extensions-ff-common;
+    extensions.packages = extensions-ff-common;
   };
 
   xdg.configFile = {
