@@ -3,19 +3,20 @@
 ## Structure
 
 ```
+├── ../include/                 # Non-nix files that used by this nix setup
 ├── flake.lock
 ├── flake.nix
 ├── lib/                        # Self-explanatory, it contains helper functions
 │   ├── mkCommon.nix
 │   └── mkSystem.nix
 ├── modules/                    # Contains shared configuration across system, across user
-│   └── home-manager
-│       └── floorp.nix
-├── overlays/                   # Nix overlays, self-explanatory
+│   ├── darwin/
+│   └── home-manager/
+├── overlays/                   # Nix overlays, self-explanatory, modify nixpkgs in case of breakage or certain packages are missing
 ├── systems/                    # Contains configurations depending on what type OS nix is being used in
 │   ├── darwin/                 # - macOS
 │   │   ├── configuration.nix   # -- There supposed supposed to be a split here just like `nix/`, but I got lazy
-│   │   ├── default.nix         # -- Where you register your Mac (based on hostname)
+│   │   └── default.nix         # -- Where you register your Mac (based on hostname)
 │   ├── nix/                    # - non-NixOS (Linux/BSD/etc..)
 │   │   ├── default.nix         # -- Where you register your PC (based on hostname)
 │   │   └── <hostname>/
@@ -42,6 +43,8 @@ It is recommended to install nix using [Determinate Nix Installer](https://githu
 > - Open Alfred Preferences
 > - General > Default Results > Extras > Click `Advanced`
 > - Add `com.apple.alias-file`
+>
+> This is no longer the case since `nix-darwin` release 25.11, as in release 25.11 apps are no longer symlinked but copied to `/Applications/Nix Apps/`.
 
 > [!CAUTION]
 > This setup is NOT compatible with homebrew, it is designed to completely replaces homebrew.
@@ -75,6 +78,16 @@ darwin-rebuild build --flake .  # or you can specify the hostname with `--flake 
 
 darwin-rebuild switch --flake .
 ```
+
+#### Why?
+
+As mentioned earlier, this setup is designed to replaces homebrew, don't get me
+wrong homebrew is a great and powerful package manager for macOS and is
+probably perfectly fine for most people, but from my experience brew is giving
+me too much friction and constantly breaking on me, especially since I want a
+multi-user setup which brew aren't that good for that. While this setup is
+still partially multi-user friendly, the framework is already there and is much
+easier to deal with than brew, and if I messed it up I can easily revert back.
 
 ### Other
 
