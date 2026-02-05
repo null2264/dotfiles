@@ -40,6 +40,10 @@ return {
                 "emmylua_ls",
                 "luau_lsp",
                 -- << Lua
+
+                -- >> go
+                "gopls",
+                -- << go
             },
             automatic_enable = {
                 excluded = {
@@ -251,6 +255,20 @@ return {
                 },
             }
             vim.lsp.enable("kotlin-lsp")
+
+            vim.lsp.config["gopls"] = {
+                capabilities = capabilities,
+                settings = {
+                    gopls = {
+                        analyses = {
+                            unusedparams = true,
+                        },
+                        staticcheck = true,
+                        gofumpt = true,
+                    },
+                },
+            }
+            vim.lsp.enable("gopls")
             --#region Custom LSP (not handled by mason)
             --#endregion
         end,
@@ -320,7 +338,8 @@ return {
                 auto_brackets = { "python" },
                 snippet = {
                     -- REQUIRED - you must specify a snippet engine
-                    expand = function(_args)
+                    expand = function(args)
+                        vim.snippet.expand(args.body) -- For vanilla nvim
                         -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
                         -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
                         -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
