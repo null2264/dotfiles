@@ -43,11 +43,13 @@ return {
                 "gopls",
                 -- << go
             },
-            -- automatic_enable = {
-            --     excluded = {
-            --         "luau_lsp",  -- Already handled by "lopi-py/luau-lsp.nvim"
-            --     },
-            -- }
+            automatic_enable = {
+                exclude = {
+                    "stylua",
+                    "luau_lsp",  -- Already handled by "lopi-py/luau-lsp.nvim"
+                    "emmylua_ls",
+                },
+            }
         },
     },
     {
@@ -322,6 +324,7 @@ return {
         },
         config = function(_, _opts)
             -- From vimrc, may need clean up
+            require("null.snippet").register_cmp_source()
             local cmp = require("cmp")
 
             -- local has_words_before = function()
@@ -375,6 +378,7 @@ return {
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "null" },
                     -- { name = "vsnip" }, -- For vsnip users.
                     -- { name = "luasnip" }, -- For luasnip users.
                     -- { name = "ultisnips" }, -- For ultisnips users.
