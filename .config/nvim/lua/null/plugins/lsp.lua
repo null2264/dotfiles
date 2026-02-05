@@ -6,13 +6,11 @@ return {
     {
         "mason-org/mason.nvim",
         lazy = true,
-        config = function(_, _opts)
-            require("mason").setup()
-        end,
+        opts = {},
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        lazy = true,
+        event = { "LazyFile" },
         dependencies = {
             "mason-org/mason.nvim",
             "neovim/nvim-lspconfig",
@@ -23,7 +21,7 @@ return {
 
                 -- >> Kotlin
                 -- "kotlin_language_server",
-                "kotlin-lsp",
+                "kotlin_lsp",
                 -- << Kotlin
 
                 -- >> Python
@@ -45,15 +43,12 @@ return {
                 "gopls",
                 -- << go
             },
-            automatic_enable = {
-                excluded = {
-                    "luau_lsp",  -- Already handled by "lopi-py/luau-lsp.nvim"
-                },
-            }
+            -- automatic_enable = {
+            --     excluded = {
+            --         "luau_lsp",  -- Already handled by "lopi-py/luau-lsp.nvim"
+            --     },
+            -- }
         },
-        config = function(_, opts)
-            require("mason-lspconfig").setup(opts)
-        end,
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -161,7 +156,7 @@ return {
                     },
                 },
             }
-            vim.lsp.enable("basedpyright")
+            -- vim.lsp.enable("basedpyright")
             --#endregion
             --#region Lua(U)
             vim.lsp.config["emmylua_ls"] = {
@@ -254,7 +249,7 @@ return {
                     "workspace.json",
                 },
             }
-            vim.lsp.enable("kotlin-lsp")
+            -- vim.lsp.enable("kotlin-lsp")
 
             vim.lsp.config["gopls"] = {
                 capabilities = capabilities,
@@ -268,7 +263,7 @@ return {
                     },
                 },
             }
-            vim.lsp.enable("gopls")
+            -- vim.lsp.enable("gopls")
             --#region Custom LSP (not handled by mason)
             --#endregion
         end,
