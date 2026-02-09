@@ -92,4 +92,18 @@ return {
         version = "*",
         config = true,
     },
+    {
+        "HampusHauffman/block.nvim",
+        event = "LazyFile",
+        opts = {
+            percent = 0.8,
+            depth = 4,
+            bg = "#0E1418",
+            colors = nil,
+            automatic = true,
+        },
+        config = function(_, opts)
+            require("block").setup(opts)
+        end
+    },
 }

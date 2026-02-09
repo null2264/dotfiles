@@ -25,9 +25,9 @@ return {
                 -- << Kotlin
 
                 -- >> Python
-                "basedpyright",
-                -- "ruff",
-                -- "ruff_lsp",
+                -- "basedpyright",
+                "ruff",
+                "ty",
                 -- << Python
 
                 -- >> Jinja
@@ -136,28 +136,43 @@ return {
             -- NOTE: If the LSP is installed through Mason, vim.lsp.enable(...) is not needed since they're enabled automatically.
 
             --#region Python
-            -- FIXME: Re enable once ruff is able to type check
-            -- vim.lsp.config["ruff_lsp"] = {
-            --     capabilities = capabilities,
-            -- }
-            vim.lsp.config["basedpyright"] = {
+            vim.lsp.config["ruff"] = {
                 capabilities = capabilities,
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            diagnosticSeverityOverrides = {
-                              reportWildcardImportFromLibrary = "none",
-                              reportUnusedImport = "information",
-                              reportUnusedClass = "information",
-                              reportUnusedFunction = "information",
-                              reportOptionalMemberAccess = "none",
-                              reportUnknownVariableType = "none",
-                              reportUnusedCallResult = "none",
+                init_options = {
+                    settings = {
+                        configuration = {
+                            lint = {
+                                ignore = { "E701", "E702" },
+                                preview = true,
                             },
-                        },
-                    },
-                },
+                            format = {
+                                ["quote-style"] = "double"
+                            }
+                        }
+                    }
+                }
             }
+            vim.lsp.config["ty"] = {
+                capabilities = capabilities,
+            }
+            -- vim.lsp.config["basedpyright"] = {
+            --     capabilities = capabilities,
+            --     settings = {
+            --         basedpyright = {
+            --             analysis = {
+            --                 diagnosticSeverityOverrides = {
+            --                   reportWildcardImportFromLibrary = "none",
+            --                   reportUnusedImport = "information",
+            --                   reportUnusedClass = "information",
+            --                   reportUnusedFunction = "information",
+            --                   reportOptionalMemberAccess = "none",
+            --                   reportUnknownVariableType = "none",
+            --                   reportUnusedCallResult = "none",
+            --                 },
+            --             },
+            --         },
+            --     },
+            -- }
             -- vim.lsp.enable("basedpyright")
             --#endregion
             --#region Lua(U)

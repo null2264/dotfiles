@@ -12,6 +12,7 @@ local snippets_by_filetype = {
     },
     go = {
         { trigger = "fun", body = "func ${1:name}(${2}) {$0\n}" },
+        { trigger = "err-nil", body = "if ${1:err} != nil {$0\n}" },
     },
 }
 
