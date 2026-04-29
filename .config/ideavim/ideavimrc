@@ -9,6 +9,7 @@ set smartcase
 let mapleader=" "
 
 map <leader>r <Action>(RenameElement)
+
 unmap <C-n>
 
 " Map ctrl + u as U

@@ -100,10 +100,35 @@ return {
             depth = 4,
             bg = "#0E1418",
             colors = nil,
-            automatic = true,
+            automatic = false,
         },
         config = function(_, opts)
             require("block").setup(opts)
+
+            -- Basically what automatic = true does, but we exclude Oil
+            vim.api.nvim_create_autocmd("FileType", {
+                group = "block.nvim",
+                pattern = "*",
+                callback = function(args)
+                    local ft = args.match
+
+                    local debug_mode = false
+
+                    local ignore_ft = { "oil", "neo-tree" }
+
+                    for _, name in ipairs(ignore_ft) do
+                        if ft:sub(1, #name) == name then
+                            return
+                        end
+                    end
+
+                    if debug_mode then
+                        print("[BLOCK] Filetype: " .. ft)
+                    end
+
+                    require("block").on()
+                end
+            })
         end
     },
 }
