@@ -114,7 +114,7 @@ return {
 
                     local debug_mode = false
 
-                    local ignore_ft = { "oil", "neo-tree" }
+                    local ignore_ft = { "oil", "neo-tree", "cmp" }
 
                     for _, name in ipairs(ignore_ft) do
                         if ft:sub(1, #name) == name then
