@@ -103,9 +103,10 @@ return {
             automatic = false,
         },
         config = function(_, opts)
-            require("block").setup(opts)
+            local block = require("block")
+            block.setup(opts)
 
-            -- Basically what automatic = true does, but we exclude Oil
+            -- Basically what automatic = true does, but with error handled
             vim.api.nvim_create_autocmd("FileType", {
                 group = "block.nvim",
                 pattern = "*",
@@ -114,19 +115,12 @@ return {
 
                     local debug_mode = false
 
-                    local ignore_ft = { "oil", "neo-tree", "cmp" }
-
-                    for _, name in ipairs(ignore_ft) do
-                        if ft:sub(1, #name) == name then
-                            return
+                    if pcall(block.on) then
+                    else
+                        if debug_mode then
+                            print("[BLOCK] Failed to us block on ft: " .. ft)
                         end
                     end
-
-                    if debug_mode then
-                        print("[BLOCK] Filetype: " .. ft)
-                    end
-
-                    require("block").on()
                 end
             })
         end
