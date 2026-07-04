@@ -253,7 +253,7 @@ return {
 
             vim.lsp.config["kotlin-lsp"] = {
                 capabilities = capabilities,
-                cmd = { "kotlin-lsp", "--stdio" },
+                -- cmd = { "kotlin-lsp", "--stdio" },
                 -- cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(9999)),
                 -- single_file_support = false,
                 filetypes = { "kotlin" },
@@ -264,6 +264,7 @@ return {
                     "build.gradle",
                     "build.gradle.kts",
                     "workspace.json",
+                    ".git",
                 },
             }
             -- vim.lsp.enable("kotlin-lsp")
