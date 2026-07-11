@@ -72,7 +72,6 @@ return {
     },
     {
         "lopi-py/luau-lsp.nvim",
-        branch = "nvim-011",
         lazy = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -211,9 +210,15 @@ return {
                     },
                 },
             })
+            local function rojo_project()
+                return vim.fs.root(0, function(name)
+                    return name:match ".+%.project%.json$"
+                end)
+            end
+
             require("luau-lsp").setup {
                 platform = {
-                    type = "roblox",
+                    type = rojo_project() and "roblox" or "standard",
                 },
                 types = {
                     roblox_security_level = "PluginSecurity",
