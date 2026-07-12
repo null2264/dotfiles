@@ -81,6 +81,10 @@ in {
 
       pkgs.lf
       pkgs.yazi  # lf replacement, need further testing
+
+      # Roblox related
+      pkgs.rojo  # to develop Roblox games outside of Roblox Studio
+      #pkgs.wally  # Luau Package Manager for Roblox projects
     ];
   environment.extraSetup = ''
     ln -sv ${pkgs.path} $out/nixpkgs
