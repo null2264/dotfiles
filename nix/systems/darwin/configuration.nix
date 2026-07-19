@@ -32,6 +32,7 @@ in {
       pkgs.git
       pkgs.vim
       pkgs.neovim
+      pkgs.go
       pkgs.htop-vim
       pkgs.wget
       pkgs.eza
