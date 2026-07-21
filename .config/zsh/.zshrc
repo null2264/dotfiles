@@ -104,3 +104,6 @@ case "$OSTYPE" in
 		[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 		;;
 esac
+
+# opencode
+export PATH=/Users/ziro/.opencode/bin:$PATH

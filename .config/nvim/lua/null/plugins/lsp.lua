@@ -48,6 +48,7 @@ return {
                     "stylua",
                     "luau_lsp",  -- Already handled by "lopi-py/luau-lsp.nvim"
                     "emmylua_ls",
+                    "kotlin_lsp",  -- Memleak when opening new file via Oil or Neotree
                 },
             }
         },
