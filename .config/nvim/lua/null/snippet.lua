@@ -3,7 +3,7 @@
 local M = {}
 
 local global_snippets = {
-    { trigger = "shebang", body = "#!/bin sh" },
+    { trigger = "shebang", body = "#!/bin/sh" },
 }
 
 local snippets_by_filetype = {
