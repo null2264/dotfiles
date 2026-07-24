@@ -1,8 +1,12 @@
+local is_mac = vim.loop.os_uname().sysname == "Darwin"
+local mod = is_mac and "<D-" or "<C-"
+
 return {
     {
         "nvim-neo-tree/neo-tree.nvim", -- I'll be using oil.nvim, but for better visual I'll keep this
         keys = {
-            { "<C-n>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+            -- NOTE: For iTerm users, you need to bind CMD + / to send escape sequence "[110;5u", otherwise "Find Cursor" would intercept
+            { mod .. "n>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
         },
         branch = "v3.x",
         dependencies = {
