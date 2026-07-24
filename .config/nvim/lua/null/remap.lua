@@ -1,6 +1,12 @@
 -- Loaded by `null.config`
 local map = require("null.util").map
 
+-- Detect the operating system
+local is_mac = vim.loop.os_uname().sysname == "Darwin"
+
+-- Assign <D-> (Command) for Mac, <C-> (Control) for Windows/Linux
+local mod = is_mac and "<D-" or "<C-"
+
 -- Map Ctrl+U as U so it can be used as redo
 map("n", "<C-u>", "U")
 -- Map U as redo
@@ -13,9 +19,10 @@ map("nv", "<C-Y>", '"+y')
 map("n", "<C-P>", '"+p')
 
 -- Comment a line like how it is on VSC (using vim-commentary)
-map("n", "<C-/>", "gcc", { remap = true })
-map("v", "<C-/>", "gc", { remap = true })
-map("i", "<C-/>", "<esc>gcc", { remap = true })
+-- NOTE: For iTerm users, you need to bind CMD + / to send escape sequence "[47;5u", otherwise "Find Cursor" would intercept
+map("n", mod .. "/>", "gcc", { remap = true })
+map("v", mod .. "/>", "gc", { remap = true })
+map("i", mod .. "/>", "<esc>gcc", { remap = true })
 
 -- Normal command shortcut for VISUAL mode
 map("v", ".", ":normal .<cr>")
