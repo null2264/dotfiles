@@ -75,9 +75,9 @@ in {
       common.custom.inkscape
       pkgs.casks.zotero
       # FIXME: Remove .overrideAttrs once brew-nix supports tar files
-      (pkgs.casks.sikarugir.overrideAttrs (o: {
-        unpackPhase = "${pkgs.lib.getExe pkgs.gnutar} xf $src";
-      }))
+      #(pkgs.casks.sikarugir.overrideAttrs (o: {
+      #  unpackPhase = "${pkgs.lib.getExe pkgs.gnutar} xf $src";
+      #}))
       pkgs.casks.lulu
 
       pkgs.lf
