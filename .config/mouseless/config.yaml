@@ -52,5 +52,5 @@ layers:
     esc: layer initial
     up: w
     down: s
-    s: k0
-    w: k6
+    # s: k0
+    # w: k6
