@@ -19,7 +19,7 @@ map("nv", "<C-Y>", '"+y')
 map("n", "<C-P>", '"+p')
 
 -- Comment a line like how it is on VSC (using vim-commentary)
--- NOTE: For iTerm users, you need to bind CMD + / to send escape sequence "[47;5u", otherwise "Find Cursor" would intercept
+-- NOTE: For iTerm users, you need to bind CMD + / to send escape sequence "[47;9u", otherwise "Find Cursor" would intercept
 map("n", mod .. "/>", "gcc", { remap = true })
 map("v", mod .. "/>", "gc", { remap = true })
 map("i", mod .. "/>", "<esc>gcc", { remap = true })
