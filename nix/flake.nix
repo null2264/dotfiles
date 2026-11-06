@@ -46,6 +46,12 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.systems = {
+        type = "github";
+        owner = "null2264";
+        repo = "nix-systems";
+        ref = "26.05";
+      };
     };
 
     home-manager = {
