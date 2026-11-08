@@ -4,11 +4,25 @@ local M = {}
 
 local global_snippets = {
     { trigger = "shebang", body = "#!/bin/sh" },
+    { trigger = "shebash", body = "#!/usr/bin/env bash" },
 }
 
 local snippets_by_filetype = {
     lua = {
         { trigger = "fun", body = "function ${1:name}(${2:args}) $0 end" },
+        { trigger = "class", body = [[
+local ${1:Name} = {}
+${1:Name}.__index = ${1:Name}
+
+type I${1:Name} = {
+    $2
+}
+
+export type ${1:Name} = typeof(setmetatable({} :: I${1:Name}, ${1:Name}))
+
+type ${1:Name}Internal = {
+    $3
+} & ${1:Name}]] },
     },
     go = {
         { trigger = "fun", body = "func ${1:name}(${2}) {$0\n}" },
